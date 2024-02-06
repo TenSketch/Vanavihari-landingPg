@@ -1,0 +1,99 @@
+@use '/src/scss/base/' as *;
+
+.icon {
+    width: 3rem;
+}
+
+// .list-group {
+//     // background-color: $clr-light;
+//     // border-right: 1px solid rgba(0, 0, 0, 0.5);
+// }
+
+.list-group-item {
+    background: transparent;
+    border-radius: 0;
+    // background: linear-gradient(180deg, $clr-primary-light 0%, $clr-light 100%);
+    // box-shadow: -4px 0 5px 0 rgba(31, 38, 135, 0.215);
+    // backdrop-filter: blur(2px);
+    border: none;
+    // border-top-right-radius: 0;
+    // border-bottom-right-radius: 0;
+    padding: 1.5rem;
+
+    h5 {
+        // color: $clr-light;
+        color: $clr-dark;
+        font-size: 1.2rem;
+    }
+
+    p {
+        color: $clr-dark;
+    }
+
+    small {
+        // color: $clr-light;
+        color: $clr-neutral;
+    }
+
+    &.active {
+        background: $clr-primary-light;
+        color: $clr-light;
+        // border: 1px solid $clr-primary;
+        border-radius: 1rem;
+        // border-right: 0;
+        // border-top-right-radius: 0;
+        // border-bottom-right-radius: 0;
+    }
+
+
+    // h5 {
+    //     color: $clr-dark;
+    // }
+
+    // p,
+    // small {
+    //     color: $clr-dark;
+    // }
+
+}
+
+.tab-pane{
+    // border-top: 1px solid $clr-primary;
+    // &+.tab-pane{
+    //     border-top: 0;
+    //     border-bottom: 1px solid $clr-primary;
+    // }
+}
+.card {
+    // background: rgba(255, 255, 255, 0.85);
+    // box-shadow: 0 0 5px 0 rgba(31, 38, 135, 0.215);
+    // backdrop-filter: blur(2px);
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+
+    &-caller__details {
+
+        // border-top-left-radius: 0;
+        // border-bottom-left-radius: 0;
+        img {
+            width: max(2.5rem, 60%);
+            aspect-ratio: 1;
+            object-fit: cover;
+            // border-radius: 50%;
+            box-shadow: 0 0 5px 0 rgba(92, 92, 92, 0.85);
+        }
+    }
+}
+
+.card-text {
+    h6 {
+        font-weight: bold;
+    }
+
+    p {
+        color: $clr-neutral;
+
+    }
+}

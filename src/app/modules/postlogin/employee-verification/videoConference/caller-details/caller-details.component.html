@@ -1,0 +1,136 @@
+<app-main-layout>
+    <div class="main">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a class="text-primary text-decoration-none" (click)="goToDashboard()">Dasboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Caller details</li>
+            </ol>
+        </nav>
+        <div class="bg-white">
+            <h4 class="mb-0 main-title">Scheduled calls</h4>
+            <div class="row mx-0 px-2 px-sm-4">
+                <section class="col-md-auto px-0">
+                    <div class="list-group" id="list-tab" role="tablist">
+                        <a class="list-group-item list-group-item-action active" id="list-profile-list"
+                            data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">
+                            <div class="row align-items-center justify-content-between row-gap-3">
+                                <span class="d-flex align-items-center gap-3 col-sm-auto">
+                                    <img class="icon" src="/assets/images/icons/profile.png" alt="">
+                                    <h5 class="d-inline-block mb-0">Balachandiran</h5>
+                                </span>
+                                <span class="date-time col-sm-auto">
+                                    <p class="mb-0">07/06/2023</p>
+                                    <small>11:55 AM</small>
+                                </span>
+                            </div>
+                        </a>
+                        <a class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list"
+                            href="#list-home" role="tab" aria-controls="list-home">
+                            <div class="row align-items-center justify-content-between row-gap-3">
+                                <span class="d-flex align-items-center gap-3 col-sm-auto">
+                                    <img class="icon" src="/assets/images/icons/profile.png" alt="">
+                                    <h5 class="d-inline-block mb-0">Akhil Behl</h5>
+                                </span>
+                                <span class="date-time col-sm-auto">
+                                    <p class="mb-0">07/06/2023</p>
+                                    <small>03:55 PM</small>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+                <section class="col-md-8 px-0">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="list-profile" role="tabpanel"
+                            aria-labelledby="list-profile-list">
+                            <div class="card pt-3 card-caller__details">
+                                <div class="row justify-content-center mx-0 row-gap-4">
+                                    <div class="col-md-3 ">
+                                        <img src="/assets/images/Bala-selfie.png" alt="Bala-selfie">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body pt-0">
+                                            <div class="card-text row row-gap-3">
+                                                <h2 class="card-title col-12 mb-0">
+                                                    Balachandiran
+                                                </h2>
+                                                <div class="col-md-4">
+                                                    <h6 class="mb-0">Customer ID</h6>
+                                                    <p class="mb-0">00000028282829101</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h6 class="mb-0">Account number</h6>
+                                                    <p class="mb-0">6803902902</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h6 class="mb-0">DOB</h6>
+                                                    <p class="mb-0">28/05/1989</p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <h6 class="mb-0">Present address (EKYC Verified)</h6>
+                                                    <p class="mb-0">9/33, Jeevan Bhima Nagar,
+                                                        Anna Nagar West,
+                                                        Chennai, TN. PIN - 600 101</p>
+                                                </div>
+                                                <div class="col-md-5 d-flex column-gap-2 align-items-start">
+                                                    <div class="col-auto">
+                                                        <button mat-stroked-button color="secondary">Notify</button>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <button mat-raised-button color="primary" (click)="goToVideoCallPage()">Call</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                            <div class="card pt-3 card-caller__details">
+                                <div class="row justify-content-center mx-0 row-gap-4">
+                                    <div class="col-md-3 ">
+                                        <img src="/assets/images/male-blue.png" alt="male-blue">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body pt-0">
+                                            <div class="card-text row row-gap-3">
+                                                <h2 class="card-title col-12 mb-0">
+                                                    Akhil Bhel
+                                                </h2>
+                                                <div class="col-md-4">
+                                                    <h6 class="mb-0">Customer ID</h6>
+                                                    <p class="mb-0">00000028282829101</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h6 class="mb-0">Account number</h6>
+                                                    <p class="mb-0">6803902902</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h6 class="mb-0">DOB</h6>
+                                                    <p class="mb-0">28/05/1989</p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <h6 class="mb-0">Present address (EKYC Verified)</h6>
+                                                    <p class="mb-0">9/33, Jeevan Bhima Nagar,
+                                                        Anna Nagar West,
+                                                        Chennai, TN. PIN - 600 101</p>
+                                                </div>
+                                                <div class="col-md-5 d-flex column-gap-2">
+                                                    <button mat-stroked-button color="secondary">Notify</button>
+                                                    <button mat-raised-button color="primary"
+                                                        (click)="goToVideoCallPage()">Call</button>
+                                                </div>
+                                                <!-- <div class="col-md-4"></div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</app-main-layout>

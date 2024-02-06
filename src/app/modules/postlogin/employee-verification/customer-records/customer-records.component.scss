@@ -1,0 +1,53 @@
+@use '/src/scss/base/' as *;
+
+// mat datatable
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  // width: 100%;
+}
+
+// td, th {
+//   width: 25%;
+// }
+
+tr{
+  cursor: pointer;
+}
+
+
+// change mat table header bg
+.mat-mdc-table .mdc-data-table__header-row{
+  // background-color: $clr-grey--300;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  font-size: 1rem;
+}
+
+// change styles of mat table header
+.mdc-data-table__header-cell{
+  font-size: 1rem;
+  font-weight: bold;
+  color: $clr-neutral--600;
+}
+// change styles of mat table body
+
+.mdc-data-table__cell{
+  font-size: 0.9rem;
+  color: $clr-neutral--500;
+}
+// remove box shadow for mat table
+.mat-elevation-z8, .mat-mdc-elevation-specific.mat-elevation-z8{
+  box-shadow: none!important;
+  // border: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom:1px solid rgba(0, 0, 0, 0.12) ;
+}
+
+// .custom-form-no-stretch{
+//   background-color: transparent!important;
+// }
+.dateRange{
+  row-gap: 2rem;
+}

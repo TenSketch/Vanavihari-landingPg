@@ -1,0 +1,21 @@
+@use '/src/scss/base/' as *;
+
+footer {
+    bottom: 0;
+    right: 0;
+    left: 0;
+    box-shadow: 0 -1px 2px 0px rgb(0 0 0 / 31%);
+    background: $white;
+    color: rgb(32, 32, 32);
+  
+  }
+
+  .logo{
+    width: 50px;
+  }
+
+
+  .small_title{
+    font-size: 11px;
+  }
+

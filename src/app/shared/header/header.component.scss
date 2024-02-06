@@ -1,0 +1,144 @@
+@use '/src/scss/base/' as *;
+// header
+.navbar {
+    background-color: $white;
+    box-shadow: 0 1px 2px 0px rgb(0 0 0 / 31%);
+    height: 8vh;
+}
+.navbar-brand {
+    @media(max-width:400px) {
+        font-size: 0.8rem;
+    }
+}
+.navbar-collapse {
+    flex: 0 1 80%;
+}
+.dropdown-menu {
+    top: 120%;
+    display: none;
+    width: max-content;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px 0px hsl(0deg 0% 21% / 24%);
+    overflow: hidden;
+    right: 2%;
+    &.active {
+        display: block;
+    }
+    // @media(min-width:600px) {
+    //     // right: -100%;
+    //     left: unset;
+    //     transform: unset;
+    // }
+    &.notification {
+        // right: -178%;
+        padding: 1rem;
+    }
+}
+.navbar-nav {
+    @media(max-width:768px) {
+        flex-direction: row;
+    }
+}
+
+.nav-item {
+    &+.nav-item {
+        margin-left: 0.45rem;
+    }
+}
+.nav-link {
+    img {
+        width: 28px;
+        @media(min-width:991px) {
+            width: 25px;
+        }
+    }
+}
+.dropdown-toggle::after {
+    margin-left: 0;
+}
+.dropdown-item {
+    white-space: unset;
+}
+@media (min-width: 576px) {
+    .dropdown-lg {
+        width: 320px;
+    }
+}
+.profile__icon {
+    width: 40px;
+}
+.navbar-toggler {
+    &--aside {
+        z-index: 1040;
+        border: none;
+        inset: 0 auto;
+        background-color: transparent;
+        @media(min-width:991px) {
+            inset: 0 auto 0 calc(15% + 2rem);
+        }
+    }
+}
+.notification__header {
+    padding: 1.5rem;
+    background-color: $clr-dark;
+    color: $clr-light;
+    &-title {
+        font-weight: 600;
+    }
+    &-img {
+        height: 20px;
+        filter: invert(1);
+    }
+}
+.notification__body {
+    // min-width: 300px;
+    &_list {
+        padding: 1.5rem;
+        border-bottom: 1px solid hsla($hue-primary $saturation-primary 70% / 0.3);
+        &-msg {
+            &--title {
+                font-weight: 500;
+                color: $clr-dark;
+                font-size: 0.9rem;
+            }
+            &--content {
+                font-size: 0.8rem;
+                opacity: 0.8;
+            }
+            &--dateTime {
+                opacity: 0.6;
+            }
+        }
+        &-action {
+            .btnToggleRead {
+                width: 10px;
+                aspect-ratio: 1;
+                background-color: $clr-dark;
+                outline: none;
+                &.read {
+                    background-color: transparent;
+                }
+            }
+            .btnClear {
+                display: none;
+                img {
+                    width: 10px;
+                }
+            }
+        }
+        &:hover {
+            .btnClear {
+                display: block;
+            }
+        }
+        &:nth-child(1) {
+            &.active {
+                display: none !important;
+            }
+        }
+    }
+}
+.dropdown {
+    position: unset;
+}
+// header ends

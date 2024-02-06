@@ -1,0 +1,62 @@
+@use '/src/scss/base/' as *;
+
+// .form-select {
+//     top: 5%;
+//     right: 5%;
+//     width: auto;
+//     border-radius: 100px;
+//     background-color: #E2F5FC;
+//     border: none;
+//     color: $clr-primary;
+//     // removing default arrow style
+//     appearance: none;
+//     -webkit-appearance: none;
+//     -moz-appearance: none;
+//     /* Set the arrow image and its positioning */
+//     background-image: url("/assets/images/icons/down-arrow-blue.svg");
+//     background-repeat: no-repeat;
+
+//     option {
+//         /* Specify the background color of the options */
+//         background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 248, 248, 0.95) 100%);
+//         box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1), inset 0px 1px 0px #FFFFFF;
+//         backdrop-filter: blur(2.5px);
+//         /* Note: backdrop-filter has minimal browser support */
+//         border-radius: 4px;
+//         width: 500px;
+//     }
+// }
+
+// .dropdown-toggle {
+//     background-color: $clr-primary;
+//     color: $white;
+// }
+
+// .dropdown-menu {
+//     background-color: #E2F5FC;
+//     border-radius: 4px;
+//     text-align: right;
+// }
+.lang_section {
+    top: 4%;
+    right: 7%;
+    width: 50%;
+@media(min-width: 991px){
+    width: 15%;
+
+}
+}
+
+main {
+    // background: rgb(226, 245, 252);
+    // background: linear-gradient(86deg, rgba(226, 245, 252, 1) 0%, rgba(185, 231, 150, 1) 69%);
+    min-height: 100vh;
+    background-color: $clr-light;
+
+}
+
+// .btn-login {
+//     font-size: 0.9rem;
+//     letter-spacing: 0.05rem;
+//     padding: 0.75rem 1rem;
+// }

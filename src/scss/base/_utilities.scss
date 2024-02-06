@@ -1,0 +1,32 @@
+@use './colors' as *;
+@use './mixins' as *;
+
+
+.text-warning{
+    color: hsl(32, 95%, 44%)!important
+
+}
+.text-success{
+    color: $clr-secondary!important
+}
+
+.text-primary{
+    color: $clr-primary!important
+}
+.border-primary{
+    border-color: $clr-primary-light!important
+}
+
+.text-dark{
+    color: $clr-dark!important
+}
+
+.place-items-center{
+    place-items: center
+}
+.place-content-center{
+    place-content: center
+}
+.border-radius-1rem{
+    @include border-radius;
+}

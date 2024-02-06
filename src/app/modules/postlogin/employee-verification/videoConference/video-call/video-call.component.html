@@ -1,0 +1,268 @@
+<main class="video-call-container position-relative">
+  <header class="d-flex justify-content-between align-items-center px-3">
+    <div class="col-auto"><img class="logo" src="assets/images/logos/Kiya-Logo.svg" alt="Kiya-Logo"></div>
+    <!-- Control Icons -->
+    <section class="control-icons d-flex ms-auto">
+
+      <button (click)="toggleRecord()" class="d-flex align-items-center gap-2">
+        <i class="fa fa-circle" [ngClass]="{ 'recording': isRecording }"></i> Record
+      </button>
+      <button (click)="takeSnapshot()" class="d-flex align-items-center gap-2">
+        <img class="icon-small" src="assets/images/icons/snapshot.svg" alt="snapshot"> Take Snapshot
+        <!-- <i class="fa-solid fa-camera"></i> Take Snapshot -->
+        <!-- <fa-icon [icon]="['fas', 'camera']"></fa-icon> Take Snapshot -->
+      </button>
+      <button (click)="toggleMute()" class="d-flex align-items-center gap-2">
+        <i class="fa fa-microphone" [ngClass]="{ 'muted': isMuted }"></i> Mute
+      </button>
+      <button (click)="toggleVideo()" class="d-flex align-items-center gap-2">
+        <i class="fa fa-video-camera" [ngClass]="{ 'hidden': isVideoOff }"></i> Video
+      </button>
+      <button (click)="switchCamera()" class="d-flex align-items-center gap-2 d-md-none">
+        <i class="fa fa-camera" [ngClass]="{ 'hidden': !isVideoOff }"></i> Switch Camera
+      </button>
+      <button (click)="endCall()" class="d-flex align-items-center gap-2">
+        <i class="fa fa-phone"></i> End Call
+      </button>
+    </section>
+    <span class="mx-4">|</span>
+    <section class="control-tabs d-flex">
+      <button class="audit d-flex align-items-center gap-2" (click)="toggleAudit()">
+        <i class="fa fa-history"></i> Audit
+      </button>
+      <button class="profile d-flex align-items-center gap-2" (click)="toggleProfile()">
+        <i class="fa fa-user"></i> Profile
+      </button>
+      <button class="chat d-flex align-items-center gap-2" (click)="toggleChat()">
+        <i class="fa fa-comment"></i> Chat
+      </button>
+    </section>
+  </header>
+  <!-- Video Call Section -->
+  <div class="video-call" [ngClass]="{'active':isPageContent75Width}">
+    <!-- Video Stream -->
+    <section class="video-stream position-relative">
+      <div class="video_container local position-absolute">
+        <p class="video-description mb-1">Local:</p>
+        <video class="local_video" src="" #local_video [autoplay]="true" [muted]="true"></video>
+      </div>
+      <div class="video_container remote position-relative">
+        <p class="video-description ">Remote:</p>
+        <video class="remote_video" src="" #remote_video [autoplay]="true" [muted]="true"></video>
+      </div>
+
+    </section>
+  </div>
+  <div class="control-tabs--content">
+    <div class="pane position-absolute py-3 px-3 active" id="audit" [ngClass]="{'active':isAuditPaneActive}">
+      <a class="txt-primary d-block ms-3">Validate E-PAN</a>
+      <a class="txt-primary d-block ms-3 my-3">Validate E-AADHAAR</a>
+      <mat-checkbox value="" color="primary" class="w-100">Photo captured and verified with
+        selfie</mat-checkbox>
+      <mat-checkbox value="" color="primary" class="w-100">PAN captured and verified</mat-checkbox>
+      <mat-checkbox value="" color="primary" class="w-100">Signature captured</mat-checkbox>
+    </div>
+    <div class="pane position-absolute py-3 px-3" id="profile" [ngClass]="{'active':isProfilePaneActive}">
+      <!-- basic details tab accordian -->
+      <section class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="#basicDetails" aria-expanded="true" aria-controls="basicDetails">
+              Basic Details
+            </button>
+          </h2>
+          <div id="basicDetails" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p class="info-heading mb-0 mb-0">Name</p>
+              <p class="info-body">Balachandiran B</p>
+              <p class="info-heading mb-0 mb-0">Date of birth</p>
+              <p class="info-body">28/05/1989</p>
+              <p class="info-heading mb-0 mb-0">Gender</p>
+              <p class="info-body">Male</p>
+              <p class="info-heading mb-0 mb-0">Mobile number</p>
+              <p class="info-body">9840166419</p>
+              <p class="info-heading mb-0 mb-0">Email id</p>
+              <p class="info-body">balachandiran.b@kiya.ai</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- address details accordian -->
+      <section class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="#addressDetails" aria-expanded="true" aria-controls="addressDetails">
+              Address Details
+            </button>
+          </h2>
+          <div id="addressDetails" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p class="info-heading mb-0">Present address (EKYC Verified)</p>
+              <address>
+                9/33, Jeevan Bhima Nagar,
+                Anna Nagar West,
+                Chennai, TN. PIN - 600 101
+              </address>
+              <p class="info-heading mb-0">Communication address (EKYC Verified)</p>
+              <address>
+                9/33, Jeevan Bhima Nagar,
+                Anna Nagar West,
+                Chennai, TN. PIN - 600 101
+              </address>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- document details accordian -->
+      <section class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="#documentDetails" aria-expanded="true" aria-controls="addressDetails">
+              Document Details
+            </button>
+          </h2>
+          <div id="documentDetails" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p class="info-heading mb-0 mb-0">PAN</p>
+              <p class="info-body">CGZPB2674Q</p>
+              <p class="info-heading mb-0 mb-0">Aadhar (Aadhar EKYC Verified)</p>
+              <p class="info-body">xxxxxxxx7878</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- personal details accordian -->
+      <section class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="#personalDetails" aria-expanded="true" aria-controls="personalDetails">
+              Personal Details
+            </button>
+          </h2>
+          <div id="personalDetails" class="accordion-collapse collapse" aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <!-- <p class="info-heading mb-0 mb-0">Name as per PAN</p>
+                <p class="info-body">Balachandiran B</p>
+                <p class="info-heading mb-0 mb-0">Name as per Aadhar</p>
+                <p class="info-body">Balachandiran B</p> -->
+              <p class="info-heading mb-0 mb-0">Mother’s name</p>
+              <p class="info-body">Sumathi B</p>
+              <p class="info-heading mb-0 mb-0">Father’s name</p>
+              <p class="info-body">Balasubramanian R</p>
+              <p class="info-heading mb-0 mb-0">Dependents</p>
+              <p class="info-body">2</p>
+              <p class="info-heading mb-0 mb-0">Religion</p>
+              <p class="info-body">Hindu</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- account details accordian -->
+      <section class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="#accountDetails" aria-expanded="true" aria-controls="accountDetails">
+              Account Details
+            </button>
+          </h2>
+          <div id="accountDetails" class="accordion-collapse collapse" aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p class="info-heading mb-0 mb-0">Customer ID</p>
+              <p class="info-body">00000028282829101</p>
+              <p class="info-heading mb-0 mb-0">Account number</p>
+              <p class="info-body">6803902902</p>
+              <p class="info-heading mb-0 mb-0">Account type</p>
+              <p class="info-body">Savings (V-CIP)</p>
+              <p class="info-heading mb-0 mb-0">Branch</p>
+              <p class="info-body">Chennai- Anna Nagar</p>
+              <p class="info-heading mb-0 mb-0">Latitude/Longitude (City)</p>
+              <p class="info-body">13.0827° N, 80.2707° E (Chennai)</p>
+              <p class="info-heading mb-0 mb-0">Time stamp</p>
+              <p class="info-body">28-04-2023, 09:06:23 am</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="pane position-absolute py-3 px-3" id="chat" [ngClass]="{'active':isChatPaneActive}">
+      <div class="chat-container d-flex flex-column h-100 justify-content-between">
+        <section class="chat-header d-flex justify-content-between align-items-center">
+          <h5 class="text-primary">Chat</h5> <span class="h5" (click)="toggleChat()">
+            <img class="icon" src="/assets/images/icons/close-blue.png" alt="close icon">
+          </span>
+        </section>
+        <section class="chat-body" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+          <section class="chat-body--messages">
+            <!-- cust msg -->
+            <div class="d-flex cust__msg justify-content-end align-items-start mb-4 pt-1">
+              <div>
+                <p class="msg__bubble small p-2 mb-1 text-white">hello!</p>
+                <p class="small mb-3 text-muted d-flex justify-content-end">10:30 a.m</p>
+              </div>
+              <img class="chat__avatar ms-2"
+                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
+                alt="chat avatar">
+            </div>
+            <!-- emp msg -->
+            <div class="d-flex emp__msg justify-content-start align-items-start">
+              <img class="chat__avatar me-2" src="/assets/images/logos/Kiya-Logo--icon.svg"
+                alt="Kiya-Logo--icon">
+              <div>
+                <p class="msg__bubble small p-2 mb-1 text-white">hi customer, how may i help you</p>
+                <p class="small mb-3 text-muted d-flex justify-content-end">10:31 a.m</p>
+              </div>
+            </div>
+            <div class="d-flex cust__msg justify-content-end align-items-start mb-4 pt-1">
+              <div>
+                <p class="msg__bubble small p-2 mb-1 text-white">hello!</p>
+                <p class="small mb-3 text-muted d-flex justify-content-end">10:30 a.m</p>
+              </div>
+              <img class="chat__avatar ms-2"
+                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
+                alt="chat avatar">
+            </div>
+            <!-- emp msg -->
+            <div class="d-flex emp__msg justify-content-start align-items-start">
+              <img class="chat__avatar me-2" src="/assets/images/logos/Kiya-Logo--icon.svg"
+                alt="Kiya-Logo--icon">
+              <div>
+                <p class="msg__bubble small p-2 mb-1 text-white">hi customer, how may i help you</p>
+                <p class="small mb-3 text-muted d-flex justify-content-end">10:31 a.m</p>
+              </div>
+            </div>
+            <div class="d-flex cust__msg justify-content-end align-items-start mb-4 pt-1">
+              <div>
+                <p class="msg__bubble small p-2 mb-1 text-white">hello!</p>
+                <p class="small mb-3 text-muted d-flex justify-content-end">10:30 a.m</p>
+              </div>
+              <img class="chat__avatar ms-2"
+                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
+                alt="chat avatar">
+            </div>
+          </section>
+        </section>
+        <section class="chat-footer text-muted d-flex align-items-center pb-3">
+          <img class="chat__avatar" src="/assets/images/logos/Kiya-Logo--icon.svg" alt="Kiya-Logo--icon">
+          <form class="d-flex align-items-center w-100 position-relative">
+            <input type="text" class="form-control" id="chat__input" placeholder="Enter your message"
+              required>
+            <!-- <small class="text-error position-absolute" >Type a msg to send</small> -->
+            <a class="">
+              <img class="send-icon" src="assets/images/icons/send.png" alt="send icon">
+            </a>
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>
+</main>

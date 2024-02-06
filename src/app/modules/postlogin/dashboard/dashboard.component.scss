@@ -1,0 +1,81 @@
+@use '/src/scss/base/' as *;
+$span2: span 2;
+.dashboard__card-top {
+    // position: absolute;
+    // left: 0;
+    // right: 0;
+    // top: 0;
+    padding: 1.5rem 2rem;
+    // background: url(/assets/images/dashboard-top-card-bg.png) no-repeat 100%/cover;
+    // color: #fff;
+    &--title {
+        font-weight: 600;
+        // font-size: 2.25rem;
+    }
+    &--subtitle {
+        border: 1px dashed hsla($hue-dark, $saturation-dark, $lightness-dark, 10%);
+        width: fit-content;
+        p {
+            color: $clr-dark-primary--200;
+        }
+        // @media(min-width:768px) {
+        //     columns: 3;
+        // }
+    }
+    img {
+        right: 17%;
+        top: 23%;
+    }
+}
+.dashboard__wrapper {
+    padding-inline: 2rem;
+    gap: 2rem;
+    &.d-md-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    }
+}
+article {
+    grid-column: $span2;
+    cursor: pointer;
+    transition: box-shadow 300ms ease;
+    &.dashboard__card {
+        background: rgba(255, 255, 255, 0.85);
+        box-shadow: 0 0 3px 0 rgb(31 38 135 / 30%);
+        // backdrop-filter: blur(2px);
+        // -webkit-backdrop-filter: blur(2px);
+        @include border-radius;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        &:nth-child(6) {
+            grid-column: span 6;
+            gap: 1rem;
+            @media(min-width:991px) {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 7rem;
+            }
+        }
+        @media(max-width: 768px) {
+            &+.dashboard__card {
+                margin-top: 1.5em;
+            }
+        }
+    }
+    &:hover {
+        box-shadow: 0 0 3px 1.5px hsla($hue-dark, $saturation-dark, $lightness-dark, 24%);
+    }
+}
+.content_title {
+    // margin-bottom: 0;
+}
+.content_count {
+    font-size: 4rem !important;
+    font-weight: 700;
+}
+.chart {
+    grid-column: $span2;
+    grid-row: $span2;
+}
+// apexcharts
+.apexcharts-legend.apx-legend-position-bottom.apexcharts-align-left,
+.apexcharts-legend.apx-legend-position-top.apexcharts-align-left,
+.apexcharts-legend.apx-legend-position-right,
+.apexcharts-legend.apx-legend-position-left {}

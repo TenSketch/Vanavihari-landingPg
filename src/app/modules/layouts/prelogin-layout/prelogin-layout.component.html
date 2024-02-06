@@ -1,0 +1,28 @@
+<main class="d-flex align-items-center">
+  <section class=" position-absolute lang_section">
+      <mat-form-field appearance="outline">
+        <mat-label>Select Language</mat-label>
+        <mat-select>
+          <mat-option value="option1">English</mat-option>
+          <mat-option value="option1">தமிழ்</mat-option>
+          <mat-option value="option1">हिन्दी</mat-option>
+          <mat-option value="option2">मराठी</mat-option>
+        </mat-select>
+      </mat-form-field>
+  </section>
+  <div class="container" >
+    <!-- lang select section -->
+    <!-- login img and form section -->
+    <section class="row align-items-end justify-content-between">
+      <div class="col-lg-5 d-none d-lg-block">
+        <ng-content select=".main-left"></ng-content>
+      </div>
+      <div class="col-lg-5">
+        <div class="text-center mb-4">
+          <img class="logo" src="assets/images/logos/Kiya-Logo.svg" alt="Kiya-Logo">
+        </div>
+        <ng-content select=".main"></ng-content>
+      </div>
+    </section>
+  </div>
+</main>
