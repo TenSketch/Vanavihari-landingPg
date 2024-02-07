@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@use './scss/base/' as *;
-@use './scss/components/' as *;
+@use "./scss/base/" as *;
+@use "./scss/components/" as *;
 // html {
 //     // font-size: 14px;
 //     // @media(min-width:600px) {
@@ -8,197 +8,194 @@
 //     // }
 // }
 body {
-    // font-size: 0.875rem;
-    background-color: $clr-light;
-    font-family: 'Inter', sans-serif;
-    color: $clr-dark;
-    overflow-x: hidden;
-    &.dark-theme {
-        background-color: $clr-dark;
-        color: $clr-light
-    }
+  // font-size: 0.875rem;
+  background-color: $clr-light;
+  font-family: "Inter", sans-serif;
+  color: $clr-dark;
+  overflow-x: hidden;
+  &.dark-theme {
+    background-color: $clr-dark;
+    color: $clr-light;
+  }
 }
 a {
-    cursor: pointer;
+  cursor: pointer;
 }
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 .logo {
-    width: min(65%, 200px);
+  width: min(65%, 200px);
 }
 .icon {
-    width: 30px;
-    // display: block;
+  width: 30px;
+  // display: block;
 }
 .breadcrumb-item {
-    // The separator between breadcrumbs (by default, a forward-slash: "/")
-    +.breadcrumb-item {
-        //   padding-left: var(--#{$prefix}breadcrumb-item-padding-x);
-        &::before {
-            // float: left; // Suppress inline spacings and underlining of the separator
-            // padding-right: var(--#{$prefix}breadcrumb-item-padding-x);
-            color: $clr-dark;
-            content: url(assets/images/icons/breadcrumbs-right-arrow.svg);
-        }
+  // The separator between breadcrumbs (by default, a forward-slash: "/")
+  + .breadcrumb-item {
+    //   padding-left: var(--#{$prefix}breadcrumb-item-padding-x);
+    &::before {
+      // float: left; // Suppress inline spacings and underlining of the separator
+      // padding-right: var(--#{$prefix}breadcrumb-item-padding-x);
+      color: $clr-dark;
+      content: url(assets/images/icons/breadcrumbs-right-arrow.svg);
     }
-    // &.active {
-    //   color: var(--#{$prefix}breadcrumb-item-active-color);
-    // }
+  }
+  // &.active {
+  //   color: var(--#{$prefix}breadcrumb-item-active-color);
+  // }
 }
 // material datepicker
 .mat-form-field {
-    display: inline-flex;
+  display: inline-flex;
 }
 .mat-form-field-infix {
-    display: inline-flex !important;
-    align-items: baseline;
-    padding: 0 16px;
+  display: inline-flex !important;
+  align-items: baseline;
+  padding: 0 16px;
 }
 .mat-mdc-form-field-infix {
-    width: 100px !important;
+  width: 100px !important;
 }
 .mat-mdc-form-field-subscript-wrapper,
 .mat-mdc-form-field-bottom-align::before {
-    display: none !important;
+  display: none !important;
 }
 .card {
-    // background: rgba(255, 255, 255, 0.4);
-    // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15), inset 0px 1px 0px #FFFFFF;
-    // backdrop-filter: blur(8px);
-    // -webkit-backdrop-filter: blur(8px);
-    border-radius: 12px;
-    // border: 1px solid rgba(255, 255, 255, 0.18);
+  // background: rgba(255, 255, 255, 0.4);
+  // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15), inset 0px 1px 0px #ffffff;
+  // backdrop-filter: blur(8px);
+  // -webkit-backdrop-filter: blur(8px);
+  border-radius: 12px;
+  // border: 1px solid rgba(255, 255, 255, 0.18);
 }
 .form-control {
-    border: none;
-    border-bottom: 2px solid $clr-secondary;
-    border-radius: 0;
-    background-color: transparent;
+  border: none;
+  border-bottom: 2px solid $clr-secondary;
+  border-radius: 0;
+  background-color: transparent;
 }
 // bootstrap floating label
-.form-floating>label {
-    right: 0;
+.form-floating > label {
+  right: 0;
 }
 .breadcrumb {
-    padding: 1rem 1.9rem;
+  padding: 1rem 1.9rem;
 }
 .main-title {
-    padding: $pad-main-title;
-    line-height: 1;
+  padding: $pad-main-title;
+  line-height: 1;
 }
 .mat-mdc-form-field {
-    width: -webkit-fill-available;
-    width: -moz-available;
+  width: -webkit-fill-available;
+  width: -moz-available;
 }
 .custom-form-no-stretch {
-    // background-color: transparent !important;
-    @media(min-width:600px){
+  // background-color: transparent !important;
+  @media (min-width: 600px) {
     width: unset !important;
-
-    }
+  }
 }
 .bg-white {
-    box-shadow: 0 0 3px 0 rgb(31 38 135 / 30%);
-    @include border-radius;
-    margin-inline: 1rem;
-    @media(min-width:600px){
-        margin-inline: 2rem;
-
-    }
+  box-shadow: 0 0 3px 0 rgb(31 38 135 / 30%);
+  @include border-radius;
+  margin-inline: 1rem;
+  @media (min-width: 600px) {
+    margin-inline: 2rem;
+  }
 }
 .font-weight-bold {
-    font-weight: 600 !important;
+  font-weight: 600 !important;
 }
-.accordion-button{
-    padding-block: 0.5em!important;
-    color: $clr-dark;
-    font-size: 0.9rem;
+.accordion-button {
+  padding-block: 0.5em !important;
+  color: $clr-dark;
+  font-size: 0.9rem;
 }
 .info-heading {
-    font-weight: bold;
+  font-weight: bold;
 }
-.icon-small{
-    width: 18px;
+.icon-small {
+  width: 18px;
 }
-
 
 // vanavihari
 
 .nav-item {
-
-    // text-align: right !important;
-    .nav-link {
-        font-size: 0.9rem;
-    }
+  // text-align: right !important;
+  .nav-link {
+    font-size: 0.9rem;
+  }
 }
 
 // Kaviya
 /* Apply bold style to the horizontal ruler */
 .dropdown-divider {
-    border: 0;
-    height: 1px;
-    background-color: #000;
-    /* Set the color of the bold line */
-    margin: 10px 0;
-    /* Adjust margin as needed */
+  border: 0;
+  height: 1px;
+  background-color: #000;
+  /* Set the color of the bold line */
+  margin: 10px 0;
+  /* Adjust margin as needed */
 }
 
 .navbar-brand {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 
-    img {
-        max-height: 40px;
-        // margin-right: 50px
-        /* Adjust the height as needed */
-    }
+  img {
+    max-height: 40px;
+    // margin-right: 50px
+    /* Adjust the height as needed */
+  }
 }
 
 .navbar-toggler {
-    flex: 0;
-    /* Fix typo and set flex properties for the toggler */
+  flex: 0;
+  /* Fix typo and set flex properties for the toggler */
 }
 
 /* Center the logo only on small screens */
 @media (max-width: 575.98px) {
-    .center-logo {
-        text-align: center;
-    }
+  .center-logo {
+    text-align: center;
+  }
 }
 
 .nav-x {
-    flex-basis: auto;
-    flex-grow: 0;
+  flex-basis: auto;
+  flex-grow: 0;
 }
 
-.banner{
-    background: rgba(0,0,0,0.5) url(img/vihari-room.jpg) center / cover no-repeat fixed;
-    background-blend-mode: multiply;
-    min-height: 50vh;
+.banner {
+  background: rgba(0, 0, 0, 0.5) url(assets/img/vihari-room.jpg) center / cover
+    no-repeat fixed;
+  background-blend-mode: multiply;
+  min-height: 50vh;
 }
-.intro{
-    background-color: rgb(205, 240, 185);
+.intro {
+  background-color: rgb(205, 240, 185);
 }
-// search 
+// search
 
 .form-group {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 label {
-    display: block;
-    font-weight: bold;
+  display: block;
+  font-weight: bold;
 }
 
 input[type="date"],
 select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
