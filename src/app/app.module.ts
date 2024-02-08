@@ -20,6 +20,8 @@ import { CallerDetailsComponent } from './modules/postlogin/employee-verificatio
 import { VideoCallComponent } from './modules/postlogin/employee-verification/videoConference/video-call/video-call.component';
 import { HomeComponent } from './modules/home/home.component';
 import { LayoutComponent } from './modules/layout/layout.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
 
 
 @NgModule({
@@ -35,6 +37,8 @@ import { LayoutComponent } from './modules/layout/layout.component';
     PreloginLayoutComponent,
     HomeComponent,
     LayoutComponent,
+    SignInComponent,
+    SignUpComponent,
 
   ],
   imports: [
