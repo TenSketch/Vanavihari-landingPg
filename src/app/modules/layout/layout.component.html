@@ -4,49 +4,28 @@
     <div class="container d-flex justify-content-between">
       <!-- nav-items left -->
       <div class="nav-x d-lg-flex gap-2 align-items-center">
-        <a class="text-decoration-none text-light" href="index.html">Home</a>
+        <a class="text-decoration-none text-light" (click)="goToHome()">Home</a>
       </div>
       <!-- nav-items right -->
       <div class="nav-x d-lg-flex gap-3 align-items-center">
-        <a
-          class="text-decoration-none text-light"
-          href="mailto:cbet_maredumilli@yahoo.com"
-          title="click to send email"
-          >cbet_maredumilli@yahoo.com</a
-        >
-        <a
-          class="text-decoration-none text-light"
-          href="tel:+919494151617"
-          title="call"
-          >9494151617</a
-        >
-        <a href="sign-in.html"
-          ><button type="button" class="btn btn-light">Sign In</button></a
-        >
+        <a class="text-decoration-none text-light" href="mailto:cbet_maredumilli@yahoo.com"
+          title="click to send email">cbet_maredumilli@yahoo.com</a>
+        <a class="text-decoration-none text-light" href="tel:+919494151617" title="call">9494151617</a>
+        <a class="text-decoration-none text-light" (click)="goToSignin()">Sign In</a>
       </div>
     </div>
   </div>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <button
-        class="navbar-toggler d-lg-none"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapsibleNavId"
-        aria-controls="collapsibleNavId"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <a class="navbar-brand me-0 d-lg-none" href="#">
-        <img
-          src="assets/img/vanavihari_logo.png"
-          alt="vanavihari_logo"
-          class="d-inline-block align-top img-fluid"
-        />
+        <img src="assets/img/vanavihari_logo.png" alt="vanavihari_logo" class="d-inline-block align-top img-fluid" />
       </a>
-      <div class="collapse navbar-collapse" id="collapsibleNavId">
+  <div class="collapse navbar-collapse" id="collapsibleNavId">
         <ul class="navbar-nav w-100 mt-2 mt-lg-0">
           <!-- Your navigation items here -->
           <li class="nav-item d-lg-none">
@@ -55,21 +34,12 @@
           <!-- ... other menu items ... -->
           <div class="d-lg-flex nav-x">
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="dropdownId"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                >Our Resorts</a
-              >
+              <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">Our Resorts</a>
               <div class="dropdown-menu" aria-labelledby="dropdownId">
                 <a class="dropdown-item" href="#">Vanavihari, Maredumilli</a>
                 <a class="dropdown-item" href="#">JunglStar, Valamuru</a>
-                <a class="dropdown-item" href="#"
-                  >Vanyavihari, Rampachodavaram</a
-                >
+                <a class="dropdown-item" href="#">Vanyavihari, Rampachodavaram</a>
               </div>
             </li>
             <!-- <li class="nav-item">
@@ -83,11 +53,8 @@
             </li>
           </div>
           <a class="navbar-brand mx-auto d-none d-lg-block" href="#">
-            <img
-              src="assets/img/vanavihari_logo.png"
-              alt="vanavihari_logo"
-              class="d-inline-block align-top img-fluid"
-            />
+            <img src="assets/img/vanavihari_logo.png" alt="vanavihari_logo"
+              class="d-inline-block align-top img-fluid" />
           </a>
           <!-- Add horizontal divider after "Tourist Destinations" -->
           <li class="nav-item">
@@ -115,14 +82,65 @@
             <a class="nav-link" href="#">9494151617</a>
           </li>
           <li class="nav-item d-lg-none">
-            <a class="btn btn-primary btn-sm" href="sign-in.html">Sign In</a>
+            <a class="" (click)="goToSignin()">Sign In</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 </header>
-
+<!-- End Header -->
 <main>
   <ng-content select=".main"></ng-content>
 </main>
+
+<footer class="bg-dark text-white py-4">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-4">
+              <h3>Links</h3><br>
+              <ul class="list-unstyled">
+                  <li><a class="text-decoration-none text-white" href="#">About us</a></li>
+                  <li><a class="text-decoration-none text-white" href="#">Awards and News</a></li>
+                  <li><a class="text-decoration-none text-white" href="#">Privacy Policy</a></li>
+                  <li><a class="text-decoration-none text-white" href="#">Terms and Conditions</a></li>
+              </ul>
+          </div>
+          <div class="col-md-4">
+              <h3>Contact Info</h3>
+              <address>Co-ordinator(Complex Manager),<br>
+                  Community Based Eco-Tourism, <br>
+                  Maredumilli.
+              </address>
+              <ul class="list-unstyled">
+                  <li> <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;
+                      <a class="text-decoration-none text-light" href="mailto:cbet_maredumilli@yahoo.com"
+                          title="click to send email">cbet_maredumilli@yahoo.com</a>
+                  </li>
+                  <li>
+                      <!-- font awesome email -->
+                      <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;
+                      <a class="text-decoration-none text-light" href="tel:+919494151617" title="call">9494151617</a>
+                  </li>
+              </ul>
+
+
+          </div>
+          <div class="col-md-4">
+              <h3>Send a message</h3>
+              <form class="contact-form">
+                  <div class="mb-2">
+                      <input type="text" class="form-control" placeholder="Your Name">
+                  </div>
+                  <div class="mb-2">
+                      <input type="email" class="form-control" placeholder="Your Email">
+                  </div>
+                  <div class="mb-2">
+                      <textarea class="form-control" placeholder="Your Message"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-light">Send Message</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</footer>
