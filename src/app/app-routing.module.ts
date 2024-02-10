@@ -18,6 +18,7 @@ const routes: Routes = [
 {path:'home', component:HomeComponent}, 
 {path:'sign-in', component:SignInComponent}, 
 {path:'sign-up', component:SignUpComponent}, 
+{path:'about-vanavihari', component:AboutVanavihariComponent}, 
 
  {path:'',redirectTo:'home',pathMatch:'full'}
 ];

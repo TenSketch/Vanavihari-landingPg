@@ -18,4 +18,7 @@ export class LayoutComponent {
     goToSignin() {
     this.router.navigate(['/sign-in']);
   }
+  goToAboutUs() {
+    this.router.navigate(['/about-vanavihari']);
+  }
 }
