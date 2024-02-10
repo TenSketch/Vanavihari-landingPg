@@ -1,0 +1,130 @@
+<header>
+  <!-- topbar -->
+  <nav class="navbar navbar-expand navbar-light bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img src="assets/img/vanavihari_logo.png" alt="vanavihari_logo" class="d-inline-block align-top img-fluid" />
+      </a>
+      <!-- right menu -->
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">cbet_maredumilli@yahoo.com</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">9494151617</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Book Trip</a>
+        </li>
+        <li class="nav-item">
+          <a class="" (click)="goToSignin()">Sign In</a>
+        </li>
+      </ul>
+      <!-- collapse in all screens from left slide in -->
+      <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav w-100">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">Resorts Accomodation</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+              <a class="dropdown-item" href="#">Vanavihari, Maredumilli</a>
+              <a class="dropdown-item" href="#">Jungl Star Eco Camp, Valamuru</a>
+              <a class="dropdown-item" href="#">Vanyavihari, Rampachodavaram</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="goToAboutUs()">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Tourist Destinations</a>
+          </li>
+          <li class="nav-item">
+            <hr class="dropdown-divider" />
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Tribal Community</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <hr class="dropdown-divider" />
+          </li>
+          <li class="nav-item d-lg-none">
+            <a class="nav-link" href="#">cbet_maredumilli@yahoo.com</a>
+          </li>
+          <li class="nav-item d-lg-none">
+            <a class="nav-link" href="#">9494151617</a>
+          </li>
+          <li class="nav-item d-lg-none">
+            <a class="" (click)="goToSignin()">Sign In</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+
+</header>
+<!-- End Header -->
+<main>
+  <ng-content select=".main"></ng-content>
+</main>
+
+<footer class="bg-dark text-white py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Links</h3><br>
+        <ul class="list-unstyled">
+          <li><a class="text-decoration-none text-white" (click)="goToAboutUs()">About us</a></li>
+          <li><a class="text-decoration-none text-white" href="#">Awards and News</a></li>
+          <li><a class="text-decoration-none text-white" href="#">Privacy Policy</a></li>
+          <li><a class="text-decoration-none text-white" href="#">Terms and Conditions</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h3>Contact Info</h3>
+        <address>Co-ordinator(Complex Manager),<br>
+          Community Based Eco-Tourism, <br>
+          Maredumilli.
+        </address>
+        <ul class="list-unstyled">
+          <li> <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;
+            <a class="text-decoration-none text-light" href="mailto:cbet_maredumilli@yahoo.com"
+              title="click to send email">cbet_maredumilli@yahoo.com</a>
+          </li>
+          <li>
+            <!-- font awesome email -->
+            <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;
+            <a class="text-decoration-none text-light" href="tel:+919494151617" title="call">9494151617</a>
+          </li>
+        </ul>
+
+
+      </div>
+      <div class="col-md-4">
+        <h3>Send a message</h3>
+        <form class="contact-form">
+          <div class="mb-2">
+            <input type="text" class="form-control" placeholder="Your Name">
+          </div>
+          <div class="mb-2">
+            <input type="email" class="form-control" placeholder="Your Email">
+          </div>
+          <div class="mb-2">
+            <textarea class="form-control" placeholder="Your Message"></textarea>
+          </div>
+          <button type="submit" class="btn btn-light">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
