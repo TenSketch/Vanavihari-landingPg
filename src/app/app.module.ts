@@ -9,7 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 // MATERIAL
@@ -87,7 +86,6 @@ import { BiodiversityZoneComponent } from './modules/biodiversity-zone/biodivers
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    NgApexchartsModule,
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
