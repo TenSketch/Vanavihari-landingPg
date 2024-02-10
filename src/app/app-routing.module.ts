@@ -20,7 +20,7 @@ const routes: Routes = [
 {path:'sign-up', component:SignUpComponent}, 
 {path:'about-vanavihari', component:AboutVanavihariComponent}, 
 
- {path:'',redirectTo:'home',pathMatch:'full'}
+ {path:'', component: HomeComponent }
 ];
 
 @NgModule({
