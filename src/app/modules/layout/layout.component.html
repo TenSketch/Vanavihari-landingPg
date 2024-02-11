@@ -1,75 +1,71 @@
 <header>
-  <!-- topbar -->
-  <nav class="navbar navbar-expand navbar-light bg-dark">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
-        aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="#">
-        <img src="assets/img/vanavihari_logo.png" alt="vanavihari_logo" class="d-inline-block align-top img-fluid" />
-      </a>
-      <!-- right menu -->
-      <ul class="navbar-nav ms-auto">
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-light"
+>
+  <div class="container">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav me-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">cbet_maredumilli@yahoo.com</a>
+          <a class="nav-link active" href="#" aria-current="page"
+            >Home
+            <span class="visually-hidden">(current)</span></a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">9494151617</a>
+          <a class="nav-link" routerLink="/sign-in" routerLinkActive="active" ariaCurrentWhenActive="page">Sign In</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Book Trip</a>
-        </li>
-        <li class="nav-item">
-          <a class="" (click)="goToSignin()">Sign In</a>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="dropdownId"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            >Dropdown</a
+          >
+          <div
+            class="dropdown-menu"
+            aria-labelledby="dropdownId"
+          >
+            <a class="dropdown-item" href="#"
+              >Action 1</a
+            >
+            <a class="dropdown-item" href="#"
+              >Action 2</a
+            >
+          </div>
         </li>
       </ul>
-      <!-- collapse in all screens from left slide in -->
-      <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav w-100">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">Resorts Accomodation</a>
-            <div class="dropdown-menu" aria-labelledby="dropdownId">
-              <a class="dropdown-item" href="#">Vanavihari, Maredumilli</a>
-              <a class="dropdown-item" href="#">Jungl Star Eco Camp, Valamuru</a>
-              <a class="dropdown-item" href="#">Vanyavihari, Rampachodavaram</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" (click)="goToAboutUs()">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Tourist Destinations</a>
-          </li>
-          <li class="nav-item">
-            <hr class="dropdown-divider" />
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Tribal Community</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Gallery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact Us</a>
-          </li>
-          <li class="nav-item">
-            <hr class="dropdown-divider" />
-          </li>
-          <li class="nav-item d-lg-none">
-            <a class="nav-link" href="#">cbet_maredumilli@yahoo.com</a>
-          </li>
-          <li class="nav-item d-lg-none">
-            <a class="nav-link" href="#">9494151617</a>
-          </li>
-          <li class="nav-item d-lg-none">
-            <a class="" (click)="goToSignin()">Sign In</a>
-          </li>
-        </ul>
-      </div>
+      <!-- <form class="d-flex my-2 my-lg-0">
+        <input
+          class="form-control me-sm-2"
+          type="text"
+          placeholder="Search"
+        />
+        <button
+          class="btn btn-outline-success my-2 my-sm-0"
+          type="submit"
+        >
+          Search
+        </button>
+      </form> -->
     </div>
-  </nav>
+  </div>
+</nav>
+
   
 
 </header>
