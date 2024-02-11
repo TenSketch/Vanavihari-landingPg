@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Vanavihari": {
+    "vanavihari": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -44,8 +44,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "5000kb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Vanavihari:build:production"
+              "browserTarget": "vanavihari:build:production"
             },
             "development": {
-              "browserTarget": "Vanavihari:build:development"
+              "browserTarget": "vanavihari:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Vanavihari:build"
+            "browserTarget": "vanavihari:build"
           }
         },
         "test": {
