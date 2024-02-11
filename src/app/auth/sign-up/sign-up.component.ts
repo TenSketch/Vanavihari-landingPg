@@ -28,8 +28,7 @@ export class SignUpComponent implements OnInit {
       console.log(form.value);
       console.log(this.code);
 
-  
-      this.http.post<any>('/api/oauth/v2/token?grant_type=authorization_code&client_id=1000.GW70XWAC3O04CJ67TUTEAYEOVP7RIM&client_secret=532929ef83d5a2b57ceb5f5ddb3f94e0ebb30b7ebc&redirect_uri=https://tensketch.vanavihari.com/register.html&code=' + this.code, {})
+      this.http.post<any>('https://accounts.zoho.com/oauth/v2/token?grant_type=authorization_code&client_id=1000.GW70XWAC3O04CJ67TUTEAYEOVP7RIM&client_secret=532929ef83d5a2b57ceb5f5ddb3f94e0ebb30b7ebc&redirect_uri=https://tensketch.vanavihari.com/register.html&code=' + this.code, {})
       .subscribe(
         response => {
           console.log("Response:", response);
