@@ -30,33 +30,58 @@ export class SignUpComponent implements OnInit {
       validators: this.passwordMatchValidator
     });
   }
+
+
+
   ngOnInit(): void {
-    const clientId = '1000.GW70XWAC3O04CJ67TUTEAYEOVP7RIM';
-    const clientSecret = '532929ef83d5a2b57ceb5f5ddb3f94e0ebb30b7ebc';
-    const redirectUri = 'https://tensketch.vanavihari.com/register.html';
-    const grantType = 'authorization_code';
-    const tokenUrl = 'https://accounts.zoho.com/oauth/v2/token';
+      this.route.queryParams.subscribe(params => {
+        this.code = params['code'];
+      });
 
-    this.route.queryParams.subscribe(params => {
-      this.code = params['code'];
-      if(this.code === 'undefined') {
-        // this.myService.authorize();
-      }
-    });
+    // Retrieve the code from the query params or from your logic
+    // this.code = 'YOUR_CODE';
 
-      this.http.post<any>(tokenUrl+'?grant_type='+grantType+'&client_id='+clientId+'&client_secret='+clientSecret+'&redirect_uri='+redirectUri+'&code=' + this.code, {})
+    // Make HTTP request to your Node.js endpoint
+    this.http.post<any>('http://localhost:3000/authenticate', { code: this.code })
       .subscribe({
-        next:response=> {
-          this.authService.setAccessToken(response.access_token)
+        next: response => {
+          // Handle response, set access token, etc.
+          console.log("Response: "+response);
         },
-        // error(err) {
-        //   console.log(err);
-        // },
-        // complete() {
-        //   console.log('complete');
-        // }
+        error: err => {
+          console.log(err);
+        }
       });
   }
+
+
+  // ngOnInit(): void {
+  //   const clientId = '1000.GW70XWAC3O04CJ67TUTEAYEOVP7RIM';
+  //   const clientSecret = '532929ef83d5a2b57ceb5f5ddb3f94e0ebb30b7ebc';
+  //   const redirectUri = 'https://tensketch.vanavihari.com/register.html';
+  //   const grantType = 'authorization_code';
+  //   const tokenUrl = 'https://accounts.zoho.com/oauth/v2/token';
+
+  //   this.route.queryParams.subscribe(params => {
+  //     this.code = params['code'];
+  //     if(this.code === 'undefined') {
+  //       // this.myService.authorize();
+  //     }
+  //   });
+
+  //     this.http.post<any>(tokenUrl+'?grant_type='+grantType+'&client_id='+clientId+'&client_secret='+clientSecret+'&redirect_uri='+redirectUri+'&code=' + this.code, {})
+  //     .subscribe({
+  //       next:response=> {
+  //         this.authService.setAccessToken(response.access_token)
+  //       },
+  //       // error(err) {
+  //       //   console.log(err);
+  //       // },
+  //       // complete() {
+  //       //   console.log('complete');
+  //       // }
+  //     });
+  // }
 
   onSubmit(): void {
     this.password = this.form.value.password;

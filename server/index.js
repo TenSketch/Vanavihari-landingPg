@@ -1,36 +1,34 @@
 const express = require('express');
-const fetch = require('node-fetch');
 const bodyParser = require('body-parser');
+const axios = require('axios');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = 3000;
 
-// Middleware to parse JSON and urlencoded request bodies
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
-// CORS middleware
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  next();
+app.post('/authenticate', async (req, res) => {
+  const { code } = req.body;
+  const clientId = '1000.GW70XWAC3O04CJ67TUTEAYEOVP7RIM';
+  const clientSecret = '532929ef83d5a2b57ceb5f5ddb3f94e0ebb30b7ebc';
+  const redirectUri = 'https://tensketch.vanavihari.com/register.html';
+  const grantType = 'authorization_code';
+  const tokenUrl = 'https://accounts.zoho.com/oauth/v2/token';
+
+  try {
+    const response = await axios.post(tokenUrl, {
+      grant_type: grantType,
+      client_id: clientId,
+      client_secret: clientSecret,
+      redirect_uri: redirectUri,
+      code: code
+    });
+    res.send(response.data);
+  } catch (error) {
+    res.status(500).send(error.response.data);
+  }
 });
 
-// Proxy route to forward requests
-app.post('/triggerUrl', async (req, res) => {
-    console.log('test trigger');
-});
-app.get('/sign-up', (req, res, next) => {
-  console.log('test sign up');
-  // const paramValue = req.query.paramName; // Change 'paramName' to the name of your query parameter
-  // if (!paramValue) {
-  //     // If the query parameter is not present, redirect to a specific URL
-  //     return res.redirect('/redirect-url');
-  // }
-  next(); // If the query parameter is present, continue to the next middleware
-});
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
 });
