@@ -46,7 +46,7 @@ export class SignUpComponent implements OnInit {
       .subscribe({
         next: response => {
           // Handle response, set access token, etc.
-          console.log("Response: "+response);
+          console.log("Response: ",response);
         },
         error: err => {
           console.log(err);
