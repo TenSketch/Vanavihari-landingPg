@@ -22,6 +22,7 @@
     "@angular/router": "^16.0.0",
     "@ng-bootstrap/ng-bootstrap": "^15.0.1",
     "angular-font-awesome": "^3.1.2",
+    "axios": "^1.6.7",
     "bootstrap": "^5.3.1",
     "cors": "^2.8.5",
     "escape-html": "^1.0.3",
