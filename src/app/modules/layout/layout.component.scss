@@ -1,12 +1,14 @@
+@use "/src/scss/base/" as *;
+
 nav{
     height: 10vh;
 }
 #sidebar {
     position: fixed;
     top: 10vh;
-    left: -20vw;
+    left: -50%;
     height: 90vh;
-    width: 20vw;
+    width: 50%;
     background-color: #333;
     z-index: 1000;
     transition: left 0.3s ease;
@@ -32,6 +34,23 @@ nav{
     .sidebar-content {
       padding: 20px;
       color: #fff;
+      .sidebar-menu {
+        list-style: none;
+        padding: 0;
+  
+        .sidebar-item {
+          margin-bottom: 10px;
+  
+          .sidebar-link {
+            color: $white;
+            text-decoration: none;
+            transition: color 0.3s;
+  
+            &:hover {
+              color: #ccc;
+            }
+          }
+        }
     }
   }
-  
+}
