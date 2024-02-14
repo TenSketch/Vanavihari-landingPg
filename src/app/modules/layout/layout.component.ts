@@ -9,7 +9,12 @@ import { Router } from '@angular/router';
 })
 export class LayoutComponent {
   constructor(private router: Router) { }
+  isSidebarOpen: boolean = false;
 
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+    
+  }
 
 
   goToHome(){
