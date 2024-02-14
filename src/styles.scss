@@ -122,57 +122,6 @@ img {
   width: 18px;
 }
 
-// vanavihari
-
-.nav-item {
-  // text-align: right !important;
-  .nav-link {
-    font-size: 0.9rem;
-    color: $white;
-  }
-}
-
-// Kaviya
-/* Apply bold style to the horizontal ruler */
-.dropdown-divider {
-  border: 0;
-  height: 1px;
-  background-color: #000;
-  /* Set the color of the bold line */
-  margin: 10px 0;
-  /* Adjust margin as needed */
-}
-
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-
-  img {
-    max-height: 40px;
-    // margin-right: 50px
-    /* Adjust the height as needed */
-  }
-}
-
-.navbar-toggler {
-  flex: 0;
-  /* Fix typo and set flex properties for the toggler */
-}
-
-/* Center the logo only on small screens */
-@media (max-width: 575.98px) {
-  .center-logo {
-    text-align: center;
-  }
-}
-
-.nav-x {
-  flex-basis: auto;
-  flex-grow: 0;
-}
-
 .banner {
   background: rgba(0, 0, 0, 0.5) url(assets/img/vihari-room.jpg) center / cover
     no-repeat fixed;

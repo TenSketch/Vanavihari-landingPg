@@ -1,13 +1,13 @@
 <header>
-  <nav class="navbar navbar-light bg-light">
+  <nav class="navbar navbar-light py-0">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand me-auto" href="#">
         <img src="assets/img/vanavihari_logo.png" alt="vanavihari_logo">
       </a>
-      <ul class="navbar-nav d-none d-lg-block">
+      <ul class="navbar-nav d-none d-lg-flex flex-lg-row gap-3">
         <li class="nav-item">
           <a class="nav-link" href="#">Resort Accommodation</a>
         </li>
@@ -50,14 +50,14 @@
           <a class="sidebar-link" href="#">Contact Us</a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="#">cbet_maredumilli@yahoo.com</a>
+          <a class="sidebar-link d-lg-none" href="#">cbet_maredumilli@yahoo.com</a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="#">9494151617</a>
+          <a class="sidebar-link d-lg-none" href="#">9494151617</a>
         </li>
         
         <li class="sidebar-item">
-        <a class="sidebar-link" href="#">Sign In</a>
+        <a class="sidebar-link d-lg-none" routerLink="/sign-in" routerLinkActive="active" ariaCurrentWhenActive="page">Sign In</a>
       </li>
       </ul>
       
