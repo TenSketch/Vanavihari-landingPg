@@ -14,7 +14,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-app.get('/authenticate', async (req, res) => {
+app.post('/authenticate', async (req, res) => {
   const { code } = req.body;
   const clientId = '1000.GW70XWAC3O04CJ67TUTEAYEOVP7RIM';
   const clientSecret = '532929ef83d5a2b57ceb5f5ddb3f94e0ebb30b7ebc';
@@ -22,15 +22,31 @@ app.get('/authenticate', async (req, res) => {
   const grantType = 'authorization_code';
   const tokenUrl = 'https://accounts.zoho.com/oauth/v2/token';
 
-  const response = await axios.get("https://accounts.zoho.com/oauth/v2/auth?response_type=code&client_id=1000.GW70XWAC3O04CJ67TUTEAYEOVP7RIM&client_secret=532929ef83d5a2b57ceb5f5ddb3f94e0ebb30b7ebc&scope=ZohoCreator.form.CREATE&redirect_uri=https://tensketch.vanavihari.com/register.html&access_type=offline", {
+  // const response = await axios.get("https://accounts.zoho.com/oauth/v2/auth?response_type=code&client_id=1000.GW70XWAC3O04CJ67TUTEAYEOVP7RIM&client_secret=532929ef83d5a2b57ceb5f5ddb3f94e0ebb30b7ebc&scope=ZohoCreator.form.CREATE&redirect_uri=https://tensketch.vanavihari.com/register.html&access_type=offline", {
+  //   headers: {
+  //     "Content-Type": "application/x-www-form-urlencoded",
+  //   },
+  // });
+  // const data = response.data;
+  // res.send(data);
+
+
+  const params = new URLSearchParams({
+    grant_type: grantType,
+    client_id: clientId,
+    client_secret: clientSecret,
+    redirect_uri: redirectUri,
+    code: code
+  });
+  const url = `${tokenUrl}?${params.toString()}`;
+
+  const response = await axios.post(url, {
+    method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
   });
-  const data = response.data;
-  res.send(data);
-
-
+  res.send(response.data);
   // try {
   //   const params = new URLSearchParams({
   //     grant_type: grantType,
@@ -48,8 +64,8 @@ app.get('/authenticate', async (req, res) => {
   //     },
   //   });
 
-  //   const data = await response.json();
-  //   res.json(data);
+  //   const data = await response;
+  //   res.send(data);
   // } catch (error) {
   //   console.error("Error:", error);
   //   res.status(500).json({ error: "Internal Server Error" });

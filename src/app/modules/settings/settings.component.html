@@ -1,0 +1,84 @@
+<app-layout>
+    <div class="main">
+        <section class="settings my-5 py-5">
+            <div class="container mt-5">
+                <h1 class="text-center mb-4">Account Settings</h1>
+        
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul class="nav nav-tabs flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="personal-tab" data-bs-toggle="tab" href="#personal">Personal Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="security-tab" data-bs-toggle="tab" href="#security">Security</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="payment-tab" data-bs-toggle="tab" href="#payment">Payment Details</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="tab-content mt-4">
+                            <div class="tab-pane fade show active" id="personal">
+                                <h2>Personal Details</h2>
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="fullName" class="form-label">Full Name:</label>
+                                        <input type="text" class="form-control" id="fullName" name="fullName" required>
+                                    </div>
+        
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email:</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+        
+                                    <button type="submit" class="btn btn-primary">Update Personal Details</button>
+                                </form>
+                            </div>
+        
+                            <div class="tab-pane fade" id="security">
+                                <h2>Security</h2>
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="currentPassword" class="form-label">Current Password:</label>
+                                        <input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
+                                    </div>
+        
+                                    <div class="mb-3">
+                                        <label for="newPassword" class="form-label">New Password:</label>
+                                        <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+                                    </div>
+        
+                                    <div class="mb-3">
+                                        <label for="confirmPassword" class="form-label">Confirm Password:</label>
+                                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                                    </div>
+        
+                                    <button type="submit" class="btn btn-success">Change Password</button>
+                                </form>
+                            </div>
+        
+                            <div class="tab-pane fade" id="payment">
+                                <h2>Payment Details</h2>
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="cardNumber" class="form-label">Card Number:</label>
+                                        <input type="text" class="form-control" id="cardNumber" name="cardNumber" required>
+                                    </div>
+        
+                                    <div class="mb-3">
+                                        <label for="expiryDate" class="form-label">Expiry Date:</label>
+                                        <input type="text" class="form-control" id="expiryDate" name="expiryDate" placeholder="MM/YYYY" required>
+                                    </div>
+        
+                                    <button type="submit" class="btn btn-primary">Update Payment Details</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</app-layout>  

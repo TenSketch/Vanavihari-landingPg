@@ -12,6 +12,8 @@ import { TribalCommunityComponent } from './modules/tribal-community/tribal-comm
 import { AwardsNewsPublicationsComponent } from './modules/awards-news-publications/awards-news-publications.component';
 import { PrivacyPolicyComponent } from './modules/privacy-policy/privacy-policy.component';
 import { TermsAndConditionsComponent } from './modules/terms-and-conditions/terms-and-conditions.component';
+import { SettingsComponent } from './modules/settings/settings.component';
+import { MyBookingsComponent } from './modules/my-bookings/my-bookings.component';
 
 
 const routes: Routes = [
@@ -19,6 +21,9 @@ const routes: Routes = [
 {path:'sign-in', component:SignInComponent}, 
 {path:'sign-up', component:SignUpComponent}, 
 {path:'about-vanavihari', component:AboutVanavihariComponent}, 
+{ path: 'my-account/settings', component: SettingsComponent},
+{ path: 'my-account/my-bookings', component: MyBookingsComponent},
+//
 { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
 { path: '**', redirectTo: '/home' }, // Handle undefined routes (optional)
 

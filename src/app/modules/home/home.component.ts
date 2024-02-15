@@ -1,11 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NativeDateAdapter, MAT_DATE_FORMATS, DateAdapter } from '@angular/material/core';
+
 import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  providers:[
+    {provide: DateAdapter, useClass: NativeDateAdapter, deps:[MAT_DATE_FORMATS]},
+    {provide: MAT_DATE_FORMATS, useValue:{useUtc: true}},
+  ],
+
 })
 export class HomeComponent implements OnInit {
   currentUser: string;
