@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ZohoAuthServiceService } from '../../zoho-auth-service.service';
 import { AuthService } from '../../auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,16 +19,19 @@ export class SignUpComponent implements OnInit {
   repeat_password: any;
   private apiUrl = 'https://creator.zoho.com/api/v2/vanavihari/vanavihari-resort/form/Registration';
   
-  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient, private myService: ZohoAuthServiceService, private authService: AuthService, private formBuilder: FormBuilder, private snackBar: MatSnackBar) {
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient, private myService: ZohoAuthServiceService, private authService: AuthService, private formBuilder: FormBuilder, private snackBar: MatSnackBar, private userService: UserService) {
     this.form = this.formBuilder.group({
       full_name: ['', Validators.required],
       mobile_number: ['', Validators.required],
       email_id: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       repeat_password: ['', Validators.required],
-    }, {
-      validators: this.passwordMatchValidator
+    
     });
+    
+      // }, {
+    //   //validators: this.passwordMatchValidator
+    // });
   }
 
 
@@ -83,53 +86,62 @@ export class SignUpComponent implements OnInit {
   //     });
   // }
 
-  onSubmit(): void {
-    this.password = this.form.value.password;
-    this.repeat_password = this.form.value.repeat_password;
-    if (this.form.valid) {
-      console.log(this.form.value);
-      const accessToken = this.authService.getAccessToken();
-      const requestBody = {
-        data: {
-          Full_Name: this.form.value.full_name,
-          Email_Id: this.form.value.email_id,
-          Mobile_Number: this.form.value.mobile_number,
-          Password: this.form.value.password
-        }
-      };
+  // onSubmit(): void {
+  //   this.password = this.form.value.password;
+  //   this.repeat_password = this.form.value.repeat_password;
+  //   if (this.form.valid) {
+  //     console.log(this.form.value);
+  //     const accessToken = this.authService.getAccessToken();
+  //     const requestBody = {
+  //       data: {
+  //         Full_Name: this.form.value.full_name,
+  //         Email_Id: this.form.value.email_id,
+  //         Mobile_Number: this.form.value.mobile_number,
+  //         Password: this.form.value.password
+  //       }
+  //     };
   
-      const headers = new HttpHeaders().set('Authorization', `Bearer ${accessToken}`).set('environment', `development`);
-      // Make your API request with HttpClient
-      this.http.post<any>(`${this.apiUrl}`, requestBody, { headers })
-        .subscribe({
-          next: response => {
-            console.log(response.data.ID);
-          },
-          error: err => {
-            console.log(err);
-          },
-          complete: () => { // Use arrow function to maintain the context of `this`
-            this.showSuccessAlert();
-          }
-        });
-    } else {
-      console.log(this.form);
+  //     const headers = new HttpHeaders().set('Authorization', `Bearer ${accessToken}`).set('environment', `development`);
+  //     // Make your API request with HttpClient
+  //     this.http.post<any>(`${this.apiUrl}`, requestBody, { headers })
+  //       .subscribe({
+  //         next: response => {
+  //           console.log(response.data.ID);
+  //         },
+  //         error: err => {
+  //           console.log(err);
+  //         },
+  //         complete: () => { // Use arrow function to maintain the context of `this`
+  //           this.showSuccessAlert();
+  //         }
+  //       });
+  //   } else {
+  //     console.log(this.form);
+  //   }
+  // }
+  // passwordMatchValidator(form: FormGroup) {
+  //   const password = form.get('password')?.value;
+  //   const repeatPassword = form.get('repeat_password')?.value;
+  //   return password === repeatPassword ? null : { passwordsNotMatch: true };
+  // }
+  // showSuccessAlert() {
+  //   this.snackBar.open('Form submitted successfully!', 'Close', {
+  //     duration: 3000 // Duration in milliseconds
+  //   }).afterDismissed().subscribe(() => {
+  //     // Redirect to another page after the Snackbar is closed
+  //     // You can use Angular Router here to navigate to the desired page
+  //     this.router.navigate(['/sign-in']);
+  //   });
+  // }
+
+  onSubmit() {
+    if (this.form.valid) {
+      this.userService.setUser(this.form.value);
+      alert('Registration successful!');
+      console.log(this.form.value);
     }
   }
-  passwordMatchValidator(form: FormGroup) {
-    const password = form.get('password')?.value;
-    const repeatPassword = form.get('repeat_password')?.value;
-    return password === repeatPassword ? null : { passwordsNotMatch: true };
-  }
-  showSuccessAlert() {
-    this.snackBar.open('Form submitted successfully!', 'Close', {
-      duration: 3000 // Duration in milliseconds
-    }).afterDismissed().subscribe(() => {
-      // Redirect to another page after the Snackbar is closed
-      // You can use Angular Router here to navigate to the desired page
-      this.router.navigate(['/sign-in']);
-    });
-  }
+
   goToSignin() {
     this.router.navigate(['/sign-in']);
   }

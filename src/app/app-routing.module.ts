@@ -19,8 +19,10 @@ const routes: Routes = [
 {path:'sign-in', component:SignInComponent}, 
 {path:'sign-up', component:SignUpComponent}, 
 {path:'about-vanavihari', component:AboutVanavihariComponent}, 
+{ path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
+{ path: '**', redirectTo: '/home' }, // Handle undefined routes (optional)
 
- {path:'', component: HomeComponent }
+ //{path:'', component: HomeComponent }
 ];
 
 @NgModule({
