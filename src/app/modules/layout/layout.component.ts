@@ -26,4 +26,10 @@ export class LayoutComponent {
   goToAboutUs() {
     this.router.navigate(['/about-vanavihari']);
   }
+  goToMyAccSettings() {
+    this.router.navigate(['/my-account/settings']);
+  }
+  goToMyBookings() {
+    this.router.navigate(['/my-account/my-bookings']);
+  }
 }

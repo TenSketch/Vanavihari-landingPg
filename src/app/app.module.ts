@@ -59,6 +59,8 @@ import { AwardsNewsPublicationsComponent } from './modules/awards-news-publicati
 import { PrivacyPolicyComponent } from './modules/privacy-policy/privacy-policy.component';
 import { TermsAndConditionsComponent } from './modules/terms-and-conditions/terms-and-conditions.component';
 import { BiodiversityZoneComponent } from './modules/biodiversity-zone/biodiversity-zone.component';
+import { SettingsComponent } from './modules/settings/settings.component';
+import { MyBookingsComponent } from './modules/my-bookings/my-bookings.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,8 @@ import { BiodiversityZoneComponent } from './modules/biodiversity-zone/biodivers
     PrivacyPolicyComponent,
     TermsAndConditionsComponent,
     BiodiversityZoneComponent,
+    SettingsComponent,
+    MyBookingsComponent,
 
   ],
   imports: [

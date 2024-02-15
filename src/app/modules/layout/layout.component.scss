@@ -5,6 +5,14 @@ nav{
     .navbar-brand{
         width: max(15vw, 3rem);
     }
+    .navbar-nav{
+      .nav-item{
+        .dropdown-menu{
+          left: unset;
+          right: 0;
+        }
+      }
+    }
 }
 #sidebar {
     position: fixed;
