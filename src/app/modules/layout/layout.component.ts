@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-layout',
@@ -9,20 +8,25 @@ import { Router } from '@angular/router';
 })
 export class LayoutComponent {
   constructor(private router: Router) { }
+  
   isSidebarOpen: boolean = false;
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
-    
   }
 
+  closeSidebar() {
+    this.isSidebarOpen = false;
+  }
 
   goToHome(){
     this.router.navigate(['/home']);
   }
-    goToSignin() {
+
+  goToSignin() {
     this.router.navigate(['/sign-in']);
   }
+
   goToAboutUs() {
     this.router.navigate(['/about-vanavihari']);
   }
@@ -32,4 +36,14 @@ export class LayoutComponent {
   goToMyBookings() {
     this.router.navigate(['/my-account/my-bookings']);
   }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const targetElement = event.target as HTMLElement;
+    if (!targetElement.closest('#sidebar') && !targetElement.closest('.navbar-toggler')) {
+      this.closeSidebar();
+    }
+  }
+
 }
+

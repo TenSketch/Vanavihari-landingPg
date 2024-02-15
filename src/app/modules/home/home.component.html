@@ -38,8 +38,17 @@
               </select>
             </div>
             <div class="col-md-3">
-              <label for="dateRange" class="form-label">Check-in & Check-out date</label>
-              <input type="text" class="form-control" id="dateRange" placeholder="Select dates" />
+              <mat-form-field>
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate placeholder="Start date">
+                  <input matEndDate placeholder="End date">
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field>
+
             </div>
             <div class="col-md-3">
               <label for="guestsRooms" class="form-label">Guests and Rooms</label>
