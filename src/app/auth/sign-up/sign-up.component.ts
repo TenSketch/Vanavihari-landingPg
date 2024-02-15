@@ -140,6 +140,7 @@ export class SignUpComponent implements OnInit {
     if (this.form.valid) {
       this.userService.setUser(this.form.value);
       alert('Registration successful!');
+      this.router.navigate(['/sign-in']);
       console.log(this.form.value);
       const accessToken = this.authService.getAccessToken();
       const requestBody = {

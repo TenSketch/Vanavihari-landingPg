@@ -38,7 +38,8 @@ export class HomeComponent implements OnInit {
     // Retrieve the logged-in user's data using the UserService
     const user = this.userService.getUser();
     this.currentUser = user ? user.full_name : '';
-    console.log(user);
+    console.log(this.currentUser);
+    //alert('Registration successful!');
   }
 
 }

@@ -20,4 +20,14 @@ export class UserService {
   clearUser(): void {
     localStorage.removeItem(this.USER_KEY);
   }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem(this.USER_KEY);
+  }
+
+  logout(): void {
+    localStorage.removeItem(this.USER_KEY);
+  }
+
+
 }
