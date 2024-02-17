@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const { URLSearchParams } = require('url');
@@ -13,40 +14,53 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', 'https://accounts.zoho.com'); // Replace with your frontend URL
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//   res.setHeader('Access-Control-Allow-Credentials', 'true'); // Allow credentials (cookies) to be sent
+//   next();
+// });
 
 app.post('/authenticate', async (req, res) => {
+  const codeGenerationUrl = 'https://accounts.zoho.com/oauth/v2/auth';
   const { code } = req.body;
-  const clientId = '1000.GW70XWAC3O04CJ67TUTEAYEOVP7RIM';
-  const clientSecret = '532929ef83d5a2b57ceb5f5ddb3f94e0ebb30b7ebc';
-  const redirectUri = 'https://tensketch.vanavihari.com/register.html';
+  const clientId = '1000.C3YEEYUWBVTK62AVHRVQT3EZR1Y48X';
+  const clientSecret = '74b59cd0d3a4a113aa62b0143fd05a06d9df6dce1b';
+  const redirectUri = 'http://localhost:4200';
   const grantType = 'authorization_code';
   const tokenUrl = 'https://accounts.zoho.com/oauth/v2/token';
-
-  // const response = await axios.get("https://accounts.zoho.com/oauth/v2/auth?response_type=code&client_id=1000.GW70XWAC3O04CJ67TUTEAYEOVP7RIM&client_secret=532929ef83d5a2b57ceb5f5ddb3f94e0ebb30b7ebc&scope=ZohoCreator.form.CREATE&redirect_uri=https://tensketch.vanavihari.com/register.html&access_type=offline", {
-  //   headers: {
-  //     "Content-Type": "application/x-www-form-urlencoded",
-  //   },
+ 
+  // const codeParams = new URLSearchParams({
+  //   response_type: 'code',
+  //   client_id: clientId,
+  //   client_secret: clientSecret,
+  //   redirect_uri: redirectUri,
+  //   scope: 'ZohoCreator.form.CREATE',
+  //   access_type: 'offline'
   // });
-  // const data = response.data;
-  // res.send(data);
+  // const codeUrl = `${codeGenerationUrl}?${codeParams.toString()}`;
+  // const codeResponse = await axios.get(codeUrl, { responseType: 'text', withCredentials: true });
+  // const responseData = codeResponse.data;
+  // res.send(responseData); 
 
-
+  
   const params = new URLSearchParams({
     grant_type: grantType,
     client_id: clientId,
     client_secret: clientSecret,
-    redirect_uri: redirectUri,
     code: code
   });
   const url = `${tokenUrl}?${params.toString()}`;
-
-  const response = await axios.post(url, {
+  const response = await axios.post(url+'&redirect_uri=https://tensketch.vanavihari.com/register.html', {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
   });
   res.send(response.data);
+
+
   // try {
   //   const params = new URLSearchParams({
   //     grant_type: grantType,
