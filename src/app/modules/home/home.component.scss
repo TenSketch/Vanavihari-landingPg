@@ -1,0 +1,27 @@
+  .carousel-item {
+      transition: all 3s ease-in-out;
+      .carousel-overlay{
+              position: absolute;
+              inset: 0;
+              background-color: rgba(0, 0, 0, 0.4);
+              width: 100%;
+              height: 100%;
+      }
+      img {
+          object-fit: cover;
+          /* Or "contain" */
+          height: 100dvh;
+      }
+      .carousel-caption{
+        bottom: 5%;
+      }
+  }
+  .carousel-item.active {
+      transform: scale(1.1);
+      /* Zoom in on active slide */
+  }
+  .carousel-item.prev,
+  .carousel-item.next {
+      transform: scale(0.9);
+      /* Shrink inactive slides */
+  }
