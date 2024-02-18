@@ -1,7 +1,7 @@
 
 <app-layout>
   <div class="main">
-    <div id="carouselExampleFade" class="carousel slide carousel-fade">
+    <section id="carouselExampleFade" class="carousel slide carousel-fade">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img src="assets/img/Vanavihari-1.jpg" class="d-block w-100" alt="...">
@@ -61,7 +61,7 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
-    </div>
+    </section>
     <!-- <section class="banner d-grid align-items-center"> 
       <div class="banner-content">
         <h1 class="display-4 text-center text-white">
@@ -86,62 +86,47 @@
     </section>
     <section class="search-rooms py-5">
       <div class="container">
-        <h2 class="text-center mb-4">Book your preferred Resort</h2>
+        <h2 class="text-center mb-4">Search room avaibility</h2>
         <form>
-          <div class="row align-items-center gap-2 gap-lg-0">
+          <div class="row align-items-center justify-content-around gap-3 gap-md-0">
             <div class="col-md-3">
-              <label for="resort" class="form-label">Select Resort</label>
-              <select class="form-select" id="resort">
-                <option value="Vanavihari">Vanavihari, Maredumilli</option>
-                <option value="JunglStar">Jungle Star, Valamuru</option>
-                <!-- <option value="Vanyavihari">
-                  Vanyavihari, Rampachodavaram
-                </option> -->
-              </select>
+              <mat-form-field appearance="outline">
+                <mat-label>Select Resort</mat-label>
+                <mat-select required>
+                  <mat-option value="VanaVihari, Maredumilli">Vanavihari, Maredumilli</mat-option>
+                  <mat-option value="Jungle Star, Valamuru">Jungle Star, Valamuru</mat-option>
+                </mat-select>
+              </mat-form-field>
+              
             </div>
             <div class="col-md-3">
-              <mat-form-field>
-                <mat-label>Enter a date range</mat-label>
+              <mat-form-field appearance="outline">
+                <mat-label>Checkin & Checkout</mat-label>
                 <mat-date-range-input [rangePicker]="picker">
-                  <input matStartDate placeholder="Start date">
-                  <input matEndDate placeholder="End date">
+                  <input matStartDate placeholder="Checkin date">
+                  <input matEndDate placeholder="Checkout date">
                 </mat-date-range-input>
                 <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-date-range-picker #picker></mat-date-range-picker>
               </mat-form-field>
+              
 
             </div>
-            <div class="col-md-3">
-              <label for="guestsRooms" class="form-label">Guests and Rooms</label>
-              <div class="input-group">
-                <label type="text" class="form-control guests-rooms-label" for="guestsRoomsDropdown"
-                  aria-describedby="guestsRoomsDropdown" readonly>&nbsp;</label>
-                <input type="hidden" id="guestsGuests" />
-                <input type="hidden" id="guestsRooms" />
-                <div class="input-group-append">
-                  <button type="button" class="btn btn-outline-secondary dropdown-toggle" style="height: 100%"
-                    id="guestsRoomsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    Select
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="guestsRoomsDropdown">
-                    <div class="dropdown-item">
-                      <input type="number" class="form-control" id="guests" placeholder="Guests" />
-                    </div>
-                    <div class="dropdown-item">
-                      <input type="number" class="form-control" id="rooms" placeholder="Rooms" />
-                    </div>
-                    <div class="dropdown-item">
-                      <button type="button" class="btn btn-secondary" id="confirmGuestsRooms">
-                        Confirm
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="col-md-auto">
+              <mat-form-field appearance="outline">
+                <mat-label>Guests</mat-label>
+                <input type="number" matInput placeholder="Choose number of guest(s)">
+              </mat-form-field>
             </div>
-            <div class="col-md-3 align-self-end">
-              <button type="submit" class="btn btn-primary">Search</button>
+            <div class="col-md-auto">
+              <mat-form-field appearance="outline">
+                <mat-label>Rooms</mat-label>
+                <input type="number" matInput placeholder="Choose number of Rooms">
+              </mat-form-field>
+            </div>
+            <div class="col-auto">
+              <button mat-raised-button color="primary">Search</button>
             </div>
             <!-- <div class="col-md-3 align-self-end">
               <a href="javascript:void(0)" (click)="triggerURL()" class="btn btn-primary">Test API</a>
