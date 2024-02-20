@@ -3,7 +3,9 @@
 nav{
     // height: 10vh;
     .navbar-brand{
-        width: max(15vw, 3rem);
+        img{
+          width: clamp(25vw, 200px, 10rem);
+        }
     }
     .navbar-nav{
       .nav-item{
