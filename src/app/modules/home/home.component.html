@@ -1,30 +1,76 @@
-
 <app-layout>
   <div class="main">
     <section id="carouselExampleFade" class="carousel slide carousel-fade">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="assets/img/OUTER-VIEW.jpg" class="d-block w-100" alt="...">
+          <img src="assets/img/Vanavihari-1.jpg" class="d-block w-100" alt="..." />
           <div class="carousel-overlay"></div>
           <div class="carousel-caption p-0">
-            <h1 class="display-3">Welcome to Vanavihari</h1>
-            <p></p>
+            <h1 class="display-3">Vanavihari</h1>
+            <p>
+              Vanavihari resort, nestled in Maredumilli, is a haven for
+              eco-tourism enthusiasts. This community-centric guesthouse offers
+              a peaceful escape surrounded by nature.
+            </p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="assets/img/JungleStar-1.jpg" class="d-block w-100" alt="...">
+          <img src="assets/img/vanavihari-2.jpg" class="d-block w-100" alt="..." />
           <div class="carousel-overlay"></div>
           <div class="carousel-caption p-0">
-            <h1 class="display-3">Welcome to Jungle Star</h1>
-            <p></p>
+            <h1 class="display-3">Vanavihari</h1>
+            <p>
+              Providing cozy cottages and rooms, it sits within easy reach of
+              Maredumilli Waterfalls, ensuring guests enjoy a tranquil
+              environment.
+            </p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="assets/img/Vanavihari-1.jpg" class="d-block w-100" alt="...">
+          <img src="assets/img/JungleStar-1.jpg" class="d-block w-100" alt="..." />
           <div class="carousel-overlay"></div>
           <div class="carousel-caption p-0">
-            <h1 class="display-3">Find yourself lost in deep silence</h1>
-            <p></p>
+            <h1 class="display-3">Jungle Star</h1>
+            <p>
+              Jungle Star Eco Camp, managed by the Andhra Pradesh Forest
+              Department, offers seven cottages atop a hillock, reachable only
+              by a bridge.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/img/jungle.jpeg" class="d-block w-100" alt="..." />
+          <div class="carousel-overlay"></div>
+          <div class="carousel-caption p-0">
+            <h1 class="display-3">Jungle Star</h1>
+            <p>
+              This eco-friendly site provides adventure activities like treks
+              and campfires, nestled deep in the unexplored Eastern Ghats.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/img/amruthadhara.jpg" class="d-block w-100" alt="..." />
+          <div class="carousel-overlay"></div>
+          <div class="carousel-caption p-0">
+            <h1 class="display-3">Amruthadhara Falls</h1>
+            <p>
+              Amruthadhara falls a popular destination for nature lovers,
+              especially during the monsoon season when the falls are at their
+              most spectacular.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/img/Rampa-falls.jpg" class="d-block w-100" alt="..." />
+          <div class="carousel-overlay"></div>
+          <div class="carousel-caption p-0">
+            <h1 class="display-3">Rampa Falls</h1>
+            <p>
+              In East Godavari's Agency track, discover Rampa V.S.S nestled in
+              semi-evergreen forests, featuring Neelakanteswara and Rampa
+              waterfalls.
+            </p>
           </div>
         </div>
       </div>
@@ -37,7 +83,7 @@
         <span class="visually-hidden">Next</span>
       </button>
     </section>
-    
+
     <section class="intro py-5">
       <div class="container">
         <p class="text-center border border-1 mb-0">
@@ -63,34 +109,69 @@
                   <mat-option value="Jungle Star, Valamuru">Jungle Star, Valamuru</mat-option>
                 </mat-select>
               </mat-form-field>
-              
             </div>
             <div class="col-md-3">
               <mat-form-field appearance="outline">
                 <mat-label>Checkin & Checkout</mat-label>
                 <mat-date-range-input [rangePicker]="picker">
-                  <input matStartDate placeholder="Checkin date">
-                  <input matEndDate placeholder="Checkout date">
+                  <input matStartDate placeholder="Checkin date" />
+                  <input matEndDate placeholder="Checkout date" />
                 </mat-date-range-input>
                 <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-date-range-picker #picker></mat-date-range-picker>
               </mat-form-field>
-              
-
             </div>
-            <div class="col-md-auto">
+            <div class="col-md-3 position-relative">
               <mat-form-field appearance="outline">
                 <mat-label>Guests</mat-label>
-                <input type="number" matInput placeholder="Choose number of guest(s)">
+                <!-- (click)="openGuestRoomSelect()" -->
+                <input type="text" matInput value="1 adult, 1 room" data-bs-toggle="modal" data-bs-target="#modalId" />
               </mat-form-field>
+              <!-- Modal trigger button -->
+              <!-- Modal Body -->
+              <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+              <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+                role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+                  <div class="modal-content">
+                    <!-- <div class="modal-header">
+                      <h5 class="modal-title" id="modalTitleId">
+                        Modal title
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div> -->
+                    <div class="modal-body">
+                      <!-- mat form field for adults, children, rooms -->
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                        Done
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Optional: Place to the bottom of scripts -->
+              <script>
+                const myModal = new bootstrap.Modal(
+                  document.getElementById("modalId"),
+                  options
+                );
+              </script>
             </div>
-            <div class="col-md-auto">
+            <!-- <div class="col-md-auto">
               <mat-form-field appearance="outline">
                 <mat-label>Rooms</mat-label>
                 <input type="number" matInput placeholder="Choose number of Rooms">
               </mat-form-field>
-            </div>
+            </div> -->
             <div class="col-auto">
               <button mat-raised-button color="primary">Search</button>
             </div>
@@ -104,14 +185,14 @@
     </section>
     <!-- section for resorts -->
     <!-- bootstrap 5 cards  -->
-     
+
     <section class="resorts-intro">
       <div class="container">
         <div class="row g-0">
           <div class="col-md-4">
             <div class="card d-lg-flex">
               <img src="assets/img/vanavihari_logo.png" class="card-img-top" alt="Card image cap">
-      
+
               <div class="card-body">
                 <h5 class="card-title">Vanavihari, Maredumilli</h5>
                 <p class="card-text">Vanavihari resort, nestled in Maredumilli, is a haven for
@@ -122,14 +203,14 @@
                   offerings, along with a relaxing stay at this charming retreat.</p>
                 <!-- <a href="#" class="btn btn-primary">Action</a> -->
                 <button mat-raised-button color="primary">View details</button>
-      
+
               </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="card d-lg-flex">
               <img src="assets/img/vanavihari_logo.png" class="card-img-top" alt="Card image cap">
-      
+
               <div class="card-body">
                 <h5 class="card-title">Vanavihari, Maredumilli</h5>
                 <p class="card-text">Vanavihari resort, nestled in Maredumilli, is a haven for
@@ -140,14 +221,14 @@
                   offerings, along with a relaxing stay at this charming retreat.</p>
                 <!-- <a href="#" class="btn btn-primary">Action</a> -->
                 <button mat-raised-button color="primary">View details</button>
-      
+
               </div>
             </div>
           </div>
-      
-          </div>
+
+        </div>
       </div>
     </section>
- 
+
   </div>
 </app-layout>
