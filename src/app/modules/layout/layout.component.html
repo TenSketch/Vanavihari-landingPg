@@ -8,8 +8,13 @@
         <img src="assets/img/vanavihari_logo.png" alt="vanavihari_logo">
       </a>
       <ul class="navbar-nav d-none d-lg-flex flex-lg-row gap-3">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Book Resort</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Book Resort</a>
+          <div class="dropdown-menu position-absolute" aria-labelledby="dropdownId">
+            <a class="dropdown-item" (click)="goToVanavihari()">Vanavihari, Maredumilli</a>
+            <a class="dropdown-item" (click)="goToJungleStar()">Jungle Star, Valamuru</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="mailto:info@vanavihari.com" title="click to send email">
@@ -51,13 +56,13 @@
           <a class="sidebar-link d-lg-none" href="#">Book Resort</a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="#">About Us</a>
+          <a class="sidebar-link" (click)="goToAboutUs()">About Us</a>
         </li>
         <li class="sidebar-item">
           <a class="sidebar-link" href="#">Tourist Destinations</a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="#">Tribal Community</a>
+          <a class="sidebar-link" (click)="goToTribalPg()">Tribal Community</a>
         </li>
         <li class="sidebar-item">
           <a class="sidebar-link" href="#">Gallery</a>
@@ -99,7 +104,7 @@
           <li><a class="text-decoration-none text-white" (click)="goToAboutUs()">About us</a></li>
           <li><a class="text-decoration-none text-white" href="#">Awards and News</a></li>
           <li><a class="text-decoration-none text-white" href="#">Privacy Policy</a></li>
-          <li><a class="text-decoration-none text-white" href="#">Terms and Conditions</a></li>
+          <li><a class="text-decoration-none text-white" (click)="goToTerms()">Terms and Conditions</a></li>
         </ul>
       </div>
       <div class="col-md-4">

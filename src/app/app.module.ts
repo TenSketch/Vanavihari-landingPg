@@ -52,7 +52,6 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { TouristPlacesComponent } from './modules/tourist-places/tourist-places.component';
 import { AboutVanavihariComponent } from './modules/about-vanavihari/about-vanavihari.component';
 import { VanavihariMaredumilliComponent } from './modules/resorts/vanavihari-maredumilli/vanavihari-maredumilli.component';
-import { JungleStarEcoCampRampachodavaramComponent } from './modules/resorts/jungle-star-eco-camp-rampachodavaram/jungle-star-eco-camp-rampachodavaram.component';
 import { GalleryComponent } from './modules/gallery/gallery.component';
 import { TribalCommunityComponent } from './modules/tribal-community/tribal-community.component';
 import { AwardsNewsPublicationsComponent } from './modules/awards-news-publications/awards-news-publications.component';
@@ -61,6 +60,8 @@ import { TermsAndConditionsComponent } from './modules/terms-and-conditions/term
 import { BiodiversityZoneComponent } from './modules/biodiversity-zone/biodiversity-zone.component';
 import { SettingsComponent } from './modules/settings/settings.component';
 import { MyBookingsComponent } from './modules/my-bookings/my-bookings.component';
+import { JungleStarValamuruComponent } from './modules/resorts/jungle-star-valamuru/jungle-star-valamuru.component';
+import { RoomsComponent } from './modules/resorts/vanavihari-maredumilli/rooms/rooms.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,6 @@ import { MyBookingsComponent } from './modules/my-bookings/my-bookings.component
     TouristPlacesComponent,
     AboutVanavihariComponent,
     VanavihariMaredumilliComponent,
-    JungleStarEcoCampRampachodavaramComponent,
     GalleryComponent,
     TribalCommunityComponent,
     AwardsNewsPublicationsComponent,
@@ -81,6 +81,8 @@ import { MyBookingsComponent } from './modules/my-bookings/my-bookings.component
     BiodiversityZoneComponent,
     SettingsComponent,
     MyBookingsComponent,
+    JungleStarValamuruComponent,
+    RoomsComponent,
 
   ],
   imports: [

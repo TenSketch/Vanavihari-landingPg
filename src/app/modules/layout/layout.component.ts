@@ -5,25 +5,22 @@ import { UserService } from '../../user.service';
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+  styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
-  constructor(private router: Router, private userService: UserService) { }
-  
+  constructor(private router: Router, private userService: UserService) {}
+
   isSidebarOpen: boolean = false;
 
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   isLoggedIn(): boolean {
     return this.userService.isLoggedIn();
   }
 
   logout(): void {
-
     this.userService.logout(); // Implement this method in UserService to clear authentication state
-   
+
     this.router.navigate(['/home']);
     alert('Logout Successfully');
   }
@@ -31,12 +28,22 @@ export class LayoutComponent implements OnInit {
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const targetElement = event.target as HTMLElement;
+    if (
+      !targetElement.closest('#sidebar') &&
+      !targetElement.closest('.navbar-toggler')
+    ) {
+      this.closeSidebar();
+    }
+  }
 
   closeSidebar() {
     this.isSidebarOpen = false;
   }
 
-  goToHome(){
+  goToHome() {
     this.router.navigate(['/home']);
   }
 
@@ -53,14 +60,17 @@ export class LayoutComponent implements OnInit {
   goToMyBookings() {
     this.router.navigate(['/my-account/my-bookings']);
   }
-
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent) {
-    const targetElement = event.target as HTMLElement;
-    if (!targetElement.closest('#sidebar') && !targetElement.closest('.navbar-toggler')) {
-      this.closeSidebar();
-    }
+  goToVanavihari() {
+    this.router.navigate(['/resorts/vanavihari-maredumilli']);
   }
 
+  goToJungleStar() {
+    this.router.navigate(['/resorts/jungleStar,Valamuru']);
+  }
+  goToTribalPg() {
+    this.router.navigate(['/tribal-community']);
+  } 
+  goToTerms() {
+    this.router.navigate(['/terms-and-conditions']);
+  } 
 }
-

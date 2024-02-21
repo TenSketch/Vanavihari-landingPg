@@ -6,7 +6,7 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { TouristPlacesComponent } from './modules/tourist-places/tourist-places.component';
 import { AboutVanavihariComponent } from './modules/about-vanavihari/about-vanavihari.component';
 import { VanavihariMaredumilliComponent } from './modules/resorts/vanavihari-maredumilli/vanavihari-maredumilli.component';
-import { JungleStarEcoCampRampachodavaramComponent } from './modules/resorts/jungle-star-eco-camp-rampachodavaram/jungle-star-eco-camp-rampachodavaram.component';
+import { JungleStarValamuruComponent } from './modules/resorts/jungle-star-valamuru/jungle-star-valamuru.component';
 import { GalleryComponent } from './modules/gallery/gallery.component';
 import { TribalCommunityComponent } from './modules/tribal-community/tribal-community.component';
 import { AwardsNewsPublicationsComponent } from './modules/awards-news-publications/awards-news-publications.component';
@@ -23,6 +23,10 @@ const routes: Routes = [
 {path:'about-vanavihari', component:AboutVanavihariComponent}, 
 { path: 'my-account/settings', component: SettingsComponent},
 { path: 'my-account/my-bookings', component: MyBookingsComponent},
+{ path: 'resorts/vanavihari-maredumilli', component: VanavihariMaredumilliComponent},
+{ path: 'resorts/jungleStar,Valamuru', component: JungleStarValamuruComponent},
+{ path: 'tribal-community', component: TribalCommunityComponent},
+{ path: 'terms-and-conditions', component: TermsAndConditionsComponent},
 //
 { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
 { path: '**', redirectTo: '/home' }, // Handle undefined routes (optional)
