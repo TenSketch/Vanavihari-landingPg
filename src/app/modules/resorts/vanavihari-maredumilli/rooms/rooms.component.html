@@ -1,1 +1,146 @@
-<p>rooms works!</p>
+<div class="container">
+  <!-- Filter and Sort Icons -->
+  <div class="row mb-3 mt-3 filter-sort-container">
+    <div class="col-lg-6"></div>
+    <div class="col-lg-3 text-end">
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="filterDropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="fas fa-filter"></i> Filter
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+          <!-- Filter options will be dynamically added here -->
+          <li>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="Option 1"
+              (change)="applyFilter($event.target.value)"
+              id="filter1"
+            />
+            <label class="form-check-label" for="filter1">Option 1</label>
+          </li>
+          <li>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="Option 2"
+              (change)="applyFilter($event.target.value)"
+              id="filter2"
+            />
+            <label class="form-check-label" for="filter2">Option 2</label>
+          </li>
+          <li>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="Option 3"
+              (change)="applyFilter($event.target.value)"
+              id="filter3"
+            />
+            <label class="form-check-label" for="filter3">Option 3</label>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-3 text-end">
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="sortDropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="fas fa-sort"></i> Sort
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+          <!-- Sort options will be dynamically added here -->
+          <li>
+            <input
+              class="form-check-input"
+              type="radio"
+              name="sort"
+              value="lowToHigh"
+              (change)="applySort($event.target.value)"
+              id="sortLowToHigh"
+              checked
+            />
+            <label class="form-check-label" for="sortLowToHigh"
+              >Low to High</label
+            >
+          </li>
+          <li>
+            <input
+              class="form-check-input"
+              type="radio"
+              name="sort"
+              value="highToLow"
+              (change)="applySort($event.target.value)"
+              id="sortHighToLow"
+            />
+            <label class="form-check-label" for="sortHighToLow"
+              >High to Low</label
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Sidebar with filter and sort options -->
+    <div class="col-lg-3 order-lg-1">
+      <div class="p-4">
+        <h4>Side Bar Here</h4>
+        <div class="additional-code">
+          <!-- Additional code space for sidebar -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Room listing side -->
+    <div class="col-lg-9 order-lg-2">
+      <div class="row" id="roomListings">
+        <!-- Room listings will be dynamically added here -->
+        <!-- Sample Room listing card -->
+
+        <div class="card mb-3" *ngFor="let room of filteredRooms">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="vihari-room.jpg" alt="Card image" class="card-img" />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body d-flex flex-md-row">
+                <div>
+                  <h5 class="card-title">Vanavihari</h5>
+                  <span class="rating">
+                    <i class="fa fa-star" style="color: yellow"></i>
+                    <i class="fa fa-star" style="color: yellow"></i>
+                    <i class="fa fa-star" style="color: yellow"></i>
+                    <i class="fa fa-star" style="color: yellow"></i>
+                    <i class="fa fa-star"></i>
+                  </span>
+                  <p class="card-text">
+                    Discover luxurious accommodations and impeccable service at
+                    our boutique hotel nestled in the heart of the city,
+                    offering an unforgettable stay experience.
+                  </p>
+                </div>
+                <span class="g-lg-5">
+                  <p class="card-text">Rating: 4.8/5</p>
+                  <a href="#" class="btn btn-primary">View Price</a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
