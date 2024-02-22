@@ -37,4 +37,20 @@ export class HomeComponent implements OnInit {
     console.log(this.currentUser);
     //alert('Registration successful!');
   }
+
+  // search bar adult, child, rooms
+
+  adults: number = 1;
+  children: number = 1;
+  rooms: number = 1;
+
+  increment(field: 'adults' | 'children' | 'rooms') {
+    this[field]++;
+  }
+
+  decrement(field: 'adults' | 'children' | 'rooms') {
+    if (this[field] > 0) {
+      this[field]--;
+    }
+  }
 }
