@@ -1,3 +1,4 @@
+#carouselExampleFade{
   .carousel-item {
       transition: all 3s ease-in-out;
       .carousel-overlay{
@@ -15,13 +16,23 @@
       .carousel-caption{
         bottom: 5%;
       }
+      .active {
+        transform: scale(1.1);
+        /* Zoom in on active slide */
+    }
+    .prev,.next {
+        transform: scale(0.9);
+        /* Shrink inactive slides */
+    }
   }
-  .carousel-item.active {
-      transform: scale(1.1);
-      /* Zoom in on active slide */
-  }
-  .carousel-item.prev,
-  .carousel-item.next {
-      transform: scale(0.9);
-      /* Shrink inactive slides */
-  }
+}
+.modal-searchbar{
+    height: fit-content;
+    top: 50%;
+    left: 10px;
+}
+.modal-dialog{
+    box-shadow: 0 1px 3px rgb(0, 128, 0);
+
+}
+

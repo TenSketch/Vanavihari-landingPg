@@ -61,7 +61,7 @@ import { BiodiversityZoneComponent } from './modules/biodiversity-zone/biodivers
 import { SettingsComponent } from './modules/settings/settings.component';
 import { MyBookingsComponent } from './modules/my-bookings/my-bookings.component';
 import { JungleStarValamuruComponent } from './modules/resorts/jungle-star-valamuru/jungle-star-valamuru.component';
-import { RoomsComponent } from './modules/resorts/vanavihari-maredumilli/rooms/rooms.component';
+// import { RoomsComponent } from './modules/resorts/vanavihari-maredumilli/rooms/rooms.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +82,7 @@ import { RoomsComponent } from './modules/resorts/vanavihari-maredumilli/rooms/r
     SettingsComponent,
     MyBookingsComponent,
     JungleStarValamuruComponent,
-    RoomsComponent,
+    // RoomsComponent,
 
   ],
   imports: [

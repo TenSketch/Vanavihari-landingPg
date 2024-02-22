@@ -130,12 +130,29 @@
               </mat-form-field>
               <!-- Modal Body -->
               <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-              <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
-                role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+              <div class="modal fade position-absolute modal-searchbar" id="modalId" tabindex="-1" data-bs-backdrop="false" data-bs-keyboard="false" role="dialog"
+                aria-labelledby="modalTitleId" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
                   <div class="modal-content">
                     <div class="modal-body">
                       <!-- mat form field for adults, children, rooms -->
+                      <!-- material bootstrap 5 add and minus form input -->
+                      
+                      
+
+                      <!-- <mat-form-field appearance="outline">
+                        <mat-label>Guests</mat-label>
+                        <input type="number" matInput placeholder="Choose number of Guests">
+                      </mat-form-field>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Children</mat-label>
+                        <input type="number" matInput placeholder="Choose number of Rooms">
+                      </mat-form-field>
+                      
+                      <mat-form-field appearance="outline" class="">
+                        <mat-label>Rooms</mat-label>
+                        <input type="number" matInput placeholder="Choose number of Rooms">
+                      </mat-form-field> -->
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
@@ -145,7 +162,7 @@
                   </div>
                 </div>
               </div>
-
+            
             </div>
             <!-- <div class="col-md-auto">
               <mat-form-field appearance="outline">
@@ -164,10 +181,15 @@
         </form>
       </div>
     </section>
-    <!-- section for resorts -->
-    <!-- bootstrap 5 cards  -->
 
-    <section class="resorts-intro">
+
+
+
+
+
+
+    <!-- section for resorts -->
+    <section class="resorts-intro d-none">
       <div class="container">
         <div class="row g-0">
           <div class="col-md-4">
@@ -209,6 +231,44 @@
 
         </div>
       </div>
+    </section>
+
+
+
+
+
+    <!-- testimonials -->
+    <section class="testimonials">
+      <div class="container mt-5">
+        <h2 class="text-center mb-4">Guest Reviews</h2>
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">The resort was an absolute paradise! The staff was friendly, the rooms were luxurious, and the amenities were top-notch. I can't wait to come back!</p><br>
+                        <footer class="blockquote-footer">John Doe</footer>
+                    </blockquote>
+                </div>
+                <div class="carousel-item">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">Our family had a fantastic time at the resort. The kids loved the pool, and we enjoyed the beautiful beach. The service was exceptional, and we left with unforgettable memories.</p><br>
+                        <footer class="blockquote-footer">Jane Smith</footer>
+                    </blockquote>
+                </div>
+      
+                <!-- Add more carousel items as needed -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+      
+        </div>
     </section>
 
   </div>
