@@ -1,0 +1,36 @@
+.hero-section {
+    background-image: url('/assets/img/jungle.jpeg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 200px 0;
+  }
+  
+  .resort-name {
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+  
+  .breadcrumb {
+    padding: 10px;
+    background-color: #f8f9fa;
+    margin-bottom: 20px;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .filter-options {
+    background-color: #f8f9fa;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    margin-bottom: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s ease-in-out;
+  }
