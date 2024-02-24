@@ -26,7 +26,9 @@ const routes: Routes = [
 { path: 'resorts/vanavihari-maredumilli', component: VanavihariMaredumilliComponent},
 { path: 'resorts/jungleStar,Valamuru', component: JungleStarValamuruComponent},
 { path: 'tribal-community', component: TribalCommunityComponent},
+{ path: 'privacy-policy', component: PrivacyPolicyComponent},
 { path: 'terms-and-conditions', component: TermsAndConditionsComponent},
+
 { path: 'resort-listing', component: ResortListingComponent},
 //
 { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
