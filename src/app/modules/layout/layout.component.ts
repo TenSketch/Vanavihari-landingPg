@@ -70,6 +70,10 @@ export class LayoutComponent implements OnInit {
   goToTribalPg() {
     this.router.navigate(['/tribal-community']);
   } 
+  goToPrivacy()
+  {
+    this.router.navigate(['/privacy-policy']);
+  }
   goToTerms() {
     this.router.navigate(['/terms-and-conditions']);
   } 
