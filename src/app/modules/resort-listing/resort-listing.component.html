@@ -1,71 +1,71 @@
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@angular/material/prebuilt-themes/indigo-pink.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<app-layout>
+    <div class="main">
+        <section class="hero-section">
+            <h1 class="resort-name">VANAVIHARI</h1>
+        </section>
 
-<div class="hero-section">
-  <h1 class="resort-name">VANAVIHARI</h1>
-</div>
+        <div class="breadcrumb">
+            <span>Home</span> > <span>Resorts</span> > <span>Vanavihari</span>
+        </div>
 
-<div class="breadcrumb">
-  <span>Home</span> > <span>Resorts</span> > <span>Vanavihari</span>
-</div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="filter-options">
+                        <h3>Filter Options</h3>
+                        <mat-checkbox id="hilltop">Hilltop Guest House</mat-checkbox>
+                        <mat-checkbox id="pre-fabricated">Pre-Fabricated Cottages</mat-checkbox>
+                        <mat-checkbox id="wooden">Wooden Cottages</mat-checkbox>
+                        <mat-checkbox id="deluxe">Deluxe Rooms</mat-checkbox>
+                        <mat-checkbox id="tented">Tented Cottages</mat-checkbox>
 
-<div class="container">
-  <div class="row">
-      <div class="col-md-3">
-          <div class="filter-options">
-              <h3>Filter Options</h3>
-              <mat-checkbox id="hilltop">Hilltop Guest House</mat-checkbox>
-              <mat-checkbox id="pre-fabricated">Pre-Fabricated Cottages</mat-checkbox>
-              <mat-checkbox id="wooden">Wooden Cottages</mat-checkbox>
-              <mat-checkbox id="deluxe">Deluxe Rooms</mat-checkbox>
-              <mat-checkbox id="tented">Tented Cottages</mat-checkbox>
+                        <h3>Sort by Price</h3>
+                        <mat-radio-group name="priceSort">
+                            <mat-radio-button id="lowToHigh">Low to High</mat-radio-button>
+                            <mat-radio-button id="highToLow">High to Low</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
 
-              <h3>Sort by Price</h3>
-              <mat-radio-group name="priceSort">
-                  <mat-radio-button id="lowToHigh">Low to High</mat-radio-button>
-                  <mat-radio-button id="highToLow">High to Low</mat-radio-button>
-              </mat-radio-group>
-          </div>
-      </div>
+                <div class="col-md-6">
+                    <mat-card class="card">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5>Booking Summary</h5>
+                                <p>Date: 10/02/2024 - 12/02/2024</p>
+                                <p>Guests: 3</p>
+                                <p>Total: 10,345 INR</p>
+                                <button mat-raised-button color="primary">Add room</button>
+                            </div>
 
-      <div class="col-md-6">
-          <mat-card class="card">
-              <div class="row">
-                  <div class="col-md-4">
-                      <h5>Booking Summary</h5>
-                      <p>Date: 10/02/2024 - 12/02/2024</p>
-                      <p>Guests: 3</p>
-                      <p>Total: 10,345 INR</p>
-                      <button mat-raised-button color="primary">Add room</button>
-                  </div>
+                            <div class="col-md-8">
+                                <img src="assets/img/vanavihari-2.jpg" alt="Resort 1 Image">
+                                <h3>Vanavihari</h3>
+                                <p>Ratings: 4.5</p>
+                            </div>
+                        </div>
+                    </mat-card>
 
-                  <div class="col-md-8">
-                      <img src="assets/img/vanavihari-2.jpg" alt="Resort 1 Image">
-                      <h3>Vanavihari</h3>
-                      <p>Ratings: 4.5</p>
-                  </div>
-              </div>
-          </mat-card>
+                    <mat-card class="card">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5>Booking Summary</h5>
+                                <p>Date: 13/01/2024 - 16/01/2024</p>
+                                <p>Guests: 2</p>
+                                <p>Total: 14,430 INR</p>
+                                <button mat-raised-button color="primary">Add room</button>
+                            </div>
 
-          <mat-card class="card">
-              <div class="row">
-                  <div class="col-md-4">
-                      <h5>Booking Summary</h5>
-                      <p>Date: 13/01/2024 - 16/01/2024</p>
-                      <p>Guests: 2</p>
-                      <p>Total: 14,430 INR</p>
-                      <button mat-raised-button color="primary">Add room</button>
-                  </div>
-
-                  <div class="col-md-8">
-                      <img src="assets/img/vanavihari-2.jpg" alt="Resort 2 Image">
-                      <h3>Vanavihari</h3>
-                      <p></p>
-                      <p>Ratings: 4.0</p>
-                  </div>
-              </div>
-          </mat-card>
-      </div>
-  </div>
-</div>
+                            <div class="col-md-8">
+                                <img src="assets/img/vanavihari-2.jpg" alt="Resort 2 Image">
+                                <h3>Vanavihari</h3>
+                                <p></p>
+                                <p>Ratings: 4.0</p>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-layout>

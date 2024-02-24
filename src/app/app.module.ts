@@ -52,7 +52,6 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { TouristPlacesComponent } from './modules/tourist-places/tourist-places.component';
 import { AboutVanavihariComponent } from './modules/about-vanavihari/about-vanavihari.component';
 import { VanavihariMaredumilliComponent } from './modules/resorts/vanavihari-maredumilli/vanavihari-maredumilli.component';
-import { GalleryComponent } from './modules/gallery/gallery.component';
 import { TribalCommunityComponent } from './modules/tribal-community/tribal-community.component';
 import { AwardsNewsPublicationsComponent } from './modules/awards-news-publications/awards-news-publications.component';
 import { PrivacyPolicyComponent } from './modules/privacy-policy/privacy-policy.component';
@@ -74,7 +73,6 @@ import { ResortListingComponent } from './modules/resort-listing/resort-listing.
     TouristPlacesComponent,
     AboutVanavihariComponent,
     VanavihariMaredumilliComponent,
-    GalleryComponent,
     TribalCommunityComponent,
     AwardsNewsPublicationsComponent,
     PrivacyPolicyComponent,

@@ -7,13 +7,13 @@ import { TouristPlacesComponent } from './modules/tourist-places/tourist-places.
 import { AboutVanavihariComponent } from './modules/about-vanavihari/about-vanavihari.component';
 import { VanavihariMaredumilliComponent } from './modules/resorts/vanavihari-maredumilli/vanavihari-maredumilli.component';
 import { JungleStarValamuruComponent } from './modules/resorts/jungle-star-valamuru/jungle-star-valamuru.component';
-import { GalleryComponent } from './modules/gallery/gallery.component';
 import { TribalCommunityComponent } from './modules/tribal-community/tribal-community.component';
 import { AwardsNewsPublicationsComponent } from './modules/awards-news-publications/awards-news-publications.component';
 import { PrivacyPolicyComponent } from './modules/privacy-policy/privacy-policy.component';
 import { TermsAndConditionsComponent } from './modules/terms-and-conditions/terms-and-conditions.component';
 import { SettingsComponent } from './modules/settings/settings.component';
 import { MyBookingsComponent } from './modules/my-bookings/my-bookings.component';
+import { ResortListingComponent } from './modules/resort-listing/resort-listing.component';
 
 
 const routes: Routes = [
@@ -27,6 +27,7 @@ const routes: Routes = [
 { path: 'resorts/jungleStar,Valamuru', component: JungleStarValamuruComponent},
 { path: 'tribal-community', component: TribalCommunityComponent},
 { path: 'terms-and-conditions', component: TermsAndConditionsComponent},
+{ path: 'resort-listing', component: ResortListingComponent},
 //
 { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
 { path: '**', redirectTo: '/home' }, // Handle undefined routes (optional)
