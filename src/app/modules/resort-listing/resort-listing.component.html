@@ -1,16 +1,23 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <app-layout>
     <div class="main">
         <section class="hero-section">
             <h1 class="resort-name">VANAVIHARI</h1>
         </section>
 
-        <div class="breadcrumb">
-            <span>Home</span> > <span>Resorts</span> > <span>Vanavihari</span>
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <!-- <li class="breadcrumb-item"><a href="#">Resorts</a></li> -->
+                  <li class="breadcrumb-item active" aria-current="page">Resorts > Vanavihari, Maredumilli</li>
+                </ol>
+              </nav>
         </div>
-
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="filter-options">
                         <h3>Filter Options</h3>
                         <mat-checkbox id="hilltop">Hilltop Guest House</mat-checkbox>
@@ -26,45 +33,68 @@
                         </mat-radio-group>
                     </div>
                 </div>
-
-                <div class="col-md-6">
-                    <mat-card class="card">
-                        <div class="row">
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="row g-0">
                             <div class="col-md-4">
-                                <h5>Booking Summary</h5>
-                                <p>Date: 10/02/2024 - 12/02/2024</p>
-                                <p>Guests: 3</p>
-                                <p>Total: 10,345 INR</p>
-                                <button mat-raised-button color="primary">Add room</button>
+                                <img src="assets/img/vanavihari-2.jpg" class="card-img" alt="Resort 1 Image">
                             </div>
-
                             <div class="col-md-8">
-                                <img src="assets/img/vanavihari-2.jpg" alt="Resort 1 Image">
-                                <h3>Vanavihari</h3>
-                                <p>Ratings: 4.5</p>
+                                <div class="card-body">
+                                    
+                                    
+                                    <div class="row">
+                                        <div class="col-6 text-start details-left">
+                                            <p>Chital</p>
+                                            <p>Pre-fabricated Cottages</p>
+                                            <p>1 King Size double bed</p>
+                                            <span><i class="fa-solid fa-wifi"></i>&nbsp;Wifi</span>
+                                            <i class="ac-icon fas fa-snowflake"></i>&nbsp;<span>AC</span>
+                                            
+                                        </div>
+                                        <div class="col-6 details-right text-end">
+                                        
+                                            <div class="star-rating"></div>
+                                            <h5>Good</h5>
+                                            <p class="card-text"><small class="text-muted"> 1 night, 3 adults, 1 child <br>5600 INR + GST @ 18% <br>Extra bed @ 1500 INR</small></p>
+                                            <button class="btn btn-primary">Add room</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </mat-card>
-
-                    <mat-card class="card">
-                        <div class="row">
+                    </div>
+                
+                    <div class="card mb-3">
+                        <div class="row g-0">
                             <div class="col-md-4">
-                                <h5>Booking Summary</h5>
-                                <p>Date: 13/01/2024 - 16/01/2024</p>
-                                <p>Guests: 2</p>
-                                <p>Total: 14,430 INR</p>
-                                <button mat-raised-button color="primary">Add room</button>
+                                <img src="assets/img/vanavihari-2.jpg" class="card-img" alt="Resort 2 Image">
                             </div>
-
                             <div class="col-md-8">
-                                <img src="assets/img/vanavihari-2.jpg" alt="Resort 2 Image">
-                                <h3>Vanavihari</h3>
-                                <p></p>
-                                <p>Ratings: 4.0</p>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6 text-start details-left">
+                                            <p>Panther</p>
+                                            <p>Hill Top Guest House</p>
+                                            <p>Double Bed</p>
+                                            <span><i class="fa-solid fa-wifi"></i>&nbsp;Wifi</span>
+                                            <i class="ac-icon fas fa-snowflake"></i>&nbsp;<span>AC</span>
+                                            
+                                            </div>
+                                        <div class="col-6 details-right text-end">
+                                            <div class="star-rating"></div>
+                                            <h5>Good</h5>
+                                            <p class="card-text"><small class="text-muted">2 night, 3 adults, 1 child <br>7600 INR + GST @ 18% <br>Extra bed @ 1500 INR</small></p>
+                                            
+                                            <button class="btn btn-primary">Add room</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </mat-card>
+                    </div>
                 </div>
+                
             </div>
         </div>
     </div>
