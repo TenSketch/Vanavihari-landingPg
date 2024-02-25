@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NativeDateAdapter } from '@angular/material/core';
 
@@ -12,14 +12,30 @@ import { UserService } from '../../user.service';
   providers: [NativeDateAdapter],
 })
 export class HomeComponent implements OnInit {
+  //searchbar model
+  @ViewChild('modal') modal: ElementRef;
+
+  adultsCount: number = 1;
+  childrenCount: number = 0;
+  isMaxReached: boolean = false;
+  maxChildren: number = 10;
+  roomsCount: number = 1;
+  ageDropdowns: number[] = [];
+  selectedAges: string[] = [];
+
+  //user
   currentUser: string;
   // Define an array to hold the image filenames
   imageFilenames: string[] = [];
+  imageFilenames1: string[] = [];
   constructor(private http: HttpClient, private userService: UserService) {
     // Generate image filenames from vanavihari-home-gallery-2.jpg to vanavihari-home-gallery-16.jpg
     for (let i = 2; i <= 16; i++) {
       this.imageFilenames.push(`vanavihari-home-gallery-${i}.jpg`);
+      this.imageFilenames1.push(`junglestar-home-gallery-${i}.jpg`);
     }
+
+    this.updateAgeDropdowns(); // Initialize age dropdowns
   }
 
   // triggerURL() {
@@ -44,17 +60,131 @@ export class HomeComponent implements OnInit {
 
   // search bar adult, child, rooms
 
-  adults: number = 1;
-  children: number = 1;
-  rooms: number = 1;
+  // // Function to decrement the number of children
+  // decrementChildren() {
+  //   if (this.childrenCount > 0) {
+  //     this.childrenCount--; // Decrement the count
+  //     this.selectedAges.pop(); // Remove the last selected age
+  //     this.updateAgeDropdowns(); // Update the age dropdowns
+  //     this.isMaxReached = false; // Reset the flag
+  //   }
+  // }
 
-  increment(field: 'adults' | 'children' | 'rooms') {
-    this[field]++;
+  // // Function to increment the number of children
+  // incrementChildren() {
+  //   if (this.childrenCount < this.maxChildren) {
+  //     // Check if maximum limit reached
+  //     this.childrenCount++; // Increment the count
+  //     this.updateAgeDropdowns(); // Update the age dropdowns
+  //     this.isMaxReached = false; // Reset the flag
+  //   } else {
+  //     // Maximum limit reached, handle accordingly
+  //     // For example, show a message or disable the increment button
+  //     this.isMaxReached = true; // Set the flag
+  //   }
+  // }
+
+  // // Function to decrement the number of adults
+  // decrementAdults() {
+  //   if (this.adultsCount > 0) {
+  //     this.adultsCount--; // Decrement the count
+  //   }
+  // }
+
+  // // Function to increment the number of adults
+  // incrementAdults() {
+  //   this.adultsCount++; // Increment the count
+  // }
+
+  // // Function to decrement the number of rooms
+  // decrementRooms() {
+  //   if (this.roomsCount > 0) {
+  //     this.roomsCount--; // Decrement the count
+  //   }
+  // }
+
+  // // Function to increment the number of rooms
+  // incrementRooms() {
+  //   this.roomsCount++; // Increment the count
+  // }
+
+  // // Function to update the age dropdowns based on the number of children
+  // updateAgeDropdowns() {
+  //   // Clear existing dropdowns
+  //   this.ageDropdowns = [];
+  //   // Create dropdowns for each pair of children (if any)
+  //   for (let i = 0; i < Math.ceil(this.childrenCount / 2); i++) {
+  //     this.ageDropdowns.push(i); // Just a placeholder to create required number of dropdowns
+  //   }
+  // }
+
+  openModal() {
+    const modal = this.modal.nativeElement;
+    modal.classList.add('show');
+    modal.style.display = 'block';
   }
 
-  decrement(field: 'adults' | 'children' | 'rooms') {
-    if (this[field] > 0) {
-      this[field]--;
+  decrementAdults() {
+    if (this.adultsCount > 1) {
+      this.adultsCount--;
+    }
+  }
+
+  incrementAdults() {
+    this.adultsCount++;
+  }
+
+  incrementChildren() {
+    if (this.childrenCount < this.maxChildren) {
+      this.childrenCount++;
+      this.selectedAges = Array(this.childrenCount).fill(''); // Add an empty string for the new dropdown
+      this.isMaxReached = false;
+    } else {
+      this.isMaxReached = true;
+    }
+  }
+
+  decrementChildren() {
+    if (this.childrenCount > 0) {
+      this.childrenCount--;
+      this.selectedAges.pop(); // Remove the selected value for the last dropdown
+      this.isMaxReached = false;
+    }
+  }
+  getChildrenCountArray() {
+    return Array(this.childrenCount)
+      .fill(0)
+      .map((x, i) => i);
+  }
+
+  decrementRooms() {
+    if (this.roomsCount > 1) {
+      this.roomsCount--;
+    }
+  }
+
+  incrementRooms() {
+    this.roomsCount++;
+  }
+
+  // updateAgeDropdowns() {
+  //   this.ageDropdowns = Array(Math.ceil(this.childrenCount / 2)).fill(0);
+  //   this.selectedAges = [];
+  //   for (let i = 0; i < this.childrenCount; i++) {
+  //     this.selectedAges.push('');
+  //   }
+  // }
+
+  updateAgeDropdowns() {
+    // Clear existing dropdowns
+    this.ageDropdowns = [];
+    // Create dropdowns for each child
+    for (let i = 0; i < this.childrenCount; i++) {
+      this.ageDropdowns.push(i); // Add a placeholder for each child
+    }
+    // Ensure the selectedAges array has the correct length
+    while (this.selectedAges.length < this.childrenCount) {
+      this.selectedAges.push(''); // Add empty strings for each child
     }
   }
 }
