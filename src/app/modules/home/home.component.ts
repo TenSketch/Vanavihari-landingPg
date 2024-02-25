@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-=======
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
->>>>>>> 07588d06cbee8930dd9c36058d1d1595b7b622b7
 import { HttpClient } from '@angular/common/http';
 import { NativeDateAdapter } from '@angular/material/core';
 //import { CustomEvent } from '@angular/elements';
@@ -18,9 +14,6 @@ declare var lightGallery: any;
   // imports: [MatFormFieldModule, MatDatepickerModule],
   providers: [NativeDateAdapter],
 })
-<<<<<<< HEAD
-export class HomeComponent implements OnInit, AfterViewInit {
-=======
 export class HomeComponent implements OnInit {
   //searchbar model
   @ViewChild('modal') modal: ElementRef;
@@ -34,7 +27,6 @@ export class HomeComponent implements OnInit {
   selectedAges: string[] = [];
 
   //user
->>>>>>> 07588d06cbee8930dd9c36058d1d1595b7b622b7
   currentUser: string;
   // Define an array to hold the image filenames
   imageFilenames: string[] = [];
@@ -47,29 +39,6 @@ export class HomeComponent implements OnInit {
       this.imageFilenames.push(`vanavihari-home-gallery-${i}.jpg`);
       this.imageFilenames1.push(`junglestar-home-gallery-${i}.jpg`);
     }
-<<<<<<< HEAD
-    
-  
-    
-  }
-  
-  moveLeft() {
-    const currentIndex = this.imageFilenames.indexOf(this.currentImage!);
-    if (currentIndex > 0) {
-      this.currentImage = this.imageFilenames[currentIndex - 1];
-    }
-  } 
-  moveRight() {
-    const currentIndex = this.imageFilenames.indexOf(this.currentImage!);
-    if (currentIndex < this.imageFilenames.length - 1) {
-      this.currentImage = this.imageFilenames[currentIndex + 1];
-    }
-  }
-  closeImage(){
-    
-  }
-=======
->>>>>>> 07588d06cbee8930dd9c36058d1d1595b7b622b7
 
     this.updateAgeDropdowns(); // Initialize age dropdowns
   }

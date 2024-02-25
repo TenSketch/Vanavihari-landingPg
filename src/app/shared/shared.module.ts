@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LightgalleryModule } from 'lightgallery/angular';
 
 import { SharedRoutingModule } from './shared-routing.module';
 
@@ -16,11 +15,9 @@ import { GalleryComponent } from './gallery/gallery.component';
   ],
   imports: [
     CommonModule,
-    LightgalleryModule,
     SharedRoutingModule,
   ],
   exports: [
-    LightgalleryModule,
     GalleryComponent
   ]
 })
