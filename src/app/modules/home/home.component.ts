@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NativeDateAdapter } from '@angular/material/core';
+//import { CustomEvent } from '@angular/elements';
 
 import { UserService } from '../../user.service';
+//import lightGallery from 'lightgallery';
+declare var lightGallery: any;
 
 @Component({
   selector: 'app-home',
@@ -11,17 +14,38 @@ import { UserService } from '../../user.service';
   // imports: [MatFormFieldModule, MatDatepickerModule],
   providers: [NativeDateAdapter],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
   currentUser: string;
   // Define an array to hold the image filenames
   imageFilenames: string[] = [];
   imageFilenames1: string[] = [];
+  currentImage: string | null = null;
   constructor(private http: HttpClient, private userService: UserService) {
+    this.currentImage = this.imageFilenames[0];
     // Generate image filenames from vanavihari-home-gallery-2.jpg to vanavihari-home-gallery-16.jpg
     for (let i = 2; i <= 16; i++) {
       this.imageFilenames.push(`vanavihari-home-gallery-${i}.jpg`);
       this.imageFilenames1.push(`junglestar-home-gallery-${i}.jpg`);
     }
+    
+  
+    
+  }
+  
+  moveLeft() {
+    const currentIndex = this.imageFilenames.indexOf(this.currentImage!);
+    if (currentIndex > 0) {
+      this.currentImage = this.imageFilenames[currentIndex - 1];
+    }
+  } 
+  moveRight() {
+    const currentIndex = this.imageFilenames.indexOf(this.currentImage!);
+    if (currentIndex < this.imageFilenames.length - 1) {
+      this.currentImage = this.imageFilenames[currentIndex + 1];
+    }
+  }
+  closeImage(){
+    
   }
 
   
@@ -44,7 +68,27 @@ export class HomeComponent implements OnInit {
     this.currentUser = user ? user.full_name : '';
     console.log(this.currentUser);
     //alert('Registration successful!');
+    
   }
+  ngAfterViewInit(): void {
+    lightGallery(document.getElementById('vanavihari-home-gallery'));
+    lightGallery(document.getElementById('junglestar-home-gallery'));
+
+    const vanavihariGallery = lightGallery(document.getElementById('vanavihari-gallery'));
+  const junglestarGallery = lightGallery(document.getElementById('junglestar-gallery'));
+
+
+    vanavihariGallery.on('afterSlide', (event: CustomEvent<any>) => {
+      const image = event.detail.nextSlide.container.children[0];
+      const title = image.getAttribute('title');
+      vanavihariGallery.setTitle(title);
+    });
+  }
+
+
+  
+
+
 
   // search bar adult, child, rooms
 
@@ -62,3 +106,11 @@ export class HomeComponent implements OnInit {
     }
   }
 }
+function moveLeft() {
+  throw new Error('Function not implemented.');
+}
+
+function moveRight() {
+  throw new Error('Function not implemented.');
+}
+

@@ -264,13 +264,18 @@
         <div class="row">
           <div class="col-md-8">
             <h2 class="mb-3">Gallery</h2>
-            <div class="masonry-layout">
+            <div class="masonry-layout" id="vanavihari-gallery">
               <!-- Loop through the image filenames array and generate HTML elements -->
+
               <div *ngFor="let filename of imageFilenames" class="masonry-layout-item">
+                <a href="assets/img/home-gallery/{{filename}}" data-sub-html="<button class='close-button' (click)='closeImage()'>Close</button>">
                 <!-- Use filename in the src attribute of the img tag -->
                 <img [src]="'assets/img/home-gallery/' + filename" [alt]="filename">
+                <span class="close-button" (click)="closeImage()">&times;</span>
+              </a>
               </div>
             </div>
+            
           </div>
           <div class="col-md-4">
             <h2 class="mb-3">How to reach?</h2>
@@ -316,11 +321,13 @@
         <div class="row">
           <div class="col-md-8">
             <h2 class="mb-3">Gallery</h2>
-            <div class="masonry-layout">
+            <div class="masonry-layout" id="junglestar-gallery">
               <!-- Loop through the image filenames array and generate HTML elements -->
               <div *ngFor="let filename1 of imageFilenames1" class="masonry-layout-item">
+                <a href="assets/img/home-gallery-junglestar/{{filename1}}" data-sub-html="<button class='lg-close'>Close</button>">
                 <!-- Use filename in the src attribute of the img tag -->
                 <img [src]="'assets/img/home-gallery-junglestar/' + filename1" [alt]="filename1">
+               </a>
               </div>
             </div>
           </div>
