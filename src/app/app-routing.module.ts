@@ -28,6 +28,7 @@ const routes: Routes = [
 { path: 'tribal-community', component: TribalCommunityComponent},
 { path: 'privacy-policy', component: PrivacyPolicyComponent},
 { path: 'terms-and-conditions', component: TermsAndConditionsComponent},
+{ path: 'awards-and-publications', component: AwardsNewsPublicationsComponent},
 
 { path: 'resort-listing', component: ResortListingComponent},
 //
