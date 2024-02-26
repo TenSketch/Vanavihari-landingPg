@@ -29,6 +29,7 @@ const routes: Routes = [
 { path: 'privacy-policy', component: PrivacyPolicyComponent},
 { path: 'terms-and-conditions', component: TermsAndConditionsComponent},
 { path: 'awards-and-publications', component: AwardsNewsPublicationsComponent},
+{path:'dashboard', component:SettingsComponent},
 
 { path: 'resort-listing', component: ResortListingComponent},
 //
