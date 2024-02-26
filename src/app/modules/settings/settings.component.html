@@ -22,13 +22,13 @@
                         <div class="tab-content mt-4">
                             <div class="tab-pane fade show active" id="personals">
                                 <h2>Personal Details</h2>
-                                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                                <form [formGroup]="form">
                                    
                                     <div class="row">
                                         <div class="col-6">
                                           <mat-form-field appearance="outline">
                                             <mat-label>Name</mat-label>
-                                            <input matInput type="text" formControlName="name" placeholder="Enter your name" required>
+                                            <input matInput type="text"  >
                                           </mat-form-field>
                                         </div>
                                         </div>
@@ -38,7 +38,7 @@
                                         <div class="col-6">
                                           <mat-form-field appearance="outline">
                                             <mat-label>Mobile No</mat-label>
-                                            <input matInput type="tel" formControlName="mobileNo" placeholder="Enter your mobile number" required>
+                                            <input matInput type="tel" >
                                           </mat-form-field>
                                         </div>
                                     </div>
@@ -47,7 +47,7 @@
                                         <div class="col-6">
                                           <mat-form-field appearance="outline">
                                             <mat-label>Email</mat-label>
-                                            <input matInput type="email" formControlName="email" placeholder="Enter your email" required>
+                                            <input matInput type="email" >
                                           </mat-form-field>
                                         </div>
                                     </div>
@@ -56,53 +56,10 @@
                                         <div class="col-6">
                                           <mat-form-field appearance="outline">
                                             <mat-label>Password</mat-label>
-                                            <input matInput type="password" formControlName="password" placeholder="Enter your password" required>
+                                            <input matInput type="password" >
                                           </mat-form-field>
                                         </div>
                                       </div>
-                                
-                                      
-                                      
-                                      
-            
-                                      
-                                    <!-- <mat-form-field appearance="outline" class="col-md-3">
-                                      <mat-label>Full Name</mat-label>
-                                      <input type="text" formControlName="name" matInput required placeholder="Enter full name">
-                                    </mat-form-field>
-                                    <mat-form-field appearance="outline" class="col-md-3">
-                                        <mat-label>Mobile no.</mat-label>
-                                        <input type="tel" formControlName="mobile_number" matInput required placeholder="Enter 10 digit mobile no.">
-                                      </mat-form-field>
-                                      <mat-form-field appearance="outline" class="col-md-4">
-                                        <mat-label>Email Id</mat-label>
-                                        <input type="email" formControlName="email" matInput required placeholder="Enter valid email address">
-                                      </mat-form-field>
-                                    <mat-form-field appearance="outline" class="col-md-4">
-                                      <mat-label>Password</mat-label>
-                                      <input type="password" matInput placeholder="Enter Password" formControlName="password">
-                                      
-                                    </mat-form-field>
-                                    <mat-checkbox value="" color="primary" class="my-2">Remember password</mat-checkbox> -->
-                                    <!-- <div class="d-flex align-items-center">
-                                            <span class="lgcaptcha-area" id="captcha"></span>
-                                            <a href="javascript:;" (click)="createCaptcha()" class="lgcaptcha-refresh" aria-label="refresh captcha">
-                                                <img class="icon" src="assets/images/icons/refresh.svg"></a>
-                                        </div> -->
-                                    <!-- <div class="form-floating mb-3">
-                                          <input type="text" class="form-control" id="floatingInput" formControlName="cpatchaTextBox" id="cpatchaTextBox"
-                                          maxlength="6" placeholder="Enter Captcha as shown above">
-                                          <label for="floatingInput">Captcha</label>
-                                      </div> -->
-                                    <!-- <div class="error mt-2"> -->
-                                    <!-- <div *ngIf="(formGroup.controls['cpatchaTextBox'].touched && formGroup.get('cpatchaTextBox').hasError('required')) && !(validCaptchaError && !captchaError) ">
-                                              {{ errors.captcharequired | languageTranslatorImpure}}
-                                          </div>
-                                          <div *ngIf="validCaptchaError && !captchaError">{{'Please enter Valid captcha' | languageTranslatorImpure}}
-                                          </div> -->
-                                    <!-- </div> -->
-                                    <!-- <button mat-raised-button color="primary" (click)="goToSignin()" class="w-100 mt-1">Sign In</button> -->
-                                    <!-- <a (click)="register()">Register here</a> -->
                                   </form>
                             </div>
         
