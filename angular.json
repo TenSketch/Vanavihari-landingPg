@@ -33,7 +33,6 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-              "node_modules/lightgallery/css/lightgallery.css",
               "src/styles.scss"
             ],
             "scripts": [

@@ -4,8 +4,6 @@ import { NativeDateAdapter } from '@angular/material/core';
 //import { CustomEvent } from '@angular/elements';
 
 import { UserService } from '../../user.service';
-//import lightGallery from 'lightgallery';
-declare var lightGallery: any;
 
 @Component({
   selector: 'app-home',
@@ -61,88 +59,7 @@ export class HomeComponent implements OnInit {
     this.currentUser = user ? user.full_name : '';
     console.log(this.currentUser);
     //alert('Registration successful!');
-    
   }
-  ngAfterViewInit(): void {
-    lightGallery(document.getElementById('vanavihari-home-gallery'));
-    lightGallery(document.getElementById('junglestar-home-gallery'));
-
-    const vanavihariGallery = lightGallery(document.getElementById('vanavihari-gallery'));
-  const junglestarGallery = lightGallery(document.getElementById('junglestar-gallery'));
-
-
-    vanavihariGallery.on('afterSlide', (event: CustomEvent<any>) => {
-      const image = event.detail.nextSlide.container.children[0];
-      const title = image.getAttribute('title');
-      vanavihariGallery.setTitle(title);
-    });
-  }
-
-
-  
-
-
-
-  // search bar adult, child, rooms
-
-  // // Function to decrement the number of children
-  // decrementChildren() {
-  //   if (this.childrenCount > 0) {
-  //     this.childrenCount--; // Decrement the count
-  //     this.selectedAges.pop(); // Remove the last selected age
-  //     this.updateAgeDropdowns(); // Update the age dropdowns
-  //     this.isMaxReached = false; // Reset the flag
-  //   }
-  // }
-
-  // // Function to increment the number of children
-  // incrementChildren() {
-  //   if (this.childrenCount < this.maxChildren) {
-  //     // Check if maximum limit reached
-  //     this.childrenCount++; // Increment the count
-  //     this.updateAgeDropdowns(); // Update the age dropdowns
-  //     this.isMaxReached = false; // Reset the flag
-  //   } else {
-  //     // Maximum limit reached, handle accordingly
-  //     // For example, show a message or disable the increment button
-  //     this.isMaxReached = true; // Set the flag
-  //   }
-  // }
-
-  // // Function to decrement the number of adults
-  // decrementAdults() {
-  //   if (this.adultsCount > 0) {
-  //     this.adultsCount--; // Decrement the count
-  //   }
-  // }
-
-  // // Function to increment the number of adults
-  // incrementAdults() {
-  //   this.adultsCount++; // Increment the count
-  // }
-
-  // // Function to decrement the number of rooms
-  // decrementRooms() {
-  //   if (this.roomsCount > 0) {
-  //     this.roomsCount--; // Decrement the count
-  //   }
-  // }
-
-  // // Function to increment the number of rooms
-  // incrementRooms() {
-  //   this.roomsCount++; // Increment the count
-  // }
-
-  // // Function to update the age dropdowns based on the number of children
-  // updateAgeDropdowns() {
-  //   // Clear existing dropdowns
-  //   this.ageDropdowns = [];
-  //   // Create dropdowns for each pair of children (if any)
-  //   for (let i = 0; i < Math.ceil(this.childrenCount / 2); i++) {
-  //     this.ageDropdowns.push(i); // Just a placeholder to create required number of dropdowns
-  //   }
-  // }
-
   openModal() {
     const modal = this.modal.nativeElement;
     modal.classList.add('show');
@@ -192,14 +109,6 @@ export class HomeComponent implements OnInit {
     this.roomsCount++;
   }
 
-  // updateAgeDropdowns() {
-  //   this.ageDropdowns = Array(Math.ceil(this.childrenCount / 2)).fill(0);
-  //   this.selectedAges = [];
-  //   for (let i = 0; i < this.childrenCount; i++) {
-  //     this.selectedAges.push('');
-  //   }
-  // }
-
   updateAgeDropdowns() {
     // Clear existing dropdowns
     this.ageDropdowns = [];
@@ -220,4 +129,3 @@ function moveLeft() {
 function moveRight() {
   throw new Error('Function not implemented.');
 }
-
