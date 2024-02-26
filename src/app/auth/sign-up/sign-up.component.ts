@@ -21,6 +21,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class SignUpComponent implements OnInit {
   form: FormGroup;
+  showTermsModal: boolean = false;
   code: any;
   password: any;
   repeat_password: any;
@@ -73,7 +74,6 @@ export class SignUpComponent implements OnInit {
     //       console.log(result);
     //     }
     //   });
-    
 
     // return;
     const getCodeUrl =
@@ -81,43 +81,42 @@ export class SignUpComponent implements OnInit {
     // this.route.queryParams.subscribe((params) => {
     //   this.code = params['code'];
     // });
-    this.http
-      .get(getCodeUrl, { responseType: 'text' as const })
-      .subscribe({
-        next: result => {
-          let index = result.indexOf('window.location.href');
-          var html_res = result.substring(index);
-  
-          var regex = /window\.location\.href\s*=\s*'([^']+)'/;
-          var match = regex.exec(html_res);
-  
-          var url = String(match ? match[1] : null);
-          var decodedUrl = decodeURIComponent(url.replace(/\\x/g, '%'));
-          var url2;
-          try {
-            url2 = new URL(decodedUrl);
-          } catch (e) {
-            console.error('Invalid URL:', decodedUrl);
-          } 
-          var codeParameter = url2?.searchParams.get('code');
-          this.code = (codeParameter?codeParameter:'');
-   
-          const params = new HttpParams().set('code', this.code);
-          this.http.post<any>('http://localhost:3000/authenticate', {'code': this.code})
+    this.http.get(getCodeUrl, { responseType: 'text' as const }).subscribe({
+      next: (result) => {
+        let index = result.indexOf('window.location.href');
+        var html_res = result.substring(index);
+
+        var regex = /window\.location\.href\s*=\s*'([^']+)'/;
+        var match = regex.exec(html_res);
+
+        var url = String(match ? match[1] : null);
+        var decodedUrl = decodeURIComponent(url.replace(/\\x/g, '%'));
+        var url2;
+        try {
+          url2 = new URL(decodedUrl);
+        } catch (e) {
+          console.error('Invalid URL:', decodedUrl);
+        }
+        var codeParameter = url2?.searchParams.get('code');
+        this.code = codeParameter ? codeParameter : '';
+
+        const params = new HttpParams().set('code', this.code);
+        this.http
+          .post<any>('http://localhost:3000/authenticate', { code: this.code })
           .subscribe({
-            next: response => {
+            next: (response) => {
               // console.log("Response: ",response.access_token);
               this.authService.setAccessToken(response.access_token);
             },
-            error: err => {
+            error: (err) => {
               console.log(err);
-            }
+            },
           });
-        },
-        error: err => {
-          console.log(err);
-        }
-      });
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 
   onSubmit(): void {
@@ -172,5 +171,19 @@ export class SignUpComponent implements OnInit {
   }
   goToSignin() {
     this.router.navigate(['/sign-in']);
+  }
+
+  //Terms & conditions modelbox
+  toggleTermsModal(checked: boolean) {
+    if (checked) {
+      this.showTermsModal = true;
+    }
+  }
+
+  agreeToTerms() {
+    // Perform actions when user agrees to terms
+    // For example, you can submit the form or perform any other action here
+    this.showTermsModal = false; // Hide the modal
+    // Optionally, update the form control related to the checkbox to reflect the agreement
   }
 }
