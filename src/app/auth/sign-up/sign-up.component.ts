@@ -8,7 +8,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { ZohoAuthServiceService } from '../../zoho-auth-service.service';
+// import { ZohoAuthServiceService } from '../../zoho-auth-service.service';
 import { AuthService } from '../../auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map } from 'rxjs';
@@ -29,7 +29,7 @@ export class SignUpComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private http: HttpClient,
-    private myService: ZohoAuthServiceService,
+    // private myService: ZohoAuthServiceService,
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
@@ -61,8 +61,8 @@ export class SignUpComponent implements OnInit {
       .set('email', this.form.value.email_id)
       .set('mobile', this.form.value.mobile_number)
       .set('password', this.form.value.password);
-    this.http.get<any>('https://www.zohoapis.in/creator/custom/venkatechnical/Account_Registration?publickey=23OYsfd8dxQ1uV2YTn1F4PM7h', { params })
-      .subscribe({
+
+      this.authService.sendDataToServer('registration', { params }).subscribe({
         next: response => {
           if(response.code == 3000 && response.result == 'success') this.showSuccessAlert();
           else this.showErrorAlert(response.result);

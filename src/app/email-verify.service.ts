@@ -8,10 +8,7 @@ import { Observable } from 'rxjs';
 export class EmailVerifyService {
   constructor(private http: HttpClient) {}
 
-  // Method to verify email using the verification token
   verifyEmail(verificationToken: string): Observable<any> {
-    // Send a request to your backend API (Zoho Creator application) to verify the email
-    // Replace the URL with your actual backend API URL
     return this.http.get<any>('https://www.zohoapis.in/creator/custom/venkatechnical/Email_Verification?publickey=BeeXF54WvSpqT886FYR476qfh', {
       params: {
         token: verificationToken

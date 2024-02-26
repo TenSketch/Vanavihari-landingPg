@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../user.service';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -19,6 +20,7 @@ export class SignInComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private userService: UserService,
+    private authService: AuthService,
     private route: ActivatedRoute
   ) {
     this.form = this.formBuilder.group({
@@ -48,32 +50,27 @@ export class SignInComponent implements OnInit {
         .set('password', this.form.value.password)
         .set('get_token', token);
 
-      this.http
-        .get<any>(
-          'https://www.zohoapis.in/creator/custom/venkatechnical/Login_Validation?publickey=BF11OPGzBTetAw61vT789FRMe',
-          { params }
-        )
-        .subscribe({
-          next: (response) => {
-            if(response.code == 3000) {
-              var res = response.result;
-              res = res.split('-');
-              if(res[0] == "TK") {
-                this.router.navigate(['/home']);
-                this.showSnackBarAlert("Login Success. Token: "+res[1], false);
-              } else if(response.result == 'error'){
-                this.showSnackBarAlert("Invalid Username | Password!");
-              } else {
-                this.showSnackBarAlert(response.result);
-              }
+      this.authService.sendDataToServer('login', { params }).subscribe({
+        next: response => {
+          if(response.code == 3000) {
+            var res = response.result;
+            res = res.split('-');
+            if(res[0] == "TK") {
+              this.router.navigate(['/home']);
+              this.showSnackBarAlert("Login Success. Token: "+res[1], false);
+            } else if(response.result == 'error'){
+              this.showSnackBarAlert("Invalid Username | Password!");
             } else {
-              this.showSnackBarAlert("Please Check this Credential!");
+              this.showSnackBarAlert(response.result);
             }
-          },
-          error: (err) => {
-            console.error('Error:', err);
-          },
-        });
+          } else {
+            this.showSnackBarAlert("Please Check this Credential!");
+          }
+        },
+        error: err => {
+          console.error('Error:', err);
+        }
+      });
     }
   }
 
