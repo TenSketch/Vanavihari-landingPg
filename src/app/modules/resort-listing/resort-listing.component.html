@@ -19,25 +19,30 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="filter-options">
-                        <h3>Filter Options</h3>
-                        <mat-checkbox id="hilltop">Hilltop Guest House</mat-checkbox>
-                        <mat-checkbox id="pre-fabricated">Pre-Fabricated Cottages</mat-checkbox>
-                        <mat-checkbox id="wooden">Wooden Cottages</mat-checkbox>
-                        <mat-checkbox id="deluxe">Deluxe Rooms</mat-checkbox>
-                        <mat-checkbox id="tented">Tented Cottages</mat-checkbox>
+                        <h3>Filter Options<i class="filter-icon fas fa-sliders-h" (click)="toggleSidebar()"></i></h3>
+                        <div id="sidebar" class="sidebar" *ngIf="isSidebarOpen">
+                            <button class="close-button" (click)="closeSidebar()">&times;</button>
+                            <h3>Cottage Type</h3><br>
+                            <mat-checkbox id="hilltop">Hilltop Guest House</mat-checkbox><br>
+                            <mat-checkbox id="pre-fabricated">Pre-Fabricated Cottages</mat-checkbox><br>
+                            <mat-checkbox id="wooden">Wooden Cottages</mat-checkbox><br>
+                            <mat-checkbox id="deluxe">Deluxe Rooms</mat-checkbox><br>
+                            <mat-checkbox id="tented">Tented Cottages</mat-checkbox><br><br><br>
 
-                        <h3>Sort by Price</h3>
-                        <mat-radio-group name="priceSort">
+                            <h3>Sort by Price</h3><br>
+                            <mat-radio-group name="priceSort">
                             <mat-radio-button id="lowToHigh">Low to High</mat-radio-button>
                             <mat-radio-button id="highToLow">High to Low</mat-radio-button>
-                        </mat-radio-group>
+                            </mat-radio-group>
+                            <button mat-raised-button color="primary"  class="w-100 mt-1">Apply Filters</button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="assets/img/vanavihari-2.jpg" class="card-img" alt="Resort 1 Image">
+                                <img src="assets/img/jungle.jpeg" class="card-img" alt="Resort 1 Image">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
@@ -68,7 +73,7 @@
                     <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="assets/img/vanavihari-2.jpg" class="card-img" alt="Resort 2 Image">
+                                <img src="assets/img/jungle.jpeg" class="card-img" alt="Resort 2 Image">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
