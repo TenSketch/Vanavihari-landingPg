@@ -7,7 +7,6 @@ import { TouristPlacesComponent } from './modules/tourist-places/tourist-places.
 import { AboutVanavihariComponent } from './modules/about-vanavihari/about-vanavihari.component';
 import { VanavihariMaredumilliComponent } from './modules/resorts/vanavihari-maredumilli/vanavihari-maredumilli.component';
 import { JungleStarValamuruComponent } from './modules/resorts/jungle-star-valamuru/jungle-star-valamuru.component';
-import { GalleryComponent } from './modules/gallery/gallery.component';
 import { TribalCommunityComponent } from './modules/tribal-community/tribal-community.component';
 import { AwardsNewsPublicationsComponent } from './modules/awards-news-publications/awards-news-publications.component';
 import { PrivacyPolicyComponent } from './modules/privacy-policy/privacy-policy.component';
@@ -15,6 +14,8 @@ import { TermsAndConditionsComponent } from './modules/terms-and-conditions/term
 import { SettingsComponent } from './modules/settings/settings.component';
 import { MyBookingsComponent } from './modules/my-bookings/my-bookings.component';
 import { EmailVerificationComponent } from './auth/email-verification/email-verification.component';
+import { ResortListingComponent } from './modules/resort-listing/resort-listing.component';
+
 
 const routes: Routes = [
 {path:'home', component:HomeComponent}, 
@@ -27,7 +28,12 @@ const routes: Routes = [
 { path: 'resorts/vanavihari-maredumilli', component: VanavihariMaredumilliComponent},
 { path: 'resorts/jungleStar,Valamuru', component: JungleStarValamuruComponent},
 { path: 'tribal-community', component: TribalCommunityComponent},
+{ path: 'privacy-policy', component: PrivacyPolicyComponent},
 { path: 'terms-and-conditions', component: TermsAndConditionsComponent},
+{ path: 'awards-and-publications', component: AwardsNewsPublicationsComponent},
+{path:'dashboard', component:SettingsComponent},
+
+{ path: 'resort-listing', component: ResortListingComponent},
 //
 { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
 { path: '**', redirectTo: '/home' }, // Handle undefined routes (optional)

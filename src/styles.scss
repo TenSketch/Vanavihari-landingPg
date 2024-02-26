@@ -1,12 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @use "./scss/base/" as *;
 @use "./scss/components/" as *;
-// html {
-//     // font-size: 14px;
-//     // @media(min-width:600px) {
-//     //     font-size: 16px;
-//     // }
-// }
+html {
+    font-size: 15px;
+    @media(min-width:600px) {
+        font-size: 14px;
+    }
+}
 body {
   // font-size: 0.875rem;
   // background-color: $clr-light;
@@ -78,10 +78,7 @@ img {
   border-radius: 0;
   background-color: transparent;
 }
-// bootstrap floating label
-.form-floating > label {
-  right: 0;
-}
+
 .breadcrumb {
   padding: 1rem 1.9rem;
 }
@@ -128,9 +125,7 @@ img {
   background-blend-mode: multiply;
   min-height: 50vh;
 }
-.intro {
-  background-color: rgb(205, 240, 185);
-}
+
 // search
 
 .form-group {

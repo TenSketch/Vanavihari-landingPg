@@ -61,15 +61,23 @@ export class LayoutComponent implements OnInit {
     this.router.navigate(['/my-account/my-bookings']);
   }
   goToVanavihari() {
-    this.router.navigate(['/resorts/vanavihari-maredumilli']);
+    this.router.navigate(['/resort-listing']);
   }
 
   goToJungleStar() {
-    this.router.navigate(['/resorts/jungleStar,Valamuru']);
+    this.router.navigate(['/dashboard']);
   }
   goToTribalPg() {
     this.router.navigate(['/tribal-community']);
   } 
+  goToPrivacy()
+  {
+    this.router.navigate(['/privacy-policy']);
+  }
+  goToAwards()
+  {
+    this.router.navigate(['/awards-and-publications']);
+  }
   goToTerms() {
     this.router.navigate(['/terms-and-conditions']);
   } 
