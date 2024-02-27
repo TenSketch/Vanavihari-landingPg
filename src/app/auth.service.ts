@@ -15,7 +15,7 @@ export class AuthService {
     // const headers = new HttpHeaders({
     //   'Content-Type': 'application/json'
     // });
-    return this.http.get<any>(`${this.apiCommonUrl}/${apiUri}`, params);
+    return this.http.get<any>(`${this.apiCommonUrl}/${apiUri}`, { params });
   }
 
   setAccessToken(token: string): void {
