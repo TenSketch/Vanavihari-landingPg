@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmailVerifyService } from '../../email-verify.service';
 import { AuthService } from '../../auth.service';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-email-verification',
@@ -17,10 +18,10 @@ export class EmailVerificationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const publickey = 'fArmqypVSku88tfArkejTR5wq';
     const verificationToken = this.route.snapshot.paramMap.get('token');
     if (verificationToken) {
-
-      this.authService.sendDataToServer('email-verification', { verificationToken }).subscribe({
+      this.authService.sendDataToServer('Email_Verification?publickey='+publickey+'&token='+verificationToken, '').subscribe({
         next: response => {
           if(response.code == 3000) {
             if(response.result == 'success') {

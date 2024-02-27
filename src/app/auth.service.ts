@@ -7,15 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   private accessTokenKey = 'access_token';
-  private apiUrl = 'http://localhost:3000';
+  private apiCommonUrl = 'https://www.zohoapis.com/creator/custom/vanavihari';
   
   constructor(private http: HttpClient) { }
 
-  sendDataToServer(root: any, params: any): Observable<any> {
+  sendDataToServer(apiUri: any, params: any): Observable<any> {
     // const headers = new HttpHeaders({
     //   'Content-Type': 'application/json'
     // });
-    return this.http.post<any>(`${this.apiUrl}/${root}`, params);
+    return this.http.get<any>(`${this.apiCommonUrl}/${apiUri}`, params);
   }
 
   setAccessToken(token: string): void {

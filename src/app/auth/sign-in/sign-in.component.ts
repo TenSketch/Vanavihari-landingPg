@@ -40,6 +40,7 @@ export class SignInComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
+      const publickey = '3gJbpvFUR8pR3knE8u0tMtt8p';
       const randomBytes = new Uint8Array(12);
       window.crypto.getRandomValues(randomBytes);
       const token = Array.from(randomBytes, (byte) =>
@@ -50,7 +51,7 @@ export class SignInComponent implements OnInit {
         .set('password', this.form.value.password)
         .set('get_token', token);
 
-      this.authService.sendDataToServer('login', { params }).subscribe({
+      this.authService.sendDataToServer('Login_Validation?publickey='+publickey, { params }).subscribe({
         next: response => {
           if(response.code == 3000) {
             var res = response.result;
