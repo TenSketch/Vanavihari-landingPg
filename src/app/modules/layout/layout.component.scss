@@ -19,9 +19,9 @@ nav{
 #sidebar {
     position: fixed;
     top: 9%;
-    left: -100%;
+    left: -90%;
     height: 91vh;
-    width: 100%;
+    width: 90%;
     background-color: #333;
     z-index: 1000;
     transition: left 0.3s ease;
@@ -68,6 +68,46 @@ nav{
               color: #ccc;
             }
           }
+        }
+        .accordion{
+          --bs-accordion-bg: transparent;
+          --bs-accordion-color:#fff;
+          // --bs-accordion-btn-active-icon: 
+        }
+        .accordion-item {
+          border: none;
+          border-radius: 0;
+        }
+        .accordion-button {
+          background-color: transparent;
+          color: inherit;
+          border: none;
+          padding: 0;
+          margin: 0;
+          font-size: inherit;
+          text-align: left;
+          box-shadow: none;
+          &::after{
+            background-image: url(/assets/img/angle-down-solid.svg);
+          }
+        }
+        .accordion-header {
+          background-color: transparent;
+          color: inherit;
+          border: none;
+          padding: 0;
+          margin: 0;
+          font-size: inherit;
+          box-shadow: none;
+        }
+        .accordion-collapse {
+          padding: 0;
+          margin: 0;
+          border: none;
+        }
+        .accordion-body {
+          padding: 0;
+         margin-bottom: 1rem;
         }
     }
   }

@@ -18,7 +18,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="mailto:info@vanavihari.com" title="click to send email">
-            <i class="fa-regular fa-envelope"></i>  info@vanavihari.com</a>
+            <i class="fa-regular fa-envelope"></i> info@vanavihari.com</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="tel:+919494151617" title="call">
@@ -28,7 +28,7 @@
           <a class="nav-link" routerLink="/sign-in" routerLinkActive="active" ariaCurrentWhenActive="page">Sign In</a>
         </li>
         <!-- *ngIf="isLoggedIn()" -->
-        <li class="nav-item dropdown" >
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">My Account</a>
           <div class="dropdown-menu position-absolute" aria-labelledby="dropdownId">
@@ -39,23 +39,39 @@
             <a class="dropdown-item" (click)="logout()">Logout</a>
           </div>
         </li>
-        
+
       </ul>
       <!-- <div class="collapse navbar-collapse justify-content-end">
       </div> -->
     </div>
   </nav>
-  
+
   <div id="sidebar" [ngClass]="{ 'active': isSidebarOpen }">
-    <div class="overlay" [ngClass]="{ 'active': isSidebarOpen }" ></div>
+    <div class="overlay" [ngClass]="{ 'active': isSidebarOpen }"></div>
     <div class="overlay" [ngClass]="{ 'active': isSidebarOpen }" (click)="closeSidebar()"></div>
 
     <div class="sidebar-content">
       <!-- Sidebar content goes here -->
-      <ul class="sidebar-menu list-unstyled"> 
-        <li class="sidebar-item">
-          <a class="sidebar-link d-lg-none" href="#">Book Resort</a>
-        </li>
+      <ul class="sidebar-menu list-unstyled">
+        <div class="accordion d-lg-none" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                Book Resort
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <a class="dropdown-item" (click)="goToVanavihari()">Vanavihari, Maredumilli</a>
+                <a class="dropdown-item" (click)="goToJungleStar()">Jungle Star, Valamuru</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
         <li class="sidebar-item">
           <a class="sidebar-link" (click)="goToAboutUs()">About Us</a>
         </li>
@@ -73,22 +89,23 @@
         </li>
         <li class="sidebar-item">
           <a class="sidebar-link d-lg-none" href="mailto:info@vanavihari.com" title="click to send email">
-            <i class="fa-regular fa-envelope"></i>  info@vanavihari.com</a>
+            <i class="fa-regular fa-envelope"></i> info@vanavihari.com</a>
 
         </li>
         <li class="sidebar-item">
           <a class="sidebar-link d-lg-none" href="tel:+919494151617" title="call">
             <i class="fa-solid fa-mobile-screen"></i> 9494151617</a>
         </li>
-        
+
         <li class="sidebar-item">
-        <a class="sidebar-link d-lg-none" routerLink="/sign-in" routerLinkActive="active" ariaCurrentWhenActive="page">Sign In</a>
-      </li>
+          <a class="sidebar-link d-lg-none" routerLink="/sign-in" routerLinkActive="active"
+            ariaCurrentWhenActive="page">Sign In</a>
+        </li>
       </ul>
-      
+
     </div>
   </div>
-  
+
 
 </header>
 <!-- End Header -->
