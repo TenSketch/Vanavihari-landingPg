@@ -10,7 +10,9 @@
       <ul class="navbar-nav d-none d-lg-flex flex-lg-row gap-3">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">Book Resort</a>
+            aria-expanded="false">
+            <i class="fa-solid fa-calendar-check"></i> Book Resort
+          </a>
           <div class="dropdown-menu position-absolute" aria-labelledby="dropdownId">
             <a class="dropdown-item" (click)="goToVanavihari()">Vanavihari, Maredumilli</a>
             <a class="dropdown-item" (click)="goToJungleStar()">Jungle Star, Valamuru</a>
@@ -18,77 +20,100 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="mailto:info@vanavihari.com" title="click to send email">
-            <i class="fa-regular fa-envelope"></i>  info@vanavihari.com</a>
+            <i class="fa-regular fa-envelope"></i> info@vanavihari.com</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="tel:+919494151617" title="call">
             <i class="fa-solid fa-mobile-screen"></i> 9494151617</a>
         </li>
         <li class="nav-item" *ngIf="!isLoggedIn()">
-          <a class="nav-link" routerLink="/sign-in" routerLinkActive="active" ariaCurrentWhenActive="page">Sign In</a>
+          <a class="nav-link" routerLink="/sign-in" routerLinkActive="active" ariaCurrentWhenActive="page">
+            <i class="fa-solid fa-sign-in"></i> Sign In</a>
         </li>
         <!-- *ngIf="isLoggedIn()" -->
-        <li class="nav-item dropdown" >
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">My Account</a>
+            aria-expanded="false">
+            <i class="fa-solid fa-user-circle"></i> My Account
+          </a>
           <div class="dropdown-menu position-absolute" aria-labelledby="dropdownId">
             <!-- nav item dropdown My Account>Settings, My Bookings, Saved -->
-            <a class="dropdown-item" (click)="goToMyAccSettings()">Settings</a>
-            <a class="dropdown-item" (click)="goToMyBookings()">My Bookings</a>
-            <!-- <a class="dropdown-item" (click)="goToMyAccSettings">Saved</a> -->
-            <a class="dropdown-item" (click)="logout()">Logout</a>
+            <a class="dropdown-item" (click)="goToMyAccSettings()">
+              <i class="fa-solid fa-cog"></i> Settings
+            </a>
+            <a class="dropdown-item" (click)="goToMyBookings()">
+              <i class="fa-solid fa-book"></i> My Bookings
+            </a>
+            <!-- <a class="dropdown-item" (click)="goToMyAccSettings">
+              <i class="fa-solid fa-heart"></i> Saved
+            </a> -->
+            <a class="dropdown-item" (click)="logout()">
+              <i class="fa-solid fa-sign-out"></i> Logout
+            </a>
           </div>
         </li>
-        
       </ul>
-      <!-- <div class="collapse navbar-collapse justify-content-end">
-      </div> -->
     </div>
   </nav>
-  
+
+
   <div id="sidebar" [ngClass]="{ 'active': isSidebarOpen }">
-    <div class="overlay" [ngClass]="{ 'active': isSidebarOpen }" ></div>
+    <div class="overlay" [ngClass]="{ 'active': isSidebarOpen }"></div>
     <div class="overlay" [ngClass]="{ 'active': isSidebarOpen }" (click)="closeSidebar()"></div>
 
     <div class="sidebar-content">
       <!-- Sidebar content goes here -->
-      <ul class="sidebar-menu list-unstyled"> 
+      <ul class="sidebar-menu list-unstyled">
         <li class="sidebar-item">
-          <a class="sidebar-link d-lg-none" href="#">Book Resort</a>
+          <a class="sidebar-link d-lg-none" href="#">
+            <i class="fa-solid fa-calendar-check"></i> Book Resort
+          </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" (click)="goToAboutUs()">About Us</a>
+          <a class="sidebar-link" (click)="goToAboutUs()">
+            <i class="fa-solid fa-info-circle"></i> About Us
+          </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="#">Tourist Destinations</a>
+          <a class="sidebar-link" href="#">
+            <i class="fa-regular fa-compass"></i> Tourist Destinations
+          </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" (click)="goToTribalPg()">Tribal Community</a>
+          <a class="sidebar-link" (click)="goToTribalPg()">
+            <i class="fa-solid fa-users"></i> Tribal Community
+          </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="#">Gallery</a>
+          <a class="sidebar-link" href="#">
+            <i class="fa-regular fa-images"></i> Gallery
+          </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="#footer">Contact Us</a>
+          <a class="sidebar-link" href="#footer">
+            <i class="fa-regular fa-envelope"></i> Contact Us
+          </a>
         </li>
         <li class="sidebar-item">
           <a class="sidebar-link d-lg-none" href="mailto:info@vanavihari.com" title="click to send email">
-            <i class="fa-regular fa-envelope"></i>  info@vanavihari.com</a>
-
+            <i class="fa-regular fa-envelope"></i> info@vanavihari.com
+          </a>
         </li>
         <li class="sidebar-item">
           <a class="sidebar-link d-lg-none" href="tel:+919494151617" title="call">
-            <i class="fa-solid fa-mobile-screen"></i> 9494151617</a>
+            <i class="fa-solid fa-mobile-screen"></i> 9494151617
+          </a>
         </li>
-        
         <li class="sidebar-item">
-        <a class="sidebar-link d-lg-none" routerLink="/sign-in" routerLinkActive="active" ariaCurrentWhenActive="page">Sign In</a>
-      </li>
+          <a class="sidebar-link d-lg-none" routerLink="/sign-in" routerLinkActive="active"
+            ariaCurrentWhenActive="page">
+            <i class="fa-solid fa-sign-in"></i> Sign In
+          </a>
+        </li>
       </ul>
-      
     </div>
   </div>
-  
+
 
 </header>
 <!-- End Header -->
