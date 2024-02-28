@@ -107,131 +107,9 @@
         </div>
       </div>
     </section>
-    <section class="search-rooms py-5">
-      <div class="container">
-        <h2 class="text-center mb-4">Search room availability</h2>
-        <form>
-          <div class="row align-items-center justify-content-center gap-3 gap-md-0">
-            <div class="col-md-3">
-              <mat-form-field appearance="outline">
-                <mat-label>Select Resort</mat-label>
-                <mat-select required>
-                  <mat-option value="VanaVihari, Maredumilli">Vanavihari, Maredumilli</mat-option>
-                  <mat-option value="Jungle Star, Valamuru">Jungle Star, Valamuru</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div class="col-md-3">
-              <mat-form-field appearance="outline">
-                <mat-label>Checkin & Checkout</mat-label>
-                <mat-date-range-input [rangePicker]="picker">
-                  <input matStartDate placeholder="Checkin date" />
-                  <input matEndDate placeholder="Checkout date" />
-                </mat-date-range-input>
-                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-date-range-picker #picker></mat-date-range-picker>
-              </mat-form-field>
-            </div>
-            <div class="col-md-3">
-              <mat-form-field appearance="outline">
-                <mat-label>Guests</mat-label>
-                <input type="text" matInput value="1 adult, 1 room" data-bs-toggle="modal" data-bs-target="#modalId" />
-              </mat-form-field>
-            </div>
-            <!-- Modal -->
-            <div class="modal fade position-relative" id="modalId" tabindex="-1" aria-labelledby="modalTitleId"
-              aria-hidden="true" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true"
-              data-bs-backdrop="false" data-bs-keyboard="false">
-              <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm">
-                <div class="modal-content">
-                  <div class="modal-body">
-                    <!-- Angular Material form fields for adults, children, rooms -->
-                    <div class="container">
-                      <!-- Adults section -->
-                      <div class="row mt-3">
-                        <label for="adults" class="col-sm-4 col-form-label">Adults:</label>
-                        <div class="col-sm-8">
-                          <div class="input-group">
-                            <button class="btn btn-outline-secondary" type="button" (click)="decrementAdults()">
-                              -
-                            </button>
-                            <input type="number" id="adultsCount" name="adults" class="form-control text-center"
-                              [(ngModel)]="adultsCount" />
-                            <button class="btn btn-outline-secondary" type="button" (click)="incrementAdults()">
-                              +
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- Children section -->
-                      <div class="row mt-3">
-                        <label for="children" class="col-sm-4 col-form-label">Children:</label>
-                        <div class="col-sm-8">
-                          <div class="input-group">
-                            <button class="btn btn-outline-secondary" type="button" (click)="decrementChildren()">
-                              -
-                            </button>
-                            <input type="number" id="childrenCount" name="children" class="form-control text-center"
-                              [(ngModel)]="childrenCount" />
-                            <button class="btn btn-outline-secondary" type="button" (click)="incrementChildren()"
-                              [disabled]="isMaxReached">
-                              +
-                            </button>
-                          </div>
-                          <div *ngIf="isMaxReached" class="text-danger mt-2">
-                            Maximum limit reached for children ({{
-                            maxChildren
-                            }}).
-                          </div>
-                        </div>
-                      </div>
+    
 
-                      <!-- Age dropdowns -->
-                      <div id="ageDropdowns" class="row mt-3">
-                        <div class="col-md-6" *ngFor="let i of getChildrenCountArray()">
-                          <select class="form-select mb-3" name="childAge" [(ngModel)]="selectedAges[i]">
-                            <option value="" disabled>Select Age</option>
-                            <option value="0-2">0 - 2 years</option>
-                            <option value="3-5">3 - 5 years</option>
-                            <option value="6-10">6 - 10 years</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <!-- Rooms section -->
-                      <div class="row mt-3">
-                        <label for="rooms" class="col-sm-4 col-form-label">Rooms:</label>
-                        <div class="col-sm-8">
-                          <div class="input-group">
-                            <button class="btn btn-outline-secondary" type="button" (click)="decrementRooms()">
-                              -
-                            </button>
-                            <input type="number" id="roomsCount" name="rooms" class="form-control text-center"
-                              [(ngModel)]="roomsCount" />
-                            <button class="btn btn-outline-secondary" type="button" (click)="incrementRooms()">
-                              +
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-                      Done
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-auto">
-              <button mat-raised-button color="primary">Search</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </section>
+    <app-search-resort></app-search-resort>
 
     <section class="resort-intro py-5">
       <div class="container">
@@ -294,7 +172,6 @@
                 <img [src]="'assets/img/home-gallery/' + filename" [alt]="filename" />
               </div>
             </div>
-
           </div>
           <div class="col-md-4">
             <h2 class="mb-3">How to reach?</h2>
@@ -345,9 +222,9 @@
             <div class="masonry-layout" id="junglestar-gallery">
               <!-- Loop through the image filenames array and generate HTML elements -->
               <div *ngFor="let filename1 of imageFilenames1" class="masonry-layout-item">
-                <a href="assets/img/home-gallery-junglestar/{{filename1}}">
+                <a href="assets/img/home-gallery-junglestar/{{ filename1 }}">
                   <!-- Use filename in the src attribute of the img tag -->
-                  <img [src]="'assets/img/home-gallery-junglestar/' + filename1" [alt]="filename1">
+                  <img [src]="'assets/img/home-gallery-junglestar/' + filename1" [alt]="filename1" />
                 </a>
                 <!-- <div *ngFor="let filename1 of imageFilenames1" class="masonry-layout-item">
                   <img [src]="'assets/img/home-gallery-junglestar/' + filename1" [alt]="filename1" />

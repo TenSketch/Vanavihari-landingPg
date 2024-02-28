@@ -7,6 +7,12 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { SearchResortComponent } from './search-resort/search-resort.component';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -18,9 +24,13 @@ import { SearchResortComponent } from './search-resort/search-resort.component';
   imports: [
     CommonModule,
     SharedRoutingModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
-  exports: [
-    GalleryComponent
-  ]
+  exports: [GalleryComponent, SearchResortComponent],
 })
-export class SharedModule { }
+export class SharedModule {}

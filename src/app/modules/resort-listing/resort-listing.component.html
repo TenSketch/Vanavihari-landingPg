@@ -18,20 +18,9 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="filter-options">
-                        <div class="d-flex">
-                            <i class="filter-icon fas fa-sliders-h" (click)="toggleSidebar()"></i>
-                            <i class="fa-solid fa-map-location-dot" data-bs-toggle="modal"
-                                data-bs-target="#modalId"></i>
-
-
-                            <!-- Optional: Place to the bottom of scripts -->
-                            <script>
-                                const myModal = new bootstrap.Modal(
-                                    document.getElementById("modalId"),
-                                    options,
-                                );
-                            </script>
-
+                        <div class="d-flex justify-content-around">
+                            <span><i class="filter-icon fas fa-sliders-h me-2" (click)="toggleSidebar()"></i>Filter & Sort</span>
+                            <span><i class="fa-solid fa-map-location-dot me-2" data-bs-toggle="modal" data-bs-target="#modalId"></i>Map</span>
                         </div>
                         <!-- <h3><span class="d-none">Filter Options</span></h3> -->
                         <div id="sidebar" class="sidebar" *ngIf="isSidebarOpen">
@@ -53,7 +42,7 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <div class="card mb-3">
+                    <div class="card mb-3 p-1">
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <img src="assets/img/jungle.jpeg" class="card-img" alt="Resort 1 Image">
@@ -64,11 +53,16 @@
 
                                     <div class="row">
                                         <div class="col-6 text-start details-left">
-                                            <p>Chital</p>
-                                            <p>Pre-fabricated Cottages</p>
-                                            <p>1 King Size double bed</p>
-                                            <span><i class="fa-solid fa-wifi"></i>&nbsp;Wifi</span>
-                                            <i class="ac-icon fas fa-snowflake"></i>&nbsp;<span>AC</span>
+                                            <p class="mb-0"><span class="me-2"><strong>Room name:</strong></span>Chital</p>
+                                            <p class="mb-0"><span class="me-2"><strong>Cottage type:</strong></span>Pre-fabricated Cottage</p>
+                                            <p><span class="me-2"><strong>Bed type:</strong></span>1 King Size double bed</p>
+                                            <div class="d-flex gap-2">
+                                                <!-- <span><i class="fa-solid fa-wifi me-2"></i> Free WiFi</span> -->
+                                                
+                                                <span><i class="fas fa-snowflake me-2"></i>AC</span>
+                                                <span><i class="fa-solid fa-shower me-2"></i>Geyser</span>
+                                                <span><i class="fa-solid fa-toilet me-2"></i>Western</span>
+                                            </div>
 
                                         </div>
                                         <div class="col-6 details-right text-end">
@@ -86,7 +80,7 @@
                         </div>
                     </div>
 
-                    <div class="card mb-3">
+                    <div class="card mb-3 p-2">
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <img src="assets/img/jungle.jpeg" class="card-img" alt="Resort 2 Image">
