@@ -14,15 +14,15 @@ import { UserService } from '../../user.service';
 })
 export class HomeComponent implements OnInit {
   //searchbar model
-  @ViewChild('modal') modal: ElementRef;
+  // @ViewChild('modal') modal: ElementRef;
 
-  adultsCount: number = 1;
-  childrenCount: number = 0;
-  isMaxReached: boolean = false;
-  maxChildren: number = 10;
-  roomsCount: number = 1;
-  ageDropdowns: number[] = [];
-  selectedAges: string[] = [];
+  // adultsCount: number = 1;
+  // childrenCount: number = 0;
+  // isMaxReached: boolean = false;
+  // maxChildren: number = 10;
+  // roomsCount: number = 1;
+  // ageDropdowns: number[] = [];
+  // selectedAges: string[] = [];
 
   //user
   currentUser: string;
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
       this.imageFilenames1.push(`junglestar-home-gallery-${i}.jpg`);
     }
 
-    this.updateAgeDropdowns(); // Initialize age dropdowns
+    // this.updateAgeDropdowns(); // Initialize age dropdowns
   }
 
   // triggerURL() {
@@ -60,67 +60,67 @@ export class HomeComponent implements OnInit {
     console.log(this.currentUser);
     //alert('Registration successful!');
   }
-  openModal() {
-    const modal = this.modal.nativeElement;
-    modal.classList.add('show');
-    modal.style.display = 'block';
-  }
+  // openModal() {
+  //   const modal = this.modal.nativeElement;
+  //   modal.classList.add('show');
+  //   modal.style.display = 'block';
+  // }
 
-  decrementAdults() {
-    if (this.adultsCount > 1) {
-      this.adultsCount--;
-    }
-  }
+  // decrementAdults() {
+  //   if (this.adultsCount > 1) {
+  //     this.adultsCount--;
+  //   }
+  // }
 
-  incrementAdults() {
-    this.adultsCount++;
-  }
+  // incrementAdults() {
+  //   this.adultsCount++;
+  // }
 
-  incrementChildren() {
-    if (this.childrenCount < this.maxChildren) {
-      this.childrenCount++;
-      this.selectedAges = Array(this.childrenCount).fill(''); // Add an empty string for the new dropdown
-      this.isMaxReached = false;
-    } else {
-      this.isMaxReached = true;
-    }
-  }
+  // incrementChildren() {
+  //   if (this.childrenCount < this.maxChildren) {
+  //     this.childrenCount++;
+  //     this.selectedAges = Array(this.childrenCount).fill(''); // Add an empty string for the new dropdown
+  //     this.isMaxReached = false;
+  //   } else {
+  //     this.isMaxReached = true;
+  //   }
+  // }
 
-  decrementChildren() {
-    if (this.childrenCount > 0) {
-      this.childrenCount--;
-      this.selectedAges.pop(); // Remove the selected value for the last dropdown
-      this.isMaxReached = false;
-    }
-  }
-  getChildrenCountArray() {
-    return Array(this.childrenCount)
-      .fill(0)
-      .map((x, i) => i);
-  }
+  // decrementChildren() {
+  //   if (this.childrenCount > 0) {
+  //     this.childrenCount--;
+  //     this.selectedAges.pop(); // Remove the selected value for the last dropdown
+  //     this.isMaxReached = false;
+  //   }
+  // }
+  // getChildrenCountArray() {
+  //   return Array(this.childrenCount)
+  //     .fill(0)
+  //     .map((x, i) => i);
+  // }
 
-  decrementRooms() {
-    if (this.roomsCount > 1) {
-      this.roomsCount--;
-    }
-  }
+  // decrementRooms() {
+  //   if (this.roomsCount > 1) {
+  //     this.roomsCount--;
+  //   }
+  // }
 
-  incrementRooms() {
-    this.roomsCount++;
-  }
+  // incrementRooms() {
+  //   this.roomsCount++;
+  // }
 
-  updateAgeDropdowns() {
-    // Clear existing dropdowns
-    this.ageDropdowns = [];
-    // Create dropdowns for each child
-    for (let i = 0; i < this.childrenCount; i++) {
-      this.ageDropdowns.push(i); // Add a placeholder for each child
-    }
-    // Ensure the selectedAges array has the correct length
-    while (this.selectedAges.length < this.childrenCount) {
-      this.selectedAges.push(''); // Add empty strings for each child
-    }
-  }
+  // updateAgeDropdowns() {
+  //   // Clear existing dropdowns
+  //   this.ageDropdowns = [];
+  //   // Create dropdowns for each child
+  //   for (let i = 0; i < this.childrenCount; i++) {
+  //     this.ageDropdowns.push(i); // Add a placeholder for each child
+  //   }
+  //   // Ensure the selectedAges array has the correct length
+  //   while (this.selectedAges.length < this.childrenCount) {
+  //     this.selectedAges.push(''); // Add empty strings for each child
+  //   }
+  // }
 }
 function moveLeft() {
   throw new Error('Function not implemented.');
