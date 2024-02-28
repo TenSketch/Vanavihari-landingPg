@@ -60,11 +60,12 @@
                                             <div class="star-rating"></div>
                                             <h5>Good</h5>
                                             <p class="card-text"><small class="text-muted"> 1 night, 3 adults, 1 child <br>5600 INR + GST @ 18% <br>Extra bed @ 1500 INR</small></p>
-                                            <button class="btn btn-primary">Add room</button>
+                                            <button class="btn btn-primary" (click)="addRoom()">Add room</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 
@@ -89,7 +90,7 @@
                                             <h5>Good</h5>
                                             <p class="card-text"><small class="text-muted">2 night, 3 adults, 1 child <br>7600 INR + GST @ 18% <br>Extra bed @ 1500 INR</small></p>
                                             
-                                            <button class="btn btn-primary">Add room</button>
+                                            <button class="btn btn-primary" (click)="addRoom()">Add room</button>
                                         </div>
                                     </div>
                                 </div>
@@ -97,7 +98,22 @@
                         </div>
                     </div>
                 </div>
-                
+                <div class="booking-summary-bar" *ngIf="showBookingSummary">
+                    <div class="row">
+                    <div class="col-4">
+                    <p>No. Of. Rooms</p>
+                    <p>1</p>
+                    </div>
+                    <div class="col-4">
+                    <p>Total Price</p>
+                    <p> 5600 INR + GST @ 18%</p>
+                    <p></p>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-primary float-end">Proceed</button>
+                    </div>
+                </div>
+                </div>
             </div>
         </div>
     </div>

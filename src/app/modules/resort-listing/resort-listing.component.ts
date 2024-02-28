@@ -7,11 +7,16 @@ import { Component } from '@angular/core';
 })
 export class ResortListingComponent {
   isSidebarOpen: boolean =false;
+  showBookingSummary: boolean =false;
   toggleSidebar(){
     this.isSidebarOpen = !this.isSidebarOpen;
   }
   closeSidebar()
   {
     this.isSidebarOpen = false;
+  }
+  addRoom()
+  {
+    this.showBookingSummary=true;
   }
 }

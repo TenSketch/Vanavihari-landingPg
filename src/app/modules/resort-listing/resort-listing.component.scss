@@ -85,3 +85,10 @@
   margin-left: 0;
   transition: margin-left 0.5s;
 }
+.booking-summary-bar {
+  background-color: #f8d7da; 
+  padding: 10px;
+  position: sticky;
+  bottom: 0;
+  z-index: 1000;
+}
