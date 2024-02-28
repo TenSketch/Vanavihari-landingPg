@@ -1,66 +1,43 @@
-/* styles.css */
-
-@import '~@fortawesome/fontawesome-free/css/all.css';
-
-.hero-section { 
-    background-image: url('/assets/img/home-gallery/vanavihari-home-gallery-1.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-blend-mode: overlay;
-    background-color: rgba(0, 0, 0, 0.508);
-    color: white;
-    text-align: center;
-    padding: 200px 0;
-  }
-  
-  .resort-name {
-    font-size: 3em;
-    margin-bottom: 20px;
-  }
-  
-  .breadcrumb {
-    padding: 10px;
-    background-color: #f8f9fa;
-    margin-bottom: 20px;
-  }
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .filter-options {
-    background-color: #f8f9fa;
-    padding: 15px;
-    margin-bottom: 20px;
-  }
-  
-  .card {
-    margin-bottom: 20px;
-    // padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          transition: transform 0.3s ease-in-out;
-  }
-  .star-rating {
-    display: inline-block;
-    font-size: 1.5rem;
-    color: #ffd700;
+.page-banner {
+  background-image: url('/assets/img/home-gallery/vanavihari-home-gallery-1.jpg');
 }
-
+.breadcrumb {
+  padding: 10px;
+  background-color: #f8f9fa;
+  margin-bottom: 20px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.filter-options {
+  background-color: #f8f9fa;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+.card {
+  margin-bottom: 20px;
+  // padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+.star-rating {
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #ffd700;
+}
 .star-rating::before {
-    content: '\2605\2605\2605\2605'; 
+  content: '\2605\2605\2605\2605';
 }
-
 .star-rating::after {
-    content: '\2606'; 
-    margin-left: 3px;
+  content: '\2606';
+  margin-left: 3px;
 }
-
 .sidebar {
   background-color: #fff;
   padding: 20px;
-  color:#333;
-  height: 100vh; 
+  color: #333;
+  height: 100vh;
   width: 100%;
   position: fixed;
   top: 35px;
@@ -69,7 +46,6 @@
   overflow-x: hidden;
   transition: 0.5s;
 }
-
 .close-button {
   font-size: 35px;
   color: #333;
@@ -80,13 +56,12 @@
   top: 10px;
   right: 10px;
 }
-
 .main {
   margin-left: 0;
   transition: margin-left 0.5s;
 }
 .booking-summary-bar {
-  background-color: #f8d7da; 
+  background-color: #f8d7da;
   padding: 10px;
   position: sticky;
   bottom: 0;

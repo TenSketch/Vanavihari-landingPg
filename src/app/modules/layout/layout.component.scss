@@ -1,114 +1,127 @@
 @use "/src/scss/base/" as *;
 
-nav{
-    // height: 10vh;
-    .navbar-brand{
-        img{
-          width: clamp(15vw, 200px, 5rem);
-        }
+nav {
+
+  // height: 10vh;
+  .navbar-brand {
+    img {
+      width: clamp(15vw, 200px, 5rem);
     }
-    .navbar-nav{
-      .nav-item{
-        .dropdown-menu{
-          left: unset;
-          right: 0;
-        }
+  }
+
+  .navbar-nav {
+    .nav-item {
+      .dropdown-menu {
+        left: unset;
+        right: 0;
       }
     }
+  }
 }
+
 #sidebar {
+  position: fixed;
+  top: 9%;
+  left: -90%;
+  height: 91vh;
+  width: 90%;
+  background-color: #333;
+  z-index: 1000;
+  transition: left 0.3s ease;
+
+  @media(min-width:991px) {
+    width: 20vw;
+  }
+
+  &.active {
+    left: 0;
+  }
+
+  .overlay {
     position: fixed;
-    top: 9%;
-    left: -90%;
-    height: 91vh;
-    width: 90%;
-    background-color: #333;
-    z-index: 1000;
-    transition: left 0.3s ease;
-    @media(min-width:991px){
-        width: 20vw;
-    }
-  
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    display: none;
+
     &.active {
-      left: 0;
-    }
-  
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: -1;
-      display: none;
-      &.active{
-       @media(min-width:991px) {
+      @media(min-width:991px) {
         display: block;
-       }
       }
     }
-  
-    .sidebar-content {
-      padding: 20px;
-      color: #fff;
-      .sidebar-menu {
-        list-style: none;
+  }
+
+  .sidebar-content {
+    padding: 20px;
+    color: #fff;
+
+    .sidebar-menu {
+      list-style: none;
+      padding: 0;
+
+      .sidebar-item {
+        margin-bottom: 10px;
+
+        .sidebar-link {
+          color: $white;
+          text-decoration: none;
+          transition: color 0.3s;
+
+          &:hover {
+            color: #ccc;
+          }
+        }
+      }
+
+      .accordion {
+        --bs-accordion-bg: transparent;
+        --bs-accordion-color: #fff;
+        // --bs-accordion-btn-active-icon: 
+      }
+
+      .accordion-item {
+        border: none;
+        border-radius: 0;
+      }
+
+      .accordion-button {
+        background-color: transparent;
+        color: inherit;
+        border: none;
         padding: 0;
-  
-        .sidebar-item {
-          margin-bottom: 10px;
-  
-          .sidebar-link {
-            color: $white;
-            text-decoration: none;
-            transition: color 0.3s;
-  
-            &:hover {
-              color: #ccc;
-            }
-          }
+        margin: 0;
+        font-size: inherit;
+        text-align: left;
+        box-shadow: none;
+
+        &::after {
+          background-image: url(/assets/img/angle-down-solid.svg);
         }
-        .accordion{
-          --bs-accordion-bg: transparent;
-          --bs-accordion-color:#fff;
-          // --bs-accordion-btn-active-icon: 
-        }
-        .accordion-item {
-          border: none;
-          border-radius: 0;
-        }
-        .accordion-button {
-          background-color: transparent;
-          color: inherit;
-          border: none;
-          padding: 0;
-          margin: 0;
-          font-size: inherit;
-          text-align: left;
-          box-shadow: none;
-          &::after{
-            background-image: url(/assets/img/angle-down-solid.svg);
-          }
-        }
-        .accordion-header {
-          background-color: transparent;
-          color: inherit;
-          border: none;
-          padding: 0;
-          margin: 0;
-          font-size: inherit;
-          box-shadow: none;
-        }
-        .accordion-collapse {
-          padding: 0;
-          margin: 0;
-          border: none;
-        }
-        .accordion-body {
-          padding: 0;
-         margin-bottom: 1rem;
-        }
+      }
+
+      .accordion-header {
+        background-color: transparent;
+        color: inherit;
+        border: none;
+        padding: 0;
+        margin: 0;
+        font-size: inherit;
+        box-shadow: none;
+      }
+
+      .accordion-collapse {
+        padding: 0;
+        margin: 0;
+        border: none;
+      }
+
+      .accordion-body {
+        padding: 0;
+        margin-bottom: 1rem;
+      }
     }
   }
 }
