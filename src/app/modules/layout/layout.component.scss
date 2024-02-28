@@ -125,3 +125,12 @@ nav {
     }
   }
 }
+
+::placeholder {
+  color: #ccc;
+}
+
+.contact-form input,
+.contact-form textarea {
+    color: gray; 
+}

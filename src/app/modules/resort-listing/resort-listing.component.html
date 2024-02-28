@@ -17,10 +17,26 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="filter-options">
+                    <div class="filter-options sticky-sidebar">
                         <div class="d-flex justify-content-around">
-                            <span><i class="filter-icon fas fa-sliders-h me-2" (click)="toggleSidebar()"></i>Filter & Sort</span>
+                            <span><i class="filter-icon fas fa-sliders-h me-2 d-md-none" (click)="toggleSidebar()"></i>Filter & Sort</span>
                             <span><i class="fa-solid fa-map-location-dot me-2" data-bs-toggle="modal" data-bs-target="#modalId"></i>Map</span>
+                        </div>
+                        <div class="filter-options d-none d-md-block">
+                            <h3>Cottage Type</h3><br>
+                            <mat-checkbox id="hilltop">Hilltop Guest House</mat-checkbox><br>
+                            <mat-checkbox id="pre-fabricated">Pre-Fabricated Cottages</mat-checkbox><br>
+                            <mat-checkbox id="wooden">Wooden Cottages</mat-checkbox><br>
+                            <mat-checkbox id="deluxe">Deluxe Rooms</mat-checkbox><br>
+                            <mat-checkbox id="tented">Tented Cottages</mat-checkbox><br><br><br>
+
+                            <h3>Sort by Price</h3><br>
+                            <mat-radio-group name="priceSort">
+                                <mat-radio-button id="lowToHigh">Low to High</mat-radio-button>
+                                <mat-radio-button id="highToLow">High to Low</mat-radio-button>
+                            </mat-radio-group>
+                            <button mat-raised-button color="primary" class="w-100 mt-1">Apply Filters</button>
+                       
                         </div>
                         <!-- <h3><span class="d-none">Filter Options</span></h3> -->
                         <div id="sidebar" class="sidebar" *ngIf="isSidebarOpen">
@@ -41,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8" *ngIf="!isSidebarOpen">
                     <div class="card mb-3 p-1">
                         <div class="row g-0">
                             <div class="col-md-4">
@@ -79,7 +95,7 @@
 
                         </div>
                     </div>
-
+                    
                     <div class="card mb-3 p-2">
                         <div class="row g-0">
                             <div class="col-md-4">
@@ -109,6 +125,7 @@
                             </div>
                         </div>
                     </div>
+                 
                 </div>
                 <div class="booking-summary-bar" *ngIf="showBookingSummary">
                     <div class="row">
