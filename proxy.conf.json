@@ -1,7 +1,7 @@
 {
-    "/api": {
-      "target": "https://accounts.zoho.com",
-      "secure": false,
-      "changeOrigin": true
-    }
+  "/api": {
+    "target": "https://www.zohoapis.com/",
+    "secure": false,
+    "changeOrigin": true
   }
+}

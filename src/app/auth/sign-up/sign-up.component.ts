@@ -50,84 +50,19 @@ export class SignUpComponent implements OnInit {
     );
   }
  
-  ngOnInit(): void {
-    // const clientId = '1000.C3YEEYUWBVTK62AVHRVQT3EZR1Y48X';
-    // const clientSecret = '74b59cd0d3a4a113aa62b0143fd05a06d9df6dce1b';
-    // const redirectUri = 'http://localhost:4200';
-    // const grantType = 'authorization_code';
-    // const tokenUrl = 'https://accounts.zoho.com/oauth/v2/token';
-    // const params = new URLSearchParams({
-    //   grant_type: grantType,
-    //   client_id: clientId,
-    //   client_secret: clientSecret,
-    //   redirect_uri: 'https://tensketch.vanavihari.com/register.html',
-    //   code: '1000.a97ec7608852e31d45a8a75011d3cfbd.b587497cbf28cfb2d878c2adae23bff9'
-    // });
-    // const url = `${tokenUrl}?${params.toString()}`;
-    // console.log(url);
-    // this.http
-    //   .post(url, { responseType: 'text' as const })
-    //   .subscribe({
-    //     next: result => {
-    //       console.log(result);
-    //     }
-    //   });
-
-    // return;
-    const getCodeUrl =
-      'https://accounts.zoho.com/oauth/v2/auth?response_type=code&client_id=1000.C3YEEYUWBVTK62AVHRVQT3EZR1Y48X&client_secret=532929ef83d5a2b57ceb5f5ddb3f94e0ebb30b7ebc&scope=ZohoCreator.form.CREATE&redirect_uri=https://tensketch.vanavihari.com/register.html&access_type=offline';
-    // this.route.queryParams.subscribe((params) => {
-    //   this.code = params['code'];
-    // });
-    this.http.get(getCodeUrl, { responseType: 'text' as const }).subscribe({
-      next: (result) => {
-        let index = result.indexOf('window.location.href');
-        var html_res = result.substring(index);
-
-        var regex = /window\.location\.href\s*=\s*'([^']+)'/;
-        var match = regex.exec(html_res);
-
-        var url = String(match ? match[1] : null);
-        var decodedUrl = decodeURIComponent(url.replace(/\\x/g, '%'));
-        var url2;
-        try {
-          url2 = new URL(decodedUrl);
-        } catch (e) {
-          console.error('Invalid URL:', decodedUrl);
-        }
-        var codeParameter = url2?.searchParams.get('code');
-        this.code = codeParameter ? codeParameter : '';
-
-        const params = new HttpParams().set('code', this.code);
-        this.http
-          .post<any>('http://localhost:3000/authenticate', { code: this.code })
-          .subscribe({
-            next: (response) => {
-              // console.log("Response: ",response.access_token);
-              this.authService.setAccessToken(response.access_token);
-            },
-            error: (err) => {
-              console.log(err);
-            },
-          });
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
+  ngOnInit(): void {  }
   onSubmit(): void {
+    const publickey = '8xZYn5bvUfjjBVVpvK7qAsKsR';
     this.password = this.form.value.password;
     this.repeat_password = this.form.value.repeat_password;
     if (this.form.valid) {
-      console.log(this.form.value);
       const params = new HttpParams()
       .set('full_name', this.form.value.full_name)
       .set('email', this.form.value.email_id)
       .set('mobile', this.form.value.mobile_number)
       .set('password', this.form.value.password);
-
-      this.authService.sendDataToServer('registration', { params }).subscribe({
+      
+      this.authService.sendDataToServer('Account_Registration?publickey='+publickey, params).subscribe({
         next: response => {
           if(response.code == 3000 && response.result == 'success') this.showSuccessAlert();
           else this.showErrorAlert(response.result);

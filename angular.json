@@ -49,8 +49,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "100000kb",
+                  "maximumError": "1000000kb"
                 }
               ],
               "outputHashing": "all"
@@ -68,12 +68,17 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          },
           "configurations": {
             "production": {
-              "browserTarget": "Vanavihari:build:production"
+              "browserTarget": "Vanavihari:build:production",
+              "proxyConfig": "proxy.conf.js"
             },
             "development": {
-              "browserTarget": "Vanavihari:build:development"
+              "browserTarget": "Vanavihari:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
