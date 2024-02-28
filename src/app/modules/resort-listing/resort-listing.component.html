@@ -1,23 +1,39 @@
 <app-layout>
     <div class="main">
         <section class="hero-section">
-            <h1 class="resort-name">VANAVIHARI</h1>
+            <h1 class="resort-name">VANAVIHARI, Maredumilli</h1>
         </section>
 
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <!-- <li class="breadcrumb-item"><a href="#">Resorts</a></li> -->
-                  <li class="breadcrumb-item active" aria-current="page">Resorts > Vanavihari, Maredumilli</li>
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <!-- <li class="breadcrumb-item"><a href="#">Resorts</a></li> -->
+                    <li class="breadcrumb-item active" aria-current="page">Resorts > Vanavihari, Maredumilli</li>
                 </ol>
-              </nav>
+            </nav>
         </div>
+        <!-- section for search bar - with inputs given in home page search, and user can modify -->
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
                     <div class="filter-options">
-                        <h3><span class="d-none">Filter Options</span><i class="filter-icon fas fa-sliders-h" (click)="toggleSidebar()"></i></h3>
+                        <div class="d-flex">
+                            <i class="filter-icon fas fa-sliders-h" (click)="toggleSidebar()"></i>
+                            <i class="fa-solid fa-map-location-dot" data-bs-toggle="modal"
+                                data-bs-target="#modalId"></i>
+
+
+                            <!-- Optional: Place to the bottom of scripts -->
+                            <script>
+                                const myModal = new bootstrap.Modal(
+                                    document.getElementById("modalId"),
+                                    options,
+                                );
+                            </script>
+
+                        </div>
+                        <!-- <h3><span class="d-none">Filter Options</span></h3> -->
                         <div id="sidebar" class="sidebar" *ngIf="isSidebarOpen">
                             <button class="close-button" (click)="closeSidebar()">&times;</button>
                             <h3>Cottage Type</h3><br>
@@ -29,10 +45,10 @@
 
                             <h3>Sort by Price</h3><br>
                             <mat-radio-group name="priceSort">
-                            <mat-radio-button id="lowToHigh">Low to High</mat-radio-button>
-                            <mat-radio-button id="highToLow">High to Low</mat-radio-button>
+                                <mat-radio-button id="lowToHigh">Low to High</mat-radio-button>
+                                <mat-radio-button id="highToLow">High to Low</mat-radio-button>
                             </mat-radio-group>
-                            <button mat-raised-button color="primary"  class="w-100 mt-1">Apply Filters</button>
+                            <button mat-raised-button color="primary" class="w-100 mt-1">Apply Filters</button>
                         </div>
                     </div>
                 </div>
@@ -44,8 +60,8 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    
-                                    
+
+
                                     <div class="row">
                                         <div class="col-6 text-start details-left">
                                             <p>Chital</p>
@@ -53,22 +69,23 @@
                                             <p>1 King Size double bed</p>
                                             <span><i class="fa-solid fa-wifi"></i>&nbsp;Wifi</span>
                                             <i class="ac-icon fas fa-snowflake"></i>&nbsp;<span>AC</span>
-                                            
+
                                         </div>
                                         <div class="col-6 details-right text-end">
-                                        
+
                                             <div class="star-rating"></div>
                                             <h5>Good</h5>
-                                            <p class="card-text"><small class="text-muted"> 1 night, 3 adults, 1 child <br>5600 INR + GST @ 18% <br>Extra bed @ 1500 INR</small></p>
+                                            <p class="card-text"><small class="text-muted"> 1 night, 3 adults, 1 child
+                                                    <br>5600 INR + GST @ 18% <br>Extra bed @ 1500 INR</small></p>
                                             <button class="btn btn-primary" (click)="addRoom()">Add room</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
-                
+
                     <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-4">
@@ -83,13 +100,14 @@
                                             <p>Double Bed</p>
                                             <span><i class="fa-solid fa-wifi"></i>&nbsp;Wifi</span>
                                             <i class="ac-icon fas fa-snowflake"></i>&nbsp;<span>AC</span>
-                                            
-                                            </div>
+
+                                        </div>
                                         <div class="col-6 details-right text-end">
                                             <div class="star-rating"></div>
                                             <h5>Good</h5>
-                                            <p class="card-text"><small class="text-muted">2 night, 3 adults, 1 child <br>7600 INR + GST @ 18% <br>Extra bed @ 1500 INR</small></p>
-                                            
+                                            <p class="card-text"><small class="text-muted">2 night, 3 adults, 1 child
+                                                    <br>7600 INR + GST @ 18% <br>Extra bed @ 1500 INR</small></p>
+
                                             <button class="btn btn-primary" (click)="addRoom()">Add room</button>
                                         </div>
                                     </div>
@@ -100,21 +118,33 @@
                 </div>
                 <div class="booking-summary-bar" *ngIf="showBookingSummary">
                     <div class="row">
-                    <div class="col-4">
-                    <p>No. Of. Rooms</p>
-                    <p>1</p>
+                        <div class="col-4">
+                            <p>No. Of. Rooms</p>
+                            <p>1</p>
+                        </div>
+                        <div class="col-4">
+                            <p>Total Price</p>
+                            <p> 5600 INR + GST @ 18%</p>
+                            <p></p>
+                        </div>
+                        <div class="col-4">
+                            <button class="btn btn-primary float-end">Proceed</button>
+                        </div>
                     </div>
-                    <div class="col-4">
-                    <p>Total Price</p>
-                    <p> 5600 INR + GST @ 18%</p>
-                    <p></p>
-                    </div>
-                    <div class="col-4">
-                        <button class="btn btn-primary float-end">Proceed</button>
-                    </div>
-                </div>
                 </div>
             </div>
         </div>
     </div>
 </app-layout>
+
+<div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+    aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <!-- map iframe -->
+            </div>
+            
+        </div>
+    </div>
+</div>
