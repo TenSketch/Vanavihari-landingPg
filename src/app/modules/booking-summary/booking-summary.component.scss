@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+.mat-horizontal-stepper{
+  
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width:100%;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.booking-summary {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start; 
+  height: 100vh;
+  padding: 20px; 
+}
+
+.first-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.second-column {
+  margin-left: 20px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  width: 300px;
+}
+
+.card h3 {
+  color: #333; 
+  margin-bottom: 10px; }
+
+.card p {
+  margin: 5px 0; 
+}
+
+.table-container {
+  margin-top: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+.icon {
+  margin-right: 5px;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.mat-form-filed{
+    width:100%;
+}
+button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+.flex-container{
+    display:flex;
+}
+.flex-column{
+    flex: 1;
+    margin-right: 20px;
+}
+.second-column{
+    flex:1;
+
+}
+.card{
+    margin-bottom:20px;
+}
+.user-form{
+    padding-left: 300px;
+    max-width:600px;
+}

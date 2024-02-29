@@ -1,0 +1,102 @@
+<app-layout>
+    <div class="main">
+        <br><br>
+<mat-horizontal-stepper>
+<mat-step>
+    <ng-template matStepLabel>Your Selection</ng-template>
+    <div class="flex-container">
+        
+        <div class="first-column">
+            
+            <div class="card">
+                <h3>Rainbow Cottage</h3>
+                <p>Club Road Mysore Main Road,Ooty, Tamilnadu 643001</p>
+                <p>Ratings: 4.5</p>
+                <p>
+                    Amenities:
+                    <span class="icon">📶</span> Wifi
+                    <span class="icon">✈️</span> Airport Shuttle
+                    <span class="icon">🍽️</span> Restaurant
+                </p>
+            </div>
+
+            <!-- Booking Details Card -->
+            <div class="card">
+                <h3>Booking Details</h3>
+                <p>Check-In/Out: March 8 - March 12 <br>3:00 PM - 11:00 AM</p>
+                <p>Total Days: 5</p>
+            </div>
+            <div class="card">
+                <h3>Room & Guests Details</h3>
+                <table>
+                  <tr>
+                    <td>Standard Room</td>
+                    <td>
+                      <input matInput type="number" min="0" value="1" id="standardRoomQty">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Deluxe Room</td>
+                    <td>
+                      <input matInput type="number" min="0" value="1" id="deluxeRoomQty">
+                    </td>
+                  </tr>
+
+                </table>
+                <p>Total Number of Rooms: <span id="totalRooms">2</span></p>
+                <p>Adults: 2</p>
+                <p>Children: 1</p>
+              
+            </div>
+            
+            
+            <div class="card">
+                <h3>Payment Details</h3>
+                <p>Price:  5400</p>
+                <p>GST @18%:  972</p>
+                <p>Total:   6372</p>
+            </div>
+        </div>
+
+        <div class="second-column">
+            <h3>User Details</h3>
+            <form class="user-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input matInput id="firstName" name="firstName" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput id="lastName" name="lastName" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Country</mat-label>
+                    <input matInput id="country" name="country" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Mobile</mat-label>
+                    <input matInput id="mobile" name="mobile" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" id="email" name="email" required>
+                </mat-form-field>
+
+                <button mat-raised-button (click)="payNow()">Pay Now</button>
+            </form>
+        </div>
+    </div>
+</mat-step>
+
+<!-- Step 2 -->
+<mat-step>
+    <ng-template matStepLabel>Final Step</ng-template>
+    <!-- Add any content for the final step if needed -->
+</mat-step>
+</mat-horizontal-stepper>
+</div>
+</app-layout>

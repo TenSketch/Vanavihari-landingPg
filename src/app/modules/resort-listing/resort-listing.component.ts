@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-resort-listing',
@@ -6,6 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./resort-listing.component.scss']
 })
 export class ResortListingComponent {
+  constructor(private router: Router, private userService: UserService) {}
+
   isSidebarOpen: boolean =false;
   showBookingSummary: boolean =false;
   toggleSidebar(){
@@ -18,5 +22,9 @@ export class ResortListingComponent {
   addRoom()
   {
     this.showBookingSummary=true;
+  }
+  goToBooking()
+  {
+    this.router.navigate(['/booking-summary']);
   }
 }

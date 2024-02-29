@@ -15,6 +15,7 @@ import { SettingsComponent } from './modules/settings/settings.component';
 import { MyBookingsComponent } from './modules/my-bookings/my-bookings.component';
 import { EmailVerificationComponent } from './auth/email-verification/email-verification.component';
 import { ResortListingComponent } from './modules/resort-listing/resort-listing.component';
+import { BookingSummaryComponent } from './modules/booking-summary/booking-summary.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,8 @@ const routes: Routes = [
 { path: 'privacy-policy', component: PrivacyPolicyComponent},
 { path: 'terms-and-conditions', component: TermsAndConditionsComponent},
 { path: 'awards-and-publications', component: AwardsNewsPublicationsComponent},
+{ path: 'booking-summary', component: BookingSummaryComponent},
+
 {path:'dashboard', component:SettingsComponent},
 
 { path: 'resort-listing', component: ResortListingComponent},

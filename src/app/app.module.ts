@@ -61,6 +61,7 @@ import { SettingsComponent } from './modules/settings/settings.component';
 import { MyBookingsComponent } from './modules/my-bookings/my-bookings.component';
 import { JungleStarValamuruComponent } from './modules/resorts/jungle-star-valamuru/jungle-star-valamuru.component';
 import { ResortListingComponent } from './modules/resort-listing/resort-listing.component';
+import { BookingSummaryComponent } from './modules/booking-summary/booking-summary.component';
 // import { RoomsComponent } from './modules/resorts/vanavihari-maredumilli/rooms/rooms.component';
 
 @NgModule({
@@ -82,6 +83,7 @@ import { ResortListingComponent } from './modules/resort-listing/resort-listing.
     MyBookingsComponent,
     JungleStarValamuruComponent,
     ResortListingComponent,
+    BookingSummaryComponent,
     // RoomsComponent,
 
   ],
