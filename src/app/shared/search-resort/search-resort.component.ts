@@ -15,9 +15,11 @@ export class SearchResortComponent {
   roomsCount: number = 1;
   selectedAges: string[] = [];
   ageDropdowns: number[];
+  RoomValues:any
 
   constructor() {
     this.updateAgeDropdowns();
+    this.RoomValues="Adult-"+2+" Children- "+0+" Rooms-"+1
   }
 
   openModal() {
@@ -80,5 +82,13 @@ export class SearchResortComponent {
     while (this.selectedAges.length < this.childrenCount) {
       this.selectedAges.push(''); // Add empty strings for each child
     }
+  }
+
+  getvalues(roomsCount:any,adultsCount:any){
+  
+  this.RoomValues="Adult-"+this.adultsCount+" Children- "+this.childrenCount+" Rooms-"+this.roomsCount
+console.log(this.roomsCount,this.adultsCount);
+
+
   }
 }
