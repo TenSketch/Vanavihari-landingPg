@@ -2,8 +2,8 @@
   <div class="container">
     <h2 class="text-center mb-4">Search room availability</h2>
     <form>
-      <div class="row align-items-center justify-content-center gap-3 gap-md-0">
-        <div class="col-md-3">
+      <div class="row align-items-center justify-content-center gap-3 gap-lg-0">
+        <div class="col-lg-3">
           <mat-form-field appearance="outline">
             <mat-label>Select Resort</mat-label>
             <mat-select required>
@@ -12,7 +12,7 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="col-md-3">
+        <div class="col-lg-3">
           <mat-form-field appearance="outline">
             <mat-label>Checkin & Checkout</mat-label>
             <mat-date-range-input [rangePicker]="picker">
@@ -24,7 +24,7 @@
             <mat-date-range-picker #picker></mat-date-range-picker>
           </mat-form-field>
         </div>
-        <div class="col-md-3 position-relative">
+        <div class="col-lg-3 position-relative">
           <mat-form-field appearance="outline">
             <mat-label>Guests</mat-label>
             <input type="text" matInput value="1 adult, 1 room" data-bs-toggle="modal" data-bs-target="#modalId" />
@@ -40,8 +40,8 @@
                   <div class="container">
                     <!-- Adults section -->
                     <div class="row mt-3">
-                      <label for="adults" class="col-md-4 col-form-label">Adults:</label>
-                      <div class="col-md-8">
+                      <label for="adults" class="col-sm-4">Adults:</label>
+                      <div class="col-sm-8">
                         <div class="input-group">
                           <button class="btn btn-outline-secondary" type="button" (click)="decrementAdults()">
                             -
@@ -56,8 +56,8 @@
                     </div>
                     <!-- Children section -->
                     <div class="row my-3">
-                      <label for="children" class="col-md-4 col-form-label">Children:</label>
-                      <div class="col-md-8">
+                      <label for="children" class="col-sm-4">Children:</label>
+                      <div class="col-sm-8">
                         <div class="input-group">
                           <button class="btn btn-outline-secondary" type="button" (click)="decrementChildren()">
                             -
@@ -89,8 +89,8 @@
   
                     <!-- Rooms section -->
                     <div class="row">
-                      <label for="rooms" class="col-md-4 col-form-label">Rooms:</label>
-                      <div class="col-md-8">
+                      <label for="rooms" class="col-sm-4">Rooms:</label>
+                      <div class="col-sm-8">
                         <div class="input-group">
                           <button class="btn btn-outline-secondary" type="button" (click)="decrementRooms()">
                             -

@@ -44,6 +44,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatNativeDateModule } from "@angular/material/core";
+import { LightgalleryModule } from 'lightgallery/angular';
+
 
 import { HomeComponent } from './modules/home/home.component';
 import { LayoutComponent } from './modules/layout/layout.component';
@@ -125,6 +127,7 @@ import { ResortListingComponent } from './modules/resort-listing/resort-listing.
     MatSortModule,
     MatPaginatorModule,
     MatNativeDateModule,
+    LightgalleryModule,
     RouterModule,
     SharedModule,
 
