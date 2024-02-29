@@ -2,6 +2,9 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NativeDateAdapter } from '@angular/material/core';
 //import { CustomEvent } from '@angular/elements';
+import lgZoom from 'lightgallery/plugins/zoom';
+import { BeforeSlideDetail } from 'lightgallery/lg-events';
+
 
 import { UserService } from '../../user.service';
 
@@ -121,6 +124,16 @@ export class HomeComponent implements OnInit {
       this.selectedAges.push(''); // Add empty strings for each child
     }
   }
+
+  settings = {
+    counter: false,
+    plugins: [lgZoom], // Include the lgZoom plugin
+  };
+
+  onBeforeSlide(detail: BeforeSlideDetail): void {
+    const { index, prevIndex } = detail;
+    console.log(`Slide changed from ${prevIndex} to ${index}`);
+  }
 }
 function moveLeft() {
   throw new Error('Function not implemented.');
@@ -129,3 +142,4 @@ function moveLeft() {
 function moveRight() {
   throw new Error('Function not implemented.');
 }
+ 
