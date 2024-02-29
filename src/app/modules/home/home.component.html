@@ -107,7 +107,7 @@
         </div>
       </div>
     </section>
-    
+
 
     <app-search-resort></app-search-resort>
 
@@ -166,11 +166,13 @@
           <div class="col-md-8">
             <h2 class="mb-3">Gallery</h2>
             <div class="masonry-layout" id="vanavihari-gallery">
+
+              <lightgallery [settings]="settings" >
+                <a *ngFor="let item of imageFilenames" className="gallery-item" [attr.href]="item">
+                  <img className="img-responsive" src="{{ item }}" />
+                </a>
+                </lightgallery>
               <!-- Loop through the image filenames array and generate HTML elements -->
-              <div *ngFor="let filename of imageFilenames" class="masonry-layout-item">
-                <!-- Use filename in the src attribute of the img tag -->
-                <img [src]="'assets/img/home-gallery/' + filename" [alt]="filename" />
-              </div>
             </div>
           </div>
           <div class="col-md-4">
@@ -220,16 +222,11 @@
           <div class="col-md-8">
             <h2 class="mb-3">Gallery</h2>
             <div class="masonry-layout" id="junglestar-gallery">
-              <!-- Loop through the image filenames array and generate HTML elements -->
-              <div *ngFor="let filename1 of imageFilenames1" class="masonry-layout-item">
-                <a href="assets/img/home-gallery-junglestar/{{ filename1 }}">
-                  <!-- Use filename in the src attribute of the img tag -->
-                  <img [src]="'assets/img/home-gallery-junglestar/' + filename1" [alt]="filename1" />
+              <lightgallery [settings]="settings" >
+                <a *ngFor="let item of imageFilenames1" className="gallery-item" [attr.href]="item">
+                  <img className="img-responsive" src="{{ item }}" />
                 </a>
-                <!-- <div *ngFor="let filename1 of imageFilenames1" class="masonry-layout-item">
-                  <img [src]="'assets/img/home-gallery-junglestar/' + filename1" [alt]="filename1" />
-                </div> -->
-              </div>
+                </lightgallery>
             </div>
           </div>
           <div class="col-md-4">
@@ -275,18 +272,18 @@
     <section class="gallery">
       <div class="container">
         <h2>Gallery</h2>
-            
-            <lightgallery class="row" [settings]="settings" [onBeforeSlide]="onBeforeSlide">
-              
-              <a class="col-md-3" href="assets/img/home-gallery/vanavihari-home-gallery-1.jpg">
-                <img alt="img1" src="assets/img/home-gallery/vanavihari-home-gallery-1.jpg" />
-              </a>
-              <a class="col-md-3" href="assets/img/home-gallery/vanavihari-home-gallery-2.jpg">
-                  <img alt="img1" src="assets/img/home-gallery/vanavihari-home-gallery-2.jpg" />
-              </a>
-              <!-- Add more images as needed -->
-            </lightgallery>
-            
+
+        <lightgallery class="row" [settings]="settings" [onBeforeSlide]="onBeforeSlide">
+
+          <a class="col-md-3" href="assets/img/home-gallery/vanavihari-home-gallery-1.jpg">
+            <img alt="img1" src="assets/img/home-gallery/vanavihari-home-gallery-1.jpg" />
+          </a>
+          <a class="col-md-3" href="assets/img/home-gallery/vanavihari-home-gallery-2.jpg">
+            <img alt="img1" src="assets/img/home-gallery/vanavihari-home-gallery-2.jpg" />
+          </a>
+          <!-- Add more images as needed -->
+        </lightgallery>
+
       </div>
     </section>
 

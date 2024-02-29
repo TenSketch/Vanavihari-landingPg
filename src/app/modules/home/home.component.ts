@@ -37,8 +37,8 @@ export class HomeComponent implements OnInit {
     this.currentImage = this.imageFilenames[0];
     // Generate image filenames from vanavihari-home-gallery-2.jpg to vanavihari-home-gallery-16.jpg
     for (let i = 2; i <= 16; i++) {
-      this.imageFilenames.push(`vanavihari-home-gallery-${i}.jpg`);
-      this.imageFilenames1.push(`junglestar-home-gallery-${i}.jpg`);
+      this.imageFilenames.push(`assets/img/home-gallery/vanavihari-home-gallery-${i}.jpg`);
+      this.imageFilenames1.push(`assets/img/home-gallery-junglestar/junglestar-home-gallery-${i}.jpg`);
     }
 
     this.updateAgeDropdowns(); // Initialize age dropdowns
@@ -57,6 +57,9 @@ export class HomeComponent implements OnInit {
   // }
 
   ngOnInit(): void {
+    console.log(this.imageFilenames);
+    console.log(this.imageFilenames1)
+    
     // Retrieve the logged-in user's data using the UserService
     const user = this.userService.getUser();
     this.currentUser = user ? user.full_name : '';
