@@ -40,18 +40,11 @@ export class SignInComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      const publickey = '3gJbpvFUR8pR3knE8u0tMtt8p';
-      const randomBytes = new Uint8Array(12);
-      window.crypto.getRandomValues(randomBytes);
-      const token = Array.from(randomBytes, (byte) =>
-        ('0' + (byte & 0xff).toString(16)).slice(-2)
-      ).join('');
       const params = new HttpParams()
-        .set('user_name', this.form.value.mobile_number)
-        .set('password', this.form.value.password)
-        .set('get_token', token);
+        .set('username', this.form.value.mobile_number)
+        .set('password', this.form.value.password);
 
-      this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=login', {params}).subscribe({
+      this.http.post<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=login', {params}).subscribe({
         next: response => {
           if(response.code == 3000) {
             var res = response.result;
