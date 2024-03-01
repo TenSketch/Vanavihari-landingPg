@@ -13,7 +13,12 @@ html {
 body {
   // font-size: 0.875rem;
   // background-color: $clr-light;
-  font-family: "Inter", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  // font-weight: ;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
   color: $clr-dark;
   overflow-x: hidden;
 
@@ -30,6 +35,9 @@ a {
 img {
   max-width: 100%;
   height: auto;
+}
+h1, h2, h3, h4, h5, h6{
+  color: $clr-secondary;
 }
 
 .logo {
@@ -102,6 +110,9 @@ img {
   background-blend-mode: overlay;
   color: white;
   min-height: 70vh;
+  h1{
+    color: $clr-light;
+  }
 }
 
 .breadcrumb {

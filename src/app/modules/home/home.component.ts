@@ -1,4 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { HttpClient } from '@angular/common/http';
 import { NativeDateAdapter } from '@angular/material/core';
 //import { CustomEvent } from '@angular/elements';
@@ -33,7 +35,7 @@ export class HomeComponent implements OnInit {
   imageFilenames: string[] = [];
   imageFilenames1: string[] = [];
   currentImage: string | null = null;
-  constructor(private http: HttpClient, private userService: UserService) {
+  constructor(private router: Router, private http: HttpClient, private userService: UserService) {
     this.currentImage = this.imageFilenames[0];
     // Generate image filenames from vanavihari-home-gallery-2.jpg to vanavihari-home-gallery-16.jpg
     for (let i = 2; i <= 16; i++) {
@@ -136,6 +138,13 @@ export class HomeComponent implements OnInit {
   onBeforeSlide(detail: BeforeSlideDetail): void {
     const { index, prevIndex } = detail;
     console.log(`Slide changed from ${prevIndex} to ${index}`);
+  }
+  goToVanavihari() {
+    this.router.navigate(['/resort-listing']);
+  }
+  goToJungleStar(){
+    this.router.navigate(['/resort-listing']);
+
   }
 }
 function moveLeft() {

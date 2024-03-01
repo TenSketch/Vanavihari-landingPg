@@ -1,19 +1,19 @@
 // primary colors
-$hue-primary: 202;
-$saturation-primary: 67%;
-$lightness-primary: 52%;
+$hue-primary: 90;
+$saturation-primary: 100%;
+$lightness-primary: 10%;
 
-$clr-primary: hsl(202, 67%, 52%); //339ad7
-$clr-primary-dark: rgb(35, 126, 179);
-$clr-primary-light: hsl(202 67% 90%);
+$clr-primary: hsl(90, 100%, 30%); //339ad7
+$clr-primary-dark: hsl(90, 100%, 10%);
+$clr-primary-light: hsl(90, 100%, 70%);
 
 // secondary colors
 $hue-secondary: 96;
 $saturation-secondary: 100%;
 $lightness-secondary: 41%;
 
-$clr-secondary: hsl(96 100% 41%);
-$clr-secondary-light: hsl(96 100% 80%);
+$clr-secondary: hsl(15, 100%, 15%);
+$clr-secondary-light: hsl(15, 100%, 55%);
 
 $clr-light: hsl(196, 100%, 98%);
 $clr-dark: hsl(0, 0%, 15%);

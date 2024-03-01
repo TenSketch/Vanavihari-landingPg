@@ -83,8 +83,10 @@
         <span class="visually-hidden">Next</span>
       </button>
     </section>
+    <app-search-resort></app-search-resort>
     <section class="about py-5">
       <div class="container">
+        <h2 class="text-center">Get to know about Vanavihari</h2>
         <div class="row">
           <div class="col-md-8 mx-auto">
             <p class="text-center border border-1 mb-0">
@@ -107,18 +109,14 @@
         </div>
       </div>
     </section>
-
-
-    <app-search-resort></app-search-resort>
-
     <section class="resort-intro py-5">
       <div class="container">
         <h1 class="text-center mb-4">Our Resorts</h1>
         <div class="row justify-content-around">
           <div class="col-md-4">
-            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
+            <div class="card justify-content-between" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
               <img src="assets/img/Vanavihari-reception.jpg" class="card-img-top" alt="Vanavihari, Maredumilli" />
-              <div class="card-body text-center">
+              <div class="card-body text-center flex-grow-1">
                 <h5 class="card-title">Vanavihari, Maredumilli</h5>
                 <p class="card-text">
                   Vanavihari resort, nestled in Maredumilli, is a haven for
@@ -130,7 +128,7 @@
                 </p>
               </div>
               <div class="card-footer d-flex justify-content-center bg-transparent">
-                <button mat-raised-button color="primary">View details</button>
+                <button mat-raised-button color="primary" (click)="goToVanavihari()">View details</button>
               </div>
             </div>
           </div>
@@ -151,7 +149,7 @@
                 </p>
               </div>
               <div class="card-footer d-flex justify-content-center bg-transparent">
-                <button mat-raised-button color="primary">View details</button>
+                <button mat-raised-button color="primary" (click)="goToJungleStar()">View details</button>
               </div>
             </div>
           </div>
@@ -198,12 +196,12 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Rajahmundry Railway Station</td>
+                    <td><i class="fa-solid fa-train me-2"></i>Rajahmundry Railway Station</td>
                     <td>84 km</td>
                     <td>2 hours</td>
                   </tr>
                   <tr>
-                    <td>Rajahmundry Airport</td>
+                    <td><i class="fa-solid fa-plane-arrival me-2"></i>Rajahmundry Airport</td>
                     <td>69.7 km</td>
                     <td>1 hour 30 minutes</td>
                   </tr>
@@ -252,12 +250,12 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Rajahmundry Railway Station</td>
+                    <td><i class="fa-solid fa-train me-2"></i>Rajahmundry Railway Station</td>
                     <td>94.7 km</td>
                     <td>2 hours 24 minutes</td>
                   </tr>
                   <tr>
-                    <td>Rajahmundry Airport</td>
+                    <td><i class="fa-solid fa-plane-arrival me-2"></i>Rajahmundry Airport</td>
                     <td>79.4 km</td>
                     <td>1 hour 52 minutes</td>
                   </tr>
@@ -268,25 +266,6 @@
         </div>
       </div>
     </section>
-    <!-- lightbox gallery -->
-    <section class="gallery">
-      <div class="container">
-        <h2>Gallery</h2>
-
-        <lightgallery class="row" [settings]="settings" [onBeforeSlide]="onBeforeSlide">
-
-          <a class="col-md-3" href="assets/img/home-gallery/vanavihari-home-gallery-1.jpg">
-            <img alt="img1" src="assets/img/home-gallery/vanavihari-home-gallery-1.jpg" />
-          </a>
-          <a class="col-md-3" href="assets/img/home-gallery/vanavihari-home-gallery-2.jpg">
-            <img alt="img1" src="assets/img/home-gallery/vanavihari-home-gallery-2.jpg" />
-          </a>
-          <!-- Add more images as needed -->
-        </lightgallery>
-
-      </div>
-    </section>
-
     <!-- testimonials -->
     <section class="testimonials">
       <div class="container mt-5">

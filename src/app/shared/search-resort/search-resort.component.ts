@@ -1,11 +1,14 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-resort',
   templateUrl: './search-resort.component.html',
   styleUrls: ['./search-resort.component.scss'],
 })
-export class SearchResortComponent {
+export class SearchResortComponent implements OnInit {
+  ngOnInit(): void {}
+
   //searchbar model
   @ViewChild('modal') modal: ElementRef;
   adultsCount: number = 1;
@@ -17,7 +20,8 @@ export class SearchResortComponent {
   ageDropdowns: number[];
   RoomValues:any
 
-  constructor() {
+  constructor(private router: Router) {
+    
     this.updateAgeDropdowns();
     this.RoomValues="Adult-"+2+" Children- "+0+" Rooms-"+1
   }
@@ -90,5 +94,8 @@ export class SearchResortComponent {
 console.log(this.roomsCount,this.adultsCount);
 
 
+  }
+  goToVanavihari() {
+    this.router.navigate(['/resort-listing']);
   }
 }
