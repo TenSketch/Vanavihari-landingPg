@@ -28,7 +28,11 @@
         </li>
         <li class="nav-item" *ngIf="!isLoggedIn()">
           <a class="nav-link" routerLink="/sign-in" routerLinkActive="active" ariaCurrentWhenActive="page">
-            <i class="fa-solid fa-sign-in"></i> Sign In</a>
+            <i class="fa-solid fa-key"></i> Sign in</a>
+        </li>
+        <li class="nav-item" *ngIf="!isLoggedIn()">
+          <a class="nav-link" routerLink="/sign-up" routerLinkActive="active" ariaCurrentWhenActive="page">
+            <i class="fa-solid fa-sign-in"></i> Sign up</a>
         </li>
         <!-- *ngIf="isLoggedIn()" -->
         <li class="nav-item dropdown">
@@ -74,8 +78,8 @@
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
               data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                <a class="dropdown-item" (click)="goToVanavihari()">Vanavihari, Maredumilli</a>
-                <a class="dropdown-item" (click)="goToJungleStar()">Jungle Star, Valamuru</a>
+                <a class="dropdown-item" (click)="toggleSidebar(); goToVanavihari()">Vanavihari, Maredumilli</a>
+                <a class="dropdown-item" (click)="toggleSidebar(); goToJungleStar()">Jungle Star, Valamuru</a>
               </div>
             </div>
           </div>
@@ -83,7 +87,7 @@
         </div>
 
         <li class="sidebar-item">
-          <a class="sidebar-link" (click)="goToAboutUs()">
+          <a class="sidebar-link" (click)="toggleSidebar(); goToAboutUs()">
             <i class="fa-solid fa-info-circle"></i> About Us
           </a>
         </li>
@@ -93,7 +97,7 @@
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" (click)="goToTribalPg()">
+          <a class="sidebar-link" (click)="toggleSidebar(); goToTribalPg()">
             <i class="fa-solid fa-users"></i> Tribal Community
           </a>
         </li>
@@ -120,7 +124,11 @@
 
         <li class="sidebar-item">
           <a class="sidebar-link d-lg-none" routerLink="/sign-in" routerLinkActive="active"
-            ariaCurrentWhenActive="page">Sign In</a>
+            ariaCurrentWhenActive="page"><i class="fa-solid fa-key"></i> Sign in</a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link d-lg-none" routerLink="/sign-up" routerLinkActive="active"
+            ariaCurrentWhenActive="page"><i class="fa-solid fa-sign-in"></i> Sign up</a>
         </li>
       </ul>
 
