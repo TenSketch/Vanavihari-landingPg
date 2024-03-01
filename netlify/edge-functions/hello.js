@@ -65,9 +65,9 @@ export default async (req) => {
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*', // Allow requests from any origin
-                'Access-Control-Allow-Origin': 'https://www.zohoapis.com',
+                // 'Access-Control-Allow-Origin': 'https://www.zohoapis.com',
             },
-            body: JSON.stringify(requestBody), // Include any request body if needed
+            // body: JSON.stringify(requestBody), // Include any request body if needed
         });
 
 
