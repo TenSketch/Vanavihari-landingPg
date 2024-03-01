@@ -1,17 +1,17 @@
-import { get } from 'axios';
-import { json } from 'body-parser';
+import axios from 'axios';
+import bodyParser from 'body-parser';
 import { URLSearchParams } from 'url';
 import cors from 'cors';
 
-import express from 'express';
+const express = require('express');
 const app = express();
 
-app.use(json());
+app.use(bodyParser.json());
 app.use(cors());
 
 const apiLink = 'https://www.zohoapis.com/creator/custom/vanavihari/';
 
-export async function handler(event, context) {
+exports.handler = async (event, context) => {
   const { path, httpMethod, body } = event;
 
   if (path === '/registration' && httpMethod === 'POST') {
@@ -23,7 +23,7 @@ export async function handler(event, context) {
     const finalUrl = `${apiUri}&${queryString}`;
 
     try {
-      const response = await get(finalUrl);
+      const response = await axios.get(finalUrl);
       return {
         statusCode: 200,
         body: JSON.stringify(response.data),
@@ -43,7 +43,7 @@ export async function handler(event, context) {
     const finalUrl = apiUri + '&' + 'token=' + verificationToken;
 
     try {
-      const response = await get(finalUrl);
+      const response = await axios.get(finalUrl);
       return {
         statusCode: 200,
         body: JSON.stringify(response.data),
@@ -65,7 +65,7 @@ export async function handler(event, context) {
     const finalUrl = `${apiUri}&${queryString}`;
 
     try {
-      const response = await get(finalUrl);
+      const response = await axios.get(finalUrl);
       return {
         statusCode: 200,
         body: JSON.stringify(response.data),
@@ -82,4 +82,4 @@ export async function handler(event, context) {
     statusCode: 404,
     body: JSON.stringify({ error: 'Not Found' }),
   };
-}
+};
