@@ -1,5 +1,24 @@
 export default async (req) => {
     try {
+        const { query } = req;
+        if (!query || !query.params) {
+            return new Response(JSON.stringify({ error: 'Missing required parameters' }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+        const { updates, cloneFrom, encoder, map } = query.params;
+        if (!updates || !Array.isArray(updates)) {
+            return new Response(JSON.stringify({ error: 'Invalid updates parameter' }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+        const queryParams = updates.reduce((acc, { param, value }) => {
+            acc[param] = value;
+            return acc;
+        }, {});
+        /*
         const queryParams = new URLSearchParams(req.url.split('?')[1]);
         console.log(queryParams);
         if (!queryParams) {
@@ -18,40 +37,40 @@ export default async (req) => {
             });
         }
 
-        const apiType =queryParams.get('api_type');
-
+        */
+       const apiType = queryParams.api_type;
         let apiUrl = '';
         let method = '';
         let requestBody = {};
         switch (apiType) {
             case 'register':
-                if (!queryParams.has('fullname') || !queryParams.has('email') || !queryParams.has('mobile') || !queryParams.has('password')) {
+                if (!queryParams.fullname || !queryParams.email || !queryParams.mobile || !queryParams.password) {
                     return new Response(JSON.stringify({ error: 'Missing required parameters for register' }), {
                         status: 400,
                         headers: { 'Content-Type': 'application/json' },
                     });
                 }
-                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Account_Registration?publickey=8xZYn5bvUfjjBVVpvK7qAsKsR&full_name=${queryParams.get('fullname')}&email=${queryParams.get('email')}&mobile=${queryParams.get('mobile')}&password=${queryParams.get('password')}`;
+                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Account_Registration?publickey=8xZYn5bvUfjjBVVpvK7qAsKsR&full_name=${queryParams.fullname}&email=${queryParams.email}&mobile=${queryParams.mobile}&password=${queryParams.password}`;
                 method = 'GET';
                 break;
             case 'login':
-                if (!queryParams.has('username') || !queryParams.has('password')) {
+                if (!queryParams.username || !queryParams.password) {
                     return new Response(JSON.stringify({ error: 'Missing required parameters for login' }), {
                         status: 400,
                         headers: { 'Content-Type': 'application/json' },
                     });
                 }
-                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Login_Validation?publickey=3gJbpvFUR8pR3knE8u0tMtt8p&user_name=${queryParams.get('username')}&password=${queryParams.get('password')}`;
+                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Login_Validation?publickey=3gJbpvFUR8pR3knE8u0tMtt8p&user_name=${queryParams.username}&password=${queryParams.password}`;
                 method = 'GET';
                 break;
             case 'email_verification':
-                if (!queryParams.has('token')) {
+                if (!queryParams.token) {
                     return new Response(JSON.stringify({ error: 'Missing required parameters for email verification' }), {
                         status: 400,
                         headers: { 'Content-Type': 'application/json' },
                     });
                 }
-                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Email_Verification?publickey=fArmqypVSku88tfArkejTR5wq&token=${queryParams.get('token')}`;
+                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Email_Verification?publickey=fArmqypVSku88tfArkejTR5wq&token=${queryParams.token}`;
                 method = 'GET';
                 break;
             default:
