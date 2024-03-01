@@ -5,7 +5,7 @@ import axios from 'axios';
 export async function handler(event, context) {
   try {
     // Make an API call
-    const response = await axios.get('https://api.example.com/data');
+    const response = await axios.get('https://www.zohoapis.com/creator/custom/vanavihari/Login_Validation?publickey=3gJbpvFUR8pR3knE8u0tMtt8p&user_name=venkat408prabhu@gmail.com&password=123456');
 
     // Extract data from the API response
     const responseData = response.data;
