@@ -1,11 +1,11 @@
 // apiCallFunction.js
 
-const axios = require('axios');
+import { get } from 'axios';
 
-module.exports = async (event, context) => {
+export default async (event, context) => {
   try {
     // Make an API call
-    const response = await axios.get('https://www.zohoapis.com/creator/custom/vanavihari/Login_Validation?publickey=3gJbpvFUR8pR3knE8u0tMtt8p&user_name=venkat408prabhu@gmail.com&password=123456');
+    const response = await get('https://www.zohoapis.com/creator/custom/vanavihari/Login_Validation?publickey=3gJbpvFUR8pR3knE8u0tMtt8p&user_name=venkat408prabhu@gmail.com&password=123456');
 
     // Extract data from the API response
     const responseData = response.data;
