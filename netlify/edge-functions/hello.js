@@ -1,6 +1,14 @@
 export default async (req) => {
     try {
-        const { query } = req;
+        const query = new URLSearchParams(req.url.split('?')[1]);
+        console.log(query);
+        if (!query) {
+            return new Response(JSON.stringify({ error: 'Invalid request' }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+        console.log(req);
         console.log(query);
         if (!query || !query.params) {
             return new Response(JSON.stringify({ error: 'Missing required parameters' }), {
