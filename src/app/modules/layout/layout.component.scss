@@ -5,7 +5,7 @@ $nav-bar-height:10vh;
   min-height: $nav-bar-height;
   .navbar-brand {
     img {
-      width: clamp(15vw, 200px, 5rem);
+      width: clamp(15vw, 200px, 30vw);
     }
   }
   .navbar-toggler{
