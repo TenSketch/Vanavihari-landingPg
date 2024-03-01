@@ -16,7 +16,7 @@ export default async (req) => {
             });
         }
 
-        const apiType = query.api_type;
+        const apiType =queryParams.get('api_type');
 
         let apiUrl = '';
         let method = '';
@@ -30,7 +30,7 @@ export default async (req) => {
                         headers: { 'Content-Type': 'application/json' },
                     });
                 }
-                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Account_Registration?publickey=8xZYn5bvUfjjBVVpvK7qAsKsR&full_name=${fullname}&email=${email}&mobile=${mobile}&password=${password}`;
+                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Account_Registration?publickey=8xZYn5bvUfjjBVVpvK7qAsKsR&full_name=${queryParams.get('fullname')}&email=${queryParams.get('email')}&mobile=${queryParams.get('mobile')}&password=${queryParams.get('password')}`;
                 method = 'POST';
                 break;
             case 'login':
@@ -41,7 +41,7 @@ export default async (req) => {
                         headers: { 'Content-Type': 'application/json' },
                     });
                 }
-                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Login_Validation?publickey=3gJbpvFUR8pR3knE8u0tMtt8p&user_name=${username}&password=${password}`;
+                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Login_Validation?publickey=3gJbpvFUR8pR3knE8u0tMtt8p&user_name=${queryParams.get('username')}&password=${queryParams.get('password')}`;
                 method = 'GET';
                 break;
             case 'email_verification':
@@ -52,7 +52,7 @@ export default async (req) => {
                         headers: { 'Content-Type': 'application/json' },
                     });
                 }
-                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Email_Verification?publickey=fArmqypVSku88tfArkejTR5wq&token=${token}`;
+                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Email_Verification?publickey=fArmqypVSku88tfArkejTR5wq&token=${queryParams.get('token')}`;
                 method = 'GET';
                 break;
             default:
