@@ -23,7 +23,6 @@ export default async (req) => {
         let requestBody = {};
         switch (apiType) {
             case 'register':
-                // Check if required parameters for 'register' are present
                 if (!queryParams.has('fullname') || !queryParams.has('email') || !queryParams.has('mobile') || !queryParams.has('password')) {
                     return new Response(JSON.stringify({ error: 'Missing required parameters for register' }), {
                         status: 400,
@@ -31,10 +30,9 @@ export default async (req) => {
                     });
                 }
                 apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Account_Registration?publickey=8xZYn5bvUfjjBVVpvK7qAsKsR&full_name=${queryParams.get('fullname')}&email=${queryParams.get('email')}&mobile=${queryParams.get('mobile')}&password=${queryParams.get('password')}`;
-                method = 'POST';
+                method = 'GET';
                 break;
             case 'login':
-                // Check if required parameters for 'login' are present
                 if (!queryParams.has('username') || !queryParams.has('password')) {
                     return new Response(JSON.stringify({ error: 'Missing required parameters for login' }), {
                         status: 400,
@@ -45,7 +43,6 @@ export default async (req) => {
                 method = 'GET';
                 break;
             case 'email_verification':
-                // Check if required parameters for 'email_verification' are present
                 if (!queryParams.has('token')) {
                     return new Response(JSON.stringify({ error: 'Missing required parameters for email verification' }), {
                         status: 400,
@@ -61,12 +58,14 @@ export default async (req) => {
                     headers: { 'Content-Type': 'application/json' },
                 });
         }
-
+        console.log(apiUrl);
+        console.log(method);
         const response = await fetch(apiUrl, {
             method: method,
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*', // Allow requests from any origin
+                'Access-Control-Allow-Origin': 'https://www.zohoapis.com',
             },
             body: JSON.stringify(requestBody), // Include any request body if needed
         });
