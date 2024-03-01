@@ -1,11 +1,11 @@
-// apiCallFunction.js
+// hello.js
 
-import { get } from 'axios';
+import axios from 'axios';
 
-export default async (event, context) => {
+export async function handler(event, context) {
   try {
     // Make an API call
-    const response = await get('https://www.zohoapis.com/creator/custom/vanavihari/Login_Validation?publickey=3gJbpvFUR8pR3knE8u0tMtt8p&user_name=venkat408prabhu@gmail.com&password=123456');
+    const response = await axios.get('https://api.example.com/data');
 
     // Extract data from the API response
     const responseData = response.data;
@@ -22,4 +22,4 @@ export default async (event, context) => {
       body: JSON.stringify({ error: 'Internal Server Error' }),
     };
   }
-};
+}
