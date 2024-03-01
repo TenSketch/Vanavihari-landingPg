@@ -1,12 +1,12 @@
 export default async (req) => {
     try {
+        console.log(req);
         if (!req || !req.query) {
             return new Response(JSON.stringify({ error: 'Invalid request' }), {
                 status: 400,
                 headers: { 'Content-Type': 'application/json' },
             });
         }
-        console.log(req);
         const { query } = req;
         if (!query.api_type) {
             return new Response(JSON.stringify({ error: 'Missing required parameters' }), {
