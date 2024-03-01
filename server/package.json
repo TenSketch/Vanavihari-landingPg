@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "netlify/edge-functions/zohoConnect.js",
+  "main": "netlify/functions/hello.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +18,6 @@
     "url": "^0.11.3"
   },
   "netlify": {
-    "functions": "netlify/edge-functions"
+    "functions": "netlify/functions"
   }
 }
