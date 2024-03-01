@@ -8,7 +8,9 @@ export default async (req) => {
                 headers: { 'Content-Type': 'application/json' },
             });
         }
+        console.log(queryParams);
         const { query } = req;
+        console.log(query);
         if (!queryParams.has('api_type')) {
             return new Response(JSON.stringify({ error: 'Missing required parameters' }), {
                 status: 400,
@@ -58,8 +60,8 @@ export default async (req) => {
                     headers: { 'Content-Type': 'application/json' },
                 });
         }
-        console.log(apiUrl);
-        console.log(method);
+        // console.log(apiUrl);
+        // console.log(method);
         const response = await fetch(apiUrl, {
             method: method,
             headers: {

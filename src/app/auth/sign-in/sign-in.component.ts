@@ -51,7 +51,7 @@ export class SignInComponent implements OnInit {
         .set('password', this.form.value.password)
         .set('get_token', token);
 
-      this.authService.sendDataToServer('Login_Validation?publickey='+publickey, params).subscribe({
+      this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=login', {params}).subscribe({
         next: response => {
           if(response.code == 3000) {
             var res = response.result;
