@@ -14,14 +14,14 @@ export class EmailVerificationComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
+    private http: HttpClient,
     private emailVerifyService: EmailVerifyService
   ) {}
 
   ngOnInit(): void {
-    const publickey = 'fArmqypVSku88tfArkejTR5wq';
     const verificationToken = this.route.snapshot.paramMap.get('token');
     if (verificationToken) {
-      this.authService.sendDataToServer('Email_Verification?publickey='+publickey+'&token='+verificationToken, '').subscribe({
+      this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=email_verification&token='+verificationToken).subscribe({
         next: response => {
           if(response.code == 3000) {
             if(response.result == 'success') {
