@@ -1,6 +1,7 @@
 export default async (req) => {
     try {
         const { query } = req;
+        console.log(query);
         if (!query || !query.params) {
             return new Response(JSON.stringify({ error: 'Missing required parameters' }), {
                 status: 400,
