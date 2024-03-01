@@ -6,6 +6,7 @@ export default async (req) => {
                 headers: { 'Content-Type': 'application/json' },
             });
         }
+        console.log(req);
         const { query } = req;
         if (!query.api_type) {
             return new Response(JSON.stringify({ error: 'Missing required parameters' }), {
