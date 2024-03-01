@@ -1,18 +1,18 @@
 export default async (req) => {
-    const { query } = req;
-    if (!query.api_type) {
-        return new Response(JSON.stringify({ error: 'Missing required parameters' }), {
-            status: 400,
-            headers: { 'Content-Type': 'application/json' },
-        });
-    }
-
-    const apiType = query.api_type;
-
-    let apiUrl = '';
-    let method = '';
-    let requestBody = {};
     try {
+        const { query } = req;
+        if (!query.api_type) {
+            return new Response(JSON.stringify({ error: 'Missing required parameters' }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+
+        const apiType = query.api_type;
+
+        let apiUrl = '';
+        let method = '';
+        let requestBody = {};
         switch (apiType) {
             case 'register':
                 // Check if required parameters for 'register' are present
