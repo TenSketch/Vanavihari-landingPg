@@ -1,44 +1,15 @@
 export default async (req) => {
     try {
-        const query = new URLSearchParams(req.url.split('?')[1]);
-        console.log(query);
-        if (!query) {
-            return new Response(JSON.stringify({ error: 'Invalid request' }), {
-                status: 400,
-                headers: { 'Content-Type': 'application/json' },
-            });
-        }
-        console.log(req);
-        console.log(query);
-        if (!query || !query.params) {
-            return new Response(JSON.stringify({ error: 'Missing required parameters' }), {
-                status: 400,
-                headers: { 'Content-Type': 'application/json' },
-            });
-        }
-        const { updates, cloneFrom, encoder, map } = query.params;
-        if (!updates || !Array.isArray(updates)) {
-            return new Response(JSON.stringify({ error: 'Invalid updates parameter' }), {
-                status: 400,
-                headers: { 'Content-Type': 'application/json' },
-            });
-        }
-        const queryParams = updates.reduce((acc, { param, value }) => {
-            acc[param] = value;
-            return acc;
-        }, {});
-        /*
         const queryParams = new URLSearchParams(req.url.split('?')[1]);
-        console.log(queryParams);
+        // console.log(queryParams);
         if (!queryParams) {
             return new Response(JSON.stringify({ error: 'Invalid request' }), {
                 status: 400,
                 headers: { 'Content-Type': 'application/json' },
             });
         }
-        console.log(queryParams);
-        const { query } = req;
-        console.log(query);
+        // console.log(queryParams);
+        // const { query } = req;
         if (!queryParams.has('api_type')) {
             return new Response(JSON.stringify({ error: 'Missing required parameters' }), {
                 status: 400,
@@ -46,40 +17,40 @@ export default async (req) => {
             });
         }
 
-        */
-       const apiType = queryParams.api_type;
+        const apiType =queryParams.get('api_type');
+
         let apiUrl = '';
         let method = '';
         let requestBody = {};
         switch (apiType) {
             case 'register':
-                if (!queryParams.fullname || !queryParams.email || !queryParams.mobile || !queryParams.password) {
+                if (!queryParams.has('fullname') || !queryParams.has('email') || !queryParams.has('mobile') || !queryParams.has('password')) {
                     return new Response(JSON.stringify({ error: 'Missing required parameters for register' }), {
                         status: 400,
                         headers: { 'Content-Type': 'application/json' },
                     });
                 }
-                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Account_Registration?publickey=8xZYn5bvUfjjBVVpvK7qAsKsR&full_name=${queryParams.fullname}&email=${queryParams.email}&mobile=${queryParams.mobile}&password=${queryParams.password}`;
+                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Account_Registration?publickey=8xZYn5bvUfjjBVVpvK7qAsKsR&full_name=${queryParams.get('fullname')}&email=${queryParams.get('email')}&mobile=${queryParams.get('mobile')}&password=${queryParams.get('password')}`;
                 method = 'GET';
                 break;
             case 'login':
-                if (!queryParams.username || !queryParams.password) {
+                if (!queryParams.has('username') || !queryParams.has('password')) {
                     return new Response(JSON.stringify({ error: 'Missing required parameters for login' }), {
                         status: 400,
                         headers: { 'Content-Type': 'application/json' },
                     });
                 }
-                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Login_Validation?publickey=3gJbpvFUR8pR3knE8u0tMtt8p&user_name=${queryParams.username}&password=${queryParams.password}`;
+                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Login_Validation?publickey=3gJbpvFUR8pR3knE8u0tMtt8p&user_name=${queryParams.get('username')}&password=${queryParams.get('password')}`;
                 method = 'GET';
                 break;
             case 'email_verification':
-                if (!queryParams.token) {
+                if (!queryParams.has('token')) {
                     return new Response(JSON.stringify({ error: 'Missing required parameters for email verification' }), {
                         status: 400,
                         headers: { 'Content-Type': 'application/json' },
                     });
                 }
-                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Email_Verification?publickey=fArmqypVSku88tfArkejTR5wq&token=${queryParams.token}`;
+                apiUrl = `https://www.zohoapis.com/creator/custom/vanavihari/Email_Verification?publickey=fArmqypVSku88tfArkejTR5wq&token=${queryParams.get('token')}`;
                 method = 'GET';
                 break;
             default:
