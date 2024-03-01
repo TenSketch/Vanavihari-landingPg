@@ -1,14 +1,15 @@
 export default async (req) => {
     try {
-        console.log(req);
-        if (!req || !req.query) {
+        const queryParams = new URLSearchParams(req.url.split('?')[1]);
+        console.log(queryParams);
+        if (!queryParams) {
             return new Response(JSON.stringify({ error: 'Invalid request' }), {
                 status: 400,
                 headers: { 'Content-Type': 'application/json' },
             });
         }
         const { query } = req;
-        if (!query.api_type) {
+        if (!queryParams.has('api_type')) {
             return new Response(JSON.stringify({ error: 'Missing required parameters' }), {
                 status: 400,
                 headers: { 'Content-Type': 'application/json' },
@@ -23,7 +24,7 @@ export default async (req) => {
         switch (apiType) {
             case 'register':
                 // Check if required parameters for 'register' are present
-                if (!query.fullname || !query.email || !query.mobile || !query.password) {
+                if (!queryParams.has('fullname') || !queryParams.has('email') || !queryParams.has('mobile') || !queryParams.has('password')) {
                     return new Response(JSON.stringify({ error: 'Missing required parameters for register' }), {
                         status: 400,
                         headers: { 'Content-Type': 'application/json' },
@@ -34,7 +35,7 @@ export default async (req) => {
                 break;
             case 'login':
                 // Check if required parameters for 'login' are present
-                if (!query.username || !query.password) {
+                if (!queryParams.has('username') || !queryParams.has('password')) {
                     return new Response(JSON.stringify({ error: 'Missing required parameters for login' }), {
                         status: 400,
                         headers: { 'Content-Type': 'application/json' },
@@ -45,7 +46,7 @@ export default async (req) => {
                 break;
             case 'email_verification':
                 // Check if required parameters for 'email_verification' are present
-                if (!query.token) {
+                if (!queryParams.has('token')) {
                     return new Response(JSON.stringify({ error: 'Missing required parameters for email verification' }), {
                         status: 400,
                         headers: { 'Content-Type': 'application/json' },
