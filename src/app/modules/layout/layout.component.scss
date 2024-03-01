@@ -1,11 +1,16 @@
 @use "/src/scss/base/" as *;
+$nav-bar-height:10vh;
+.navbar {
 
-nav {
-
-  // height: 10vh;
+  min-height: $nav-bar-height;
   .navbar-brand {
     img {
       width: clamp(15vw, 200px, 5rem);
+    }
+  }
+  .navbar-toggler{
+    &:focus{
+      box-shadow: none;
     }
   }
 
@@ -21,10 +26,10 @@ nav {
 
 #sidebar {
   position: fixed;
-  top: 9%;
-  left: -90%;
-  height: 91vh;
-  width: 90%;
+  top: $nav-bar-height;
+  left: -100%;
+  height: calc(100% - #{$nav-bar-height});
+  width: 100%;
   background-color: #333;
   z-index: 1000;
   transition: left 0.3s ease;
