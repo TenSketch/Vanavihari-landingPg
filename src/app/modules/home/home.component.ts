@@ -59,8 +59,8 @@ export class HomeComponent implements OnInit {
   // }
 
   ngOnInit(): void {
-    console.log(this.imageFilenames);
-    console.log(this.imageFilenames1)
+    // console.log(this.imageFilenames);
+    // console.log(this.imageFilenames1)
     
     // Retrieve the logged-in user's data using the UserService
     const user = this.userService.getUser();
@@ -137,7 +137,7 @@ export class HomeComponent implements OnInit {
 
   onBeforeSlide(detail: BeforeSlideDetail): void {
     const { index, prevIndex } = detail;
-    console.log(`Slide changed from ${prevIndex} to ${index}`);
+    // console.log(`Slide changed from ${prevIndex} to ${index}`);
   }
   goToVanavihari() {
     this.router.navigate(['/resort-listing']);

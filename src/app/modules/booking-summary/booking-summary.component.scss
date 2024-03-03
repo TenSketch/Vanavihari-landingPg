@@ -1,68 +1,21 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-.mat-horizontal-stepper{
-  
-  position: relative;
-  z-index: 1;
-  display: flex;
-  width:100%;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
 .booking-summary {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start; 
-  height: 100vh;
-  padding: 20px; 
-}
-
-.first-column {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.second-column {
-  margin-left: 20px;
+  padding-top: 10rem;
 }
 
 .card {
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  width: 300px;
+  &+.card {
+    margin-top: 1rem;
+  }
 }
 
-.card h3 {
-  color: #333; 
-  margin-bottom: 10px; }
-
-.card p {
-  margin: 5px 0; 
-}
-
-.table-container {
-  margin-top: 10px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 10px;
-}
-
-table, th, td {
+table,
+th,
+td {
   border: 1px solid #ddd;
 }
 
-th, td {
+th,
+td {
   padding: 8px;
   text-align: left;
 }
@@ -71,41 +24,38 @@ th, td {
   margin-right: 5px;
 }
 
-.user-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.mat-form-filed{
-    width:100%;
-}
-button {
-  padding: 10px;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+.booking-terms {
+  .card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
 
-button:hover {
-  background-color: #45a049;
-}
-.flex-container{
-    display:flex;
-}
-.flex-column{
-    flex: 1;
-    margin-right: 20px;
-}
-.second-column{
-    flex:1;
+  .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
 
-}
-.card{
-    margin-bottom:20px;
-}
-.user-form{
-    padding-left: 300px;
-    max-width:600px;
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0.5rem;
+
+    li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+
+      &:before {
+        content: "\f0da"; // Font Awesome 6 icon for bullet
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 0.8rem;
+        color: #4CAF50; // Green color for bullet
+      }
+    }
+  }
 }
