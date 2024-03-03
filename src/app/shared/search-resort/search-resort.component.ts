@@ -26,11 +26,11 @@ export class SearchResortComponent implements OnInit {
     this.RoomValues="Adult-"+2+" Children- "+0+" Rooms-"+1
   }
 
-  openModal() {
-    const modal = this.modal.nativeElement;
-    modal.classList.add('show');
-    modal.style.display = 'block';
-  }
+  // openModal() {
+  //   const modal = this.modal.nativeElement;
+  //   modal.classList.add('show');
+  //   modal.style.display = 'block';
+  // }
 
   decrementAdults() {
     if (this.adultsCount > 1) {
@@ -96,6 +96,6 @@ console.log(this.roomsCount,this.adultsCount);
 
   }
   goToVanavihari() {
-    this.router.navigate(['/resort-listing']);
+    this.router.navigate(['/resorts/vanavihari-maredumilli']);
   }
 }

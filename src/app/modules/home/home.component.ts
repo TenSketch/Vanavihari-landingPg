@@ -140,10 +140,10 @@ export class HomeComponent implements OnInit {
     // console.log(`Slide changed from ${prevIndex} to ${index}`);
   }
   goToVanavihari() {
-    this.router.navigate(['/resort-listing']);
+    this.router.navigate(['/resorts/vanavihari-maredumilli']);
   }
   goToJungleStar(){
-    this.router.navigate(['/resort-listing']);
+    this.router.navigate(['/resorts/vanavihari-maredumilli']);
 
   }
 }

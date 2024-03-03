@@ -10,6 +10,6 @@ import { Router } from '@angular/router';
 export class BookingSummaryComponent {
   constructor(private router: Router) {}
   goToVanavihari() {
-    this.router.navigate(['/resort-listing']);
+    this.router.navigate(['/resorts/vanavihari-maredumilli']);
   }
 }

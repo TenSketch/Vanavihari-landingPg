@@ -83,13 +83,18 @@
         <span class="visually-hidden">Next</span>
       </button>
     </section>
-    <app-search-resort></app-search-resort>
+    <section class="my-5">
+      <div class="container">
+        <h2 class="text-center mb-4">Search room availability</h2>
+        <app-search-resort></app-search-resort>
+      </div>
+    </section>
     <section class="about py-5">
       <div class="container">
         <h2 class="text-center">Get to know about Vanavihari</h2>
         <div class="row">
           <div class="col-md-8 mx-auto">
-            <p class="text-center border border-1 mb-0">
+            <p class="text-center mb-0">
               Welcome to Vanavihari, where Community Based Eco-Tourism (CBET)
               thrives under the ownership of the Andhra Pradesh Forest
               Department. Our retreats are lovingly managed by local tribal
@@ -165,11 +170,11 @@
             <h2 class="mb-3">Gallery</h2>
             <div class="masonry-layout" id="vanavihari-gallery">
 
-              <lightgallery [settings]="settings" >
+              <lightgallery [settings]="settings">
                 <a *ngFor="let item of imageFilenames" className="gallery-item" [attr.href]="item">
                   <img className="img-responsive" src="{{ item }}" />
                 </a>
-                </lightgallery>
+              </lightgallery>
               <!-- Loop through the image filenames array and generate HTML elements -->
             </div>
           </div>
@@ -220,11 +225,11 @@
           <div class="col-md-8">
             <h2 class="mb-3">Gallery</h2>
             <div class="masonry-layout" id="junglestar-gallery">
-              <lightgallery [settings]="settings" >
+              <lightgallery [settings]="settings">
                 <a *ngFor="let item of imageFilenames1" className="gallery-item" [attr.href]="item">
                   <img className="img-responsive" src="{{ item }}" />
                 </a>
-                </lightgallery>
+              </lightgallery>
             </div>
           </div>
           <div class="col-md-4">

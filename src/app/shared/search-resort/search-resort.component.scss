@@ -1,14 +1,33 @@
+@use "/src/scss/base/" as *;
+
 .modal-searchbar {
     height: fit-content;
-    top: 50%;
-    left: 10px;
+    width: clamp(90%, 400px, 25dvw);
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.modal-dialog {
-    box-shadow: 0 1px 3px rgb(0, 128, 0);
+// .modal-dialog {
+//     box-shadow: 0 1px 3px rgb(0, 128, 0);
 
+// }   
+
+// .modal-backdrop {
+//     display: none !important;
+// }
+#ageDropdowns{
+    @media(min-width: 600px){
+        columns: 2;
+    }
 }
-
-.modal-backdrop {
-    display: none !important;
+.input-group{
+    border: 1px solid $clr-secondary;
+    border-radius: 5px; 
+    .form-control{
+        border: none;
+        &:focus{
+            box-shadow: none;
+        }
+    }
 }

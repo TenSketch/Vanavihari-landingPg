@@ -1,21 +1,30 @@
 @use "/src/scss/base/" as *;
-$nav-bar-height:10vh;
+$nav-bar-height: 10vh;
+
 .navbar {
+  &>.container-fluid {
+    justify-content: start;
+  }
 
   min-height: $nav-bar-height;
+
   .navbar-brand {
     img {
-      width: clamp(15vw, 200px, 30vw);
+      width: clamp(20vw, 200px, 25vw);
     }
   }
-  .navbar-toggler{
-    &:focus{
+
+  .navbar-toggler {
+    &:focus {
       box-shadow: none;
     }
   }
 
   .navbar-nav {
     .nav-item {
+      .nav-link{
+        text-decoration: none!important;
+      }
       .dropdown-menu {
         left: unset;
         right: 0;
@@ -137,10 +146,11 @@ $nav-bar-height:10vh;
 
 .contact-form input,
 .contact-form textarea {
-    color: gray; 
+  color: gray;
 }
-.footer{
-  .container{
+
+.footer {
+  .container {
     border-top: 1px solid rgba(0, 0, 0, 0.233);
   }
 }

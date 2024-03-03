@@ -24,6 +24,8 @@ body {
 a {
   // cursor: pointer;
   color: $clr-primary!important;
+  cursor: pointer;
+  text-decoration: underline!important;
 }
 
 img {
@@ -41,6 +43,14 @@ h1, h2, h3, h4, h5, h6{
 }
 .logo {
   width: min(65%, 200px);
+}
+.dropdown-item{
+  &:hover{
+    cursor: pointer;
+  }
+  &:active{
+    background-color: hsl($hue-primary, $saturation-primary, 85%);
+  }
 }
 
 .icon {

@@ -61,7 +61,7 @@ export class LayoutComponent implements OnInit {
     this.router.navigate(['/my-account/my-bookings']);
   }
   goToVanavihari() {
-    this.router.navigate(['/resort-listing']);
+    this.router.navigate(['/resorts/vanavihari-maredumilli']);
   }
 
   goToJungleStar() {

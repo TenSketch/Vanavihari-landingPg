@@ -1,1 +1,125 @@
-<p>vanavihari-maredumilli works!</p>
+<app-layout>
+    <div class="main">
+        <section class="page-banner d-grid place-items-center">
+            <h1 class="display-3 text-center">Vanavihari, Maredumilli</h1>
+        </section>
+
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <!-- <li class="breadcrumb-item"><a href="#">Resorts</a></li> -->
+                    <li class="breadcrumb-item active" aria-current="page">Vanavihari, Maredumilli</li>
+                </ol>
+            </nav>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="map-container">
+                        <iframe
+                          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15212.133581651236!2d81.712357!3d17.601149!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a373b5d52758873%3A0x718f2b2059db5e0a!2sVanavihari%20Maredumilli!5e0!3m2!1sen!2sin!4v1708738599849!5m2!1sen!2sin"
+                          width="400" height="300" style="border: 0" allowfullscreen="" loading="lazy"
+                          referrerpolicy="no-referrer-when-downgrade"></iframe>
+                      </div>
+                </div>
+                <div class="col-md-8 mt-4 mt-lg-0">
+                    <h4>About Vanavihari, Maredumilli</h4>
+                    <p>Vanavihari resort, situated in the serene landscapes of Maredumilli, beckons eco-tourism aficionados with its abundance of bamboo trees. This guesthouse, committed to community well-being, offers a serene retreat amidst natural surroundings. With its snug cottages and rooms, it conveniently lies close to Amruthathara Waterfalls, promising guests a peaceful ambiance. Nearby street food eateries present the opportunity to savor the distinctive flavor of bamboo biriyani. Stepping out for a night or morning stroll unveils a heavenly experience for visitors.</p>
+                </div>
+            </div>
+            <h2 class="text-center mb-4">Modify Search</h2>
+            <!-- section for search bar - with inputs given in home page search, and user can modify -->
+            <app-search-resort></app-search-resort>
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="filter-options">
+                        <div class="d-flex justify-content-around">
+                            <!-- <a (click)="toggleRoomListingSidebar()"><i class="fas fa-sliders me-2" ></i>Filter & Sort</a> -->
+                            <span class="d-none"><i class="fa-solid fa-map-location-dot me-2" data-bs-toggle="modal" data-bs-target="#modalId1"></i>Map</span>
+                            <div class="sort">
+                                <h6>Sort by Price</h6>
+                                <mat-radio-group name="priceSort">
+                                    <mat-radio-button id="lowToHigh">Low to High</mat-radio-button>
+                                    <mat-radio-button id="highToLow">High to Low</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                        <div class="filter-options d-none">
+                            <!-- <h3>Cottage Type</h3>
+                            <mat-checkbox id="hilltop">Hilltop Guest House</mat-checkbox>
+                            <mat-checkbox id="pre-fabricated">Pre-Fabricated Cottages</mat-checkbox>
+                            <mat-checkbox id="wooden">Wooden Cottages</mat-checkbox>
+                            <mat-checkbox id="deluxe">Deluxe Rooms</mat-checkbox>
+                            <mat-checkbox id="tented">Tented Cottages</mat-checkbox> -->
+    
+                            
+                            <!-- <button mat-raised-button color="primary" class="w-100 mt-1">Apply Filters</button> -->
+                       
+                        </div>
+                        <!-- <h3><span class="d-none">Filter Options</span></h3> -->
+                        
+                    </div>
+                </div>
+                <div class="col-md-8" *ngIf="!isRoomListingSidebarOpen">
+                    <div class="card mb-3 p-1">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="assets/img/jungle.jpeg" class="card-img" alt="Resort 1 Image">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6 text-start details-left">
+                                            <p class="mb-0"><span class="me-2"><strong>Room name:</strong></span>Chital</p>
+                                            <p class="mb-0"><span class="me-2"><strong>Cottage type:</strong></span>Pre-fabricated Cottage</p>
+                                            <p><span class="me-2"><strong>Bed type:</strong></span>1 King Size double bed</p>
+                                            <div class="d-flex gap-2">
+                                                <!-- <span><i class="fa-solid fa-wifi me-2"></i> Free WiFi</span> -->
+                                                
+                                                <span><i class="fas fa-snowflake me-2"></i>AC</span>
+                                                <span><i class="fa-solid fa-shower me-2"></i>Geyser</span>
+                                                <span><i class="fa-solid fa-toilet me-2"></i>Western</span>
+                                            </div>
+    
+                                        </div>
+                                        <div class="col-6 details-right text-end">
+    
+                                            <div class="star-rating"></div>
+                                            <h5>Good</h5>
+                                            <p class="card-text"><small class="text-muted"> 1 night, 3 adults, 1 child
+                                                    5600 INR + GST @ 18% Extra bed @ 1500 INR</small></p>
+                                            <button class="btn btn-primary" (click)="addRoom()">Add room</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                        </div>
+                    </div>
+                    
+                   
+                 
+                </div>
+            </div>
+        </div>
+        <div class="booking-summary-bar" *ngIf="showBookingSummary">
+            <h5><u>Booking Summary</u></h5>
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <strong>No. of rooms</strong>
+                    <p>1</p>
+                    <!-- <p>1</p> -->
+                </div>
+                <div class="col-4">
+                    <strong>Total Price</strong>
+                    <p>INR 5600 + GST @12%</p>
+                    <!-- <p></p> -->
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-primary float-end" (click)="goToBooking()">Proceed</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-layout>
+
+<h5>Booking Summary</h5>
