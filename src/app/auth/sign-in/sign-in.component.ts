@@ -46,17 +46,11 @@ export class SignInComponent implements OnInit {
 
       this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=login', {params}).subscribe({
         next: response => {
-          if(response.code == 3000) {
-            var res = response.result;
-            res = res.split('-');
-            if(res[0] == "TK") {
-              this.router.navigate(['/home']);
-              this.showSnackBarAlert("Login Success. Token: "+res[1], false);
-            } else if(response.result == 'error'){
-              this.showSnackBarAlert("Invalid Username | Password!");
-            } else {
-              this.showSnackBarAlert(response.result);
-            }
+          if(response.code == 3000 && response.result.status == 'success') {
+            this.router.navigate(['/home']);
+            this.showSnackBarAlert("Login Success. Token: "+response.result.token, false);
+          } else if (response.code == 3000) {
+            this.showSnackBarAlert(response.result.msg);
           } else {
             this.showSnackBarAlert("Please Check this Credential!");
           }

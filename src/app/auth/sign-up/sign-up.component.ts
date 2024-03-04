@@ -65,9 +65,10 @@ export class SignUpComponent implements OnInit {
         )
         .subscribe({
           next: (response) => {
-            if (response.code == 3000 && response.result == 'success')
+            if (response.code == 3000 && response.result.status == 'success')
               this.showSuccessAlert();
-            else this.showErrorAlert(response.result);
+            else if (response.code == 3000) this.showErrorAlert(response.result.msg);
+            else this.showErrorAlert("Please Check Input Fields!");
           },
           error: (err) => {
             console.error('Error:', err);

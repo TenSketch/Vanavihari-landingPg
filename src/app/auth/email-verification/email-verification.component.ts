@@ -19,18 +19,15 @@ export class EmailVerificationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const verificationUserId = this.route.snapshot.paramMap.get('userid');
     const verificationToken = this.route.snapshot.paramMap.get('token');
     if (verificationToken) {
-      this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=email_verification&token='+verificationToken).subscribe({
+      this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=email_verification&userid='+verificationUserId+'token='+verificationToken).subscribe({
         next: response => {
-          if(response.code == 3000) {
-            if(response.result == 'success') {
-              this.router.navigate(['/sign-in'], { queryParams: { message: 'Email Verification successful. Please sign in.' } });
-            } else if(response.result == 'error') {
-              this.router.navigate(['/sign-in'], { queryParams: { message: 'Email Verification Error. Please contact support.' } });
-            } else {
-              this.router.navigate(['/sign-in'], { queryParams: { message: response.result } });
-            }
+          if(response.code == 3000 && response.result.status == "success") {
+            this.router.navigate(['/sign-in'], { queryParams: { message: 'Email Verification successful. Please sign in.' } });
+          } else if(response.code == 3000) {
+            this.router.navigate(['/sign-in'], { queryParams: { message: response.result.msg } });
           } else {
             this.router.navigate(['/sign-in'], { queryParams: { message: 'Somthing Error for Email Verification!' } });
           }
