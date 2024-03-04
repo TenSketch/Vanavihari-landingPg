@@ -22,7 +22,7 @@ const routes: Routes = [
 {path:'home', component:HomeComponent}, 
 {path:'sign-in', component:SignInComponent}, 
 {path:'sign-up', component:SignUpComponent},
-{ path: 'email-verification/:token', component: EmailVerificationComponent },
+{ path: 'email-verification/:userid/:token', component: EmailVerificationComponent },
 {path:'about-vanavihari', component:AboutVanavihariComponent}, 
 { path: 'my-account/settings', component: SettingsComponent},
 { path: 'my-account/my-bookings', component: MyBookingsComponent},

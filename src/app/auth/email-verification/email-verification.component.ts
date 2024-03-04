@@ -22,20 +22,20 @@ export class EmailVerificationComponent implements OnInit {
     const verificationUserId = this.route.snapshot.paramMap.get('userid');
     const verificationToken = this.route.snapshot.paramMap.get('token');
     if (verificationToken) {
-      this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=email-verification&userid='+verificationUserId+'token='+verificationToken).subscribe({
+      this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=email_verification&userid='+verificationUserId+'token='+verificationToken).subscribe({
         next: response => {
           if(response.code == 3000 && response.result.status == "success") {
-            // this.router.navigate(['/sign-in'], { queryParams: { message: response.result.msg } });
+            this.router.navigate(['/sign-in'], { queryParams: { message: response.result.msg } });
           } else if(response.code == 3000) {
-            // this.router.navigate(['/sign-in'], { queryParams: { message: response.result.msg } });
+            this.router.navigate(['/sign-in'], { queryParams: { message: response.result.msg } });
           } else {
-            // this.router.navigate(['/sign-in'], { queryParams: { message: 'Somthing Error for Email Verification!' } });
+            this.router.navigate(['/sign-in'], { queryParams: { message: 'Somthing Error for Email Verification!' } });
           }
         },
         error: err => {
           console.error('Email verification failed:', err);
           alert('Email verification failed. Please try again.');
-          this.router.navigate(['/sign-in']);
+          // this.router.navigate(['/sign-in']);
         }
       });
 
