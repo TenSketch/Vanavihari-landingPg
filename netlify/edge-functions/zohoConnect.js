@@ -44,7 +44,7 @@ export default async (req) => {
                 method = 'GET';
                 break;
             case 'email_verification':
-                if (!queryParams.has('token')) {
+                if (!queryParams.has('token') || !queryParams.has('userid')) {
                     return new Response(JSON.stringify({ error: 'Missing required parameters for email verification' }), {
                         status: 400,
                         headers: { 'Content-Type': 'application/json' },
