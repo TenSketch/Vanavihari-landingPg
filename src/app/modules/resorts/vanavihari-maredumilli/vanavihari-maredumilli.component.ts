@@ -2,30 +2,23 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 // import { UserService } from '../../user.service';
 
-
 @Component({
   selector: 'app-vanavihari-maredumilli',
   templateUrl: './vanavihari-maredumilli.component.html',
-  styleUrls: ['./vanavihari-maredumilli.component.scss']
+  styleUrls: ['./vanavihari-maredumilli.component.scss'],
 })
 export class VanavihariMaredumilliComponent {
-  constructor(private router: Router) {}
+  selectedSortOption: string;
+  showBookingSummary: boolean = false;
+  constructor(private router: Router) {
+    // Initialize default value
+    this.selectedSortOption = 'lowToHigh';
+  }
 
-  isRoomListingSidebarOpen: boolean =false;
-  showBookingSummary: boolean =false;
-  toggleRoomListingSidebar(){
-    this.isRoomListingSidebarOpen = !this.isRoomListingSidebarOpen;
+  addRoom() {
+    this.showBookingSummary = true;
   }
-  closeSidebar()
-  {
-    this.isRoomListingSidebarOpen = false;
-  }
-  addRoom()
-  {
-    this.showBookingSummary=true;
-  }
-  goToBooking()
-  {
+  goToBooking() {
     this.router.navigate(['/booking-summary']);
   }
 }

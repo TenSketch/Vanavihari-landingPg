@@ -5,9 +5,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <a class="navbar-brand me-auto py-0" href="#">
-        <img src="assets/img/vanavihari-logo.png" alt="vanavihari_logo">
+        <img src="assets/img/vanavihari-logo.png" alt="vanavihari-logo">
       </a>
-      <ul class="navbar-nav d-flex flex-row gap-1 gap-lg-3">
+      <ul class="navbar-nav d-flex flex-row gap-2 gap-lg-3">
         <li class="nav-item dropdown d-none d-lg-block">
           <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
@@ -87,40 +87,46 @@
         </div>
 
         <li class="sidebar-item">
-          <a class="sidebar-link" (click)="toggleSidebar(); goToAboutUs()">
-            <i class="fa-solid fa-info-circle"></i> About Us
+          <a class="sidebar-link d-flex gap-2 align-items-center" (click)="toggleSidebar(); goToAboutUs()">
+            <i class="fa-solid fa-info-circle"></i><span>About Us</span>
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link" href="#">
-            <i class="fa-regular fa-compass"></i> Tourist Destinations
+          <a class="sidebar-link d-flex gap-2 align-items-center" href="#">
+            <i class="fa-regular fa-compass"></i><span>Tourist Destinations</span>
           </a>
         </li>
+        
         <li class="sidebar-item">
-          <a class="sidebar-link" (click)="toggleSidebar(); goToTribalPg()">
-            <i class="fa-solid fa-users"></i> Tribal Community
+          <a class="sidebar-link d-flex gap-2 align-items-center" (click)="toggleSidebar(); goToTribalPg()">
+            <i class="fa-solid fa-users"></i><span>Tribal Community</span>
           </a>
         </li>
+        
         <!-- <li class="sidebar-item">
-          <a class="sidebar-link" href="#">
-            <i class="fa-regular fa-images"></i> Gallery
+          <a class="sidebar-link d-flex gap-2 align-items-center" href="#">
+            <i class="fa-regular fa-images"></i><span>Gallery</span>
           </a>
         </li> -->
+        
         <li class="sidebar-item d-none">
-          <a class="sidebar-link" href="#footer">
-            <i class="fa-regular fa-envelope"></i> Contact Us
+          <a class="sidebar-link d-flex gap-2 align-items-center" href="#footer">
+            <i class="fa-regular fa-envelope"></i><span>Contact Us</span>
           </a>
         </li>
+        
         <li class="sidebar-item">
-          <a class="sidebar-link d-lg-none" href="mailto:info@vanavihari.com" title="click to send email">
-            <i class="fa-regular fa-envelope"></i> info@vanavihari.com</a>
-
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link d-lg-none" href="tel:+919494151617" title="call">
-            <i class="fa-solid fa-mobile-screen"></i> 9494151617
+          <a class="sidebar-link d-flex gap-2 align-items-center d-lg-none" href="mailto:info@vanavihari.com" title="click to send email">
+            <i class="fa-regular fa-envelope"></i><span>info@vanavihari.com</span>
           </a>
         </li>
+        
+        <li class="sidebar-item">
+          <a class="sidebar-link d-flex gap-2 align-items-center d-lg-none" href="tel:+919494151617" title="call">
+            <i class="fa-solid fa-mobile-screen"></i><span>9494151617</span>
+          </a>
+        </li>
+        
 
         <!-- <li class="sidebar-item">
           <a class="sidebar-link d-lg-none" routerLink="/sign-in" routerLinkActive="active"
@@ -198,7 +204,7 @@
                       cdkAutosizeMaxRows="5"
                       placeholder="Enter your message, enquiry, feedback or suggestion"></textarea>
           </mat-form-field>
-          <button mat-raised-button color="primary" class="w-100 mt-1">
+          <button mat-raised-button color="primary" class="w-100 mt-3">
             Send
           </button>
         </form>

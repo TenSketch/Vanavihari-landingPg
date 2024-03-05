@@ -1,76 +1,90 @@
 @use "/src/scss/base/" as *;
 
 .page-banner {
-    background-image: url('/assets/img/home-gallery/vanavihari-home-gallery-1.jpg');
-  }
-  .breadcrumb {
-    padding: 10px;
-    background-color: #f8f9fa;
-    // margin-bottom: 20px;
-  }
+  background-image: url('/assets/img/home-gallery/vanavihari-home-gallery-1.jpg');
+}
 
-  .filter-options {
-    background-color: #f8f9fa;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 15px;
-  }
-  .card {
-    margin-bottom: 20px;
-    // padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-  }
-  .star-rating {
-    display: inline-block;
-    font-size: 1.5rem;
-    color: #ffd700;
-  }
-  .star-rating::before {
+.breadcrumb {
+  padding: 10px;
+  background-color: #f8f9fa;
+  // margin-bottom: 20px;
+}
+
+.filter-options,
+.sort {
+  background-color: #f8f9fa;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+
+.card {
+  margin-bottom: 20px;
+  // padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.star-rating {
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #ffd700;
+  &::before {
     content: '\2605\2605\2605\2605';
   }
-  .star-rating::after {
+  &::after {
     content: '\2606';
     margin-left: 3px;
   }
-  .sidebar {
-    background-color: #fff;
-    padding: 20px;
-    color: #333;
-    height: 100vh;
-    width: 100%;
-    position: fixed;
-    top: 35px;
-    left: 0;
-    z-index: 1;
-    overflow-x: hidden;
-    transition: 0.5s;
-  }
-  .close-button {
-    font-size: 35px;
-    color: #333;
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  .main {
-    margin-left: 0;
-    transition: margin-left 0.5s;
+  
+}
+
+
+aside{
+  background-color: hsl($hue-primary, $saturation-primary, 85%);
+
+  @media(min-width:768px){
+    flex-basis: 35%;
+    // position: relative;
+    
   }
   .booking-summary-bar {
-    background-color: hsl($hue-secondary, $saturation-secondary, 90%);
+    background-color: $clr-secondary;
+    color: $white;
     padding: 10px;
     position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
+    h5{
+      color: $white;
+    }
+  
+    @media(min-width: 768px) {
+      position: sticky;
+      top: 5%;
+      margin-top: 2rem;
+      overflow-y: auto;
+
+    }
   }
-  .sticky-sidebar {
-    // position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    overflow-y: auto;
-    
+}
+main{
+  &.rooms-listing {
+    // margin-left: 0;
+    // transition: margin-left 0.5s;
+    @media(min-width:768px){
+    flex-basis: 65%;
+  
+    }
   }
+}
+
+
+
+// .sticky-sidebar {
+//   // position: -webkit-sticky;
+//   position: sticky;
+
+// }

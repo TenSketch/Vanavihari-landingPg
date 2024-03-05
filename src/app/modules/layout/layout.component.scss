@@ -1,12 +1,12 @@
 @use "/src/scss/base/" as *;
-$nav-bar-height: 10vh;
+$nav-bar-height: 5vh;
 
 .navbar {
   &>.container-fluid {
     justify-content: start;
   }
 
-  min-height: $nav-bar-height;
+  // min-height: $nav-bar-height;
 
   .navbar-brand {
     img {
@@ -39,7 +39,7 @@ $nav-bar-height: 10vh;
   left: -100%;
   height: calc(100% - #{$nav-bar-height});
   width: 100%;
-  background-color: #333;
+  background-color: #131313;
   z-index: 1000;
   transition: left 0.3s ease;
 
@@ -79,9 +79,9 @@ $nav-bar-height: 10vh;
       .sidebar-item {
         margin-bottom: 10px;
 
-        .sidebar-link {
+        .sidebar-link, .dropdown-item {
           color: $white;
-          text-decoration: none;
+          text-decoration: none!important;
           transition: color 0.3s;
 
           &:hover {
@@ -135,6 +135,14 @@ $nav-bar-height: 10vh;
       .accordion-body {
         padding: 0;
         margin-bottom: 1rem;
+        .dropdown-item{
+          color: $white;
+          text-decoration: none!important;
+          transition: color 0.3s;
+          &+.dropdown-item{
+            margin-top: 0.5rem;
+          }
+        }
       }
     }
   }

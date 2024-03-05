@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <img src="assets/img/vanavihari-2.jpg" class="d-block w-100" alt="..." />
+          <img src="assets/img/Vanavihari-reception.jpg" class="d-block w-100" alt="..." />
           <div class="carousel-overlay"></div>
           <div class="carousel-caption p-0">
             <h1 class="display-3">Vanavihari</h1>
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <img src="assets/img/JungleStar-1.jpg" class="d-block w-100" alt="..." />
+          <img src="assets/img/home-gallery-junglestar/junglestar-home-gallery-5.jpg" class="d-block w-100" alt="..." />
           <div class="carousel-overlay"></div>
           <div class="carousel-caption p-0">
             <h1 class="display-3">Jungle Star</h1>
@@ -118,10 +118,10 @@
       <div class="container">
         <h1 class="text-center mb-4">Our Resorts</h1>
         <div class="row justify-content-around">
-          <div class="col-md-4">
-            <div class="card justify-content-between" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
+          <!-- <div class="col-md-4"> -->
+            <div class="card border-0">
               <img src="assets/img/Vanavihari-reception.jpg" class="card-img-top" alt="Vanavihari, Maredumilli" />
-              <div class="card-body text-center flex-grow-1">
+              <div class="card-body text-center">
                 <h5 class="card-title">Vanavihari, Maredumilli</h5>
                 <p class="card-text">
                   Vanavihari resort, nestled in Maredumilli, is a haven for
@@ -132,13 +132,13 @@
                   outside reveals a heavenly experience.
                 </p>
               </div>
-              <div class="card-footer d-flex justify-content-center bg-transparent">
+              <div class="card-footer d-grid place-items-center border-0 bg-transparent">
                 <button mat-raised-button color="primary" (click)="goToVanavihari()">View details</button>
               </div>
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)">
+          <!-- </div> -->
+          <!-- <div class="col-md-4 mt-3 mt-md-0"> -->
+            <div class="card border-0 mt-3">
               <img src="assets/img/Jungle_Star-reception-1.jpg" class="card-img-top" alt="Jungle Star, Valamuru" />
               <div class="card-body text-center">
                 <h5 class="card-title">Jungle Star, Valamuru</h5>
@@ -153,11 +153,11 @@
                   promising an unforgettable stay in nature.
                 </p>
               </div>
-              <div class="card-footer d-flex justify-content-center bg-transparent">
+              <div class="card-footer d-grid place-items-center border-0 bg-transparent">
                 <button mat-raised-button color="primary" (click)="goToJungleStar()">View details</button>
               </div>
             </div>
-          </div>
+          <!-- </div> -->
         </div>
       </div>
     </section>
@@ -167,7 +167,7 @@
         <h1 class="text-center mb-4">Vanavihari, Maredumilli</h1>
         <div class="row">
           <div class="col-md-8">
-            <h2 class="mb-3">Gallery</h2>
+            <h2 class="mb-3 text-center">Gallery</h2>
             <div class="masonry-layout" id="vanavihari-gallery">
 
               <lightgallery [settings]="settings">
@@ -178,8 +178,8 @@
               <!-- Loop through the image filenames array and generate HTML elements -->
             </div>
           </div>
-          <div class="col-md-4">
-            <h2 class="mb-3">How to reach?</h2>
+          <div class="col-md-4 mt-3 mt-md-0">
+            <h2 class="mb-3 text-center">How to reach?</h2>
             <address>
               <i class="fa-solid fa-location-dot"></i>
               Vanavihari Eco-tourism Complex, Maredumilli, AP-533295.
@@ -223,7 +223,7 @@
         <h1 class="text-center mb-4">Jungle Star, Valamuru</h1>
         <div class="row">
           <div class="col-md-8">
-            <h2 class="mb-3">Gallery</h2>
+            <h2 class="mb-3 text-center">Gallery</h2>
             <div class="masonry-layout" id="junglestar-gallery">
               <lightgallery [settings]="settings">
                 <a *ngFor="let item of imageFilenames1" className="gallery-item" [attr.href]="item">
@@ -232,8 +232,8 @@
               </lightgallery>
             </div>
           </div>
-          <div class="col-md-4">
-            <h2 class="mb-3">How to reach?</h2>
+          <div class="col-md-4 mt-3 mt-md-0">
+            <h2 class="mb-3 text-center">How to reach?</h2>
             <address>
               <i class="fa-solid fa-location-dot"></i>
               Jungle Star ECO Camp, Valamuru, AP-533295.

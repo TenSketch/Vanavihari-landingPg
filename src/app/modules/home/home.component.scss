@@ -1,4 +1,5 @@
 @use "./src/scss/base/" as *;
+$card-flex-basis: 35%;
 
 #carouselExampleFade {
   .carousel-item {
@@ -39,9 +40,21 @@
 }
 
 .about {
-  background-color: $clr-primary-light;
-}
+  // background-color: $clr-primary-light;
+  background: linear-gradient(to bottom right, #42b148, #e4cf57);
 
+}
+.resort-intro{
+  .card{
+    @media(min-width:768px){
+     flex-basis: $card-flex-basis;
+    }
+    min-height: 55dvh;
+    .card-body{
+
+    }
+  }
+}
 
 // masonry layout
 .masonry-layout {
