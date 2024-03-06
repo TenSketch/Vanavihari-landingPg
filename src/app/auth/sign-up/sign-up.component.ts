@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  AbstractControl,
+} from '@angular/forms';
 import { HttpClient, HttpParams } from '@angular/common/http';
 // import { ZohoAuthServiceService } from '../../zoho-auth-service.service';
 import { AuthService } from '../../auth.service';
@@ -36,9 +41,18 @@ export class SignUpComponent implements OnInit {
           '',
           [Validators.required, Validators.pattern(Regex.lettersAndSpaces)],
         ],
-        mobile_number: ['', Validators.required],
+        mobile_number: ['', [Validators.required, Validators.minLength(10)]],
         email_id: ['', [Validators.required, Validators.email]],
-        password: ['', Validators.required],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.pattern(
+              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/
+            ),
+          ],
+        ],
         repeat_password: ['', Validators.required],
       },
       {
@@ -67,8 +81,9 @@ export class SignUpComponent implements OnInit {
           next: (response) => {
             if (response.code == 3000 && response.result.status == 'success')
               this.showSuccessAlert();
-            else if (response.code == 3000) this.showErrorAlert(response.result.msg);
-            else this.showErrorAlert("Please Check Input Fields!");
+            else if (response.code == 3000)
+              this.showErrorAlert(response.result.msg);
+            else this.showErrorAlert('Please Check Input Fields!');
           },
           error: (err) => {
             console.error('Error:', err);
