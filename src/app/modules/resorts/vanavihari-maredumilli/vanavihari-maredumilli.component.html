@@ -62,33 +62,27 @@
                     </div>
                 </aside>
                 <main class="rooms-listing">
+                 <div *ngFor="let card of roomCards; trackBy: trackByRoomCard">
                     <div class="card mb-3 p-1">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="assets/img/jungle.jpeg" class="card-img" alt="Resort 1 Image">
+                                <img src="assets/img/home-gallery/vanavihari-home-gallery-16.jpg" class="card-img" alt="Resort 1 Image">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-6 text-start details-left">
-                                            <p class="mb-0"><span class="me-2"><strong>Room name:</strong></span>Chital</p>
-                                            <p class="mb-0"><span class="me-2"><strong>Cottage type:</strong></span>Pre-fabricated Cottage</p>
-                                            <p><span class="me-2"><strong>Bed type:</strong></span>1 King Size double bed</p>
-                                            <div class="d-flex gap-2">
-                                                <!-- <span><i class="fa-solid fa-wifi me-2"></i> Free WiFi</span> -->
-                                                
-                                                <span><i class="fas fa-snowflake me-2"></i>AC</span>
-                                                <span><i class="fa-solid fa-shower me-2"></i>Geyser</span>
-                                                <span><i class="fa-solid fa-toilet me-2"></i>Western</span>
-                                            </div>
-    
+                                            <p class="mb-0"><span class="me-2"><strong>Room name:</strong></span>{{card.roomName}}</p>
+                                            <p class="mb-0"><span class="me-2"><strong>Cottage type:</strong></span>{{card.cottageType}}</p>
+                                            <p><span class="me-2"><strong>Bed type:</strong></span>{{card.bedType}}</p>
+                                            
                                         </div>
                                         <div class="col-6 details-right text-end">
     
                                             <div class="star-rating"></div>
-                                            <h5>Good</h5>
-                                            <p class="card-text"><small class="text-muted"> 1 night, 3 adults, 1 child
-                                                    5600 INR + GST @ 18% Extra bed @ 1500 INR</small></p>
+                                            <h5>{{card.rating}}</h5>
+                                            <p class="card-text"><small class="text-muted"> {{card.price}}</small></p>
+                                            
                                             <button class="btn btn-primary" (click)="addRoom()">Add room</button>
                                         </div>
                                     </div>
@@ -97,6 +91,7 @@
     
                         </div>
                     </div>
+                </div>
                     <div class="card mt-3 mt-md-0 p-1">
                         <div class="row g-0">
                             <div class="col-md-4">
