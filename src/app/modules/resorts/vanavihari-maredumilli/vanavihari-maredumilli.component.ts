@@ -4,6 +4,19 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 // import { UserService } from '../../user.service';
 
+interface Room {
+  name: string;
+  cottage_type: string;
+  bed_type: string;
+  amenities: string[];
+  rating: string;
+  weekDayPrice: string;
+  weekendPrice: string;
+  weekDayGuestPrice: string;
+  weekendGuestPrice: string;
+  image: string;
+}
+
 @Component({
   selector: 'app-vanavihari-maredumilli',
   templateUrl: './vanavihari-maredumilli.component.html',
@@ -12,7 +25,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class VanavihariMaredumilliComponent {
   selectedSortOption: string;
   showBookingSummary: boolean = false;
-  roomCards: any[] = [];
+  roomCards: Room[] = [];
 
   constructor(
     private router: Router,
@@ -44,17 +57,8 @@ export class VanavihariMaredumilliComponent {
       )
       .subscribe({
         next: (response) => {
-          if (response.code == 3000 && response.result.status == 'success') {
-            // Map response data to roomCards array
-            this.roomCards = response.rooms.map((room: any) => ({
-              roomName: room.roomName,
-              cottageType: room.cottageType,
-              bedType: room.bedType,
-              amenities: room.amenities,
-              rating: room.rating,
-              price: room.price,
-              image: room.image,
-            }));
+          if (response.code === 3000 && response.result.status === 'success') {
+            this.roomCards = this.mapRoomData(response.result.data);
           } else {
             this.showErrorAlert(
               'Failed to fetch room list. Please try again later.'
@@ -68,6 +72,21 @@ export class VanavihariMaredumilliComponent {
           );
         },
       });
+  }
+
+  mapRoomData(data: any[]): Room[] {
+    return data.map((room) => ({
+      name: room.name || 'Unknown',
+      cottage_type: room.cottage_type || 'Unknown',
+      bed_type: room.bed_type || 'Unknown',
+      amenities: Object.values(room.amenities) || [],
+      rating: room.rating || 'Unknown',
+      weekDayPrice: room.week_day_rate || 'Unknown',
+      weekendPrice: room.week_end_rate || 'Unknown',
+      weekDayGuestPrice: room.week_day_guest_rate || 'Unknown',
+      weekendGuestPrice: room.week_end_guest_rate || 'Unknown',
+      image: room.image || 'assets/img/default-room-image.jpg', // set a default image if it is not available
+    }));
   }
 
   showErrorAlert(msg = '') {
