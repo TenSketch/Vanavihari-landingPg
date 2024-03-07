@@ -1,9 +1,7 @@
 <header>
   <nav class="navbar navbar-light py-1 fixed-top bg-light">
     <div class="container-fluid">
-      <button class="navbar-toggler border-0 p-0" type="button" (click)="toggleSidebar()">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      
       <a class="navbar-brand me-auto py-0" href="#">
         <img src="assets/img/vanavihari-logo.png" alt="vanavihari-logo">
       </a>
@@ -11,7 +9,7 @@
         <li class="nav-item dropdown d-none d-lg-block">
           <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
-            <i class="fa-solid fa-calendar-check"></i> Book Resort
+            <i class="fa-solid fa-hotel me-2"></i>Book Resort
           </a>
           <div class="dropdown-menu position-absolute" aria-labelledby="dropdownId">
             <a class="dropdown-item" (click)="goToVanavihari()">Vanavihari, Maredumilli</a>
@@ -20,43 +18,46 @@
         </li>
         <li class="nav-item d-none d-lg-block">
           <a class="nav-link" href="mailto:info@vanavihari.com" title="click to send email">
-            <i class="fa-regular fa-envelope"></i> info@vanavihari.com</a>
+            <i class="fa-regular fa-envelope me-2"></i>info@vanavihari.com</a>
         </li>
         <li class="nav-item d-none d-lg-block">
           <a class="nav-link" href="tel:+919494151617" title="call">
-            <i class="fa-solid fa-mobile-screen"></i> 9494151617</a>
+            <i class="fa-solid fa-mobile-screen me-2"></i>9494151617</a>
         </li>
-        <li class="nav-item" *ngIf="!isLoggedIn()">
+        <!-- <li class="nav-item" *ngIf="!isLoggedIn()">
           <a class="nav-link" routerLink="/sign-in" routerLinkActive="active" ariaCurrentWhenActive="page">
-            <i class="fa-solid fa-key"></i> Sign in</a>
+            <i class="fa-solid fa-arrow-right-to-bracket me-2"></i>Sign in</a>
         </li>
         <li class="nav-item" *ngIf="!isLoggedIn()">
           <a class="nav-link" routerLink="/sign-up" routerLinkActive="active" ariaCurrentWhenActive="page">
-            <i class="fa-solid fa-sign-in"></i> Sign up</a>
-        </li>
+            <i class="fa-solid fa-arrow-up-from-bracket me-2"></i>Sign up</a>
+        </li> -->
         <!-- *ngIf="isLoggedIn()" -->
-        <li class="nav-item dropdown d-none ">
+        <li class="nav-item dropdown  ">
           <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
-            <i class="fa-solid fa-user-circle"></i> My Account
+            <i class="fa-regular fa-user-circle me-2"></i>Balachandiran
           </a>
-          <div class="dropdown-menu position-absolute" aria-labelledby="dropdownId">
+          <div class="dropdown-menu position-absolute py-3 px-2" aria-labelledby="dropdownId">
             <!-- nav item dropdown My Account>Settings, My Bookings, Saved -->
             <a class="dropdown-item" (click)="goToMyAccSettings()">
-              <i class="fa-solid fa-cog"></i> Settings
+              <i class="fa-solid fa-cog me-3"></i><span>My account</span>
             </a>
             <a class="dropdown-item" (click)="goToMyBookings()">
-              <i class="fa-solid fa-book"></i> My Bookings
+              <i class="fa-regular fa-calendar-check me-3"></i><span>My Bookings</span>
             </a>
-            <!-- <a class="dropdown-item" (click)="goToMyAccSettings">
-              <i class="fa-solid fa-heart"></i> Saved
-            </a> -->
+            <a class="dropdown-item" (click)="goToMyAccSettings">
+              <i class="fa-regular fa-comment fa-flip-horizontal me-3"></i><span>Reviews</span>
+            </a>
             <a class="dropdown-item" (click)="logout()">
-              <i class="fa-solid fa-sign-out"></i> Logout
+              <i class="fa-solid fa-power-off me-3"></i><span>Sign out</span>
             </a>
           </div>
         </li>
       </ul>
+      <button class="navbar-toggler border-0 p-0 ms-3" type="button" (click)="toggleSidebar()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
   </nav>
 
@@ -167,14 +168,12 @@
           Maredumilli.
         </address>
         <ul class="list-unstyled">
-          <li class="mt-2"> <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;
-            <a class="text-decoration-none" href="mailto:info@vanavihari.com"
+          <li class="mt-2"> <i class="fa fa-phone" aria-hidden="true"></i><a class="text-decoration-none" href="mailto:info@vanavihari.com"
               title="click to send email">info@vanavihari.com</a>
           </li>
           <li class="mt-2">
             <!-- font awesome email -->
-            <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;
-            <a class="text-decoration-none" href="tel:+919494151617" title="call">9494151617</a>
+            <i class="fa fa-envelope" aria-hidden="true"></i><a class="text-decoration-none" href="tel:+919494151617" title="call">9494151617</a>
           </li>
         </ul>
 

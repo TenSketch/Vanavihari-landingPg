@@ -10,7 +10,7 @@ $nav-bar-height: 5vh;
 
   .navbar-brand {
     img {
-      width: clamp(20vw, 200px, 25vw);
+      width: clamp(15vw, 200px, 22vw);
     }
   }
 
@@ -28,6 +28,12 @@ $nav-bar-height: 5vh;
       .dropdown-menu {
         left: unset;
         right: 0;
+        .dropdown-item{
+          text-decoration: none!important;
+          &+.dropdown-item{
+            margin-top: 1rem;
+          }
+        }
       }
     }
   }
@@ -36,19 +42,19 @@ $nav-bar-height: 5vh;
 #sidebar {
   position: fixed;
   top: $nav-bar-height;
-  left: -100%;
+  right: -100%;
   height: calc(100% - #{$nav-bar-height});
   width: 100%;
   background-color: #131313;
   z-index: 1000;
-  transition: left 0.3s ease;
+  transition: right 0.3s ease;
 
   @media(min-width:991px) {
     width: 20vw;
   }
 
   &.active {
-    left: 0;
+    right: 0;
   }
 
   .overlay {
@@ -160,5 +166,10 @@ $nav-bar-height: 5vh;
 .footer {
   .container {
     border-top: 1px solid rgba(0, 0, 0, 0.233);
+  }
+}
+.dropdown-toggle{
+  &::after{
+    display: none;
   }
 }

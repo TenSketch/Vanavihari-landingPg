@@ -23,7 +23,7 @@ body {
 
 a {
   // cursor: pointer;
-  color: $clr-primary!important;
+  color: $clr-primary-dark!important;
   cursor: pointer;
   text-decoration: underline!important;
 }
@@ -43,6 +43,10 @@ h1, h2, h3, h4, h5, h6{
 }
 .logo {
   width: min(65%, 200px);
+}
+.fa-solid, .fa-regular{
+  font-size: 1.1rem!important;
+  // margin-right: 5px;
 }
 .dropdown-item{
   &:hover{
