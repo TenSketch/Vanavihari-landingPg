@@ -83,54 +83,33 @@
           </div>
         </aside>
         <main class="rooms-listing">
-          <div
-            *ngFor="let card of roomCards; let i = index"
-            class="card mb-3 p-1"
-          >
+          <div *ngFor="let room of roomCards" class="card mb-3 p-1">
             <div class="row g-0">
               <div class="col-md-4">
-                <img [src]="card.image" class="card-img" alt="Room Image" />
+                <img [src]="room.image" class="card-img" alt="Room Image" />
               </div>
               <div class="col-md-8">
                 <div class="card-body">
                   <div class="row">
                     <div class="col-6 text-start details-left">
                       <p class="mb-0">
-                        <span class="me-2"><strong>Room name:</strong></span
-                        >{{ card.roomName }}
+                        <strong>Room name:</strong> {{ room.name }}
                       </p>
                       <p class="mb-0">
-                        <span class="me-2"><strong>Cottage type:</strong></span
-                        >{{ card.cottageType }}
+                        <strong>Cottage type:</strong> {{ room.cottage_type }}
                       </p>
-                      <p>
-                        <span class="me-2"><strong>Bed type:</strong></span
-                        >{{ card.bedType }}
-                      </p>
+                      <p><strong>Bed type:</strong> {{ room.bed_type }}</p>
                       <div class="d-flex gap-2">
-                        <span *ngFor="let amenity of card.amenities">
-                          <i
-                            *ngIf="amenity === 'AC'"
-                            class="fas fa-snowflake me-2"
-                          ></i>
-                          <i
-                            *ngIf="amenity === 'Geyser'"
-                            class="fa-solid fa-shower me-2"
-                          ></i>
-                          <i
-                            *ngIf="amenity === 'Western Toilet'"
-                            class="fa-solid fa-toilet me-2"
-                          ></i>
-                          <!-- Add more amenities icons as needed -->
+                        <span *ngFor="let amenity of room.amenities">
                           <span>{{ amenity }}</span>
                         </span>
                       </div>
                     </div>
                     <div class="col-6 details-right text-end">
-                      <div class="star-rating">{{ card.rating }}</div>
-                      <h5>{{ card.rating }}</h5>
+                      <div class="star-rating">{{ room.rating }}</div>
+                      <h5>{{ room.rating }}</h5>
                       <p class="card-text">
-                        <small class="text-muted">{{ card.price }}</small>
+                        <small class="text-muted">{{ weekDayPrice }}</small>
                       </p>
                       <button class="btn btn-primary" (click)="addRoom()">
                         Add room

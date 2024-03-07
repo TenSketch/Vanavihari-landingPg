@@ -18,12 +18,12 @@ export class SearchResortComponent implements OnInit {
   roomsCount: number = 1;
   selectedAges: string[] = [];
   ageDropdowns: number[];
-  RoomValues:any
+  RoomValues: any;
+  selectedResort: string = '';
 
   constructor(private router: Router) {
-    
     this.updateAgeDropdowns();
-    this.RoomValues="Adult-"+2+" Children- "+0+" Rooms-"+1
+    this.RoomValues = 'Adult-' + 2 + ' Children- ' + 0 + ' Rooms-' + 1;
   }
 
   // openModal() {
@@ -88,14 +88,34 @@ export class SearchResortComponent implements OnInit {
     }
   }
 
-  getvalues(roomsCount:any,adultsCount:any){
-  
-  this.RoomValues="Adult-"+this.adultsCount+" Children- "+this.childrenCount+" Rooms-"+this.roomsCount
-console.log(this.roomsCount,this.adultsCount);
-
-
+  getvalues(roomsCount: any, adultsCount: any) {
+    this.RoomValues =
+      'Adult-' +
+      this.adultsCount +
+      ' Children- ' +
+      this.childrenCount +
+      ' Rooms-' +
+      this.roomsCount;
+    console.log(this.roomsCount, this.adultsCount);
   }
+
   goToVanavihari() {
     this.router.navigate(['/resorts/vanavihari-maredumilli']);
   }
+
+  // goToResort() {
+  //   switch (this.selectedResort) {
+  //     case 'VanaVihari, Maredumilli':
+  //       this.router.navigate(['/resorts/vanavihari-maredumilli']);
+  //       break;
+  //     case 'Jungle Star, Valamuru':
+  //       this.router.navigate(['/resorts/jungle-star-valamuru']);
+  //       break;
+  //     default:
+  //       // Handle default case or error
+  //       console.log(this.selectedResort + 'is not there');
+
+  //       break;
+  //   }
+  // }
 }
