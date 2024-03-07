@@ -24,24 +24,25 @@
                     </div>
                 </div>
                 <div class="col-md-8 mt-4 mt-lg-0">
-                    <h4>About Vanavihari, Maredumilli</h4>
-                    <p>
-                        Vanavihari resort, situated in the serene landscapes of Maredumilli,
-                        beckons eco-tourism aficionados with its abundance of bamboo trees.
-                        This guesthouse, committed to community well-being, offers a serene
-                        retreat amidst natural surroundings. With its snug cottages and
-                        rooms, it conveniently lies close to Amruthathara Waterfalls,
-                        promising guests a peaceful ambiance. Nearby street food eateries
-                        present the opportunity to savor the distinctive flavor of bamboo
-                        biriyani. Stepping out for a night or morning stroll unveils a
-                        heavenly experience for visitors.
-                    </p>
+                  <h4>About Vanavihari, Maredumilli</h4>
+                  <p>
+                    Vanavihari resort, situated in the serene landscapes of Maredumilli,
+                    beckons eco-tourism aficionados with its abundance of bamboo trees.
+                    This guesthouse, committed to community well-being, offers a serene
+                    retreat amidst natural surroundings. With its snug cottages and
+                    rooms, it conveniently lies close to Amruthathara Waterfalls,
+                    promising guests a peaceful ambiance. Nearby street food eateries
+                    present the opportunity to savor the distinctive flavor of bamboo
+                    biriyani. Stepping out for a night or morning stroll unveils a
+                    heavenly experience for visitors.
+                  </p>
                 </div>
             </div>
             <h2 class="text-center mb-4">Modify Search</h2>
             <!-- section for search bar - with inputs given in home page search, and user can modify -->
             <app-search-resort></app-search-resort>
             <!-- rooms listing section -->
+      
             <div class="row mt-5">
                 <aside class="">
                     <div class="sort">
@@ -74,6 +75,7 @@
                         </div>
                     </div>
                 </aside>
+                <!-- WORK ON BELOW THIS FOR ROOM CARDS LISTING -->
                 <main class="rooms-listing">
                     <div *ngFor="let card of roomCards; let i = index" class="card mb-3 p-1">
                         <div class="row g-0">
@@ -88,8 +90,7 @@
                                                 <span class="me-2"><strong>Room name:</strong></span>{{ card.roomName }}
                                             </p>
                                             <p class="mb-0">
-                                                <span class="me-2"><strong>Cottage type:</strong></span>{{
-                                                card.cottageType }}
+                                                <span class="me-2"><strong>Cottage type:</strong></span>{{ card.cottageType }}
                                             </p>
                                             <p>
                                                 <span class="me-2"><strong>Bed type:</strong></span>{{ card.bedType }}
@@ -122,6 +123,6 @@
                     </div>
                 </main>
             </div>
-        </div>
+       </div>
     </div>
 </app-layout>
