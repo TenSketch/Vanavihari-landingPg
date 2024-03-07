@@ -103,19 +103,4 @@ export class SearchResortComponent implements OnInit {
     this.router.navigate(['/resorts/vanavihari-maredumilli']);
   }
 
-  // goToResort() {
-  //   switch (this.selectedResort) {
-  //     case 'VanaVihari, Maredumilli':
-  //       this.router.navigate(['/resorts/vanavihari-maredumilli']);
-  //       break;
-  //     case 'Jungle Star, Valamuru':
-  //       this.router.navigate(['/resorts/jungle-star-valamuru']);
-  //       break;
-  //     default:
-  //       // Handle default case or error
-  //       console.log(this.selectedResort + 'is not there');
-
-  //       break;
-  //   }
-  // }
 }
