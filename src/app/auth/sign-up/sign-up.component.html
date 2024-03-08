@@ -15,7 +15,7 @@
                 <p class="card-title fs-5">Create your</p>
                 <h5 class="mb-4">Vanavihari user account</h5>
               </div>
-              <form #myForm="ngForm" [formGroup]="form" (ngSubmit)="onSubmit()">
+              <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <mat-form-field appearance="outline">
                   <mat-label>Full Name</mat-label>
                   <input
@@ -27,13 +27,7 @@
                     ngModel
                     placeholder="Enter Name"
                   />
-                  <mat-error
-                    *ngIf="
-                      form.controls.full_name.invalid &&
-                      (form.controls.full_name.dirty ||
-                        form.controls.full_name.touched)
-                    "
-                  >
+                  <mat-error *ngIf="form.get('full_name')?.invalid && (form.get('full_name')?.dirty || form.get('full_name')?.touched)">
                     Please enter your full name.
                   </mat-error>
                 </mat-form-field>
@@ -48,14 +42,8 @@
                     ngModel
                     placeholder="Enter 10 digit mobile no."
                   />
-                  <mat-error
-                    *ngIf="
-                      form.controls.mobile_number.invalid &&
-                      (form.controls.mobile_number.dirty ||
-                        form.controls.mobile_number.touched)
-                    "
-                  >
-                    Please enter a valid mobile number.
+                  <mat-error *ngIf="form.get('mobile_number')?.invalid && (form.get('mobile_number')?.dirty || form.get('mobile_number')?.touched)">
+                    Please enter the valid Mobile Number.
                   </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="outline" class="mt-3">
@@ -146,7 +134,6 @@
                   mat-raised-button
                   color="primary"
                   class="w-100 mt-3"
-                  [disabled]="form.invalid"
                 >
                   Sign Up
                 </button>

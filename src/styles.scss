@@ -81,26 +81,6 @@ h1, h2, h3, h4, h5, h6{
   // }
 }
 
-// material datepicker
-.mat-form-field {
-  display: inline-flex;
-}
-
-.mat-form-field-infix {
-  display: inline-flex !important;
-  align-items: baseline;
-  padding: 0 16px;
-}
-
-.mat-mdc-form-field-infix {
-  width: 100px !important;
-}
-
-.mat-mdc-form-field-subscript-wrapper,
-.mat-mdc-form-field-bottom-align::before {
-  display: none !important;
-}
-
 .card {
   // background: rgba(255, 255, 255, 0.4);
   // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
