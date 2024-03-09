@@ -43,11 +43,7 @@ export default async (req) => {
             }
           );
         }
-        apiUrl = `${zoho_api_uri}Account_Registration?publickey=kFs7xRDC5eRPfyCQ0W7yQNCRv&full_name=${queryParams.get(
-          "fullname"
-        )}&email=${queryParams.get("email")}&phone=${queryParams.get(
-          "mobile"
-        )}&password=${queryParams.get("password")}`;
+        apiUrl = `${zoho_api_uri}Account_Registration?publickey=kFs7xRDC5eRPfyCQ0W7yQNCRv&full_name=${queryParams.get("fullname")}&email=${queryParams.get("email")}&phone=${queryParams.get("mobile")}&password=${queryParams.get("password")}`;
         method = "GET";
         break;
       case "login":
@@ -60,9 +56,7 @@ export default async (req) => {
             }
           );
         }
-        apiUrl = `${zoho_api_uri}Login_Validation?publickey=PWu6q9GvYJJjNSnM6UFSU6fSx&username=${queryParams.get(
-          "username"
-        )}&password=${queryParams.get("password")}`;
+        apiUrl = `${zoho_api_uri}Login_Validation?publickey=PWu6q9GvYJJjNSnM6UFSU6fSx&username=${queryParams.get("username")}&password=${queryParams.get("password")}`;
         method = "GET";
         break;
       case "email_verification":
@@ -77,9 +71,7 @@ export default async (req) => {
             }
           );
         }
-        apiUrl = `${zoho_api_uri}Email_Verification?publickey=TJNXwBQpaFWVvUK3ZmKvufVOJ&guest_id=${queryParams.get(
-          "userid"
-        )}&token=${queryParams.get("token")}`;
+        apiUrl = `${zoho_api_uri}Email_Verification?publickey=TJNXwBQpaFWVvUK3ZmKvufVOJ&guest_id=${queryParams.get("userid")}&token=${queryParams.get("token")}`;
         method = "GET";
         break;
       case "room_list":
@@ -90,6 +82,16 @@ export default async (req) => {
         //     });
         // }
         apiUrl = `${zoho_api_uri}Rooms_List?publickey=J4s0fXQ0wuxFDJJ2ns9Gs3GqK`;
+        method = "GET";
+        break;
+      case "profile_details":
+        if (!queryParams.has("token") || !queryParams.has("email")) {
+            return new Response(JSON.stringify({ error: 'Missing required parameters for email verification' }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+        apiUrl = `${zoho_api_uri}Profile_Details?publickey=7AwGYAgpPRaOUDEzbqYpeFyvs&email=${queryParams.get("email")}&token=${queryParams.get("token")}`;
         method = "GET";
         break;
       default:
