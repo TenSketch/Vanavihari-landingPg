@@ -24,7 +24,7 @@ export class SignInComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.form = this.formBuilder.group({
-      mobile_number: ['', Validators.required],
+      email_address: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
@@ -41,7 +41,7 @@ export class SignInComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       const params = new HttpParams()
-        .set('username', this.form.value.mobile_number)
+        .set('username', this.form.value.email_address)
         .set('password', this.form.value.password);
 
       this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=login', {params}).subscribe({
@@ -50,7 +50,7 @@ export class SignInComponent implements OnInit {
             this.router.navigate(['/home']);
             this.showSnackBarAlert("Login Success. Token: "+response.result.token, false);
             this.authService.setAccessToken(response.result.token);
-            this.authService.setAccountUsername(this.form.value.mobile_number);
+            this.authService.setAccountUsername(this.form.value.email_address);
             this.authService.setAccountUserFullname(response.result.userfullname);
           } else if (response.code == 3000) {
             this.showSnackBarAlert(response.result.msg);

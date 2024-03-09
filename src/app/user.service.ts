@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-  private readonly accessTokenKey = '';
-  private readonly accessUsername = '';
-  private readonly accessUserFullname = '';
+  private readonly accessTokenKey = 'access_token';
+  private readonly accessUsername = 'username';
+  private readonly accessUserFullname = 'userfullname';
 
   constructor() { }
 
