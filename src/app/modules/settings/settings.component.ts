@@ -11,11 +11,18 @@ import { UserService } from '../../user.service';
 export class SettingsComponent
 {
   form: FormGroup;
+  editingField: string | null=null;
+  storedUser: any;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) { 
     this.form = this.formBuilder.group({
-      mobile_number: ['', Validators.required],
-      password: ['', Validators.required]
+      full_name: ['John Doe'],
+      mobile_number: ['8945006212'],
+      email: ['john.doe@example.com', Validators.email],
+      dob: ['', Validators.required],
+      nationality: [''],
+      address: [''],
+      password: ['']
     });
   }
 
@@ -34,6 +41,21 @@ export class SettingsComponent
         alert('Invalid email or password');
       }
     }
+  }
+  editField(field: string) {
+    this.editingField = field;
+  }
+  cancelEditing(field: string) {
+    this.form.patchValue(this.storedUser);
+    this.editingField = null;
+  }
+
+  saveChanges(field: string) {
+    
+    this.storedUser = { ...this.storedUser, ...this.form.value };
+    this.userService.setUser(this.storedUser); 
+    this.editingField = null;
+    alert('Changes saved successfully!');
   }
 
   goToSignin() {
