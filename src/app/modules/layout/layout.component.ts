@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../user.service';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-layout',
@@ -8,11 +9,13 @@ import { UserService } from '../../user.service';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
-  constructor(private router: Router, private userService: UserService) {}
-
+  constructor(private router: Router, private userService: UserService, private authService: AuthService) {}
+  accountusername: string = 'John Doe';
   isSidebarOpen: boolean = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.accountusername = this.userService.getUser();
+  }
 
   isLoggedIn(): boolean {
     return this.userService.isLoggedIn();

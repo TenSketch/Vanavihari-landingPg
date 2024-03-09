@@ -4,29 +4,37 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-  private readonly USER_KEY = 'user';
+  private readonly accessTokenKey = 'access_token';
+  private readonly accessUsername = 'username';
+  private readonly accessUserFullname = 'userfullname';
 
   constructor() { }
 
   getUser(): any {
-    const user = localStorage.getItem(this.USER_KEY);
-    return user ? JSON.parse(user) : null;
+    return localStorage.getItem(this.accessUserFullname);
+    
+    // const user = localStorage.getItem(this.accessTokenKey);
+    // return user ? JSON.parse(user) : null;
   }
 
   setUser(user: any): void {
-    localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+    // const expiration = new Date();
+    // expiration.setTime(expiration.getTime() + (expirationMinutes * 60 * 1000));
+    localStorage.setItem(this.accessTokenKey, user); //JSON.stringify({user, expiration: expiration.getTime()})
   }
 
   clearUser(): void {
-    localStorage.removeItem(this.USER_KEY);
+    localStorage.removeItem(this.accessTokenKey);
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem(this.USER_KEY);
+    return (!!localStorage.getItem(this.accessTokenKey))&&(!!localStorage.getItem(this.accessUsername))&&(!!localStorage.getItem(this.accessUserFullname));
   }
 
   logout(): void {
-    localStorage.removeItem(this.USER_KEY);
+    localStorage.removeItem(this.accessTokenKey);
+    localStorage.removeItem(this.accessUsername);
+    localStorage.removeItem(this.accessUserFullname);
   }
 
 
