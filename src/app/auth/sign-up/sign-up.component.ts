@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {
+  FormControl,
   FormGroup,
   FormBuilder,
   Validators,
@@ -57,10 +58,17 @@ export class SignUpComponent implements OnInit {
   // }
 
   ngOnInit(): void {
+    function emailValidator(control: FormControl): { [s: string]: boolean } | null {
+      if (!control.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+        return { invalidEmail: true };
+      }
+      return null; // Return null when validation succeeds
+    }
     this.form = this.formBuilder.group({
       full_name: ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z]+(?:\\s[a-zA-Z]+)*$')])],
       mobile_number: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10)])],
-      email_id: ['', Validators.compose([Validators.required, Validators.email])],
+      // email_id: ['', Validators.compose([Validators.required, Validators.email])],
+      email_id: ['', Validators.compose([Validators.required, emailValidator])],
       password: ['', Validators.compose([
         Validators.required,
         Validators.minLength(8),
