@@ -48,9 +48,11 @@ export class SettingsComponent
             address: [response.result.address]
           });
         } else if (response.code == 3000) {
+          this.userService.clearUser();
           alert('Login Error!');
           this.router.navigate(['/home']);
         } else {
+          this.userService.clearUser();
           alert('Login Error!');
           this.router.navigate(['/home']);
         }
