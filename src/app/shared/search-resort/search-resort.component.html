@@ -4,9 +4,9 @@
       <div class="col-lg-3">
         <mat-form-field appearance="outline">
           <mat-label>Select Resort</mat-label>
-          <mat-select required>
+          <mat-select required [(ngModel)]="selectedResort">
             <mat-option value="VanaVihari, Maredumilli">Vanavihari, Maredumilli</mat-option>
-            <mat-option value="Jungle Star, Valamuru">Jungle Star, Valamuru</mat-option>
+            <mat-option value="Jungle   Star, Valamuru">Jungle Star, Valamuru</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -34,72 +34,74 @@
             <div class="modal-content">
               <div class="modal-body">
                 <!-- Angular Material form fields for adults, children, rooms -->
-                  <!-- Adults section -->
-                  <div class="row mt-3">
-                    <label for="adults" class="col-sm-6">No. of Adults:</label>
-                    <div class="col-sm-6">
-                      <div class="input-group">
-                        <button class="btn " type="button" (click)="decrementAdults()">
-                          -
-                        </button>
-                        <input type="number" id="adultsCount" name="adults" class="form-control text-center"
-                          [(ngModel)]="adultsCount" />
-                        <button class="btn " type="button" (click)="incrementAdults()">
-                          +
-                        </button>
-                      </div>
+                <!-- Adults section -->
+                <div class="row mt-3">
+                  <label for="adults" class="col-sm-6">No. of Adults:</label>
+                  <div class="col-sm-6">
+                    <div class="input-group">
+                      <button class="btn" type="button" (click)="decrementAdults()">
+                        -
+                      </button>
+                      <input type="number" id="adultsCount" name="adults" class="form-control text-center"
+                        [(ngModel)]="adultsCount" />
+                      <button class="btn" type="button" (click)="incrementAdults()">
+                        +
+                      </button>
                     </div>
                   </div>
-                  <!-- Children section -->
-                  <div class="row my-3">
-                    <label for="children" class="col-sm-6">No. of Children:</label>
-                    <div class="col-sm-6">
-                      <div class="input-group">
-                        <button class="btn " type="button" (click)="decrementChildren()">
-                          -
-                        </button>
-                        <input type="number" id="childrenCount" name="children" class="form-control text-center"
-                          [(ngModel)]="childrenCount" />
-                        <button class="btn " type="button" (click)="incrementChildren()" [disabled]="isMaxReached">
-                          +
-                        </button>
-                      </div>
-                      <div *ngIf="isMaxReached" class="text-danger mt-2">
-                        Maximum limit reached for children ({{ maxChildren }}).
-                      </div>
+                </div>
+                <!-- Children section -->
+                <div class="row my-3">
+                  <label for="children" class="col-sm-6">No. of Children:</label>
+                  <div class="col-sm-6">
+                    <div class="input-group">
+                      <button class="btn" type="button" (click)="decrementChildren()">
+                        -
+                      </button>
+                      <input type="number" id="childrenCount" name="children" class="form-control text-center"
+                        [(ngModel)]="childrenCount" />
+                      <button class="btn" type="button" (click)="incrementChildren()" [disabled]="isMaxReached">
+                        +
+                      </button>
+                    </div>
+                    <div *ngIf="isMaxReached" class="text-danger mt-2">
+                      Maximum limit reached for children ({{ maxChildren }}).
                     </div>
                   </div>
-                  <!-- Age dropdowns -->
-                  <div id="ageDropdowns">
-                    <div class="col-auto" *ngFor="let i of getChildrenCountArray()">
-                      <select class="form-select mb-3" name="childAge" [(ngModel)]="selectedAges[i]">
-                        <option value="" disabled>Age required</option>
-                        <option value="0-2">0 - 2 years</option>
-                        <option value="3-5">3 - 5 years</option>
-                        <option value="6-10">6 - 10 years</option>
-                      </select>
+                </div>
+                <!-- Age dropdowns -->
+                <div id="ageDropdowns">
+                  <div class="col-auto" *ngFor="let i of getChildrenCountArray()">
+                    <select class="form-select mb-3" name="childAge" [(ngModel)]="selectedAges[i]">
+                      <option value="" disabled>Age required</option>
+                      <option value="0-2">0 - 2 years</option>
+                      <option value="3-5">3 - 5 years</option>
+                      <option value="6-10">6 - 10 years</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- Rooms section -->
+                <div class="row">
+                  <label for="rooms" class="col-sm-6">No. of Rooms:</label>
+                  <div class="col-sm-6">
+                    <div class="input-group">
+                      <button class="btn" type="button" (click)="decrementRooms()">
+                        -
+                      </button>
+                      <input type="number" id="roomsCount" name="rooms" class="form-control text-center"
+                        [(ngModel)]="roomsCount" />
+                      <button class="btn" type="button" (click)="incrementRooms()">
+                        +
+                      </button>
                     </div>
                   </div>
-                  <!-- Rooms section -->
-                  <div class="row">
-                    <label for="rooms" class="col-sm-6">No. of Rooms:</label>
-                    <div class="col-sm-6">
-                      <div class="input-group">
-                        <button class="btn " type="button" (click)="decrementRooms()">
-                          -
-                        </button>
-                        <input type="number" id="roomsCount" name="rooms" class="form-control text-center"
-                          [(ngModel)]="roomsCount" />
-                        <button class="btn " type="button" (click)="incrementRooms()">
-                          +
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                </div>
               </div>
               <div class="modal-footer">
                 <button mat-raised-button color="primary" type="button" class="w-100" data-bs-dismiss="modal"
-                  (click)="getvalues(roomsCount,adultsCount)">Done</button>
+                  (click)="getvalues(roomsCount, adultsCount)">
+                  Done
+                </button>
               </div>
             </div>
           </div>
@@ -108,7 +110,17 @@
       <div class="col-auto flex-grow-1">
         <!-- <button mat-raised-button color="primary" (click)="goToSignin()" class="w-100 mt-1">Sign In</button> -->
 
-        <button mat-raised-button color="primary" class="w-100" (click)="goToVanavihari()">Search</button>
+        <button mat-raised-button color="primary" class="w-100" (click)="goToVanavihari()">
+          Search
+        </button>
+        <!-- <button
+          mat-raised-button
+          color="primary"
+          class="w-100"
+          (click)="goToResort()"
+        >
+          Search
+        </button> -->
       </div>
     </div>
   </form>

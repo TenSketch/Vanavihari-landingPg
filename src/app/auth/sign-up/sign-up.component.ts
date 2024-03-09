@@ -4,7 +4,6 @@ import {
   FormGroup,
   FormBuilder,
   Validators,
-  AbstractControl,
 } from '@angular/forms';
 import { HttpClient, HttpParams } from '@angular/common/http';
 // import { ZohoAuthServiceService } from '../../zoho-auth-service.service';
@@ -33,35 +32,45 @@ export class SignUpComponent implements OnInit {
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
-    private sanitizer: DomSanitizer
-  ) {
-    this.form = this.formBuilder.group(
-      {
-        full_name: [
-          '',
-          [Validators.required, Validators.pattern(Regex.lettersAndSpaces)],
-        ],
-        mobile_number: ['', [Validators.required, Validators.minLength(10)]],
-        email_id: ['', [Validators.required, Validators.email]],
-        password: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(8),
-            Validators.pattern(
-              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/
-            ),
-          ],
-        ],
-        repeat_password: ['', Validators.required],
-      },
-      {
-        validators: this.passwordMatchValidator,
-      }
-    );
-  }
+    private sanitizer: DomSanitizer,
+  ) {}
+  // {
+  //   this.form = this.formBuilder.group(
+  //     {
+  //       full_name: ['', Validators.compose([Validators.required, Validators.pattern(Regex.lettersAndSpaces)])],
+  //       mobile_number: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10)])],
+  //       email_id: ['', Validators.compose([Validators.required, Validators.email])],
+  //       password: ['',Validators.compose([
+  //         Validators.required,
+  //         Validators.minLength(8),
+  //         Validators.maxLength(16),
+  //         Validators.pattern(
+  //           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/
+  //         ),
+  //       ])],
+  //       repeat_password: ['', Validators.compose([Validators.required])],
+  //     },
+  //     {
+  //       validators: this.passwordMatchValidator,
+  //     }
+  //   );
+  // }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      full_name: ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z]+(?:\\s[a-zA-Z]+)*$')])],
+      mobile_number: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10)])],
+      email_id: ['', Validators.compose([Validators.required, Validators.email])],
+      password: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
+      ])],
+      repeat_password: ['', Validators.compose([Validators.required])]
+    }, {
+      validators: this.passwordMatchValidator
+    });
+  }
   onSubmit(): void {
     this.password = this.form.value.password;
     this.repeat_password = this.form.value.repeat_password;
