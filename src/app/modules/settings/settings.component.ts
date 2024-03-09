@@ -30,12 +30,9 @@ export class SettingsComponent
 
   ngOnInit(): void {
     // this.openModal();
-    
-    const getAccountUsername = this.authService.getAccountUsername();
-    const getAccessToken = this.authService.getAccessToken();
     const params = new HttpParams()
-      .set('email', getAccountUsername??'')
-      .set('token', getAccessToken??'');
+      .set('email', this.authService.getAccountUsername()??'')
+      .set('token', this.authService.getAccessToken()??'');
     this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=profile_details', {params}).subscribe({
       next: response => {
         if(response.code == 3000 && response.result.status == 'success') {
