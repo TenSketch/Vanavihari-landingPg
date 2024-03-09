@@ -49,6 +49,8 @@ export class SignInComponent implements OnInit {
           if(response.code == 3000 && response.result.status == 'success') {
             this.router.navigate(['/home']);
             this.showSnackBarAlert("Login Success. Token: "+response.result.token, false);
+            this.authService.setAccessToken(response.result.token);
+            this.authService.setAccountUsername(this.form.value.mobile_number);
           } else if (response.code == 3000) {
             this.showSnackBarAlert(response.result.msg);
           } else {

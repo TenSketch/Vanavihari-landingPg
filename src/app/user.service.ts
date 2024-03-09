@@ -4,29 +4,30 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-  private readonly USER_KEY = 'user';
+  private readonly accessTokenKey = '';
+  private readonly accessUsername = '';
 
   constructor() { }
 
   getUser(): any {
-    const user = localStorage.getItem(this.USER_KEY);
-    return user ? JSON.parse(user) : null;
+    return this.accessUsername; //localStorage.getItem(this.accessTokenKey);
+    // return user ? JSON.parse(user) : null;
   }
 
   setUser(user: any): void {
-    localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+    localStorage.setItem(this.accessTokenKey, JSON.stringify(user));
   }
 
   clearUser(): void {
-    localStorage.removeItem(this.USER_KEY);
+    localStorage.removeItem(this.accessTokenKey);
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem(this.USER_KEY);
+    return (!!localStorage.getItem(this.accessTokenKey))&&(!!localStorage.getItem(this.accessUsername));
   }
 
   logout(): void {
-    localStorage.removeItem(this.USER_KEY);
+    localStorage.removeItem(this.accessTokenKey);
   }
 
 

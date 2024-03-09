@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private accessTokenKey = 'access_token';
+  private accessTokenKey = '';
+  private accessUsername = '';
   private apiCommonUrl = 'https://www.zohoapis.com/creator/custom/vanavihari';
   
   constructor(private http: HttpClient) { }
@@ -20,6 +21,14 @@ export class AuthService {
 
   setAccessToken(token: string): void {
     localStorage.setItem(this.accessTokenKey, token);
+  }
+
+  setAccountUsername(username: string): void {
+    localStorage.setItem(this.accessUsername, username);
+  }
+
+  getAccountUsername(): string | null {
+    return localStorage.getItem(this.accessUsername);
   }
 
   getAccessToken(): string | null {

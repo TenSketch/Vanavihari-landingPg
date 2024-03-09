@@ -33,7 +33,7 @@
             <i class="fa-solid fa-arrow-up-from-bracket me-2"></i>Sign up</a>
         </li>
         <!-- *ngIf="isLoggedIn()" -->
-        <li class="nav-item dropdown d-none ">
+        <li class="nav-item dropdown"  *ngIf="isLoggedIn()">
           <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <i class="fa-regular fa-user-circle me-2"></i>Balachandiran
