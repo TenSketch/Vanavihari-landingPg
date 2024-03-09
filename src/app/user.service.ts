@@ -6,11 +6,12 @@ import { Injectable } from '@angular/core';
 export class UserService {
   private readonly accessTokenKey = '';
   private readonly accessUsername = '';
+  private readonly accessUserFullname = '';
 
   constructor() { }
 
   getUser(): any {
-    return this.accessUsername; //localStorage.getItem(this.accessTokenKey);
+    return localStorage.getItem(this.accessUserFullname); //localStorage.getItem(this.accessTokenKey);
     // return user ? JSON.parse(user) : null;
   }
 
@@ -23,11 +24,13 @@ export class UserService {
   }
 
   isLoggedIn(): boolean {
-    return (!!localStorage.getItem(this.accessTokenKey))&&(!!localStorage.getItem(this.accessUsername));
+    return (!!localStorage.getItem(this.accessTokenKey))&&(!!localStorage.getItem(this.accessUsername))&&(!!localStorage.getItem(this.accessUserFullname));
   }
 
   logout(): void {
     localStorage.removeItem(this.accessTokenKey);
+    localStorage.removeItem(this.accessUsername);
+    localStorage.removeItem(this.accessUserFullname);
   }
 
 

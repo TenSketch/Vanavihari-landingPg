@@ -10,13 +10,11 @@ import { AuthService } from '../../auth.service';
 })
 export class LayoutComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private authService: AuthService) {}
-
+  accountusername: string = 'John Doe';
   isSidebarOpen: boolean = false;
 
   ngOnInit(): void {
-    if(this.authService.getAccountUsername() != null && this.authService.getAccessToken() != null) {
-      
-    }
+    this.accountusername = this.userService.getUser();
   }
 
   isLoggedIn(): boolean {

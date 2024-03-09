@@ -51,6 +51,7 @@ export class SignInComponent implements OnInit {
             this.showSnackBarAlert("Login Success. Token: "+response.result.token, false);
             this.authService.setAccessToken(response.result.token);
             this.authService.setAccountUsername(this.form.value.mobile_number);
+            this.authService.setAccountUserFullname(response.result.userfullname);
           } else if (response.code == 3000) {
             this.showSnackBarAlert(response.result.msg);
           } else {
