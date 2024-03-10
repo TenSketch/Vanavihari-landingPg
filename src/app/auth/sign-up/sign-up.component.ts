@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {
-  FormControl,
-  FormGroup,
-  FormBuilder,
-  Validators,
-} from '@angular/forms';
+import {  FormBuilder, FormGroup, Validators, FormControl, ValidatorFn, AbstractControl, ValidationErrors} from '@angular/forms';
 import { HttpClient, HttpParams } from '@angular/common/http';
 // import { ZohoAuthServiceService } from '../../zoho-auth-service.service';
 import { AuthService } from '../../auth.service';
@@ -24,6 +19,7 @@ export class SignUpComponent implements OnInit {
   code: any;
   password: any;
   repeat_password: any;
+  hide = true; 
 
   constructor(
     private router: Router,
@@ -89,7 +85,7 @@ export class SignUpComponent implements OnInit {
       password: ['', Validators.compose([
         Validators.required,
         Validators.minLength(6),
-        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/)
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{6,}$/),
       ])],
       repeat_password: ['', Validators.compose([Validators.required])]
     }, {
@@ -132,6 +128,11 @@ export class SignUpComponent implements OnInit {
     const repeatPassword = form.get('repeat_password')?.value;
     return password === repeatPassword ? null : { passwordsNotMatch: true };
   }
+
+  togglePasswordVisibility(): void {
+    this.hide = !this.hide;
+  }
+
   showSuccessAlert() {
     this.snackBar
       .open('Form submitted successfully!', 'Close', {
