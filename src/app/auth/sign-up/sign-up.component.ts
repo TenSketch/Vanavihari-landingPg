@@ -58,6 +58,17 @@ export class SignUpComponent implements OnInit {
   // }
 
   ngOnInit(): void {
+    // mobile validation function- NO SPACE ALLOWED
+    function mobileNumberValidator(control: FormControl): { [s: string]: boolean } | null {
+      const mobileNumberPattern = /^[0-9]*$/;
+    
+      if (!mobileNumberPattern.test(control.value)) {
+        return { 'invalidMobileNumber': true };
+      }
+    
+      return null;
+    }
+    // full email validation func
     function emailValidator(control: FormControl): { [s: string]: boolean } | null {
       if (!control.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
         return { invalidEmail: true };
@@ -66,13 +77,19 @@ export class SignUpComponent implements OnInit {
     }
     this.form = this.formBuilder.group({
       full_name: ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z]+(?:\\s[a-zA-Z]+)*$')])],
-      mobile_number: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10)])],
+      // mobile_number: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10)])],
+      mobile_number: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(10),
+        mobileNumberValidator
+    ])],    
       // email_id: ['', Validators.compose([Validators.required, Validators.email])],
       email_id: ['', Validators.compose([Validators.required, emailValidator])],
       password: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(8),
-        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
+        Validators.minLength(6),
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/)
       ])],
       repeat_password: ['', Validators.compose([Validators.required])]
     }, {
