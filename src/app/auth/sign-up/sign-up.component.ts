@@ -101,7 +101,7 @@ export class SignUpComponent implements OnInit {
         .set('email', this.form.value.email_id)
         .set('mobile', this.form.value.mobile_number)
         .set('password', this.form.value.password);
-
+      
       this.http
         .get<any>(
           'https://vanavihari-ng.netlify.app/zoho-connect?api_type=register',
