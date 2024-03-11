@@ -19,7 +19,8 @@ export class SignUpComponent implements OnInit {
   code: any;
   password: any;
   repeat_password: any;
-  hide = true; 
+  password_hide = true;
+  repeate_password_hide = true;
 
   constructor(
     private router: Router,
@@ -130,7 +131,11 @@ export class SignUpComponent implements OnInit {
   }
 
   togglePasswordVisibility(): void {
-    this.hide = !this.hide;
+    this.password_hide = !this.password_hide;
+  }
+
+  toggleRepeatPasswordVisibility(): void {
+    this.repeate_password_hide = !this.repeate_password_hide;
   }
 
   showSuccessAlert() {
