@@ -10,11 +10,14 @@ interface Room {
   // bed_type: string;
   // amenities: string[];
   // rating: string;
-  // weekDayPrice: string;
-  // weekendPrice: string;
-  // weekDayGuestPrice: string;
-  // weekendGuestPrice: string;
-  // image: string;
+  weekDayPrice: string;
+  weekendPrice: string;
+  weekDayGuestPrice: string;
+  weekendGuestPrice: string;
+  image: string;
+  max_adult: number;
+  max_child: number;
+  max_guest: number;
 }
 
 @Component({
@@ -158,11 +161,14 @@ export class VanavihariMaredumilliComponent {
       // bed_type: room.bed_type || 'Unknown',
       // amenities: Object.values(room.amenities) || [],
       // rating: room.rating || 'Unknown',
-      // weekDayPrice: room.week_day_rate || 'Unknown',
-      // weekendPrice: room.week_end_rate || 'Unknown',
-      // weekDayGuestPrice: room.week_day_guest_rate || 'Unknown',
-      // weekendGuestPrice: room.week_end_guest_rate || 'Unknown',
-      // image: room.image || 'assets/img/default-room-image.jpg', // set a default image if it is not available
+      max_adult: room.max_adult || 'Unknown',
+      max_child: room.max_child || 'Unknown',
+      max_guest: room.max_guest || 'Unknown',
+      weekDayPrice: room.week_day_rate || 'Unknown',
+      weekendPrice: room.week_end_rate || 'Unknown',
+      weekDayGuestPrice: room.week_day_guest_rate || 'Unknown',
+      weekendGuestPrice: room.week_end_guest_rate || 'Unknown',
+      image: room.image || 'assets/img/bonnet/BONNET-OUTER-VIEW.jpg', // set a default image if it is not available
     }));
   }
 
