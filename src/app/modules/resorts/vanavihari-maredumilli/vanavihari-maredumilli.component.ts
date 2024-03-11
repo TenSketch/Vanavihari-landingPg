@@ -168,8 +168,8 @@ export class VanavihariMaredumilliComponent {
       max_guest: room.max_guest || 'Unknown',
       weekDayPrice: room.week_day_rate || 'Unknown',
       weekendPrice: room.week_end_rate || 'Unknown',
-      weekDayGuestPrice: room.week_day_guest_rate || 'Unknown',
-      weekendGuestPrice: room.week_end_guest_rate || 'Unknown',
+      weekDayGuestPrice: room.week_day_guest_charge || 'Unknown',
+      weekendGuestPrice: room.week_end_guest_charge || 'Unknown',
       image: room.image || 'assets/img/bonnet/BONNET-OUTER-VIEW.jpg', // set a default image if it is not available
     }));
   }
