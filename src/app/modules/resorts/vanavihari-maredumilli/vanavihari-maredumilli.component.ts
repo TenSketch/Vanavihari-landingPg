@@ -64,6 +64,13 @@ export class VanavihariMaredumilliComponent {
             console.log(response);
             console.log(response.result.data);
             
+            const json = response.result.data;
+            const jsonArray = Object.keys(response.result.data).map(key => {
+                return {
+                  id: key,
+                  ...json[key]
+                };
+            });
             this.roomCards = this.mapRoomData(response.result.data);
             console.log(this.roomCards);
             
