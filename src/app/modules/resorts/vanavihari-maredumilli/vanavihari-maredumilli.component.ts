@@ -71,8 +71,8 @@ export class VanavihariMaredumilliComponent {
                   ...json[key]
                 };
             });
-            this.roomCards = this.mapRoomData(response.result.data);
-            console.log(this.roomCards);
+            console.log(jsonArray);
+            this.roomCards = this.mapRoomData(jsonArray);
             
           } else {
             this.showErrorAlert(
