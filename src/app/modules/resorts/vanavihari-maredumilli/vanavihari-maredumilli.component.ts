@@ -61,105 +61,104 @@ export class VanavihariMaredumilliComponent {
   
 
   fetchRoomList() {
-    // this.http
-    //   .get<any>(
-    //     'https://vanavihari-ng.netlify.app/zoho-connect?api_type=room_list'
-    //   )
-    //   .subscribe({
-    //     next: (response) => {
-    //       if (response.code === 3000 && response.result.status === 'success') {
-    //         console.log(response);
-    //         console.log(response.result.data);
+    this.http
+      .get<any>(
+        'https://vanavihari-ng.netlify.app/zoho-connect?api_type=room_list'
+      )
+      .subscribe({
+        next: (response) => {
+          if (response.code === 3000 && response.result.status === 'success') {
+            console.log(response);
+            console.log(response.result.data);
             
-    //         const json = response.result.data;
-    //         const jsonArray = Object.keys(response.result.data).map(key => {
-    //             return {
-    //               id: key,
-    //               ...json[key]
-    //             };
-    //         });
-    //         console.log(jsonArray);
-    //         this.roomCards = this.mapRoomData(jsonArray);
-            
-    //       } else {
-    //         this.showErrorAlert(
-    //           'Failed to fetch room list. Please try again later.'
-    //         );
-    //       }
-    //     },
-    //     error: (err) => {
-    //       console.error('Error:', err);
-    //       this.showErrorAlert(
-    //         'An error occurred while fetching room list. Please try again later.'
-    //       );
-    //     },
-    //   });
+            const json = response.result.data;
+            const jsonArray = Object.keys(json).map(key => {
+              return {
+                id: key,
+                ...json[key]
+              };
+            });
+            console.log(jsonArray);
+          this.roomCards = this.mapRoomData(jsonArray);
+                } else {
+            this.showErrorAlert(
+              'Failed to fetch room list. Please try again later.'
+            );
+          }
+        },
+        error: (err) => {
+          console.error('Error:', err);
+          this.showErrorAlert(
+            'An error occurred while fetching room list. Please try again later.'
+          );
+        },
+      });
 
-    interface RoomDetails {
-      name: string;
-      max_child: number;
-      week_end_guest_charge: number;
-      cottage_type: string;
-      max_guest: number;
-      week_day_rate: number;
-      id: number,
-      aminities: {
-        "4554333000000110021": string;
-        "4554333000000110025": string;
-        "4554333000000110017": string;
-      };
-      // Add other properties as needed
-    }
+    // interface RoomDetails {
+    //   name: string;
+    //   max_child: number;
+    //   week_end_guest_charge: number;
+    //   cottage_type: string;
+    //   max_guest: number;
+    //   week_day_rate: number;
+    //   id: number,
+    //   aminities: {
+    //     "4554333000000110021": string;
+    //     "4554333000000110025": string;
+    //     "4554333000000110017": string;
+    //   };
+    //   // Add other properties as needed
+    // }
     
-    // // Sample JSON object with the defined type
-    const json: { [key: string]: RoomDetails } = {
-      "4554333000000110059": {
-        name: "room1",
-        max_child: 1,
-        week_end_guest_charge: 700,
-        cottage_type: "Hill Top Guest House",
-        max_guest: 3,
-        week_day_rate: 2500,
-        id: 301,
-        aminities: {
-          "4554333000000110021": "A/C",
-          "4554333000000110025": "Western",
-          "4554333000000110017": "Geyser"
-        },
-        // Other properties...
-      },
-      "4554333000000110065": {
-        name: "room2",
-        max_child: 1,
-        week_end_guest_charge: 700,
-        cottage_type: "Pre-Fabricated Cottages",
-        max_guest: 3,
-        week_day_rate: 2500,
-        id: 302,
-        aminities: {
-          "4554333000000110021": "A/C",
-          "4554333000000110025": "Western",
-          "4554333000000110017": "Geyser"
-        },
-        // Other properties...
-      },
-      // Add more objects...
+    // // // Sample JSON object with the defined type
+    // const json: { [key: string]: RoomDetails } = {
+    //   "4554333000000110059": {
+    //     name: "room1",
+    //     max_child: 1,
+    //     week_end_guest_charge: 700,
+    //     cottage_type: "Hill Top Guest House",
+    //     max_guest: 3,
+    //     week_day_rate: 2500,
+    //     id: 301,
+    //     aminities: {
+    //       "4554333000000110021": "A/C",
+    //       "4554333000000110025": "Western",
+    //       "4554333000000110017": "Geyser"
+    //     },
+    //     // Other properties...
+    //   },
+    //   "4554333000000110065": {
+    //     name: "room2",
+    //     max_child: 1,
+    //     week_end_guest_charge: 700,
+    //     cottage_type: "Pre-Fabricated Cottages",
+    //     max_guest: 3,
+    //     week_day_rate: 2500,
+    //     id: 302,
+    //     aminities: {
+    //       "4554333000000110021": "A/C",
+    //       "4554333000000110025": "Western",
+    //       "4554333000000110017": "Geyser"
+    //     },
+    //     // Other properties...
+    //   },
+    //   // Add more objects...
       
-    };
+    // };
     
     
     // Convert JSON object to array
-    console.log(json);
+    // console.log(json);
     
-    const jsonArray = Object.keys(json).map(key => {
-        return json[key];
-        // return {
-        //   id: key,
-        //   ...json[key]
-        // };
-    });
-    this.roomCards = this.mapRoomData(jsonArray);    
-    console.log(this.roomCards);
+    // const jsonArray = Object.keys(json).map(key => {
+    //     return json[key];
+    //     // return {
+    //     //   id: key,
+    //     //   ...json[key]
+    //     // };
+    // });
+    // this.roomCards = this.mapRoomData(jsonArray);    
+    // console.log(this.roomCards);
 
     // For demonstration purposes, setTimeout is used to mimic API call delay
     setTimeout(() => {
