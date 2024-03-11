@@ -108,15 +108,18 @@
                     <div class="col-6 details-right text-start">
                       <!-- <div class="star-rating">{{ room.rating }}</div>
                       <h5>{{ room.rating }}</h5> -->
-                      <p class="card-text">Week Day Price : 
-                        <small class="text-muted">{{ weekDayPrice }}</small>
+                      <p class="card-text">WeekDays Price : 
+                        <small class="text-muted">{{ room.weekDayPrice }}</small>
                       </p>
-                      <p class="card-text">WeekEnd Price : 
-                        <small class="text-muted">{{ weekendPrice }}</small>
+                      <p class="card-text">Weekend Price : 
+                        <small class="text-muted">{{ room.weekendPrice }}</small>
                       </p>
-                      <!-- <p class="card-text">
-                        <small class="text-muted">{{ weekDayPrice }}</small>
-                      </p> -->
+                      <p class="card-text">WeekDays Guest Price : 
+                        <small class="text-muted">{{ room.weekDayGuestPrice }}</small>
+                      </p>
+                      <p class="card-text">Weekend Guest Price :
+                        <small class="text-muted">{{ room.weekendGuestPrice }}</small>
+                      </p>
                       <button class="btn btn-primary" (click)="addRoom(room.id)">
                         Add room
                       </button>
