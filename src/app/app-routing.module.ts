@@ -6,6 +6,7 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { TouristPlacesComponent } from './modules/tourist-places/tourist-places.component';
 import { AboutVanavihariComponent } from './modules/about-vanavihari/about-vanavihari.component';
 import { VanavihariMaredumilliComponent } from './modules/resorts/vanavihari-maredumilli/vanavihari-maredumilli.component';
+import { RoomsComponent } from './modules/resorts/rooms/rooms.component';
 import { JungleStarValamuruComponent } from './modules/resorts/jungle-star-valamuru/jungle-star-valamuru.component';
 import { TribalCommunityComponent } from './modules/tribal-community/tribal-community.component';
 import { AwardsNewsPublicationsComponent } from './modules/awards-news-publications/awards-news-publications.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
 { path: 'my-account/settings', component: SettingsComponent},
 { path: 'my-account/my-bookings', component: MyBookingsComponent},
 { path: 'resorts/vanavihari-maredumilli', component: VanavihariMaredumilliComponent},
+{ path: 'resorts/rooms', component: RoomsComponent},
 { path: 'resorts/jungleStar,Valamuru', component: JungleStarValamuruComponent},
 { path: 'tribal-community', component: TribalCommunityComponent},
 { path: 'privacy-policy', component: PrivacyPolicyComponent},

@@ -7,14 +7,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 interface Room {
   name: string;
   cottage_type: string;
-  bed_type: string;
-  amenities: string[];
-  rating: string;
-  weekDayPrice: string;
-  weekendPrice: string;
-  weekDayGuestPrice: string;
-  weekendGuestPrice: string;
-  image: string;
+  // bed_type: string;
+  // amenities: string[];
+  // rating: string;
+  // weekDayPrice: string;
+  // weekendPrice: string;
+  // weekDayGuestPrice: string;
+  // weekendGuestPrice: string;
+  // image: string;
 }
 
 @Component({
@@ -39,7 +39,7 @@ export class VanavihariMaredumilliComponent {
     this.fetchRoomList();
   }
 
-  // roomCards: any[] = Array.from({ length: 4 }, (_, index) => ({
+  // roomCards: any[] = Array.from({ length: 1 }, (_, index) => ({
   //   roomName: 'Wood Pecker',
   //   cottageType: 'Wooden Cottages',
   //   bedType: '1 King Size double bed',
@@ -49,6 +49,9 @@ export class VanavihariMaredumilliComponent {
   //     '1 night, 3 adults, 1 child 4500 INR + GST @ 18%  Extra bed @ 1500 INR',
   //   image: 'assets/img/jungle.jpeg',
   // }));
+
+
+  
 
   fetchRoomList() {
     this.http
@@ -62,6 +65,8 @@ export class VanavihariMaredumilliComponent {
             console.log(response.result.data);
             
             this.roomCards = this.mapRoomData(response.result.data);
+            console.log(this.roomCards);
+            
           } else {
             this.showErrorAlert(
               'Failed to fetch room list. Please try again later.'
@@ -75,20 +80,82 @@ export class VanavihariMaredumilliComponent {
           );
         },
       });
+
+    // interface RoomDetails {
+    //   name: string;
+    //   max_child: number;
+    //   week_end_guest_charge: number;
+    //   cottage_type: string;
+    //   max_guest: number;
+    //   week_day_rate: number;
+    //   aminities: {
+    //     "4554333000000110021": string;
+    //     "4554333000000110025": string;
+    //     "4554333000000110017": string;
+    //   };
+    //   // Add other properties as needed
+    // }
+    
+    // // Sample JSON object with the defined type
+    // const json: { [key: string]: RoomDetails } = {
+    //   "4554333000000110059": {
+    //     name: "room1",
+    //     max_child: 1,
+    //     week_end_guest_charge: 700,
+    //     cottage_type: "Hill Top Guest House",
+    //     max_guest: 3,
+    //     week_day_rate: 2500,
+    //     aminities: {
+    //       "4554333000000110021": "A/C",
+    //       "4554333000000110025": "Western",
+    //       "4554333000000110017": "Geyser"
+    //     },
+    //     // Other properties...
+    //   },
+    //   "4554333000000110065": {
+    //     name: "room2",
+    //     max_child: 1,
+    //     week_end_guest_charge: 700,
+    //     cottage_type: "Pre-Fabricated Cottages",
+    //     max_guest: 3,
+    //     week_day_rate: 2500,
+    //     aminities: {
+    //       "4554333000000110021": "A/C",
+    //       "4554333000000110025": "Western",
+    //       "4554333000000110017": "Geyser"
+    //     },
+    //     // Other properties...
+    //   },
+    //   // Add more objects...
+    // };
+    
+    
+    // Convert JSON object to array
+    // console.log(json);
+    
+    // const jsonArray = Object.keys(json).map(key => {
+    //     return {
+    //       id: key,
+    //       ...json[key]
+    //     };
+    // });
+    // this.roomCards = this.mapRoomData(jsonArray);    
+    // console.log(this.roomCards);
+    
   }
 
   mapRoomData(data: any[]): Room[] {
     return data.map((room) => ({
       name: room.name || 'Unknown',
       cottage_type: room.cottage_type || 'Unknown',
-      bed_type: room.bed_type || 'Unknown',
-      amenities: Object.values(room.amenities) || [],
-      rating: room.rating || 'Unknown',
-      weekDayPrice: room.week_day_rate || 'Unknown',
-      weekendPrice: room.week_end_rate || 'Unknown',
-      weekDayGuestPrice: room.week_day_guest_rate || 'Unknown',
-      weekendGuestPrice: room.week_end_guest_rate || 'Unknown',
-      image: room.image || 'assets/img/default-room-image.jpg', // set a default image if it is not available
+      // bed_type: room.bed_type || 'Unknown',
+      // amenities: Object.values(room.amenities) || [],
+      // rating: room.rating || 'Unknown',
+      // weekDayPrice: room.week_day_rate || 'Unknown',
+      // weekendPrice: room.week_end_rate || 'Unknown',
+      // weekDayGuestPrice: room.week_day_guest_rate || 'Unknown',
+      // weekendGuestPrice: room.week_end_guest_rate || 'Unknown',
+      // image: room.image || 'assets/img/default-room-image.jpg', // set a default image if it is not available
     }));
   }
 
