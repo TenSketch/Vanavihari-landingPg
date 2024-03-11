@@ -102,5 +102,8 @@ export class SearchResortComponent implements OnInit {
   goToVanavihari() {
     this.router.navigate(['/resorts/vanavihari-maredumilli']);
   }
+  goToRooms(){
+    this.router.navigate(['/resorts/rooms' ]);
+  }
 
 }

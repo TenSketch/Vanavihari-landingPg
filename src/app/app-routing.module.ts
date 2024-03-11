@@ -16,27 +16,30 @@ import { MyBookingsComponent } from './modules/my-bookings/my-bookings.component
 import { EmailVerificationComponent } from './auth/email-verification/email-verification.component';
 import { ResortListingComponent } from './modules/resort-listing/resort-listing.component';
 import { BookingSummaryComponent } from './modules/booking-summary/booking-summary.component';
+import { RoomsComponent } from './modules/resorts/rooms/rooms.component';
+
 
 
 const routes: Routes = [
 {path:'home', component:HomeComponent}, 
 {path:'sign-in', component:SignInComponent}, 
 {path:'sign-up', component:SignUpComponent},
-{ path: 'email-verification/:userid/:token', component: EmailVerificationComponent },
+{path:'email-verification/:userid/:token', component: EmailVerificationComponent},
 {path:'about-vanavihari', component:AboutVanavihariComponent}, 
-{ path: 'my-account/settings', component: SettingsComponent},
-{ path: 'my-account/my-bookings', component: MyBookingsComponent},
-{ path: 'resorts/vanavihari-maredumilli', component: VanavihariMaredumilliComponent},
-{ path: 'resorts/jungleStar,Valamuru', component: JungleStarValamuruComponent},
-{ path: 'tribal-community', component: TribalCommunityComponent},
-{ path: 'privacy-policy', component: PrivacyPolicyComponent},
-{ path: 'terms-and-conditions', component: TermsAndConditionsComponent},
-{ path: 'awards-and-publications', component: AwardsNewsPublicationsComponent},
-{ path: 'booking-summary', component: BookingSummaryComponent},
+{path:'my-account/settings', component: SettingsComponent},
+{path:'my-account/my-bookings', component: MyBookingsComponent},
+{path:'resorts/vanavihari-maredumilli', component: VanavihariMaredumilliComponent},
+{path:'resorts/jungleStar,Valamuru', component: JungleStarValamuruComponent},
+{path:'tribal-community', component: TribalCommunityComponent},
+{path:'privacy-policy', component: PrivacyPolicyComponent},
+{path:'terms-and-conditions', component: TermsAndConditionsComponent},
+{path:'awards-and-publications', component: AwardsNewsPublicationsComponent},
+{path:'booking-summary', component: BookingSummaryComponent},
+{path:'resorts/rooms', component: RoomsComponent},
 
 {path:'dashboard', component:SettingsComponent},
 
-{ path: 'resort-listing', component: ResortListingComponent},
+{ path:'resort-listing', component: ResortListingComponent},
 //
 { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
 { path: '**', redirectTo: '/home' }, // Handle undefined routes (optional)
