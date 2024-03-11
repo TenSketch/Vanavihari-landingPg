@@ -84,7 +84,7 @@ export class SignUpComponent implements OnInit {
       email_id: ['', Validators.compose([Validators.required, emailValidator])],
       password: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(6),
+        // Validators.minLength(6),
         Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{6,}$/),
       ])],
       repeat_password: ['', Validators.compose([Validators.required])]
