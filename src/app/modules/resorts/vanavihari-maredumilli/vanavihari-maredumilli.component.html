@@ -105,7 +105,7 @@
                         </span>
                       </div> -->
                     </div>
-                    <div class="col-6 details-right text-end">
+                    <div class="col-6 details-right text-start">
                       <!-- <div class="star-rating">{{ room.rating }}</div>
                       <h5>{{ room.rating }}</h5> -->
                       <p class="card-text">Week Day Price : 
@@ -117,7 +117,7 @@
                       <!-- <p class="card-text">
                         <small class="text-muted">{{ weekDayPrice }}</small>
                       </p> -->
-                      <button class="btn btn-primary" (click)="addRoom()">
+                      <button class="btn btn-primary" (click)="addRoom(room.id)">
                         Add room
                       </button>
                     </div>

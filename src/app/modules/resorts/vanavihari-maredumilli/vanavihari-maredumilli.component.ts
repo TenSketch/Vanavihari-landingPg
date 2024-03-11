@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 // import { UserService } from '../../user.service';
 
 interface Room {
+  //roomId:string;
   name: string;
   cottage_type: string;
   // bed_type: string;
@@ -29,6 +30,7 @@ export class VanavihariMaredumilliComponent {
   selectedSortOption: string;
   showBookingSummary: boolean = false;
   roomCards: Room[] = [];
+  roomIds: string[] = [];
 
   constructor(
     private router: Router,
@@ -178,7 +180,13 @@ export class VanavihariMaredumilliComponent {
     });
   }
 
+  // addRoom(roomId: string) {
+  //   this.roomIds.push(roomId); // assuming selectedRoomIds is an array to store selected room ids
+  //   this.showBookingSummary = true;
+  // }
+
   addRoom() {
+    //this.roomIds.push(roomId);
     this.showBookingSummary = true;
   }
   goToBooking() {
