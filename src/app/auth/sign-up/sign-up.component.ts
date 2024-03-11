@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {
-  FormGroup,
-  FormBuilder,
-  Validators,
-} from '@angular/forms';
+import {  FormBuilder, FormGroup, Validators, FormControl, ValidatorFn, AbstractControl, ValidationErrors} from '@angular/forms';
 import { HttpClient, HttpParams } from '@angular/common/http';
 // import { ZohoAuthServiceService } from '../../zoho-auth-service.service';
 import { AuthService } from '../../auth.service';
@@ -23,6 +19,7 @@ export class SignUpComponent implements OnInit {
   code: any;
   password: any;
   repeat_password: any;
+  hide = true; 
 
   constructor(
     private router: Router,
@@ -57,14 +54,38 @@ export class SignUpComponent implements OnInit {
   // }
 
   ngOnInit(): void {
+    // mobile validation function- NO SPACE ALLOWED
+    function mobileNumberValidator(control: FormControl): { [s: string]: boolean } | null {
+      const mobileNumberPattern = /^[0-9]*$/;
+    
+      if (!mobileNumberPattern.test(control.value)) {
+        return { 'invalidMobileNumber': true };
+      }
+    
+      return null;
+    }
+    // full email validation func
+    function emailValidator(control: FormControl): { [s: string]: boolean } | null {
+      if (!control.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+        return { invalidEmail: true };
+      }
+      return null; // Return null when validation succeeds
+    }
     this.form = this.formBuilder.group({
       full_name: ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z]+(?:\\s[a-zA-Z]+)*$')])],
-      mobile_number: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10)])],
-      email_id: ['', Validators.compose([Validators.required, Validators.email])],
+      // mobile_number: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10)])],
+      mobile_number: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(10),
+        mobileNumberValidator
+    ])],    
+      // email_id: ['', Validators.compose([Validators.required, Validators.email])],
+      email_id: ['', Validators.compose([Validators.required, emailValidator])],
       password: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(8),
-        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
+        // Validators.minLength(6),
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{6,}$/),
       ])],
       repeat_password: ['', Validators.compose([Validators.required])]
     }, {
@@ -80,7 +101,7 @@ export class SignUpComponent implements OnInit {
         .set('email', this.form.value.email_id)
         .set('mobile', this.form.value.mobile_number)
         .set('password', this.form.value.password);
-
+      
       this.http
         .get<any>(
           'https://vanavihari-ng.netlify.app/zoho-connect?api_type=register',
@@ -107,6 +128,11 @@ export class SignUpComponent implements OnInit {
     const repeatPassword = form.get('repeat_password')?.value;
     return password === repeatPassword ? null : { passwordsNotMatch: true };
   }
+
+  togglePasswordVisibility(): void {
+    this.hide = !this.hide;
+  }
+
   showSuccessAlert() {
     this.snackBar
       .open('Form submitted successfully!', 'Close', {
