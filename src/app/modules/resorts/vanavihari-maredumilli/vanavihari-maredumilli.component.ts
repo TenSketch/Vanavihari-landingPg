@@ -10,10 +10,10 @@ interface Room {
   // bed_type: string;
   // amenities: string[];
   // rating: string;
-  weekDayPrice: string;
-  weekendPrice: string;
-  weekDayGuestPrice: string;
-  weekendGuestPrice: string;
+  weekDayPrice: number;
+  weekendPrice: number;
+  weekDayGuestPrice: number;
+  weekendGuestPrice: number;
   image: string;
   max_adult: number;
   max_child: number;
