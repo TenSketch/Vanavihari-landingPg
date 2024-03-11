@@ -58,6 +58,9 @@ export class VanavihariMaredumilliComponent {
       .subscribe({
         next: (response) => {
           if (response.code === 3000 && response.result.status === 'success') {
+            console.log(response);
+            console.log(response.result.data);
+            
             this.roomCards = this.mapRoomData(response.result.data);
           } else {
             this.showErrorAlert(
