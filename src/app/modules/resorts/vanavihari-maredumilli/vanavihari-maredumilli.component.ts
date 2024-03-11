@@ -186,7 +186,7 @@ export class VanavihariMaredumilliComponent {
   // }
 
   addRoom() {
-    //this.roomIds.push(roomId);
+    //this.roomIds.push(room);
     this.showBookingSummary = true;
   }
   goToBooking() {
