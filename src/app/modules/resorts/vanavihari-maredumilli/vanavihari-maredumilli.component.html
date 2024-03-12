@@ -84,9 +84,20 @@
             </div>
           </div>
           <ng-template #noBookings>
-            <div class="text-center mt-3">
+            <!-- <div class="text-center mt-3">
               <p>No Bookings Available. Please Add Rooms.</p>
+            </div> -->
+            <h5 class="text-center"><u>Booking Summary</u></h5>
+            <div class="d-flex my-2 p-3 align-items-center justify-content-around">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+              <p>Add your preferred rooms
+              </p>
+              
             </div>
+            <button mat-raised-button color="primary" class="w-100" disabled>
+              Proceed
+            </button>
+            
           </ng-template>
         </aside>
         <main class="rooms-listing">
