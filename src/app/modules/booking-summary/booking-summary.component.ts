@@ -8,11 +8,18 @@ import { AuthService } from '../../auth.service';
   styleUrls: ['./booking-summary.component.scss']
 })
 export class BookingSummaryComponent {
+  adultsCount: number = 1;
+  childrenCount: number = 0;
+  roomsCount: number = 1;
+  checkInDate: Date;
+  checkOutDate: Date;
   constructor(private router: Router, private authService: AuthService) {
     console.log(this.authService.getBookingRooms());
   }
   ngOnInit(): void {
-    console.log(this.authService.getSearchData());
+    this.adultsCount = this.authService.getSearchData()[0].adultsCount??1;
+    this.childrenCount = this.authService.getSearchData()[0].childrenCount??0;
+    this.roomsCount = this.authService.getSearchData()[0].roomsCount??1;
   }
   goToVanavihari() {
     this.router.navigate(['/resorts/vanavihari-maredumilli']);
