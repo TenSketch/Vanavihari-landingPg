@@ -46,7 +46,7 @@ export class VanavihariMaredumilliComponent {
   }
 
   ngOnInit(): void {
-    this.roomIds = (this.authService.getBookingRooms()!=''&&this.authService.getBookingRooms().length>0)?this.authService.getBookingRooms():[];
+    this.roomIds = (this.authService.getBookingRooms()!=null&&this.authService.getBookingRooms()!=''&&this.authService.getBookingRooms().length>0)?this.authService.getBookingRooms():[];
     if(this.roomIds.length > 0) {
       this.showBookingSummary = true;
     }
