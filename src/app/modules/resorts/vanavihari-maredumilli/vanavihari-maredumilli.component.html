@@ -77,7 +77,6 @@
                 </div>
                 <div class="col-md-12 text-end">
                   <b>Charges:</b> {{ (roomId.weekDayPrice + (roomId.guest_count>0?roomId.guest_count*roomId.charges_per_bed:0)) | currency:'INR':'symbol':'1.2-2' }}
-                  <!-- <button class="btn btn-primary float-end" (click)="goToBooking()">Proceed</button> -->
                 </div>
               </div>
             </div>
@@ -85,6 +84,7 @@
             
             <div class="row align-items-center px-3">
               Total Room Price: {{ calculateTotalPrice() | currency:'INR':'symbol':'1.2-2' }} + GST @12%
+              <button class="btn btn-primary float-end" (click)="goToBooking()">Proceed</button>
             </div>
 
 
