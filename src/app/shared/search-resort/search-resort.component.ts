@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { AuthService } from '../../auth.service';
 @Component({
   selector: 'app-search-resort',
   templateUrl: './search-resort.component.html',
@@ -13,15 +13,19 @@ export class SearchResortComponent implements OnInit {
   @ViewChild('modal') modal: ElementRef;
   adultsCount: number = 1;
   childrenCount: number = 0;
+  roomsCount: number = 1;
+  checkInDate: Date;
+  checkOutDate: Date;
+  extraBed: number = 0;
   isMaxReached: boolean = false;
   maxChildren: number = 10;
-  roomsCount: number = 1;
+  minRooms: number = 1;
   selectedAges: string[] = [];
   ageDropdowns: number[];
   RoomValues: any;
   selectedResort: string = '';
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthService) {
     this.updateAgeDropdowns();
     this.RoomValues = 'Adult-' + 2 + ' Children- ' + 0 + ' Rooms-' + 1;
   }
@@ -36,16 +40,24 @@ export class SearchResortComponent implements OnInit {
     if (this.adultsCount > 1) {
       this.adultsCount--;
     }
+
+    if((this.adultsCount)%3==0) { this.minRooms>1?this.minRooms--:''; this.extraBed = 1; }
+    else if((this.adultsCount-1)%3 == 0) { this.minRooms>1?this.minRooms--:''; this.extraBed = 0; }
+    else this.extraBed = 0;
   }
 
   incrementAdults() {
     this.adultsCount++;
+    
+    if((this.adultsCount)%3==0) { this.minRooms>1?this.minRooms++:''; this.extraBed = 1; }
+    else if((this.adultsCount-1)%3 == 0) { this.minRooms++; this.roomsCount<this.minRooms?this.minRooms=this.minRooms:''; this.extraBed = 0; }
+    else this.extraBed = 0;
   }
 
   incrementChildren() {
     if (this.childrenCount < this.maxChildren) {
       this.childrenCount++;
-      this.selectedAges = Array(this.childrenCount).fill(''); // Add an empty string for the new dropdown
+      this.selectedAges = Array(this.childrenCount).fill('');
       this.isMaxReached = false;
     } else {
       this.isMaxReached = true;
@@ -55,7 +67,7 @@ export class SearchResortComponent implements OnInit {
   decrementChildren() {
     if (this.childrenCount > 0) {
       this.childrenCount--;
-      this.selectedAges.pop(); // Remove the selected value for the last dropdown
+      this.selectedAges.pop();
       this.isMaxReached = false;
     }
   }
@@ -66,7 +78,7 @@ export class SearchResortComponent implements OnInit {
   }
 
   decrementRooms() {
-    if (this.roomsCount > 1) {
+    if (this.roomsCount > this.minRooms) {
       this.roomsCount--;
     }
   }
@@ -76,15 +88,12 @@ export class SearchResortComponent implements OnInit {
   }
 
   updateAgeDropdowns() {
-    // Clear existing dropdowns
     this.ageDropdowns = [];
-    // Create dropdowns for each child
     for (let i = 0; i < this.childrenCount; i++) {
-      this.ageDropdowns.push(i); // Add a placeholder for each child
+      this.ageDropdowns.push(i);
     }
-    // Ensure the selectedAges array has the correct length
     while (this.selectedAges.length < this.childrenCount) {
-      this.selectedAges.push(''); // Add empty strings for each child
+      this.selectedAges.push('');
     }
   }
 
@@ -100,7 +109,13 @@ export class SearchResortComponent implements OnInit {
   }
 
   goToVanavihari() {
+    this.authService.setSearchData([{'adultsCount':this.adultsCount, 'childrenCount':this.childrenCount, 'roomsCount':this.roomsCount, 'checkInDate':this.checkInDate, 'checkOutDate':this.checkOutDate}]);
     this.router.navigate(['/resorts/vanavihari-maredumilli']);
   }
-
+  onRoomCountChange(event: Event): void {
+    if (this.roomsCount < 1) {
+      console.log(this.roomsCount);
+      this.roomsCount = 1;
+    }
+  }
 }

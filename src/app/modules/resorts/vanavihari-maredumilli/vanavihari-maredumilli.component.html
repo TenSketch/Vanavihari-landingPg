@@ -76,7 +76,7 @@
                   {{ roomId.guest_count?', '+roomId.guest_count+' Guest'+(roomId.guest_count>1?'s':''):'' }}
                 </div>
                 <div class="col-md-12 text-end">
-                  <b>Charges:</b> {{ (roomId.weekDayPrice + (roomId.guest_count>0?roomId.guest_count*roomId.charges_per_bed:0)) | currency:'INR':'symbol':'1.2-2' }}
+                  <b>Charges:</b> {{ roomId.weekDayPrice | currency:'INR':'symbol':'1.2-2' }}
                 </div>
               </div>
             </div>
@@ -132,7 +132,7 @@
                         <p class="mb-0">
                           <strong>Cottage type:</strong> <br> {{ room.cottage_type }}
                         </p>
-                        <div class="input-group">
+                        <!-- <div class="input-group">
                           <button type="button" class="btn" (click)="decrementAdult(room)"> - </button>
                           <input type="number" name="adult" [(ngModel)]="room.adult_count"
                             class="form-control text-center ng-untouched ng-pristine ng-valid">
@@ -149,7 +149,7 @@
                           <input type="number" name="guest" [(ngModel)]="room.guest_count"
                             class="form-control text-center ng-untouched ng-pristine ng-valid">
                           <button type="button" class="btn" (click)="incrementGuest(room)"> + </button>
-                        </div>
+                        </div> -->
                         <!-- <p><strong>Bed type:</strong> {{ room.bed_type }}</p> -->
                         <!-- <div class="d-flex gap-2">
                           <span *ngFor="let amenity of room.amenities">

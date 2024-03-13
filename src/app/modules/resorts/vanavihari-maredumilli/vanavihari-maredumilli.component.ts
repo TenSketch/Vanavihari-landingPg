@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RoomsComponent } from '../rooms/rooms.component';
+import { AuthService } from '../../../../app/auth.service';
 // import { UserService } from '../../user.service';
 
 interface Room {
@@ -34,16 +35,21 @@ export class VanavihariMaredumilliComponent {
   roomCards: Room[] = [];
   roomIds: any[] = [];
   loadingRooms: boolean = true;
-
+ 
   constructor(
     private router: Router,
     private http: HttpClient,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthService
   ) {
     this.selectedSortOption = 'lowToHigh';
   }
 
   ngOnInit(): void {
+    this.roomIds = (this.authService.getBookingRooms().length>0)?this.authService.getBookingRooms():[];
+    if(this.roomIds.length > 0) {
+      this.showBookingSummary = true;
+    }
     this.fetchRoomList();
   }
 
@@ -160,66 +166,63 @@ export class VanavihariMaredumilliComponent {
         //   ...json[key]
         // };
     });
-    this.roomCards = this.mapRoomData(jsonArray);    
-    // console.log(this.roomCards);
+    this.roomCards = this.mapRoomData(jsonArray, this.roomIds);
 
-    // For demonstration purposes, setTimeout is used to mimic API call delay
     setTimeout(() => {
        this.loadingRooms = false;
-    }, 2000); // Set loading time in milliseconds
+    }, 2000);
     
   }
 
-  decrementAdult(room: any) {
-    if (room.adult_count > 1) {
-      room.adult_count--;
-    }
-  }
+  // decrementAdult(room: any) {
+  //   if (room.adult_count > 1) {
+  //     room.adult_count--;
+  //   }
+  // }
 
-  incrementAdult(room: any) {
-    if(room.adult_count < room.max_adult && room.child_count < 2) {
-      room.adult_count++;
-    }
-  } 
+  // incrementAdult(room: any) {
+  //   if(room.adult_count < room.max_adult && room.child_count < 2) {
+  //     room.adult_count++;
+  //   }
+  // } 
 
-  decrementChild(room: any) {
-    if (room.child_count > 0) {
-      room.child_count--;
-    }
-  }
+  // decrementChild(room: any) {
+  //   if (room.child_count > 0) {
+  //     room.child_count--;
+  //   }
+  // }
 
-  incrementChild(room: any) {
-    if(room.child_count < room.max_child || (room.adult_count < 2 && room.child_count < 2)) {
-      room.child_count++;
-    }
-  } 
+  // incrementChild(room: any) {
+  //   if(room.child_count < room.max_child || (room.adult_count < 2 && room.child_count < 2)) {
+  //     room.child_count++;
+  //   }
+  // } 
 
-  decrementGuest(room: any) {
-    if (room.guest_count > 0) {
-      room.guest_count--;
-    }
-  }
+  // decrementGuest(room: any) {
+  //   if (room.guest_count > 0) {
+  //     room.guest_count--;
+  //   }
+  // }
 
-  incrementGuest(room: any) {
-    if(room.guest_count < room.max_guest) {
-      room.guest_count++;
-    }
-  } 
+  // incrementGuest(room: any) {
+  //   if(room.guest_count < room.max_guest) {
+  //     room.guest_count++;
+  //   }
+  // } 
 
   removeRoom(room: any, roomId: any) {
     room.isButtonDisabled = false;
     this.roomIds = this.roomIds.filter(room => room.id !== roomId);
     if(this.roomIds.length < 1) this.showBookingSummary = false;
+    room.isButtonDisabled = false;
+    this.authService.setBookingRooms(this.roomIds);
   }
 
-  mapRoomData(data: any[]): Room[] {
+  mapRoomData(data: any[], roomIds: any[]): Room[] {
     return data.map((room) => ({
       name: room.name || 'Unknown',
       cottage_type: room.cottage_type || 'Unknown',
       id: room.id || 'Unknown',
-      adult_count: room.adult_count || 1,
-      child_count: room.child_count || 0,
-      guest_count: room.guest_count || 0,
       max_adult: room.max_adult || 1,
       max_child: room.max_child || 0,
       max_guest: room.max_guest || 0,
@@ -228,10 +231,16 @@ export class VanavihariMaredumilliComponent {
       weekendPrice: room.week_end_rate || 'Unknown',
       weekDayGuestPrice: room.week_day_guest_charge || 'Unknown',
       weekendGuestPrice: room.week_end_guest_charge || 'Unknown',
+      isButtonDisabled: this.toggleButtonDisabledById(room.id, roomIds),
       image: room.image || 'assets/img/bonnet/BONNET-OUTER-VIEW.jpg', // set a default image if it is not available
     }));
   }
-
+  toggleButtonDisabledById(room_id: number, roomIds: any[]): any {
+    for (const roomId of roomIds) {
+      if (roomId.id === room_id) return true;
+    }
+    return false;
+  }
   showErrorAlert(msg = '') {
     this.snackBar.open(msg, 'Close', {
       duration: 3000,
@@ -243,13 +252,14 @@ export class VanavihariMaredumilliComponent {
     if(!foundRoom) { this.roomIds.push(room); }
     this.showBookingSummary = true;
     room.isButtonDisabled = true;
+    this.authService.setBookingRooms(this.roomIds);
   }
 
   calculateTotalPrice(): number {
     let totalPrice = 0;
     for (const roomId of this.roomIds) {      
       if (roomId) {
-        totalPrice += roomId.weekDayPrice + (roomId.guest_count>0?roomId.guest_count*roomId.charges_per_bed:0);
+        totalPrice += roomId.weekDayPrice;
       }
     }
     return totalPrice;
