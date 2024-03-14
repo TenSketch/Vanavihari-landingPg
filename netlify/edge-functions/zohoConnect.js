@@ -102,14 +102,14 @@ export default async (req) => {
             });
         }
         let perm = '';
-        if(queryParams.has("dob")) perm += `&dob=${queryParams.has("dob")}`;
-        if(queryParams.has("nationality")) perm += `&nationality=${queryParams.has("nationality")}`;
-        if(queryParams.has("address1")) perm += `&address1=${queryParams.has("address1")}`;
-        if(queryParams.has("address2")) perm += `&address2=${queryParams.has("address2")}`;
-        if(queryParams.has("city")) perm += `&city=${queryParams.has("city")}`;
-        if(queryParams.has("state")) perm += `&state=${queryParams.has("state")}`;
-        if(queryParams.has("pincode")) perm += `&pincode=${queryParams.has("pincode")}`;
-        if(queryParams.has("country")) perm += `&country=${queryParams.has("country")}`;
+        if(queryParams.has("dob")) perm += `&dob=${queryParams.get("dob")}`;
+        if(queryParams.has("nationality")) perm += `&nationality=${queryParams.get("nationality")}`;
+        if(queryParams.has("address1")) perm += `&address1=${queryParams.get("address1")}`;
+        if(queryParams.has("address2")) perm += `&address2=${queryParams.get("address2")}`;
+        if(queryParams.has("city")) perm += `&city=${queryParams.get("city")}`;
+        if(queryParams.has("state")) perm += `&state=${queryParams.get("state")}`;
+        if(queryParams.has("pincode")) perm += `&pincode=${queryParams.get("pincode")}`;
+        if(queryParams.has("country")) perm += `&country=${queryParams.get("country")}`;
         apiUrl = `${zoho_api_uri}Edit_Profile?publickey=AKSTTeZV7TEPW4xd2JwaVOuYn&login_email=${queryParams.get("email")}&token=${queryParams.get("token")}${perm}`;
         method = "GET";
         break;
