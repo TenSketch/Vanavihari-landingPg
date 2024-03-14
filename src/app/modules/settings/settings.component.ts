@@ -73,12 +73,40 @@ export class SettingsComponent
   onSubmit() {
     console.log(this.form.value);
     if (this.form.valid) {
-      if (this.userService.getUser() && this.userService.getUser() === this.form.value.email) {
-        // this.router.navigate(['/home']);
-        alert('Login successful! Welcome ' + this.userService.getUser());
-      } else {
-        alert('Invalid email or password');
-      }
+
+      let params = new HttpParams()
+      .set('login_email', this.userService.getUser())
+      .set('token', this.userService.getUserToken());
+      
+      let data = this.form.value;
+      Object.keys(data).forEach(key => {
+        if (data[key] !== null && data[key] !== undefined) {
+          params = params.set(key, data[key].toString());
+        }
+      });
+      
+      this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=edit_profile_details', {params}).subscribe({
+        next: response => {
+          if(response.code == 3000 && response.result.status == 'success') {
+            // this.router.navigate(['/home']);
+            console.log(response.result);
+          } else if (response.code == 3000) {
+            console.log('error', response.result.msg);
+          } else {
+            console.log('error', "Please Check this Credential!");
+          }
+        },
+        error: err => {
+          console.error('Error:', err);
+        }
+      });
+      
+      // if (this.userService.getUser() && this.userService.getUser() === this.form.value.email) {
+      //   // this.router.navigate(['/home']);
+      //   alert('Login successful! Welcome ' + storedUser.full_name);
+      // } else {
+      //   alert('Invalid email or password');
+      // }
     }
   }
   editField(field: string) {

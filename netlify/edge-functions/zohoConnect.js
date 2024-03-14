@@ -94,6 +94,16 @@ export default async (req) => {
         apiUrl = `${zoho_api_uri}Profile_Details?publickey=7AwGYAgpPRaOUDEzbqYpeFyvs&email=${queryParams.get("email")}&token=${queryParams.get("token")}`;
         method = "GET";
         break;
+      case "edit_profile_details":
+        if (!queryParams.has("token") || !queryParams.has("email")) {
+            return new Response(JSON.stringify({ error: 'Missing required parameters for email verification' }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+        apiUrl = `${zoho_api_uri}Edit_Profile?publickey=SNZMxpZJDBpfKmrhvFxfYPXys&login_email=${queryParams.get("email")}&token=${queryParams.get("token")}`;
+        method = "GET";
+        break;
       default:
         return new Response(
           JSON.stringify({ error: "Invalid api_type parameter" }),
