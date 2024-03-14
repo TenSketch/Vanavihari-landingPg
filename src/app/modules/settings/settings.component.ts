@@ -19,13 +19,17 @@ export class SettingsComponent
 
   constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService, private authService: AuthService, private http: HttpClient) { 
     this.form = this.formBuilder.group({
-      full_name: ['John Doe'],
-      mobile_number: ['8945006212'],
-      email: ['john.doe@example.com', Validators.email],
+      full_name: ['Venkat'],
+      mobile_number: ['8056562076'],
+      email: ['venkat408prabhu@gmail.com', Validators.email],
       dob: ['', Validators.required],
       nationality: [''],
-      address: [''],
-      password: ['']
+      address1: [''],
+      address2: [''],
+      city: [''],
+      state: [''],
+      pincode: [''],
+      country: [''],
     });
   }
 
@@ -43,7 +47,12 @@ export class SettingsComponent
             email: [response.result.email, Validators.email],
             dob: [response.result.dob, Validators.required],
             nationality: [response.result.nationality],
-            address: [response.result.address]
+            address1: [response.result.address1],
+            address2: [response.result.address2],
+            city: [response.result.city],
+            state: [response.result.state],
+            pincode: [response.result.pincode],
+            country: [response.result.country]
           });
         } else if (response.code == 3000) {
           this.userService.clearUser();
@@ -62,12 +71,11 @@ export class SettingsComponent
   }
 
   onSubmit() {
+    console.log(this.form.value);
     if (this.form.valid) {
-      const storedUser = this.userService.getUser();
-      console.log(storedUser)
-      if (storedUser && storedUser.mobile_number === this.form.value.mobile_number && storedUser.password === this.form.value.password) {
-        this.router.navigate(['/home']);
-        alert('Login successful! Welcome ' + storedUser.full_name);
+      if (this.userService.getUser() && this.userService.getUser() === this.form.value.email) {
+        // this.router.navigate(['/home']);
+        alert('Login successful! Welcome ' + this.userService.getUser());
       } else {
         alert('Invalid email or password');
       }

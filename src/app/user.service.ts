@@ -11,10 +11,10 @@ export class UserService {
   constructor() { }
 
   getUser(): any {
+    return localStorage.getItem(this.accessUsername);
+  }
+  getFullUser(): any {
     return localStorage.getItem(this.accessUserFullname);
-    
-    // const user = localStorage.getItem(this.accessTokenKey);
-    // return user ? JSON.parse(user) : null;
   }
 
   setUser(user: any): void {

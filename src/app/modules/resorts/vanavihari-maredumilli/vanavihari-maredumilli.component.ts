@@ -214,8 +214,8 @@ export class VanavihariMaredumilliComponent {
     room.isButtonDisabled = false;
     this.roomIds = this.roomIds.filter(room => room.id !== roomId);
     if(this.roomIds.length < 1) this.showBookingSummary = false;
-    room.isButtonDisabled = false;
     this.authService.setBookingRooms(this.roomIds);
+    room.isButtonDisabled = false;
   }
 
   mapRoomData(data: any[], roomIds: any[]): Room[] {
