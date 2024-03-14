@@ -101,7 +101,7 @@ export default async (req) => {
                 headers: { 'Content-Type': 'application/json' },
             });
         }
-        apiUrl = `${zoho_api_uri}Edit_Profile?publickey=SNZMxpZJDBpfKmrhvFxfYPXys&login_email=${queryParams.get("email")}&token=${queryParams.get("token")}`;
+        apiUrl = `${zoho_api_uri}Edit_Profile?publickey=AKSTTeZV7TEPW4xd2JwaVOuYn&login_email=${queryParams.get("email")}&token=${queryParams.get("token")}`;
         method = "GET";
         break;
       default:
