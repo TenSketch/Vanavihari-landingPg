@@ -77,7 +77,7 @@ export class SettingsComponent
     const day = date.getDate();
     const monthIndex = date.getMonth();
     const year = date.getFullYear();
-    const formattedDate = `${day}-${monthNames[monthIndex]}-${year}`;
+    const formattedDate = `${day}-${monthNames[monthIndex]}-${year} 00:00:00`;
     return formattedDate;
   }
   onSubmit() {
