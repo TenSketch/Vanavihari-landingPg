@@ -24,4 +24,7 @@ export class BookingSummaryComponent {
   goToVanavihari() {
     this.router.navigate(['/resorts/vanavihari-maredumilli']);
   }
+  gotosetting() {
+    this.router.navigate(['/my-account/settings']);
+  }
 }
