@@ -56,15 +56,12 @@ export class VanavihariMaredumilliComponent {
     if (this.roomIds.length > 0) {
       this.showBookingSummary = true;
     }
-    this.fetchRoomList();
-
     this.searchValue = this.route.queryParams.subscribe(params => {
-      this.selectedResort = params['resort'];
-      this.checkinDate = params['checkin'];
-      this.checkoutDate = params['checkout'];
-      this.fetchRoomList();
-
+      if(params['resort']) this.selectedResort = params['resort'];
+      if(params['checkin']) this.checkinDate = params['checkin'];
+      if(params['checkout']) this.checkoutDate = params['checkout'];
     });
+    this.fetchRoomList();
   }
 
   // roomCards: any[] = Array.from({ length: 1 }, (_, index) => ({
