@@ -86,7 +86,7 @@ export default async (req) => {
         if(queryParams.has("resort")) perm += `&resort=${queryParams.get("resort")}`;
         if(queryParams.has("checkin")) perm += `&checkin=${queryParams.get("checkin")}`;
         if(queryParams.has("checkout")) perm += `&checkout=${queryParams.get("checkout")}`;
-        apiUrl = `${zoho_api_uri}Rooms_List?publickey=J4s0fXQ0wuxFDJJ2ns9Gs3GqK`;
+        apiUrl = `${zoho_api_uri}Rooms_List?publickey=J4s0fXQ0wuxFDJJ2ns9Gs3GqK${perm}`;
         method = "GET";
         break;
       case "profile_details":
