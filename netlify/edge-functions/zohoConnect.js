@@ -25,6 +25,7 @@ export default async (req) => {
     let apiUrl = "";
     let method = "";
     let requestBody = {};
+    let perm = '';
     switch (apiType) {
       case "register":
         if (
@@ -81,6 +82,10 @@ export default async (req) => {
         //         headers: { 'Content-Type': 'application/json' },
         //     });
         // }
+       
+        if(queryParams.has("resort")) perm += `&resort=${queryParams.get("resort")}`;
+        if(queryParams.has("checkin")) perm += `&checkin=${queryParams.get("checkin")}`;
+        if(queryParams.has("checkout")) perm += `&checkout=${queryParams.get("checkout")}`;
         apiUrl = `${zoho_api_uri}Rooms_List?publickey=J4s0fXQ0wuxFDJJ2ns9Gs3GqK`;
         method = "GET";
         break;
@@ -101,7 +106,6 @@ export default async (req) => {
                 headers: { 'Content-Type': 'application/json' },
             });
         }
-        let perm = '';
         if(queryParams.has("dob")) perm += `&dob=${queryParams.get("dob")}`;
         if(queryParams.has("nationality")) perm += `&nationality=${queryParams.get("nationality")}`;
         if(queryParams.has("address1")) perm += `&address1=${queryParams.get("address1")}`;

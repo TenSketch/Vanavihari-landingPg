@@ -4,6 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RoomsComponent } from '../rooms/rooms.component';
 import { AuthService } from '../../../../app/auth.service';
+import { ActivatedRoute } from '@angular/router';
 // import { UserService } from '../../user.service';
 
 interface Room {
@@ -35,10 +36,15 @@ export class VanavihariMaredumilliComponent {
   roomCards: Room[] = [];
   roomIds: any[] = [];
   loadingRooms: boolean = true;
+  selectedResort: string = '';
+  checkinDate: Date;
+  checkoutDate: Date;
+  searchValue:any;
  
   constructor(
     private router: Router,
     private http: HttpClient,
+    private route: ActivatedRoute,
     private snackBar: MatSnackBar,
     private authService: AuthService
   ) {
@@ -51,6 +57,18 @@ export class VanavihariMaredumilliComponent {
       this.showBookingSummary = true;
     }
     this.fetchRoomList();
+
+    // Retrieve query parameters from the search bar.
+    this.searchValue = this.route.queryParams.subscribe(params => {
+      // Extract resort, checkin, and checkout values from params
+      this.selectedResort = params['resort'];
+      this.checkinDate = params['checkin'];
+      this.checkoutDate = params['checkout'];
+      
+      // Call API with query parameters
+      this.fetchRoomList();
+      
+    });
   }
 
   // roomCards: any[] = Array.from({ length: 1 }, (_, index) => ({
@@ -68,6 +86,20 @@ export class VanavihariMaredumilliComponent {
   
 
   fetchRoomList() {
+
+    console.log('Selected Resort:', this.selectedResort);
+    console.log('Check-in Date:', this.checkinDate);
+    console.log('Check-out Date:', this.checkoutDate);
+    // this.http
+    //   .get<any>(
+    //     'https://vanavihari-ng.netlify.app/zoho-connect', {
+          //   params: {
+          //     api_type: 'room_list'
+          //     resort: this.selectedResort
+          //     checkin: this.checkinDate
+          //     checkout: this.checkoutDate
+          //   }
+          // })
     // this.http
     //   .get<any>(
     //     'https://vanavihari-ng.netlify.app/zoho-connect?api_type=room_list'

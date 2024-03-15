@@ -19,7 +19,9 @@ export class SearchResortComponent implements OnInit {
   selectedAges: string[] = [];
   ageDropdowns: number[];
   RoomValues: any;
-  selectedResort: string = '';
+  selectedResort: string;
+  checkinDate: string;
+  checkoutDate: string;
 
   constructor(private router: Router) {
     this.updateAgeDropdowns();
@@ -100,7 +102,30 @@ export class SearchResortComponent implements OnInit {
   }
 
   goToVanavihari() {
-    this.router.navigate(['/resorts/vanavihari-maredumilli']);
+    this.router.navigate(['/resorts/vanavihari-maredumilli'],{
+      queryParams: {
+        resort: this.selectedResort,
+        checkin: this.checkinDate,
+        checkout: this.checkoutDate,
+      }
+    });
+  }
+
+  onDateChange(type: string, event: any): void {
+    const selectedDate = event.value;
+    const formattedDate = this.formatDate(selectedDate);
+    if (type === 'checkin') {
+      this.checkinDate = formattedDate;
+    } else if (type === 'checkout') {
+      this.checkoutDate = formattedDate;
+    }
+  }
+
+  formatDate(date: Date): string {
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`;
   }
 
 }
