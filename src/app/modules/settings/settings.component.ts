@@ -98,6 +98,7 @@ export class SettingsComponent
           if(response.code == 3000 && response.result.status == 'success') {
             // this.router.navigate(['/home']);
             console.log(response.result);
+            alert("Profile Update Successfully!");
           } else if (response.code == 3000) {
             console.log('error', response.result.msg);
           } else {

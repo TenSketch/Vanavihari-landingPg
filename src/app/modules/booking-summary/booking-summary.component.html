@@ -87,44 +87,41 @@
                         </div>
                     </div>
                     <div class="col-md-6 me-auto mt-5 mt-md-0">
-                        <a href="javascript:void(0)" (click)="gotosetting()">go to settings</a>
                         <h5 class="mb-4" style="line-height: 1.5;">Check the details we have fetched from your user
                             account Balachandiran!</h5>
                         <!-- <h3>User Details</h3> -->
-                        <form>
+                        <form [formGroup]="form">
                             <mat-form-field appearance="outline">
                                 <mat-label>Guest Name</mat-label>
-                                <input type="text" matInput required value="Balachandiran B" />
+                                <input type="text" matInput required formControlName="full_name" placeholder="Enter Full Name" />
                             </mat-form-field>
                             <mat-form-field appearance="outline" class="mt-3">
                                 <mat-label>Mobile no.</mat-label>
-                                <input type="tel" matInput required value="9840166419" />
+                                <input type="tel" matInput required placeholder="Enter Mobile Number" formControlName="mobile_number" />
                             </mat-form-field>
                             <mat-form-field appearance="outline" class="mt-3">
                                 <mat-label>Email</mat-label>
-                                <input type="email" matInput required value="tensketch285@gmail.com" />
+                                <input type="email" matInput required placeholder="Enter Email Address" formControlName="email" />
                             </mat-form-field>
-                            <!-- address -->
                             <mat-form-field appearance="outline" class="mt-3">
                                 <mat-label>Address</mat-label>
-                                <input type="text" matInput required placeholder="Enter your address">
+                                <input type="text" matInput required placeholder="Enter your address" formControlName="address1">
                             </mat-form-field>
-                            <!-- city, state, country, pincode -->
                             <mat-form-field appearance="outline" class="mt-3">
                                 <mat-label>City</mat-label>
-                                <input type="text" matInput required placeholder="Enter your city">
+                                <input type="text" matInput required placeholder="Enter your city" formControlName="city">
                             </mat-form-field>
                             <mat-form-field appearance="outline" class="mt-3">
                                 <mat-label>State</mat-label>
-                                <input type="text" matInput required placeholder="Enter your state">
+                                <input type="text" matInput required placeholder="Enter your state" formControlName="state" >
                             </mat-form-field>
                             <mat-form-field appearance="outline" class="mt-3">
                                 <mat-label>Country</mat-label>
-                                <input type="text" matInput required placeholder="Enter your country">
+                                <input type="text" matInput required placeholder="Enter your country" formControlName="country" >
                             </mat-form-field>
                             <mat-form-field appearance="outline" class="mt-3">
                                 <mat-label>Pincode</mat-label>
-                                <input type="tel" matInput required placeholder="Enter your pincode">
+                                <input type="tel" matInput required placeholder="Enter your pincode" formControlName="pincode" >
                             </mat-form-field>
                             <button class="btn btn-primary w-100 mt-1">Submit</button>
                             <section class="booking-terms mt-4">
