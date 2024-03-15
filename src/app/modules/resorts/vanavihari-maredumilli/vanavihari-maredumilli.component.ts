@@ -39,8 +39,8 @@ export class VanavihariMaredumilliComponent {
   selectedResort: string = '';
   checkinDate: Date;
   checkoutDate: Date;
-  searchValue:any;
- 
+  searchValue: any;
+
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -52,22 +52,18 @@ export class VanavihariMaredumilliComponent {
   }
 
   ngOnInit(): void {
-    this.roomIds = (this.authService.getBookingRooms()!=null&&this.authService.getBookingRooms()!=''&&this.authService.getBookingRooms().length>0)?this.authService.getBookingRooms():[];
-    if(this.roomIds.length > 0) {
+    this.roomIds = (this.authService.getBookingRooms() != null && this.authService.getBookingRooms() != '' && this.authService.getBookingRooms().length > 0) ? this.authService.getBookingRooms() : [];
+    if (this.roomIds.length > 0) {
       this.showBookingSummary = true;
     }
     this.fetchRoomList();
 
-    // Retrieve query parameters from the search bar.
     this.searchValue = this.route.queryParams.subscribe(params => {
-      // Extract resort, checkin, and checkout values from params
       this.selectedResort = params['resort'];
       this.checkinDate = params['checkin'];
       this.checkoutDate = params['checkout'];
-      
-      // Call API with query parameters
       this.fetchRoomList();
-      
+
     });
   }
 
@@ -82,170 +78,52 @@ export class VanavihariMaredumilliComponent {
   //   image: 'assets/img/jungle.jpeg',
   // }));
 
-
-  
-
   fetchRoomList() {
+    let perm = '';
+    if(this.selectedResort) perm += `&resort=${this.selectedResort}`;
+    if(this.checkinDate) perm += `&checkin=${this.checkinDate}`;
+    if(this.checkoutDate) perm += `&checkout=${this.checkoutDate}`;
+    this.http
+      .get<any>(
+        'https://vanavihari-ng.netlify.app/zoho-connect?api_type=room_list'+perm
+      )
+      .subscribe({
+        next: (response) => {
+          if (response.code === 3000 && response.result.status === 'success') {
+            console.log(response);
+            console.log(response.result.data);
 
-    console.log('Selected Resort:', this.selectedResort);
-    console.log('Check-in Date:', this.checkinDate);
-    console.log('Check-out Date:', this.checkoutDate);
-    // this.http
-    //   .get<any>(
-    //     'https://vanavihari-ng.netlify.app/zoho-connect', {
-          //   params: {
-          //     api_type: 'room_list'
-          //     resort: this.selectedResort
-          //     checkin: this.checkinDate
-          //     checkout: this.checkoutDate
-          //   }
-          // })
-    // this.http
-    //   .get<any>(
-    //     'https://vanavihari-ng.netlify.app/zoho-connect?api_type=room_list'
-    //   )
-    //   .subscribe({
-    //     next: (response) => {
-    //       if (response.code === 3000 && response.result.status === 'success') {
-    //         console.log(response);
-    //         console.log(response.result.data);
-            
-    //         const json = response.result.data;
-    //         const jsonArray = Object.keys(json).map(key => {
-    //           return {
-    //             id: key,
-    //             ...json[key]
-    //           };
-    //         });
-    //         console.log(jsonArray);
-    //       this.roomCards = this.mapRoomData(jsonArray);
-    //             } else {
-    //         this.showErrorAlert(
-    //           'Failed to fetch room list. Please try again later.'
-    //         );
-    //       }
-    //      this.loadingRooms = false;
-    //     },
-    //     error: (err) => {
-    //       console.error('Error:', err);
-    //       this.showErrorAlert(
-    //         'An error occurred while fetching room list. Please try again later.'
-    //       );
-    //     },
-    //   });
-
-    interface RoomDetails {
-      name: string;
-      week_end_guest_charge: number;
-      cottage_type: string;
-      week_day_rate: number;
-      max_adult: number;
-      max_child: number;
-      max_guest: number;
-      charges_per_bed: number,
-      id: number,
-      aminities: {
-        "4554333000000110021": string;
-        "4554333000000110025": string;
-        "4554333000000110017": string;
-      };
-      // Add other properties as needed
-    }
-    
-    // // Sample JSON object with the defined type
-    const json: { [key: string]: RoomDetails } = {
-      "4554333000000110059": {
-        name: "room1",
-        week_end_guest_charge: 700,
-        cottage_type: "Hill Top Guest House",
-        week_day_rate: 2500,
-        max_adult: 2,
-        max_child: 1,
-        max_guest: 1,
-        charges_per_bed: 500,
-        id: 301,
-        aminities: {
-          "4554333000000110021": "A/C",
-          "4554333000000110025": "Western",
-          "4554333000000110017": "Geyser"
+            const json = response.result.data;
+            const jsonArray = Object.keys(json).map(key => {
+              return {
+                id: key,
+                ...json[key]
+              };
+            });
+            this.roomCards = this.mapRoomData(jsonArray, this.roomIds);
+          } else {
+            this.showErrorAlert(
+              'Failed to fetch room list. Please try again later.'
+            );
+          }
+          this.loadingRooms = false;
         },
-        // Other properties...
-      },
-      "4554333000000110065": {
-        name: "room2",
-        week_end_guest_charge: 700,
-        cottage_type: "Pre-Fabricated Cottages",
-        week_day_rate: 2500,
-        max_adult: 2,
-        max_child: 1,
-        max_guest: 1,
-        charges_per_bed: 500,
-        id: 302,
-        aminities: {
-          "4554333000000110021": "A/C",
-          "4554333000000110025": "Western",
-          "4554333000000110017": "Geyser"
+        error: (err) => {
+          console.error('Error:', err);
+          this.showErrorAlert(
+            'An error occurred while fetching room list. Please try again later.'
+          );
         },
-        // Other properties...
-      },
-      // Add more objects...
-      
-    };
-    const jsonArray = Object.keys(json).map(key => {
-        return json[key];
-        // return {
-        //   id: key,
-        //   ...json[key]
-        // };
     });
-    this.roomCards = this.mapRoomData(jsonArray, this.roomIds);
-
     setTimeout(() => {
-       this.loadingRooms = false;
+      this.loadingRooms = false;
     }, 2000);
-    
   }
-
-  // decrementAdult(room: any) {
-  //   if (room.adult_count > 1) {
-  //     room.adult_count--;
-  //   }
-  // }
-
-  // incrementAdult(room: any) {
-  //   if(room.adult_count < room.max_adult && room.child_count < 2) {
-  //     room.adult_count++;
-  //   }
-  // } 
-
-  // decrementChild(room: any) {
-  //   if (room.child_count > 0) {
-  //     room.child_count--;
-  //   }
-  // }
-
-  // incrementChild(room: any) {
-  //   if(room.child_count < room.max_child || (room.adult_count < 2 && room.child_count < 2)) {
-  //     room.child_count++;
-  //   }
-  // } 
-
-  // decrementGuest(room: any) {
-  //   if (room.guest_count > 0) {
-  //     room.guest_count--;
-  //   }
-  // }
-
-  // incrementGuest(room: any) {
-  //   if(room.guest_count < room.max_guest) {
-  //     room.guest_count++;
-  //   }
-  // } 
-
+ 
   removeRoom(room: any, roomId: any) {
     room.isButtonDisabled = false;
     this.roomIds = this.roomIds.filter(room => room.id !== roomId);
-    if(this.roomIds.length < 1) this.showBookingSummary = false;
+    if (this.roomIds.length < 1) this.showBookingSummary = false;
     this.authService.setBookingRooms(this.roomIds);
     room.isButtonDisabled = false;
   }
@@ -279,9 +157,9 @@ export class VanavihariMaredumilliComponent {
     });
   }
 
-  addRoom(room:any) {
+  addRoom(room: any) {
     let foundRoom = this.roomIds.find(singRoom => singRoom.id === room.id);
-    if(!foundRoom) { this.roomIds.push(room); }
+    if (!foundRoom) { this.roomIds.push(room); }
     this.showBookingSummary = true;
     room.isButtonDisabled = true;
     this.authService.setBookingRooms(this.roomIds);
@@ -289,7 +167,7 @@ export class VanavihariMaredumilliComponent {
 
   calculateTotalPrice(): number {
     let totalPrice = 0;
-    for (const roomId of this.roomIds) {      
+    for (const roomId of this.roomIds) {
       if (roomId) {
         totalPrice += roomId.weekDayPrice;
       }
@@ -304,7 +182,6 @@ export class VanavihariMaredumilliComponent {
     const payablePrice = totalPrice + gstAmount;
     return payablePrice;
   }
-  
   goToBooking() {
     this.router.navigate(['/booking-summary']);
   }

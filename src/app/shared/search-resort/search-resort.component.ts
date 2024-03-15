@@ -122,10 +122,15 @@ export class SearchResortComponent implements OnInit {
   }
 
   formatDate(date: Date): string {
-    const month = date.getMonth() + 1;
+    const monthNames = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
     const day = date.getDate();
+    const monthIndex = date.getMonth();
     const year = date.getFullYear();
-    return `${month}/${day}/${year}`;
+    const formattedDate = `${day}-${monthNames[monthIndex]}-${year}`;
+    return formattedDate;
   }
 
 }
