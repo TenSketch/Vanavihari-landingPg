@@ -33,10 +33,6 @@ export class BookingSummaryComponent {
     });
   }
   ngOnInit(): void {
-    this.adultsCount = this.authService.getSearchData()[0].adultsCount??1;
-    this.childrenCount = this.authService.getSearchData()[0].childrenCount??0;
-    this.roomsCount = this.authService.getSearchData()[0].roomsCount??1;
-
     const params = new HttpParams()
       .set('email', this.authService.getAccountUsername()??'')
       .set('token', this.authService.getAccessToken()??'');

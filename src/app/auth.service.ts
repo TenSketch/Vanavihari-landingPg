@@ -68,10 +68,10 @@ export class AuthService {
   setSearchData(data: any[]): void {
     localStorage.setItem(this.searchData, JSON.stringify(data));
   }
-  getSearchData(): any | null {
+  getSearchData(data: string): any | null {
     const searchDataJson = localStorage.getItem(this.searchData);
     if (searchDataJson) {
-      return JSON.parse(searchDataJson);
+      return JSON.parse(searchDataJson)[0][data];
     }
     return null;
   }
