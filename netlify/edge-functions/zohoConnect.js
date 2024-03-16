@@ -132,7 +132,7 @@ export default async (req) => {
         // if(queryParams.has("state")) perm += `&state=${queryParams.get("state")}`;
         // if(queryParams.has("pincode")) perm += `&pincode=${queryParams.get("pincode")}`;
         // if(queryParams.has("country")) perm += `&country=${queryParams.get("country")}`;
-        console.log(queryParams);
+        console.log(queryParams.toString());
         return;
         apiUrl = `${zoho_api_uri}Reservation?publickey=TDHrEVmP2ArM1VtEaM1xOdUwF&login_email=${queryParams.get("email")}&token=${queryParams.get("token")}${perm}`;
         method = "GET";
