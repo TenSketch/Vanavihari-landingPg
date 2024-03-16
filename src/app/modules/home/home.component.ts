@@ -36,8 +36,8 @@ export class HomeComponent implements OnInit {
     // console.log(this.imageFilenames);
     // console.log(this.imageFilenames1)
     // Retrieve the logged-in user's data using the UserService
-    const user = this.userService.getUser();
-    this.currentUser = user ? user.full_name : '';
+    const user = this.userService.getFullUser();
+    this.currentUser = user ? user : '';
     console.log(this.currentUser);
     //alert('Registration successful!');
   }

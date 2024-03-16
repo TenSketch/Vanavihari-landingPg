@@ -25,6 +25,7 @@ export default async (req) => {
     let apiUrl = "";
     let method = "";
     let requestBody = {};
+    let perm = '';
     switch (apiType) {
       case "register":
         if (
@@ -81,7 +82,11 @@ export default async (req) => {
         //         headers: { 'Content-Type': 'application/json' },
         //     });
         // }
-        apiUrl = `${zoho_api_uri}Rooms_List?publickey=J4s0fXQ0wuxFDJJ2ns9Gs3GqK`;
+       
+        if(queryParams.has("resort")) perm += `&resort=${queryParams.get("resort")}`;
+        if(queryParams.has("checkin")) perm += `&checkin=${queryParams.get("checkin")}`;
+        if(queryParams.has("checkout")) perm += `&checkout=${queryParams.get("checkout")}`;
+        apiUrl = `${zoho_api_uri}Rooms_List?publickey=J4s0fXQ0wuxFDJJ2ns9Gs3GqK${perm}`;
         method = "GET";
         break;
       case "profile_details":
@@ -92,6 +97,24 @@ export default async (req) => {
             });
         }
         apiUrl = `${zoho_api_uri}Profile_Details?publickey=7AwGYAgpPRaOUDEzbqYpeFyvs&email=${queryParams.get("email")}&token=${queryParams.get("token")}`;
+        method = "GET";
+        break;
+      case "edit_profile_details":
+        if (!queryParams.has("token") || !queryParams.has("email")) {
+            return new Response(JSON.stringify({ error: 'Missing required parameters for email verification' }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+        if(queryParams.has("dob")) perm += `&dob=${queryParams.get("dob")}`;
+        if(queryParams.has("nationality")) perm += `&nationality=${queryParams.get("nationality")}`;
+        if(queryParams.has("address1")) perm += `&address1=${queryParams.get("address1")}`;
+        if(queryParams.has("address2")) perm += `&address2=${queryParams.get("address2")}`;
+        if(queryParams.has("city")) perm += `&city=${queryParams.get("city")}`;
+        if(queryParams.has("state")) perm += `&state=${queryParams.get("state")}`;
+        if(queryParams.has("pincode")) perm += `&pincode=${queryParams.get("pincode")}`;
+        if(queryParams.has("country")) perm += `&country=${queryParams.get("country")}`;
+        apiUrl = `${zoho_api_uri}Edit_Profile?publickey=AKSTTeZV7TEPW4xd2JwaVOuYn&login_email=${queryParams.get("email")}&token=${queryParams.get("token")}${perm}`;
         method = "GET";
         break;
       default:

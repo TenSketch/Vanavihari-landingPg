@@ -42,6 +42,7 @@
 
 aside{
   background-color: hsl($hue-primary, $saturation-primary, 85%);
+  padding: 20px;
 
   @media(min-width:768px){
     flex-basis: 35%;
@@ -65,7 +66,7 @@ aside{
       position: sticky;
       top: 5%;
       margin-top: 2rem;
-      overflow-y: auto;
+      // overflow-y: auto;
 
     }
   }

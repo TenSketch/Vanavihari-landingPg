@@ -14,7 +14,7 @@ export class LayoutComponent implements OnInit {
   isSidebarOpen: boolean = false;
 
   ngOnInit(): void {
-    this.accountusername = this.userService.getUser();
+    this.accountusername = this.userService.getFullUser();
   }
 
   isLoggedIn(): boolean {
