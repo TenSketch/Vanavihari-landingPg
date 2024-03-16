@@ -37,39 +37,39 @@ export class BookingSummaryComponent {
     this.checkInDate = this.authService.getSearchData('checkin');
     this.checkOutDate = this.authService.getSearchData('checkout');
     this.seslectedResort = this.authService.getSearchData('resort');
-    // const params = new HttpParams()
-    //   .set('email', this.authService.getAccountUsername()??'')
-    //   .set('token', this.authService.getAccessToken()??'');
-    // this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=profile_details', {params}).subscribe({
-    //   next: response => {
-    //     if(response.code == 3000 && response.result.status == 'success') {
-    //       this.form = this.formBuilder.group({
-    //         gname: [response.result.name],
-    //         gphone: [response.result.phone],
-    //         gemail: [response.result.email, Validators.email],
-    //         dob: [response.result.dob, Validators.required],
-    //         nationality: [response.result.nationality],
-    //         gaddress: [response.result.address1],
-    //         address2: [response.result.address2],
-    //         gcity: [response.result.city],
-    //         gstate: [response.result.state],
-    //         gpincode: [response.result.pincode],
-    //         gcountry: [response.result.country]
-    //       });
-    //     } else if (response.code == 3000) {
-    //       this.userService.clearUser();
-    //       alert('Login Error!');
-    //       // this.router.navigate(['/home']);
-    //     } else {
-    //       this.userService.clearUser();
-    //       alert('Login Error!');
-    //       // this.router.navigate(['/home']);
-    //     }
-    //   },
-    //   error: err => {
-    //     console.error('Error:', err);
-    //   }
-    // });
+    const params = new HttpParams()
+      .set('email', this.authService.getAccountUsername()??'')
+      .set('token', this.authService.getAccessToken()??'');
+    this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=profile_details', {params}).subscribe({
+      next: response => {
+        if(response.code == 3000 && response.result.status == 'success') {
+          this.form = this.formBuilder.group({
+            gname: [response.result.name],
+            gphone: [response.result.phone],
+            gemail: [response.result.email, Validators.email],
+            dob: [response.result.dob, Validators.required],
+            nationality: [response.result.nationality],
+            gaddress: [response.result.address1],
+            address2: [response.result.address2],
+            gcity: [response.result.city],
+            gstate: [response.result.state],
+            gpincode: [response.result.pincode],
+            gcountry: [response.result.country]
+          });
+        } else if (response.code == 3000) {
+          this.userService.clearUser();
+          alert('Login Error!');
+          // this.router.navigate(['/home']);
+        } else {
+          this.userService.clearUser();
+          alert('Login Error!');
+          // this.router.navigate(['/home']);
+        }
+      },
+      error: err => {
+        console.error('Error:', err);
+      }
+    });
 
 
   }
@@ -77,16 +77,15 @@ export class BookingSummaryComponent {
     this.router.navigate(['/resorts/vanavihari-maredumilli']);
   }
   submitBooking() {
-    console.log(this.form.valid);
-    
+    let room_ids = (this.authService.getBookingRooms()).map((room: { id: any; }) => room.id).join(',');
     if(this.form.valid) {
-      console.log(this.form.value);
       let params = new HttpParams()
       .set('email', this.authService.getAccountUsername()??'')
       .set('token', this.authService.getAccessToken()??'')
       .set('checkin', this.checkInDate)
       .set('checkout', this.checkOutDate)
-      .set('resort', this.seslectedResort);
+      .set('resort', this.seslectedResort)
+      .set('selected_rooms', room_ids);
       Object.keys(this.form.value).forEach((key) => {
         params = params.append(key, this.form.value[key]);
       });
@@ -94,14 +93,11 @@ export class BookingSummaryComponent {
         next: response => {
           if(response.code == 3000 && response.result.status == 'success') {
             // this.router.navigate(['/home']);
-            // this.showSnackBarAlert("Login Success. Token: "+response.result.token, false);
-            this.authService.setAccessToken(response.result.token);
-            this.authService.setAccountUsername(this.form.value.email_address);
-            this.authService.setAccountUserFullname(response.result.userfullname);
+            this.showSnackBarAlert("Reservation Success! Booking Id: "+response.result.token);
           } else if (response.code == 3000) {
-            // this.showSnackBarAlert(response.result.msg);
+            this.showSnackBarAlert(response.result.msg);
           } else {
-            // this.showSnackBarAlert("Please Check this Credential!");
+            this.showSnackBarAlert("Reservation Error!");
           }
         },
         error: err => {
@@ -112,14 +108,9 @@ export class BookingSummaryComponent {
   }
 
 
-  showSnackBarAlert(msg = '', redirect = true) {
+  showSnackBarAlert(msg = '') {
     var snackBar = this.snackBar.open(msg, 'Close', {
       duration: 3000,
     });
-    if (redirect) {
-      snackBar.afterDismissed().subscribe(() => {
-        this.router.navigate(['/sign-in']);
-      });
-    }
   }
 }

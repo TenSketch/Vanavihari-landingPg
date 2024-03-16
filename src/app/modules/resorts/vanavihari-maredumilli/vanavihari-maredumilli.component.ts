@@ -68,117 +68,117 @@ export class VanavihariMaredumilliComponent {
   // }));
 
   fetchRoomList() {
-    // let perm = '';
-    // if(this.selectedResort) perm += `&resort=${this.selectedResort}`;
-    // if(this.checkinDate) perm += `&checkin=${this.checkinDate}`;
-    // if(this.checkoutDate) perm += `&checkout=${this.checkoutDate}`;
-    // this.http
-    //   .get<any>(
-    //     'https://vanavihari-ng.netlify.app/zoho-connect?api_type=room_list'+perm
-    //   )
-    //   .subscribe({
-    //     next: (response) => {
-    //       if (response.code === 3000 && response.result.status === 'success') {
-    //         console.log(response);
-    //         console.log(response.result.data);
+    let perm = '';
+    if(this.selectedResort) perm += `&resort=${this.selectedResort}`;
+    if(this.checkinDate) perm += `&checkin=${this.checkinDate}`;
+    if(this.checkoutDate) perm += `&checkout=${this.checkoutDate}`;
+    this.http
+      .get<any>(
+        'https://vanavihari-ng.netlify.app/zoho-connect?api_type=room_list'+perm
+      )
+      .subscribe({
+        next: (response) => {
+          if (response.code === 3000 && response.result.status === 'success') {
+            console.log(response);
+            console.log(response.result.data);
 
-    //         const json = response.result.data;
-    //         const jsonArray = Object.keys(json).map(key => {
-    //           return {
-    //             id: key,
-    //             ...json[key]
-    //           };
-    //         });
-    //         this.roomCards = this.mapRoomData(jsonArray, this.roomIds);
-    //       } else {
-    //         this.showErrorAlert(
-    //           'Failed to fetch room list. Please try again later.'
-    //         );
-    //       }
-    //       this.loadingRooms = false;
-    //     },
-    //     error: (err) => {
-    //       console.error('Error:', err);
-    //       this.showErrorAlert(
-    //         'An error occurred while fetching room list. Please try again later.'
-    //       );
-    //     },
-    // });
-    // setTimeout(() => {
-    //   this.loadingRooms = false;
-    // }, 2000);
-
-
-    
-    interface RoomDetails {
-      name: string;
-      week_end_guest_charge: number;
-      cottage_type: string;
-      week_day_rate: number;
-      max_adult: number;
-      max_child: number;
-      max_guest: number;
-      charges_per_bed: number,
-      id: number,
-      aminities: {
-        "4554333000000110021": string;
-        "4554333000000110025": string;
-        "4554333000000110017": string;
-      };
-      // Add other properties as needed
-    }
-    
-    // // Sample JSON object with the defined type
-    const json: { [key: string]: RoomDetails } = {
-      "4554333000000110059": {
-        name: "room1",
-        week_end_guest_charge: 700,
-        cottage_type: "Hill Top Guest House",
-        week_day_rate: 2500,
-        max_adult: 2,
-        max_child: 1,
-        max_guest: 1,
-        charges_per_bed: 500,
-        id: 301,
-        aminities: {
-          "4554333000000110021": "A/C",
-          "4554333000000110025": "Western",
-          "4554333000000110017": "Geyser"
+            const json = response.result.data;
+            const jsonArray = Object.keys(json).map(key => {
+              return {
+                id: key,
+                ...json[key]
+              };
+            });
+            this.roomCards = this.mapRoomData(jsonArray, this.roomIds);
+          } else {
+            this.showErrorAlert(
+              'Failed to fetch room list. Please try again later.'
+            );
+          }
+          this.loadingRooms = false;
         },
-        // Other properties...
-      },
-      "4554333000000110065": {
-        name: "room2",
-        week_end_guest_charge: 700,
-        cottage_type: "Pre-Fabricated Cottages",
-        week_day_rate: 2500,
-        max_adult: 2,
-        max_child: 1,
-        max_guest: 1,
-        charges_per_bed: 500,
-        id: 302,
-        aminities: {
-          "4554333000000110021": "A/C",
-          "4554333000000110025": "Western",
-          "4554333000000110017": "Geyser"
+        error: (err) => {
+          console.error('Error:', err);
+          this.showErrorAlert(
+            'An error occurred while fetching room list. Please try again later.'
+          );
         },
-        // Other properties...
-      },
-      // Add more objects...
-      
-    };
-    const jsonArray = Object.keys(json).map(key => {
-        return json[key];
-        // return {
-        //   id: key,
-        //   ...json[key]
-        // };
     });
-    this.roomCards = this.mapRoomData(jsonArray, this.roomIds);
-
     setTimeout(() => {
-       this.loadingRooms = false;
+      this.loadingRooms = false;
     }, 2000);
+
+
+    
+    // interface RoomDetails {
+    //   name: string;
+    //   week_end_guest_charge: number;
+    //   cottage_type: string;
+    //   week_day_rate: number;
+    //   max_adult: number;
+    //   max_child: number;
+    //   max_guest: number;
+    //   charges_per_bed: number,
+    //   id: number,
+    //   aminities: {
+    //     "4554333000000110021": string;
+    //     "4554333000000110025": string;
+    //     "4554333000000110017": string;
+    //   };
+    //   // Add other properties as needed
+    // }
+    
+    // // // Sample JSON object with the defined type
+    // const json: { [key: string]: RoomDetails } = {
+    //   "4554333000000110059": {
+    //     name: "room1",
+    //     week_end_guest_charge: 700,
+    //     cottage_type: "Hill Top Guest House",
+    //     week_day_rate: 2500,
+    //     max_adult: 2,
+    //     max_child: 1,
+    //     max_guest: 1,
+    //     charges_per_bed: 500,
+    //     id: 301,
+    //     aminities: {
+    //       "4554333000000110021": "A/C",
+    //       "4554333000000110025": "Western",
+    //       "4554333000000110017": "Geyser"
+    //     },
+    //     // Other properties...
+    //   },
+    //   "4554333000000110065": {
+    //     name: "room2",
+    //     week_end_guest_charge: 700,
+    //     cottage_type: "Pre-Fabricated Cottages",
+    //     week_day_rate: 2500,
+    //     max_adult: 2,
+    //     max_child: 1,
+    //     max_guest: 1,
+    //     charges_per_bed: 500,
+    //     id: 302,
+    //     aminities: {
+    //       "4554333000000110021": "A/C",
+    //       "4554333000000110025": "Western",
+    //       "4554333000000110017": "Geyser"
+    //     },
+    //     // Other properties...
+    //   },
+    //   // Add more objects...
+      
+    // };
+    // const jsonArray = Object.keys(json).map(key => {
+    //     return json[key];
+    //     // return {
+    //     //   id: key,
+    //     //   ...json[key]
+    //     // };
+    // });
+    // this.roomCards = this.mapRoomData(jsonArray, this.roomIds);
+
+    // setTimeout(() => {
+    //    this.loadingRooms = false;
+    // }, 2000);
   }
  
   removeRoom(room: any, roomId: any) {
