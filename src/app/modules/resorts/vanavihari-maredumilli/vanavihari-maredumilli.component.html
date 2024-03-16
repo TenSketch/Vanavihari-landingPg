@@ -79,7 +79,6 @@
               <span>Total</span>
               <span>INR 3,000.00</span>
             </div>
-            <!-- Additional rooms will be added here -->
             <div class="d-flex justify-content-between">
               <span>Grand Total</span>
               <span>INR 3,000.00</span>
@@ -141,6 +140,37 @@
               <p>Loading rooms...</p>
             </div>
           </ng-template>
+          <div class="card mb-3 p-1">
+            <div class="row g-0 d-flex">
+            
+              <div class="col-md-4">
+                <h6><span>Room name:</span></h6>
+                <h6><span>Cottage type:</span><br></h6>
+                <span>Adults/Children > 5yrs</span><br>
+                <span>Add extra guest/child</span>
+              </div>
+              <div class="col-md-4">
+                <span>Bonnet</span><br>
+                <span>Hill top guest house</span>
+                <span> <select id="dropdown" class="form-control">
+                  <option value="option1">1</option>
+                  <option value="option2">2</option>
+                  
+                </select></span>
+                <span> <input type="checkbox" class="form-check-input" id="checkbox1">Add guest</span>
+
+              </div>
+              <div class="col-md-4 text-end">
+                <span><br></span>
+                <b><span>INR 2,500.00 + gst @ 12%</span><br></b>
+                <small>all<span>(for 2 guests)</span><br></small>
+                <b><span>INR 500.00 + gst @ 12%</span><br></b>
+                <small><span>(for 1 Extra Bed)</span><br></small>
+              </div>
+
+            </div>
+          </div>
+          
           <div *ngIf="!loadingRooms; else loading">
             <div *ngFor="let room of roomCards" class="card mb-3 p-1">
               <div class="row g-0">
