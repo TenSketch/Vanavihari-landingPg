@@ -95,8 +95,9 @@ export class BookingSummaryComponent {
       this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=booking', {params}).subscribe({
         next: response => {
           if(response.code == 3000 && response.result.status == 'success') {
-            // this.router.navigate(['/home']);
+            this.authService.clearBookingRooms();
             this.showSnackBarAlert("Reservation Success! Booking Id: "+response.result.booking_id);
+            this.router.navigate(['/home']);
           } else if (response.code == 3000) {
             this.showSnackBarAlert(response.result.msg);
           } else {
