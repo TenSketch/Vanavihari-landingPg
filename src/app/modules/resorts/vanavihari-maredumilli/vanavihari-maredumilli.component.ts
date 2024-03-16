@@ -79,9 +79,6 @@ export class VanavihariMaredumilliComponent {
       .subscribe({
         next: (response) => {
           if (response.code === 3000 && response.result.status === 'success') {
-            console.log(response);
-            console.log(response.result.data);
-
             const json = response.result.data;
             const jsonArray = Object.keys(json).map(key => {
               return {
