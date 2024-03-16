@@ -96,7 +96,7 @@ export class BookingSummaryComponent {
         next: response => {
           if(response.code == 3000 && response.result.status == 'success') {
             // this.router.navigate(['/home']);
-            this.showSnackBarAlert("Reservation Success! Booking Id: "+response.result.token);
+            this.showSnackBarAlert("Reservation Success! Booking Id: "+response.result.booking_id);
           } else if (response.code == 3000) {
             this.showSnackBarAlert(response.result.msg);
           } else {
