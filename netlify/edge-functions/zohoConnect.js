@@ -44,7 +44,7 @@ export default async (req) => {
             }
           );
         }
-        apiUrl = `${zoho_api_uri}Account_Registration?publickey=kFs7xRDC5eRPfyCQ0W7yQNCRv&full_name=${queryParams.get("fullname")}&email=${queryParams.get("email")}&phone=${queryParams.get("mobile")}&password=${queryParams.get("password")}`;
+        apiUrl = `${zoho_api_uri}Account_Registration?publickey=kFs7xRDC5eRPfyCQ0W7yQNCRv&${queryParams.toString()}`;
         method = "GET";
         break;
       case "login":
@@ -57,7 +57,7 @@ export default async (req) => {
             }
           );
         }
-        apiUrl = `${zoho_api_uri}Login_Validation?publickey=PWu6q9GvYJJjNSnM6UFSU6fSx&username=${queryParams.get("username")}&password=${queryParams.get("password")}`;
+        apiUrl = `${zoho_api_uri}Login_Validation?publickey=PWu6q9GvYJJjNSnM6UFSU6fSx&${queryParams.toString()}`;
         method = "GET";
         break;
       case "email_verification":
@@ -72,21 +72,11 @@ export default async (req) => {
             }
           );
         }
-        apiUrl = `${zoho_api_uri}Email_Verification?publickey=TJNXwBQpaFWVvUK3ZmKvufVOJ&guest_id=${queryParams.get("userid")}&token=${queryParams.get("token")}`;
+        apiUrl = `${zoho_api_uri}Email_Verification?publickey=TJNXwBQpaFWVvUK3ZmKvufVOJ&&${queryParams.toString()}`;
         method = "GET";
         break;
       case "room_list":
-        // if () {
-        //     return new Response(JSON.stringify({ error: 'Missing required parameters for email verification' }), {
-        //         status: 400,
-        //         headers: { 'Content-Type': 'application/json' },
-        //     });
-        // }
-       
-        if(queryParams.has("resort")) perm += `&resort=${queryParams.get("resort")}`;
-        if(queryParams.has("checkin")) perm += `&checkin=${queryParams.get("checkin")}`;
-        if(queryParams.has("checkout")) perm += `&checkout=${queryParams.get("checkout")}`;
-        apiUrl = `${zoho_api_uri}Rooms_List?publickey=J4s0fXQ0wuxFDJJ2ns9Gs3GqK${perm}`;
+        apiUrl = `${zoho_api_uri}Rooms_List?publickey=J4s0fXQ0wuxFDJJ2ns9Gs3GqK&${queryParams.toString()}`;
         method = "GET";
         break;
       case "profile_details":
@@ -96,7 +86,7 @@ export default async (req) => {
                 headers: { 'Content-Type': 'application/json' },
             });
         }
-        apiUrl = `${zoho_api_uri}Profile_Details?publickey=7AwGYAgpPRaOUDEzbqYpeFyvs&email=${queryParams.get("email")}&token=${queryParams.get("token")}`;
+        apiUrl = `${zoho_api_uri}Profile_Details?publickey=7AwGYAgpPRaOUDEzbqYpeFyvs&${queryParams.toString()}`;
         method = "GET";
         break;
       case "edit_profile_details":
@@ -106,15 +96,11 @@ export default async (req) => {
                 headers: { 'Content-Type': 'application/json' },
             });
         }
-        if(queryParams.has("dob")) perm += `&dob=${queryParams.get("dob")}`;
-        if(queryParams.has("nationality")) perm += `&nationality=${queryParams.get("nationality")}`;
-        if(queryParams.has("address1")) perm += `&address1=${queryParams.get("address1")}`;
-        if(queryParams.has("address2")) perm += `&address2=${queryParams.get("address2")}`;
-        if(queryParams.has("city")) perm += `&city=${queryParams.get("city")}`;
-        if(queryParams.has("state")) perm += `&state=${queryParams.get("state")}`;
-        if(queryParams.has("pincode")) perm += `&pincode=${queryParams.get("pincode")}`;
-        if(queryParams.has("country")) perm += `&country=${queryParams.get("country")}`;
-        apiUrl = `${zoho_api_uri}Edit_Profile?publickey=AKSTTeZV7TEPW4xd2JwaVOuYn&login_email=${queryParams.get("email")}&token=${queryParams.get("token")}${perm}`;
+        apiUrl = `${zoho_api_uri}Edit_Profile?publickey=AKSTTeZV7TEPW4xd2JwaVOuYn&${queryParams.toString()}`;
+        method = "GET";
+        break;
+      case "booking":
+        apiUrl = `${zoho_api_uri}Reservation?publickey=TDHrEVmP2ArM1VtEaM1xOdUwF&${queryParams.toString()}`;
         method = "GET";
         break;
       default:
