@@ -85,7 +85,10 @@ export class BookingSummaryComponent {
       .set('checkin', this.checkInDate)
       .set('checkout', this.checkOutDate)
       .set('resort', this.seslectedResort)
-      .set('selected_rooms', room_ids);
+      .set('selected_rooms', room_ids)
+      .set('noof_adult', 1)
+      .set('noof_child', 0)
+      .set('noof_guest', 0);
       Object.keys(this.form.value).forEach((key) => {
         params = params.append(key, this.form.value[key]);
       });
