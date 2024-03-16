@@ -19,13 +19,8 @@
           <div class="map-container">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15212.133581651236!2d81.712357!3d17.601149!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a373b5d52758873%3A0x718f2b2059db5e0a!2sVanavihari%20Maredumilli!5e0!3m2!1sen!2sin!4v1708738599849!5m2!1sen!2sin"
-              width="400"
-              height="300"
-              style="border: 0"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+              width="400" height="300" style="border: 0" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
         <div class="col-md-8 mt-4 mt-lg-0">
@@ -50,6 +45,12 @@
       <div class="row mt-5">
         <aside class="">
           <div class="sort">
+            <h3>Cottage Type</h3>
+            <mat-checkbox id="hilltop">Hilltop Guest House</mat-checkbox><br>
+            <mat-checkbox id="pre-fabricated">Pre-Fabricated Cottages</mat-checkbox><br>
+            <mat-checkbox id="wooden">Wooden Cottages</mat-checkbox><br>
+            <mat-checkbox id="deluxe">Deluxe Rooms</mat-checkbox><br>
+            <mat-checkbox id="tented">Tented Cottages</mat-checkbox><br><br><br>
             <mat-form-field>
               <mat-label>Sort by Price</mat-label>
               <mat-select [(value)]="selectedSortOption" name="priceSort">
@@ -58,62 +59,123 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="booking-summary-bar" *ngIf="showBookingSummary">
+          <!-- Booking Summary section -->
+          <div class="booking-summary-bar" *ngIf="showBookingSummary; else noBookings">
             <h5><u>Booking Summary</u></h5>
-            <div class="row align-items-center">
-              <div class="col-md-4">
-                <strong>No. of rooms</strong>
-                <p>1</p>
-                <!-- <p>1</p> -->
-              </div>
-              <div class="col-md-4">
-                <strong>Total Price</strong>
-                <p>INR 5600 + GST @12%</p>
-                <!-- <p></p> -->
-              </div>
-              <div class="col-md-4">
-                <button
-                  class="btn btn-primary float-end"
-                  (click)="goToBooking()"
-                >
-                  Proceed
-                </button>
+            <div *ngFor="let roomId of roomIds" class="card mb-3 p-2">
+              <div class="row align-items-center">
+                <div class="col-md-10">
+                  <p>{{ roomId.cottage_type }}</p>
+                </div>
+                <div class="col-md-2 text-end">
+                  <a href="javascript:void(0)" (click)="removeRoom(roomId, roomId.id)"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="col-md-12">
+                  <b>{{ roomId.name }}</b> : {{ roomId.adult_count }} Adult{{ roomId.adult_count>1?'s':'' }}
+                  {{ roomId.child_count?', '+roomId.child_count+' Child'+(roomId.child_count>1?'s':''):'' }}
+                  {{ roomId.guest_count?', '+roomId.guest_count+' Guest'+(roomId.guest_count>1?'s':''):'' }}
+                </div>
+                <div class="col-md-12 text-end">
+                  <b>Charges:</b> {{ roomId.weekDayPrice | currency:'INR':'symbol':'1.2-2' }}
+                </div>
               </div>
             </div>
+
+            
+            <div class="row align-items-center px-3">
+              Total Room Price: {{ calculateTotalPrice() | currency:'INR':'symbol':'1.2-2' }} + GST @12%
+              <button class="btn btn-primary float-end" (click)="goToBooking()">Proceed</button>
+            </div>
+
+
           </div>
+          <ng-template #noBookings>
+            <!-- <div class="text-center mt-3">
+              <p>No Bookings Available. Please Add Rooms.</p>
+            </div> -->
+            <h5 class="text-center"><u>Booking Summary</u></h5>
+            <div class="d-flex my-2 p-3 align-items-center justify-content-around">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+              <p>Add your preferred rooms
+              </p>
+
+            </div>
+            <button mat-raised-button color="primary" class="w-100" disabled>
+              Proceed
+            </button>
+
+          </ng-template>
         </aside>
         <main class="rooms-listing">
-          <div *ngFor="let room of roomCards" class="card mb-3 p-1">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img [src]="room.image" class="card-img" alt="Room Image" />
+          <ng-template #loading>
+            <div class="text-center">
+              <!-- Increase size using Bootstrap utility classes -->
+              <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
+                <span class="visually-hidden">Loading...</span>
               </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-6 text-start details-left">
-                      <p class="mb-0">
-                        <strong>Room name:</strong> {{ room.name }}
-                      </p>
-                      <p class="mb-0">
-                        <strong>Cottage type:</strong> {{ room.cottage_type }}
-                      </p>
-                      <p><strong>Bed type:</strong> {{ room.bed_type }}</p>
-                      <div class="d-flex gap-2">
-                        <span *ngFor="let amenity of room.amenities">
-                          <span>{{ amenity }}</span>
-                        </span>
+              <p>Loading rooms...</p>
+            </div>
+          </ng-template>
+          <div *ngIf="!loadingRooms; else loading">
+            <div *ngFor="let room of roomCards" class="card mb-3 p-1">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img [src]="room.image" class="card-img" alt="Room Image" />
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-6 text-start details-left">
+                        <p class="mb-0">
+                          <strong>Room name:</strong> {{ room.name }}
+                        </p>
+                        <p class="mb-0">
+                          <strong>Cottage type:</strong> <br> {{ room.cottage_type }}
+                        </p>
+                        <!-- <div class="input-group">
+                          <button type="button" class="btn" (click)="decrementAdult(room)"> - </button>
+                          <input type="number" name="adult" [(ngModel)]="room.adult_count"
+                            class="form-control text-center ng-untouched ng-pristine ng-valid">
+                          <button type="button" class="btn" (click)="incrementAdult(room)"> + </button>
+                        </div>
+                        <div class="input-group">
+                          <button type="button" class="btn" (click)="decrementChild(room)"> - </button>
+                          <input type="number" name="child" [(ngModel)]="room.child_count"
+                            class="form-control text-center ng-untouched ng-pristine ng-valid">
+                          <button type="button" class="btn" (click)="incrementChild(room)"> + </button>
+                        </div>
+                        <div class="input-group">
+                          <button type="button" class="btn" (click)="decrementGuest(room)"> - </button>
+                          <input type="number" name="guest" [(ngModel)]="room.guest_count"
+                            class="form-control text-center ng-untouched ng-pristine ng-valid">
+                          <button type="button" class="btn" (click)="incrementGuest(room)"> + </button>
+                        </div> -->
+                        <!-- <p><strong>Bed type:</strong> {{ room.bed_type }}</p> -->
+                        <!-- <div class="d-flex gap-2">
+                          <span *ngFor="let amenity of room.amenities">
+                            <span>{{ amenity }}</span>
+                          </span>
+                        </div> -->
                       </div>
-                    </div>
-                    <div class="col-6 details-right text-end">
-                      <div class="star-rating">{{ room.rating }}</div>
-                      <h5>{{ room.rating }}</h5>
-                      <p class="card-text">
-                        <small class="text-muted">{{ weekDayPrice }}</small>
-                      </p>
-                      <button class="btn btn-primary" (click)="addRoom()">
-                        Add room
-                      </button>
+                      <div class="col-6 details-right text-end">
+                        <!-- <div class="star-rating">{{ room.rating }}</div>
+                        <h5>{{ room.rating }}</h5> -->
+                        <!-- <p class="card-text">WeekDays charges : 
+                          <small class="text-muted">{{ room.weekDayPrice }}</small>
+                        </p>
+                        <p class="card-text">Weekend charges : 
+                          <small class="text-muted">{{ room.weekendPrice }}</small>
+                        </p>
+                        <p class="card-text">WeekDays Guest charges : 
+                          <small class="text-muted">{{ room.weekDayGuestPrice }}</small>
+                        </p>
+                        <p class="card-text">Weekend Guest charges :
+                          <small class="text-muted">{{ room.weekendGuestPrice }}</small>
+                        </p> -->
+                        <button class="btn btn-primary" (click)="addRoom(room)" [disabled]="room.isButtonDisabled">
+                          Add room
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -1,12 +1,12 @@
 <section class="search-rooms">
-  <form>
+  <form #searchForm="ngForm">
     <div class="row align-items-center justify-content-center gap-3 gap-lg-0">
       <div class="col-lg-3">
         <mat-form-field appearance="outline">
           <mat-label>Select Resort</mat-label>
-          <mat-select required [(ngModel)]="selectedResort">
-            <mat-option value="VanaVihari, Maredumilli">Vanavihari, Maredumilli</mat-option>
-            <mat-option value="Jungle   Star, Valamuru">Jungle Star, Valamuru</mat-option>
+          <mat-select required [(ngModel)]="selectedResort" [(value)]="selectedResort">
+            <mat-option value="vanavihari">Vanavihari, Maredumilli</mat-option>
+            <mat-option value="jungle-star">Jungle Star, Valamuru</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -14,8 +14,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Checkin & Checkout</mat-label>
           <mat-date-range-input [rangePicker]="picker" (click)="picker.open()">
-            <input matStartDate placeholder="Checkin date" />
-            <input matEndDate placeholder="Checkout date" />
+            <input matStartDate placeholder="Checkin date" [(ngModel)]="checkinDate" (dateChange)="onDateChange('checkin', $event)"/>
+            <input matEndDate placeholder="Checkout date" [(ngModel)]="checkoutDate" (dateChange)="onDateChange('checkout', $event)"/>
           </mat-date-range-input>
           <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -23,19 +23,19 @@
         </mat-form-field>
         
       </div>
-      <div class="col-lg-3 position-relative">
+      <!-- <div class="col-lg-3 position-relative">
         <mat-form-field appearance="outline">
           <mat-label>Guests</mat-label>
           <input type="text" [value]="RoomValues" matInput data-bs-toggle="modal" data-bs-target="#modalId" />
         </mat-form-field>
-        <!-- modal for adding guests, children and rooms -->
+        <!-- modal for adding guests, children and rooms --/>
         <div class="modal fade position-absolute modal-searchbar" id="modalId" tabindex="-1"
           aria-labelledby="modalTitleId" aria-hidden="true" role="dialog" data-bs-backdrop="static">
           <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-body">
-                <!-- Angular Material form fields for adults, children, rooms -->
-                <!-- Adults section -->
+                <!-- Angular Material form fields for adults, children, rooms --/>
+                <!-- Adults section --/>
                 <div class="row mt-3">
                   <label for="adults" class="col-sm-6">No. of Adults:</label>
                   <div class="col-sm-6">
@@ -51,7 +51,7 @@
                     </div>
                   </div>
                 </div>
-                <!-- Children section -->
+                <!-- Children section --/>
                 <div class="row my-3">
                   <label for="children" class="col-sm-6">No. of Children:</label>
                   <div class="col-sm-6">
@@ -70,7 +70,7 @@
                     </div>
                   </div>
                 </div>
-                <!-- Age dropdowns -->
+                <!-- Age dropdowns --/>
                 <div id="ageDropdowns">
                   <div class="col-auto" *ngFor="let i of getChildrenCountArray()">
                     <select class="form-select mb-3" name="childAge" [(ngModel)]="selectedAges[i]">
@@ -81,7 +81,7 @@
                     </select>
                   </div>
                 </div>
-                <!-- Rooms section -->
+                <!-- Rooms section --/>
                 <div class="row">
                   <label for="rooms" class="col-sm-6">No. of Rooms:</label>
                   <div class="col-sm-6">
@@ -107,11 +107,15 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-auto flex-grow-1">
+      </div> -->
+      <div class="col-lg-3">
         <!-- <button mat-raised-button color="primary" (click)="goToSignin()" class="w-100 mt-1">Sign In</button> -->
 
+<<<<<<< HEAD
         <button mat-raised-button color="primary" class="w-100" (click)="goToRooms()">
+=======
+        <button mat-raised-button color="primary" class="w-100" [disabled]="searchForm.invalid" (click)="goToVanavihari()">
+>>>>>>> 0cb8ff474a9d2dc2ae8b2b65c97c08f2a7b9d4b7
           Search
         </button>
         <!-- <button

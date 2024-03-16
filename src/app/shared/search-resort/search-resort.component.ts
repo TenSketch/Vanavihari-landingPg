@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search-resort',
@@ -7,9 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./search-resort.component.scss'],
 })
 export class SearchResortComponent implements OnInit {
-  ngOnInit(): void {}
-
-  //searchbar model
+  searchForm: FormGroup;
   @ViewChild('modal') modal: ElementRef;
   adultsCount: number = 1;
   childrenCount: number = 0;
@@ -19,13 +19,24 @@ export class SearchResortComponent implements OnInit {
   selectedAges: string[] = [];
   ageDropdowns: number[];
   RoomValues: any;
-  selectedResort: string = '';
+  selectedResort: string = "vanavihari";
+  checkinDate: string;
+  checkoutDate: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private formBuilder: FormBuilder) {
+    this.searchForm = this.formBuilder.group({
+      selectedResort: [],
+      checkinDate: [],
+      checkoutDate: []
+    });
     this.updateAgeDropdowns();
     this.RoomValues = 'Adult-' + 2 + ' Children- ' + 0 + ' Rooms-' + 1;
   }
-
+  ngOnInit(): void {
+    if(this.authService.getSearchData("resort")) this.selectedResort = this.authService.getSearchData("resort");
+    if(this.authService.getSearchData("checkin")) this.checkinDate = this.authService.getSearchData("checkin");
+    if(this.authService.getSearchData("checkout")) this.checkoutDate = this.authService.getSearchData("checkout");
+  }
   // openModal() {
   //   const modal = this.modal.nativeElement;
   //   modal.classList.add('show');
@@ -45,7 +56,7 @@ export class SearchResortComponent implements OnInit {
   incrementChildren() {
     if (this.childrenCount < this.maxChildren) {
       this.childrenCount++;
-      this.selectedAges = Array(this.childrenCount).fill(''); // Add an empty string for the new dropdown
+      this.selectedAges = Array(this.childrenCount).fill('');
       this.isMaxReached = false;
     } else {
       this.isMaxReached = true;
@@ -55,7 +66,7 @@ export class SearchResortComponent implements OnInit {
   decrementChildren() {
     if (this.childrenCount > 0) {
       this.childrenCount--;
-      this.selectedAges.pop(); // Remove the selected value for the last dropdown
+      this.selectedAges.pop();
       this.isMaxReached = false;
     }
   }
@@ -76,15 +87,12 @@ export class SearchResortComponent implements OnInit {
   }
 
   updateAgeDropdowns() {
-    // Clear existing dropdowns
     this.ageDropdowns = [];
-    // Create dropdowns for each child
     for (let i = 0; i < this.childrenCount; i++) {
-      this.ageDropdowns.push(i); // Add a placeholder for each child
+      this.ageDropdowns.push(i);
     }
-    // Ensure the selectedAges array has the correct length
     while (this.selectedAges.length < this.childrenCount) {
-      this.selectedAges.push(''); // Add empty strings for each child
+      this.selectedAges.push('');
     }
   }
 
@@ -100,10 +108,33 @@ export class SearchResortComponent implements OnInit {
   }
 
   goToVanavihari() {
+    this.authService.setSearchData( [{ resort: this.selectedResort, checkin: this.checkinDate, checkout: this.checkoutDate }]);
     this.router.navigate(['/resorts/vanavihari-maredumilli']);
   }
   goToRooms(){
     this.router.navigate(['/resorts/rooms' ]);
+  }
+
+  onDateChange(type: string, event: any): void {
+    const selectedDate = event.value;
+    const formattedDate = this.formatDate(selectedDate);
+    if (type === 'checkin') {
+      this.checkinDate = formattedDate;
+    } else if (type === 'checkout') {
+      this.checkoutDate = formattedDate;
+    }
+  }
+
+  formatDate(date: Date): string {
+    const monthNames = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+    const day = date.getDate();
+    const monthIndex = date.getMonth();
+    const year = date.getFullYear();
+    const formattedDate = `${day}-${monthNames[monthIndex]}-${year}`;
+    return formattedDate;
   }
 
 }

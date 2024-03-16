@@ -11,6 +11,8 @@ export class AuthService {
   private accessUserFullname = 'userfullname';
   private apiCommonUrl = 'https://www.zohoapis.com/creator/custom/vanavihari';
   
+  private bookingRooms = 'booking_rooms';
+  private searchData = 'search_data';
   constructor(private http: HttpClient) { }
 
   sendDataToServer(apiUri: any, params: any): Observable<any> {
@@ -46,5 +48,34 @@ export class AuthService {
 
   removeAccessToken(): void {
     localStorage.removeItem(this.accessTokenKey);
+  }
+
+
+  setBookingRooms(rooms: any[]): void {
+    localStorage.setItem(this.bookingRooms, JSON.stringify(rooms));
+  }
+  getBookingRooms(): any | null {
+    const roomsJson = localStorage.getItem(this.bookingRooms);
+    if (roomsJson) {
+      return JSON.parse(roomsJson);
+    }
+    return null;
+  }
+  clearBookingRooms(): void {
+    localStorage.removeItem(this.bookingRooms);
+  }
+
+  setSearchData(data: any[]): void {
+    localStorage.setItem(this.searchData, JSON.stringify(data));
+  }
+  getSearchData(data: string): any | null {
+    const searchDataJson = localStorage.getItem(this.searchData);
+    if (searchDataJson) {
+      return JSON.parse(searchDataJson)[0][data];
+    }
+    return null;
+  }
+  clearSearchData(): void {
+    localStorage.removeItem(this.searchData);
   }
 }

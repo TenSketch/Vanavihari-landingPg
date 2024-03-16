@@ -11,10 +11,13 @@ export class UserService {
   constructor() { }
 
   getUser(): any {
+    return localStorage.getItem(this.accessUsername);
+  }
+  getFullUser(): any {
     return localStorage.getItem(this.accessUserFullname);
-    
-    // const user = localStorage.getItem(this.accessTokenKey);
-    // return user ? JSON.parse(user) : null;
+  }
+  getUserToken(): any {
+    return localStorage.getItem(this.accessTokenKey);
   }
 
   setUser(user: any): void {
@@ -22,8 +25,10 @@ export class UserService {
     // expiration.setTime(expiration.getTime() + (expirationMinutes * 60 * 1000));
     localStorage.setItem(this.accessTokenKey, user); //JSON.stringify({user, expiration: expiration.getTime()})
   }
-
+  
   clearUser(): void {
+    localStorage.removeItem(this.accessUsername);
+    localStorage.removeItem(this.accessUserFullname);
     localStorage.removeItem(this.accessTokenKey);
   }
 
