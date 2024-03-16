@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { RoomsComponent } from '../rooms/rooms.component';
+// import { RoomsComponent } from '../rooms/rooms.component';
 import { AuthService } from '../../../../app/auth.service';
 // import { UserService } from '../../user.service';
 

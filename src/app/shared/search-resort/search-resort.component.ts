@@ -37,11 +37,6 @@ export class SearchResortComponent implements OnInit {
     if(this.authService.getSearchData("checkin")) this.checkinDate = this.authService.getSearchData("checkin");
     if(this.authService.getSearchData("checkout")) this.checkoutDate = this.authService.getSearchData("checkout");
   }
-  // openModal() {
-  //   const modal = this.modal.nativeElement;
-  //   modal.classList.add('show');
-  //   modal.style.display = 'block';
-  // }
 
   decrementAdults() {
     if (this.adultsCount > 1) {
@@ -111,9 +106,9 @@ export class SearchResortComponent implements OnInit {
     this.authService.setSearchData( [{ resort: this.selectedResort, checkin: this.checkinDate, checkout: this.checkoutDate }]);
     this.router.navigate(['/resorts/vanavihari-maredumilli']);
   }
-  goToRooms(){
-    this.router.navigate(['/resorts/rooms' ]);
-  }
+  // goToRooms(){
+  //   this.router.navigate(['/resorts/rooms' ]);
+  // }
 
   onDateChange(type: string, event: any): void {
     const selectedDate = event.value;

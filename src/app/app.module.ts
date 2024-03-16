@@ -64,7 +64,7 @@ import { MyBookingsComponent } from './modules/my-bookings/my-bookings.component
 import { JungleStarValamuruComponent } from './modules/resorts/jungle-star-valamuru/jungle-star-valamuru.component';
 import { ResortListingComponent } from './modules/resort-listing/resort-listing.component';
 import { BookingSummaryComponent } from './modules/booking-summary/booking-summary.component';
-import { RoomsComponent } from './modules/resorts/rooms/rooms.component';
+// import { RoomsComponent } from './modules/resorts/rooms/rooms.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +86,7 @@ import { RoomsComponent } from './modules/resorts/rooms/rooms.component';
     JungleStarValamuruComponent,
     ResortListingComponent,
     BookingSummaryComponent,
-    RoomsComponent,
+    // RoomsComponent,
 
   ],
   imports: [
