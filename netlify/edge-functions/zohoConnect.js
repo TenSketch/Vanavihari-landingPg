@@ -117,6 +117,26 @@ export default async (req) => {
         apiUrl = `${zoho_api_uri}Edit_Profile?publickey=AKSTTeZV7TEPW4xd2JwaVOuYn&login_email=${queryParams.get("email")}&token=${queryParams.get("token")}${perm}`;
         method = "GET";
         break;
+      case "booking":
+        // if (!queryParams.has("token") || !queryParams.has("email")) {
+        //     return new Response(JSON.stringify({ error: 'Missing required parameters for email verification' }), {
+        //         status: 400,
+        //         headers: { 'Content-Type': 'application/json' },
+        //     });
+        // }
+        // if(queryParams.has("dob")) perm += `&dob=${queryParams.get("dob")}`;
+        // if(queryParams.has("nationality")) perm += `&nationality=${queryParams.get("nationality")}`;
+        // if(queryParams.has("address1")) perm += `&address1=${queryParams.get("address1")}`;
+        // if(queryParams.has("address2")) perm += `&address2=${queryParams.get("address2")}`;
+        // if(queryParams.has("city")) perm += `&city=${queryParams.get("city")}`;
+        // if(queryParams.has("state")) perm += `&state=${queryParams.get("state")}`;
+        // if(queryParams.has("pincode")) perm += `&pincode=${queryParams.get("pincode")}`;
+        // if(queryParams.has("country")) perm += `&country=${queryParams.get("country")}`;
+        console.log(queryParams);
+        return;
+        apiUrl = `${zoho_api_uri}Reservation?publickey=TDHrEVmP2ArM1VtEaM1xOdUwF&login_email=${queryParams.get("email")}&token=${queryParams.get("token")}${perm}`;
+        method = "GET";
+        break;
       default:
         return new Response(
           JSON.stringify({ error: "Invalid api_type parameter" }),
