@@ -28,3 +28,8 @@
    .mat-mdc-outlined-button.mat-secondary{
     border: 2px solid $clr-primary!important;
 }
+.mat-mdc-raised-button[disabled]{
+    background-color: lightgray!important;
+    cursor: not-allowed!important;
+    pointer-events: unset!important;
+}
