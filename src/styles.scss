@@ -131,15 +131,6 @@ h1, h2, h3, h4, h5, h6{
   }
 }
 
-.bg-white {
-  box-shadow: 0 0 3px 0 rgb(31 38 135 / 30%);
-  @include border-radius;
-  margin-inline: 1rem;
-
-  @media (min-width: 600px) {
-    margin-inline: 2rem;
-  }
-}
 
 .font-weight-bold {
   font-weight: 600 !important;

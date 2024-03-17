@@ -13,8 +13,14 @@
 .text-primary{
     color: $clr-primary!important
 }
+.text-secondary{
+    color: $clr-secondary!important
+}
+.text-primary-dark{
+    color: $clr-primary-dark!important
+}
 .border-primary{
-    border-color: $clr-primary-light!important
+    border-color: $clr-primary!important
 }
 
 .text-dark{
