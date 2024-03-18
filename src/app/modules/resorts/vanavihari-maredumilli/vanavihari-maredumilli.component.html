@@ -139,32 +139,49 @@
               <p>Loading rooms...</p>
             </div>
           </ng-template>
-          <div class="card mb-3 p-1 d-none">
-            <div class="row g-0 d-flex">
-            
+          <div class="card mb-3 p-1">
+            <div class="row g-0 d-flex ">
               <div class="col-md-4">
+                <img src="/assets/img/jungle.jpeg" alt="resort image">
+              </div>
+              <div class="col-md-2 p-3">
                 <h6><span>Room name:</span></h6>
                 <h6><span>Cottage type:</span><br></h6>
-                <span>Adults/Children > 5yrs</span><br>
-                <span>Add extra guest/child</span>
+                <span>Adults/Children > 5yrs</span><br><br>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-3 pt-3">
                 <span>Bonnet</span><br>
                 <span>Hill top guest house</span>
-                <span> <select id="dropdown" class="form-control">
-                  <option value="option1">1</option>
-                  <option value="option2">2</option>
-                  
-                </select></span>
-                <span> <input type="checkbox" class="form-check-input" id="checkbox1">Add guest</span>
+                
+                <span>
+                  <mat-form-field>
+                    <mat-label>Guests</mat-label>
+                    <select matNativeControl required [formControl]="selected">
+                      
+                      <option value="one">1</option>
+                      <option value="two">2</option>
+                      
+                    </select>
+                    <!-- @if (selectFormControl.hasError('required')) {
+                      <mat-error>This field is required</mat-error>
+                    } -->
+                    <mat-hint>2 guests max, including children.</mat-hint>
+                  </mat-form-field>
+                  </span>
+                
+                <span><mat-checkbox [(ngModel)]="isChecked">Extra adult/child over 5</mat-checkbox></span>
+                
 
               </div>
-              <div class="col-md-4 text-end">
+              <div class="col-md-3 text-end">
                 <span><br></span>
                 <b><span>INR 2,500.00 + gst @ 12%</span><br></b>
                 <small>all<span>(for 2 guests)</span><br></small>
                 <b><span>INR 500.00 + gst @ 12%</span><br></b>
-                <small><span>(for 1 Extra Bed)</span><br></small>
+                <small><span>(for 1 Extra Bed)</span><br></small><br><br>
+                <span><button class="btn btn-primary">
+                  Add room
+                </button></span>
               </div>
 
             </div>
@@ -226,6 +243,7 @@
                         <p class="card-text">Weekend Guest charges :
                           <small class="text-muted">{{ room.weekendGuestPrice }}</small>
                         </p> -->
+                        
                         <button class="btn btn-primary" (click)="addRoom(room)" [disabled]="room.isButtonDisabled">
                           Add room
                         </button>

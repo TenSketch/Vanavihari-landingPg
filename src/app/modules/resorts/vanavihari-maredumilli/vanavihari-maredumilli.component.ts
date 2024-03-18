@@ -38,7 +38,8 @@ export class VanavihariMaredumilliComponent {
   selectedResort: string = '';
   checkinDate: Date;
   checkoutDate: Date;
-
+  selected: string = '';
+  isChecked: boolean = false;
   constructor(
     private router: Router,
     private http: HttpClient,
