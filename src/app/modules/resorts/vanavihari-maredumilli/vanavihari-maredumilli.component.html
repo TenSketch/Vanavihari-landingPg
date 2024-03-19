@@ -126,7 +126,48 @@
             </div>
           </ng-template>
 
-          
+          <div class="card1 mb-3 p-1">
+            <div class="row g-0 d-flex ">
+              <div class="col-md-4">
+                <img src="/assets/img/jungle.jpeg" alt="resort image">
+              </div>
+              <div class="col-md-2 col-6 pt-3 p-3">
+                <h6><span>Room name:</span></h6>
+                <h6><span>Cottage type:</span><br></h6>
+              </div>
+              <div class="col-md-3 col-6 pt-2">
+                <span>Bonnet</span><br>
+                <span>Hill top guest house</span><br><br>
+                
+                <span>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Guests</mat-label>
+                    <mat-select required [(ngModel)]="selected" >
+                    <mat-option value="one">1</mat-option>
+                    <mat-option value="two">2</mat-option>
+                    </mat-select> 
+                    <mat-hint>2 guests max, including children.</mat-hint>
+                  </mat-form-field>
+                  </span><br><br>
+                
+                <span><mat-checkbox [(ngModel)]="isChecked">Extra adult/child over 5 yrs</mat-checkbox></span>
+                
+
+              </div>
+              <div class="col-md-3 col-12 text-center text-md-end">
+                <br><br><br>
+                <b><span>INR 2,500.00 + gst @ 12%</span><br></b>
+                <small>all<span>(for 2 guests)</span><br></small><br><br>
+                <b><span>INR 500.00 + gst @ 12%</span><br></b>
+                <small><span>(for 1 Extra Bed)</span><br></small><br>
+                <span><button class="btn btn-primary">
+                  Add room
+                </button></span>
+              </div>
+
+            </div>
+          </div>
+
           <div *ngIf="!loadingRooms; else loading">
             <div class="card mb-3 p-1" *ngFor="let room of roomCards" >
               <div class="row g-0 d-flex ">
