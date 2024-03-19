@@ -103,6 +103,10 @@ export default async (req) => {
         apiUrl = `${zoho_api_uri}Reservation?publickey=TDHrEVmP2ArM1VtEaM1xOdUwF&${queryParams.toString()}`;
         method = "GET";
         break;
+      case "booking_history":
+        apiUrl = `${zoho_api_uri}Reservation_Histrory?publickey=hxxrtQ7g2t93U1QUbSOq4kj59&${queryParams.toString()}`;
+        method = "GET";
+        break;
       default:
         return new Response(
           JSON.stringify({ error: "Invalid api_type parameter" }),
