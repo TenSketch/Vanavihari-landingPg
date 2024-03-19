@@ -28,74 +28,72 @@ export class MyBookingsComponent {
     });
   }
   
-  fetchRoomList() {   
-    // interface RoomDetails {
-    //   name: string;
-    //   week_end_guest_charge: number;
-    //   cottage_type: string;
-    //   week_day_rate: number;
-    //   max_adult: number;
-    //   max_child: number;
-    //   max_guest: number;
-    //   week_day_bed_charge: number,
-    //   id: number,
-    //   resort: string,
-    //   aminities: {
-    //     "4554333000000110021": string;
-    //     "4554333000000110025": string;
-    //     "4554333000000110017": string;
-    //   };
-    //   // Add other properties as needed
-    // }
+  fetchRoomList() { 
+    interface ReservationDetails {
+      checkin: string;
+      noof_guest: number;
+      noof_adult: number;
+      noof_child: number;
+      checkout: string;
+      noof_rooms: number;
+      rooms: {
+        name: string;
+        cottage: string;
+        restort: string;
+      };
+    }
     
-    // // // Sample JSON object with the defined type
-    // const json: { [key: string]: RoomDetails } = {
-    //   "4554333000000110059": {
-    //     name: "Room1",
-    //     week_end_guest_charge: 700,
-    //     cottage_type: "Hill Top Guest House",
-    //     week_day_rate: 2500,
-    //     max_adult: 2,
-    //     max_child: 1,
-    //     max_guest: 1,
-    //     week_day_bed_charge: 500,
-    //     id: 301,
-    //     resort: 'Vanavihari',
-    //     aminities: {
-    //       "4554333000000110021": "A/C",
-    //       "4554333000000110025": "Western",
-    //       "4554333000000110017": "Geyser"
-    //     },
-    //     // Other properties...
-    //   },
-    //   "4554333000000110065": {
-    //     name: "Room2",
-    //     week_end_guest_charge: 700,
-    //     cottage_type: "Pre-Fabricated Cottages",
-    //     week_day_rate: 2500,
-    //     max_adult: 2,
-    //     max_child: 1,
-    //     max_guest: 3,
-    //     week_day_bed_charge: 500,
-    //     id: 302,
-    //     resort: 'Vanavihari',
-    //     aminities: {
-    //       "4554333000000110021": "A/C",
-    //       "4554333000000110025": "Western",
-    //       "4554333000000110017": "Geyser"
-    //     },
-    //     // Other properties...
-    //   },
-    //   // Add more objects...
-      
-    // };
-    // const jsonArray = Object.keys(json).map(key => {
-    //     return json[key];
-    //     // return {
-    //     //   id: key,
-    //     //   ...json[key]
-    //     // };
-    // });
+    // // Sample JSON object with the defined type
+    const json: { [key: string]: ReservationDetails } = {
+          0: {
+            rooms: {
+                name: "Bonnet",
+                cottage: "Hill Top Guest House",
+                restort: "Vanavihari, Maredumilli"
+            },
+            checkin: "2024-03-03",
+            noof_guest: 0,
+            noof_adult: 2,
+            noof_child: 0,
+            checkout: "2024-03-19",
+            noof_rooms: 1
+        },
+        1: {
+            rooms: {
+                name: "Bear",
+                cottage: "Pre-Fabricated Cottages",
+                restort: "Vanavihari, Maredumilli"
+            },
+            checkin: "2024-03-19",
+            noof_guest: 0,
+            noof_adult: 1,
+            noof_child: 0,
+            checkout: "2024-03-19",
+            noof_rooms: 0
+        },
+        2: {
+            rooms: {
+                name: "CHOUSINGHA",
+                cottage: "Pre-Fabricated Cottages",
+                restort: "Vanavihari, Maredumilli"
+            },
+            checkin: "2024-03-13",
+            noof_guest: 1,
+            noof_adult: 5,
+            noof_child: 2,
+            checkout: "2024-03-13",
+            noof_rooms: 0
+      }
+    };
+    const jsonArray = Object.keys(json).map(key => {
+        return json[key];
+        return {
+          id: key,
+          ...json[key]
+        };
+    });
+    console.log(jsonArray);
+    
     // this.roomCards = this.mapRoomData(jsonArray, this.roomIds);
 
     // setTimeout(() => {

@@ -78,36 +78,36 @@ export class BookingSummaryComponent {
     const params = new HttpParams()
       .set('email', this.authService.getAccountUsername()??'')
       .set('token', this.authService.getAccessToken()??'');
-    // this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=profile_details', {params}).subscribe({
-    //   next: response => {
-    //     if(response.code == 3000 && response.result.status == 'success') {
-    //       this.form = this.formBuilder.group({
-    //         gname: [response.result.name],
-    //         gphone: [response.result.phone],
-    //         gemail: [response.result.email, Validators.email],
-    //         dob: [response.result.dob, Validators.required],
-    //         nationality: [response.result.nationality],
-    //         gaddress: [response.result.address1],
-    //         address2: [response.result.address2],
-    //         gcity: [response.result.city],
-    //         gstate: [response.result.state],
-    //         gpincode: [response.result.pincode],
-    //         gcountry: [response.result.country]
-    //       });
-    //     } else if (response.code == 3000) {
-    //       this.userService.clearUser();
-    //       alert('Login Error!');
-    //       // this.router.navigate(['/home']);
-    //     } else {
-    //       this.userService.clearUser();
-    //       alert('Login Error!');
-    //       // this.router.navigate(['/home']);
-    //     }
-    //   },
-    //   error: err => {
-    //     console.error('Error:', err);
-    //   }
-    // });
+    this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=profile_details', {params}).subscribe({
+      next: response => {
+        if(response.code == 3000 && response.result.status == 'success') {
+          this.form = this.formBuilder.group({
+            gname: [response.result.name],
+            gphone: [response.result.phone],
+            gemail: [response.result.email, Validators.email],
+            dob: [response.result.dob, Validators.required],
+            nationality: [response.result.nationality],
+            gaddress: [response.result.address1],
+            address2: [response.result.address2],
+            gcity: [response.result.city],
+            gstate: [response.result.state],
+            gpincode: [response.result.pincode],
+            gcountry: [response.result.country]
+          });
+        } else if (response.code == 3000) {
+          this.userService.clearUser();
+          alert('Login Error!');
+          // this.router.navigate(['/home']);
+        } else {
+          this.userService.clearUser();
+          alert('Login Error!');
+          // this.router.navigate(['/home']);
+        }
+      },
+      error: err => {
+        console.error('Error:', err);
+      }
+    });
 
 
   }
