@@ -7,8 +7,21 @@
                     <div class="col-md-4">
                         <div class="card">
                             <h5><strong>Resort name:</strong> Vanavihari, Maredumilli</h5>
-                            <h6><strong>Cottage type:</strong> Wooden Cottage</h6>
-                            <p><strong>Room name: Hornbill</strong></p>
+                            <!-- <h6><strong>Cottage type:</strong> Wooden Cottage</h6>
+                            <p><strong>Room name: Hornbill</strong></p> -->
+
+                            <div class="pb-4">
+                                <div class="pt-2" *ngFor="let roomId of roomDetails">
+                                    <p class="m-0"><strong class="me-2">Room Name: {{ roomId.name }}</strong></p>
+                                    <small>
+                                        {{ roomId.noof_adult }} Adult{{ roomId.noof_adult>1?'s':'' }}
+                                        {{ roomId.noof_child>0?', '+roomId.noof_child+' Child'+(roomId.noof_child>1?'s':''):'' }}
+                                        {{ roomId.noof_guest>0?', '+roomId.noof_guest+' Extra Guest'+(roomId.noof_guest>1?'s':''):'' }}
+                                        <span class="float-end pb-0 m-0">{{ roomId.week_day_rate+(roomId.week_day_bed_charge*roomId.noof_guest) | currency:'INR':'symbol':'1.2-2' }}</span>
+                                    </small>
+                                </div>
+                            </div>
+
                             <address>Vanavihari Eco-tourism Complex, Maredumilli, AP-533295.</address>
                             <div class="map-container">
                                 <iframe
@@ -39,22 +52,22 @@
                                     <p>09:00 AM IST</p>
                                 </div>
                             </div>
-                            <p>Duration of stay:<br><strong>{{durationOfStay}} week</strong></p>
+                            <p>Duration of stay: <strong>{{durationOfStay}}</strong></p>
                         </div>
                         <div class="card">
                             <h5>Room & Guests Details</h5>
-                            <p>Total Number of Rooms: <span id="totalRooms">{{roomsCount}}</span></p>
-                            <p>Adults: {{adultsCount}}</p>
-                            <p>Children: {{childrenCount}}</p>
-                            <p>Guests: {{roomsCount}}</p>
+                            <p>Total Number of Rooms: <span id="totalRooms">{{roomDetails.length}}</span></p>
+                            <p>Adults: <input type="number" value="{{adultsCount}}" class="w-25" min="0" max="{{maxAdultCount}}"></p>
+                            <p>Children: <input type="number" value="{{childrenCount}}" class="w-25" min="0" max="{{maxChildrenCount}}"></p>
+                            <p>Guests: {{guestCount}}</p>
                             <a class="font-weight-bold" (click)="goToVanavihari()">Change your selection</a>
                         </div>
                         <div class="card">
                             <h5>Payment details</h5>
-                            <p><strong>Room price per night:</strong> INR 4000</p>
+                            <p><strong>Total Room Price:</strong> {{ totalPrice | currency:'INR ':'symbol':'1.2-2' }}</p>
                             <!-- <p>Total room tarri: 5400</p> -->
-                            <p><strong>GST @12%:</strong> INR 480</p>
-                            <h4><strong>Total price:</strong> INR 6372</h4>
+                            <p><strong>GST @12%:</strong> {{ totalGSTPrice | currency:'INR ':'symbol':'1.2-2' }}</p>
+                            <h4><strong>Grand Total:</strong> {{ (totalPrice+totalGSTPrice) | currency:'INR ':'symbol':'1.2-2' }}</h4>
                         </div>
                         <!-- card for Cancellation fees -->
                         <div class="card">
@@ -89,7 +102,7 @@
                     <div class="col-md-6 me-auto mt-5 mt-md-0">
                         <h5 class="mb-4" *ngIf="isLoggedIn(); else loginNotify" style="line-height: 1.5;">Check the details we have fetched from your user account {{getFullUser}}!</h5>
                         <ng-template #loginNotify>
-                            <h5 class="mb-4" style="line-height: 1.5;">Better Experience to use this app using account <a (click)="gotToLogin()">Signin</a></h5>
+                            <h5 class="mb-4" style="line-height: 1.5;">Better Experience to use this app please <a (click)="gotToLogin()">Signin</a></h5>
                         </ng-template>
                         <!-- <h3>User Details</h3> -->
                         <form [formGroup]="form">
@@ -99,7 +112,7 @@
                             </mat-form-field>
                             <mat-form-field appearance="outline" class="mt-3">
                                 <mat-label>Mobile no.</mat-label>
-                                <input type="number" matInput required placeholder="Enter Mobile Number" formControlName="gphone" />
+                                <input type="text" matInput required placeholder="Enter Mobile Number" formControlName="gphone" />
                             </mat-form-field>
                             <mat-form-field appearance="outline" class="mt-3">
                                 <mat-label>Email</mat-label>
