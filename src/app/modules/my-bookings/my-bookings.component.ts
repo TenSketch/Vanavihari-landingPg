@@ -12,7 +12,7 @@ export class MyBookingsComponent {
   constructor(private http: HttpClient, private userService: UserService) {}
   ngOnInit(): void {
     let params = new HttpParams()
-    .set('login_email', this.userService.getUser())
+    .set('email', this.userService.getUser())
     .set('token', this.userService.getUserToken());
     this.http
       .get<any>(
