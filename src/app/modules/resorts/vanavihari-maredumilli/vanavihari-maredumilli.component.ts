@@ -31,8 +31,7 @@ interface Room {
 export class VanavihariMaredumilliComponent {
   selectedSortOption: string;
   showBookingSummary: boolean = false;
-  is_button_disabled: boolean = false;
-  roomCards: Room[] = [];
+  roomCards: any[] = [];
   roomIds: any[] = [];
   loadingRooms: boolean = true;
   selectedResort: string = '';
@@ -154,7 +153,7 @@ export class VanavihariMaredumilliComponent {
         week_day_rate: 2500,
         max_adult: 2,
         max_child: 1,
-        max_guest: 1,
+        max_guest: 3,
         week_day_bed_charge: 500,
         id: 302,
         resort: 'Vanavihari',
@@ -182,22 +181,40 @@ export class VanavihariMaredumilliComponent {
     }, 2000);
   }
  
-  removeRoom(room: any, roomId: any) {
-    room.is_button_disabled = false;
+  removeRoom(room: any, roomId: any) {    
     this.roomIds = this.roomIds.filter(room => room.id !== roomId);
     if (this.roomIds.length < 1) this.showBookingSummary = false;
-    this.authService.setBookingRooms(this.roomIds);
     room.is_button_disabled = false;
+    this.authService.setBookingRooms(this.roomIds);
+    let rm = this.roomCards.find(rm => rm.id === roomId);
+    if (rm) rm.is_button_disabled = false;
   }
-
+  checkIfNaN(value: any): boolean {
+    return isNaN(value);
+  }
+  checkExtraGuest(room: any, roomId: any, inputbox: HTMLInputElement) {
+    if(this.checkIfNaN(inputbox.value)) {
+      if(inputbox.checked) {
+        room.noof_guest = 1;
+      } else {
+        room.noof_guest = 0;
+      }
+    } else {
+      room.noof_guest = inputbox.value;
+    }
+  }
   mapRoomData(data: any[], roomIds: any[]): Room[] {
     return data.map((room) => ({
       name: room.name || 'Unknown',
       cottage_type: room.cottage_type || 'Unknown',
       id: room.id || 'Unknown',
+      resort: room.resort || 'Unknown',
       max_adult: room.max_adult || 1,
       max_child: room.max_child || 0,
       max_guest: room.max_guest || 0,
+      noof_adult: room.max_adult,
+      noof_child: room.max_child,
+      noof_guest: 0,
       week_day_bed_charge: room.week_day_bed_charge || 0,
       week_day_rate: room.week_day_rate || 'Unknown',
       week_end_rate: room.week_end_rate || 'Unknown',
@@ -231,12 +248,21 @@ export class VanavihariMaredumilliComponent {
     let totalPrice = 0;
     for (const roomId of this.roomIds) {
       if (roomId) {
-        totalPrice += roomId.week_day_rate;
+        totalPrice += roomId.week_day_rate+(roomId.noof_guest*roomId.week_day_bed_charge);
       }
     }
     return totalPrice;
   }
-
+  calculateTotalGst(): number {
+    let totalPrice = 0;
+    for (const roomId of this.roomIds) {
+      if (roomId) {
+        totalPrice += roomId.week_day_rate+(roomId.noof_guest*roomId.week_day_bed_charge);
+      }
+    }
+    totalPrice = ((totalPrice*12)/100);
+    return totalPrice;
+  }
   calculatePayablePrice(): number {
     const totalPrice = this.calculateTotalPrice();
     const gstPercentage = 0.12; // GST @12%
