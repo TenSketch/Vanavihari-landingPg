@@ -23,9 +23,9 @@ export class BookingSummaryComponent {
   constructor(private router: Router, private authService: AuthService, private http: HttpClient, private formBuilder: FormBuilder, private userService: UserService, private snackBar: MatSnackBar) {
     console.log(this.authService.getBookingRooms());    
     this.form = this.formBuilder.group({
-      gname: ['Venkat'],
-      gphone: ['8056562076'],
-      gemail: ['venkat408prabhu@gmail.com', Validators.email],
+      gname: [''],
+      gphone: [''],
+      gemail: ['', Validators.email],
       gaddress: [''],
       gcity: [''],
       gstate: [''],
@@ -73,6 +73,12 @@ export class BookingSummaryComponent {
 
 
   }
+  isLoggedIn(): boolean {
+    return this.userService.isLoggedIn();
+  }
+  gotToLogin() {
+    this.router.navigate(['/sign-in']);
+  }
   goToVanavihari() {
     this.router.navigate(['/resorts/vanavihari-maredumilli']);
   }
@@ -110,8 +116,6 @@ export class BookingSummaryComponent {
       });
     }
   }
-
-
   showSnackBarAlert(msg = '') {
     var snackBar = this.snackBar.open(msg, 'Close', {
       duration: 3000,

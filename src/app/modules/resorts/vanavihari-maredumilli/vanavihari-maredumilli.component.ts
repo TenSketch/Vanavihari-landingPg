@@ -193,15 +193,20 @@ export class VanavihariMaredumilliComponent {
     return isNaN(value);
   }
   checkExtraGuest(room: any, roomId: any, inputbox: HTMLInputElement) {
+    let rm = this.roomCards.find(rm => rm.id === roomId);
     if(this.checkIfNaN(inputbox.value)) {
       if(inputbox.checked) {
+        if (rm) rm.noof_guest = 1;
         room.noof_guest = 1;
       } else {
+        if (rm) rm.noof_guest = 0;
         room.noof_guest = 0;
       }
     } else {
       room.noof_guest = inputbox.value;
+      if (rm) rm.noof_guest = inputbox.value;
     }
+    this.authService.setBookingRooms(this.roomIds);
   }
   mapRoomData(data: any[], roomIds: any[]): Room[] {
     return data.map((room) => ({

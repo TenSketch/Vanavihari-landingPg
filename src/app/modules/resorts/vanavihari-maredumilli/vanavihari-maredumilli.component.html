@@ -64,14 +64,14 @@
             <div class="booking-summary-bar bg-white text-dark rounded-3 p-3">
               <h4 class="m-0 pb-1 font-weight-bold">Booking Summary</h4>
               <div class="border-top py-2" *ngIf="showBookingSummary; else noBookings">
-                <h5 class="text-primary-dark pb-1 m-0"><strong class="me-2">Hill Top Guest House</strong></h5>
+                <!-- <h5 class="text-primary-dark pb-1 m-0"><strong class="me-2">Hill Top Guest House</strong></h5> -->
                 <div class="pt-2" *ngFor="let roomId of roomIds">
                   <a href="javascript:void(0)" class="float-end" (click)="removeRoom(roomId, roomId.id)"><i class="fa fa-trash"></i></a>
                   <div>
                     <strong class="me-2">Room Name: {{ roomId.name }}</strong>
                   </div>
                   <div>
-                    <label for="checkextraguest{{roomId.id}}"><input type="checkbox" #checkextraguest id="checkextraguest{{roomId.id}}" [id]="'checkextraguest' + roomId.id" (change)="checkExtraGuest(roomId, roomId.id, checkextraguest)"> Check any extra guest</label> &nbsp;
+                    <label for="checkextraguest{{roomId.id}}"><input type="checkbox" #checkextraguest id="checkextraguest{{roomId.id}}" [id]="'checkextraguest' + roomId.id" (change)="checkExtraGuest(roomId, roomId.id, checkextraguest)" [(ngModel)]="roomId.noof_guest"> Check any extra guest</label> &nbsp;
                     <input type="number" value="{{roomId.noof_guest}}" min="1" max="{{roomId.max_guest}}" #checkextraguestcount id="checkextraguestcount{{roomId.id}}" class="w-auto text-center" [id]="'checkextraguestcount' + roomId.id" (change)="checkExtraGuest(roomId, roomId.id, checkextraguestcount)" *ngIf="roomId.noof_guest>0&&roomId.max_guest>1">
                   </div>
                   <small>
