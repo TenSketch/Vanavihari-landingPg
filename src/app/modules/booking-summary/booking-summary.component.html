@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 me-auto mt-5 mt-md-0">
-                        <h5 class="mb-4" *ngIf="isLoggedIn(); else loginNotify" style="line-height: 1.5;">Check the details we have fetched from your user account Balachandiran!</h5>
+                        <h5 class="mb-4" *ngIf="isLoggedIn(); else loginNotify" style="line-height: 1.5;">Check the details we have fetched from your user account {{getFullUser}}!</h5>
                         <ng-template #loginNotify>
                             <h5 class="mb-4" style="line-height: 1.5;">Better Experience to use this app using account <a (click)="gotToLogin()">Signin</a></h5>
                         </ng-template>

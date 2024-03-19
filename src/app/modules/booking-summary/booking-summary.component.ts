@@ -20,6 +20,7 @@ export class BookingSummaryComponent {
   checkOutDate: string;
   durationOfStay: number = 1;
   seslectedResort: string;
+  getFullUser: string;
   constructor(private router: Router, private authService: AuthService, private http: HttpClient, private formBuilder: FormBuilder, private userService: UserService, private snackBar: MatSnackBar) {
     console.log(this.authService.getBookingRooms());    
     this.form = this.formBuilder.group({
@@ -37,6 +38,7 @@ export class BookingSummaryComponent {
     this.checkInDate = this.authService.getSearchData('checkin');
     this.checkOutDate = this.authService.getSearchData('checkout');
     this.seslectedResort = this.authService.getSearchData('resort');
+    this.getFullUser = this.userService.getFullUser();
     const params = new HttpParams()
       .set('email', this.authService.getAccountUsername()??'')
       .set('token', this.authService.getAccessToken()??'');
