@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SharedService } from '../../shared.service';
 
 @Component({
   selector: 'app-search-resort',
@@ -23,7 +24,7 @@ export class SearchResortComponent implements OnInit {
   checkinDate: string;
   checkoutDate: string;
 
-  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private formBuilder: FormBuilder) {
+  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private formBuilder: FormBuilder, private sharedService: SharedService) {
     this.searchForm = this.formBuilder.group({
       selectedResort: [],
       checkinDate: [],
@@ -34,10 +35,22 @@ export class SearchResortComponent implements OnInit {
   }
   ngOnInit(): void {
     if(this.authService.getSearchData("resort")) this.selectedResort = this.authService.getSearchData("resort");
-    if(this.authService.getSearchData("checkin")) this.checkinDate = this.authService.getSearchData("checkin");
-    if(this.authService.getSearchData("checkout")) this.checkoutDate = this.authService.getSearchData("checkout");
+    if(this.authService.getSearchData("checkin")) this.checkinDate = this.convertDateFormat(this.authService.getSearchData("checkin"));
+    if(this.authService.getSearchData("checkout")) this.checkoutDate = this.convertDateFormat(this.authService.getSearchData("checkout"));
   }
+  convertDateFormat(dateString: string): string {
+    const months = [
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+    ];
 
+    const [day, monthAbbr, year] = dateString.split('-');
+    const monthIndex = months.findIndex(m => m === monthAbbr) + 1;
+    const month = monthIndex < 10 ? `0${monthIndex}` : `${monthIndex}`;
+    const formattedDate = `${year}-${month}-${day}`;
+
+    return formattedDate;
+  }
   decrementAdults() {
     if (this.adultsCount > 1) {
       this.adultsCount--;
@@ -105,6 +118,7 @@ export class SearchResortComponent implements OnInit {
   goToVanavihari() {
     this.authService.setSearchData( [{ resort: this.selectedResort, checkin: this.checkinDate, checkout: this.checkoutDate }]);
     this.router.navigate(['/resorts/vanavihari-maredumilli']);
+    this.sharedService.triggerFetchRoomList();
   }
   // goToRooms(){
   //   this.router.navigate(['/resorts/rooms' ]);
