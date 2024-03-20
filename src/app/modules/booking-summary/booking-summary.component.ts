@@ -14,7 +14,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class BookingSummaryComponent {
   form: FormGroup;
   adultsCount: number = 1;
-  childrenCount: number = 0;
   guestCount: number = 0;
   roomsCount: number = 1;
   roomDetails: any[];
@@ -24,7 +23,6 @@ export class BookingSummaryComponent {
   seslectedResort: string;
   getFullUser: string;
   maxAdultCount: number = 2;
-  maxChildrenCount: number = 1;
   totalPrice: number = 0;
   totalGSTPrice: number = 0;
   roomGuestDetails: any[] = [];
@@ -33,7 +31,6 @@ export class BookingSummaryComponent {
     if(this.roomDetails.length > 0) {
       console.log(this.roomDetails);
       this.adultsCount = 0;
-      this.childrenCount = 0;
       this.guestCount = 0;
       this.totalPrice = 0;
       this.totalGSTPrice = 0;
@@ -42,7 +39,6 @@ export class BookingSummaryComponent {
           this.roomGuestDetails.push(room.id, room.noof_guest);
         }
         this.adultsCount += parseInt(room.noof_adult);
-        this.childrenCount += parseInt(room.noof_child);
         this.guestCount += parseInt(room.noof_guest);
 
         this.totalPrice += parseInt(room.week_day_rate+(room.noof_guest*room.week_day_bed_charge));
@@ -78,36 +74,36 @@ export class BookingSummaryComponent {
     const params = new HttpParams()
       .set('email', this.authService.getAccountUsername()??'')
       .set('token', this.authService.getAccessToken()??'');
-    this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=profile_details', {params}).subscribe({
-      next: response => {
-        if(response.code == 3000 && response.result.status == 'success') {
-          this.form = this.formBuilder.group({
-            gname: [response.result.name],
-            gphone: [response.result.phone],
-            gemail: [response.result.email, Validators.email],
-            dob: [response.result.dob, Validators.required],
-            nationality: [response.result.nationality],
-            gaddress: [response.result.address1],
-            address2: [response.result.address2],
-            gcity: [response.result.city],
-            gstate: [response.result.state],
-            gpincode: [response.result.pincode],
-            gcountry: [response.result.country]
-          });
-        } else if (response.code == 3000) {
-          this.userService.clearUser();
-          alert('Login Error!');
-          // this.router.navigate(['/home']);
-        } else {
-          this.userService.clearUser();
-          alert('Login Error!');
-          // this.router.navigate(['/home']);
-        }
-      },
-      error: err => {
-        console.error('Error:', err);
-      }
-    });
+    // this.http.get<any>('https://vanavihari-ng.netlify.app/zoho-connect?api_type=profile_details', {params}).subscribe({
+    //   next: response => {
+    //     if(response.code == 3000 && response.result.status == 'success') {
+    //       this.form = this.formBuilder.group({
+    //         gname: [response.result.name],
+    //         gphone: [response.result.phone],
+    //         gemail: [response.result.email, Validators.email],
+    //         dob: [response.result.dob, Validators.required],
+    //         nationality: [response.result.nationality],
+    //         gaddress: [response.result.address1],
+    //         address2: [response.result.address2],
+    //         gcity: [response.result.city],
+    //         gstate: [response.result.state],
+    //         gpincode: [response.result.pincode],
+    //         gcountry: [response.result.country]
+    //       });
+    //     } else if (response.code == 3000) {
+    //       this.userService.clearUser();
+    //       alert('Login Error!');
+    //       // this.router.navigate(['/home']);
+    //     } else {
+    //       this.userService.clearUser();
+    //       alert('Login Error!');
+    //       // this.router.navigate(['/home']);
+    //     }
+    //   },
+    //   error: err => {
+    //     console.error('Error:', err);
+    //   }
+    // });
 
 
   }
@@ -141,7 +137,6 @@ export class BookingSummaryComponent {
       .set('selected_rooms', room_ids)
       .set('room_guest_details', this.roomDetails.map(item => `${item.id}-${item.noof_guest}`).join(','))
       .set('noof_adult', this.adultsCount)
-      .set('noof_child', this.childrenCount)
       .set('noof_guest', this.guestCount);
       Object.keys(this.form.value).forEach((key) => {
         params = params.append(key, this.form.value[key]);

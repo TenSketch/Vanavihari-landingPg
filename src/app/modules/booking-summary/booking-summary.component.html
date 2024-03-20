@@ -14,8 +14,7 @@
                                 <div class="pt-2" *ngFor="let roomId of roomDetails">
                                     <p class="m-0"><strong class="me-2">Room Name: {{ roomId.name }}</strong></p>
                                     <small>
-                                        {{ roomId.noof_adult }} Adult{{ roomId.noof_adult>1?'s':'' }}
-                                        {{ roomId.noof_child>0?', '+roomId.noof_child+' Child'+(roomId.noof_child>1?'s':''):'' }}
+                                        {{ roomId.noof_adult }} Guest{{ roomId.noof_adult>1?'s':'' }}
                                         {{ roomId.noof_guest>0?', '+roomId.noof_guest+' Extra Guest'+(roomId.noof_guest>1?'s':''):'' }}
                                         <span class="float-end pb-0 m-0">{{ roomId.week_day_rate+(roomId.week_day_bed_charge*roomId.noof_guest) | currency:'INR':'symbol':'1.2-2' }}</span>
                                     </small>
@@ -57,9 +56,8 @@
                         <div class="card">
                             <h5>Room & Guests Details</h5>
                             <p>Total Number of Rooms: <span id="totalRooms">{{roomDetails.length}}</span></p>
-                            <p>Adults: <input type="number" value="{{adultsCount}}" class="w-25" min="0" max="{{maxAdultCount}}"></p>
-                            <p>Children: <input type="number" value="{{childrenCount}}" class="w-25" min="0" max="{{maxChildrenCount}}"></p>
-                            <p>Guests: {{guestCount}}</p>
+                            <p>Guest: <input type="number" value="{{adultsCount}}" class="w-25" min="0" max="{{maxAdultCount}}"></p>
+                            <p>Extra Guest: {{guestCount}}</p>
                             <a class="font-weight-bold" (click)="goToVanavihari()">Change your selection</a>
                         </div>
                         <div class="card">

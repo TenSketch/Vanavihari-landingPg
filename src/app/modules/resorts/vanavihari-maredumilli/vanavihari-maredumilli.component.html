@@ -75,8 +75,7 @@
                     <input type="number" value="{{roomId.noof_guest}}" min="1" max="{{roomId.max_guest}}" #checkextraguestcount id="checkextraguestcount{{roomId.id}}" class="w-auto text-center" [id]="'checkextraguestcount' + roomId.id" (change)="checkExtraGuest(roomId, roomId.id, checkextraguestcount)" *ngIf="roomId.noof_guest>0&&roomId.max_guest>1">
                   </div>
                   <small>
-                      {{ roomId.noof_adult }} Adult{{ roomId.noof_adult>1?'s':'' }}
-                      {{ roomId.noof_child>0?', '+roomId.noof_child+' Child'+(roomId.noof_child>1?'s':''):'' }}
+                      {{ roomId.noof_adult }} Guest{{ roomId.noof_adult>1?'s':'' }}
                       {{ roomId.noof_guest>0?', '+roomId.noof_guest+' Extra Guest'+(roomId.noof_guest>1?'s':''):'' }}
                       <span class="float-end pb-0 m-0">{{ roomId.week_day_rate+(roomId.week_day_bed_charge*roomId.noof_guest) | currency:'INR':'symbol':'1.2-2' }}</span>
                   </small>
@@ -178,8 +177,7 @@
                   <div class="col-md-8">
                     <h3>{{ room.name }}</h3>
                     <h6>{{ room.cottage_type }}, {{ room.resort }}</h6>
-                      {{ room.max_adult }} Adult{{ room.max_adult>1?'s':'' }}
-                      {{ room.max_child?', '+room.max_child+' Child'+(room.max_child>1?'s':''):'' }}
+                      {{ room.max_adult }} Guest{{ room.max_adult>1?'s':'' }}
                       {{ room.max_guest?', '+room.max_guest+' Extra Guest'+(room.max_guest>1?'s':''):'' }}
                       <!-- <select name="" class="form-select w-25" id="">
                         <option value="">1</option>
