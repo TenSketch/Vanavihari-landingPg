@@ -100,7 +100,7 @@ export class SignUpComponent implements OnInit {
       const params = new HttpParams()
         .set('fullname', this.form.value.full_name)
         .set('email', this.form.value.email_id)
-        .set('phone', this.form.value.mobile_number)
+        .set('mobile', this.form.value.mobile_number)
         .set('password', this.form.value.password);
       
       this.http
