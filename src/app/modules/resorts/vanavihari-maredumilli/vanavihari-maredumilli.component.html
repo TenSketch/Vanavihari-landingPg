@@ -220,7 +220,8 @@
                     <h3>{{ room.name }}</h3>
                     <h6>{{ room.cottage_type }}, {{ room.resort }}</h6>
                       {{ room.max_adult }} Guest{{ room.max_adult>1?'s':'' }}
-                      {{ room.max_guest?', '+room.max_guest+' Extra Guest'+(room.max_guest>1?'s':''):'' }}
+                      {{ room.max_guest?', '+room.max_guest:'' }}       
+                      <!-- +' Extra Guest'+(room.max_guest>1?'s':'') -->
                       <!-- <select name="" class="form-select w-25" id="">
                         <option value="">1</option>
                         <option value="">2</option>
