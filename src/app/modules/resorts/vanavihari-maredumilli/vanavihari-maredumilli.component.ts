@@ -527,13 +527,13 @@ export class VanavihariMaredumilliComponent {
   }
 
   addRoom(room: any) {
-    if(this.selectedResort != '' && this.checkinDate != null && this.checkoutDate != null) {
-      let foundRoom = this.roomIds.find(singRoom => singRoom.id === room.id);
-      if (!foundRoom) { this.roomIds.push(room); }
-      this.showBookingSummary = true;
-      room.is_button_disabled = true;
-      this.authService.setBookingRooms(this.roomIds);
-    } else alert('please fill search fields');
+    let foundRoom = this.roomIds.find(singRoom => singRoom.id === room.id);
+    if (!foundRoom) { this.roomIds.push(room); }
+    this.showBookingSummary = true;
+    room.is_button_disabled = true;
+    this.authService.setBookingRooms(this.roomIds);
+    // if(this.selectedResort != '' && this.checkinDate != null && this.checkoutDate != null) {
+    // } else alert('please fill search fields');
   }
 
   calculateTotalPrice(): number {
