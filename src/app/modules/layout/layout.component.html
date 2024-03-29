@@ -28,14 +28,14 @@
           <a class="nav-link" href="tel:+919494151617" title="call">
             <i class="fa-solid fa-mobile-screen me-2"></i>9494151617</a>
         </li>
-        <li class="nav-item" *ngIf="!isLoggedIn()">
+        <!-- <li class="nav-item" *ngIf="!isLoggedIn()">
           <a class="nav-link" routerLink="/sign-in" routerLinkActive="active" ariaCurrentWhenActive="page">
             <i class="fa-solid fa-arrow-right-to-bracket me-2"></i>Sign in</a>
-        </li>
-        <li class="nav-item" *ngIf="!isLoggedIn()">
+        </li> -->
+        <!-- <li class="nav-item" *ngIf="!isLoggedIn()">
           <a class="nav-link" routerLink="/sign-up" routerLinkActive="active" ariaCurrentWhenActive="page">
             <i class="fa-solid fa-arrow-up-from-bracket me-2"></i>Sign up</a>
-        </li>
+        </li> -->
         <!-- *ngIf="isLoggedIn()" -->
         <li class="nav-item dropdown"  *ngIf="isLoggedIn()">
           <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true"
@@ -59,9 +59,9 @@
           </div>
         </li>
       </ul>
-      <button class="navbar-toggler border-0 p-0 ms-3" type="button" (click)="toggleSidebar()">
+      <!-- <button class="navbar-toggler border-0 p-0 ms-3" type="button" (click)="toggleSidebar()">
         <span class="navbar-toggler-icon"></span>
-      </button>
+      </button> -->
     </div>
   </nav>
 
@@ -91,7 +91,7 @@
 
         </div>
 
-        <li class="sidebar-item">
+        <!-- <li class="sidebar-item">
           <a class="sidebar-link d-flex gap-2 align-items-center" (click)="toggleSidebar(); goToAboutUs()">
             <i class="fa-solid fa-info-circle"></i><span>About Us</span>
           </a>
@@ -106,7 +106,7 @@
           <a class="sidebar-link d-flex gap-2 align-items-center" (click)="toggleSidebar(); goToTribalPg()">
             <i class="fa-solid fa-users"></i><span>Tribal Community</span>
           </a>
-        </li>
+        </li> -->
         
         <!-- <li class="sidebar-item">
           <a class="sidebar-link d-flex gap-2 align-items-center" href="#">
@@ -160,6 +160,8 @@
         <h3>Links</h3><br>
         <ul class="list-unstyled">
           <!-- <li><a class="text-decoration-none" (click)="goToAboutUs()">About us</a></li> -->
+          <li class="mt-2"><a class="" (click)="goToAboutUs()">About Us</a></li>
+          <li class="mt-2"><a class="" (click)="goToTribalPg()">Tribal Community</a></li>
           <li class="mt-2"><a class="" (click)="goToAwards()">Awards and News</a></li>
           <li class="mt-2"><a class="" (click)="goToPrivacy()">Privacy Policy</a></li>
           <li class="mt-2"><a class="" (click)="goToTerms()">Terms and Conditions</a></li>
