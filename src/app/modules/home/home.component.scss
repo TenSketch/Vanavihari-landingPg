@@ -86,3 +86,18 @@ $card-flex-basis: 35%;
   font-size: 20px;
   cursor: pointer;
 }
+
+.iframe-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9; /* Adjust the ratio as needed */
+
+}
